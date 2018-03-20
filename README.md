@@ -1,2 +1,3 @@
-# DATN
-Mạng xã hội thú cưng
+# mongodb-sails
+
+a [Sails](http://sailsjs.org) application
