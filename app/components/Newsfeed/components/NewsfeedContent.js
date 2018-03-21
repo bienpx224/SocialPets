@@ -10,7 +10,7 @@ class NewsfeedContent extends React.Component{
   handleType(event){
     var k = event.keyCode;
     if(k == 13){
-      alert('enter');
+      alert('enter enter');
     }
   }
   render(){
