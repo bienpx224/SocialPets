@@ -472,9 +472,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		module.exports = classNames;
 	} else if (true) {
 		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {
 		window.classNames = classNames;
@@ -22799,7 +22799,7 @@ var NewsfeedContent = function (_React$Component) {
     value: function handleType(event) {
       var k = event.keyCode;
       if (k == 13) {
-        alert('enter');
+        alert('enter enter');
       }
     }
   }, {
