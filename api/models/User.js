@@ -30,6 +30,7 @@ module.exports = {
     description:{type:'string'},
     job:{type:'string'},
     university:{type:'string'},
+    point : {type: 'integer'},
     // Setting your account
     enableFollow:{type:'boolean'},
     enableSound:{type:'boolean'},

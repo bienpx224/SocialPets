@@ -18,7 +18,7 @@ class NewsfeedContent extends React.Component{
       <div className="post-content">
 
         <div className="post-container">
-          <img src={"/images/data/"+this.props.owner.picture} className="profile-photo-md pull-left" alt="" />
+          <img src={this.props.owner.picture} className="profile-photo-md pull-left" alt="" />
           <div className="post-detail">
 
                   <div className="user-info">
@@ -27,7 +27,7 @@ class NewsfeedContent extends React.Component{
                   </div>
 
                   <div className="line-divider"></div>
-                  <img src={"/images/data/"+this.props.image} alt="" className="img-responsive post-image"/>
+                  <img src={this.props.image} alt="" className="img-responsive post-image"/>
                   <div className="post-text">
                     <p>{this.props.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p>
                   </div>
@@ -45,7 +45,7 @@ class NewsfeedContent extends React.Component{
                     <p><a href="#" className="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
                   </div>
                   <div className="post-comment">
-                    <img src={"/images/data/"+this.props.owner.picture} alt="" className="profile-photo-sm" />
+                    <img src={this.props.owner.picture} alt="" className="profile-photo-sm" />
                     <input type="text" className="form-control" onKeyUp={this.handleType.bind(this)} placeholder="Post a comment"/>
                   </div>
 

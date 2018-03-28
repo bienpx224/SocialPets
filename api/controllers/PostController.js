@@ -5,28 +5,39 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var base64Img = require('base64-img');
+var http = require('https');
+var imgur = require('imgur-node-api'),
+path = require('path');
+fs = require('fs');
+
 module.exports = {
   index: function(req,res){
     return res.view();
   },
-  addPost: function(req,res){
+  addPost: function(req,res){ console.log("Có người vừa đăng bài");
     var post = req.body;
     Post.create(post, function(err, post){
       if(err){
+        console.log("Đăng bài thất bại", err);
         return res.send({err: err});
       }
       if(post){
         Post.findOne({id: post.id}).populate('userId')
-        .then( (newPost)=>{
+        .then( (newPost)=>{ console.log("Đăng bài thành công ", newPost);
           return res.send({ok:newPost});
         })
-        .catch( err2 => res.send({err: err2}))
+        .catch( err2 => res.send({err: err2}));
       }
     })
   },
-  handleImg: function(req,res){
-    var filepath = base64Img.imgSync(req.body.result, 'assets/images/data', req.body.name); console.log(Date());
-    return res.send(filepath);
+  handleImg: function(req,res2){ console.log("Đã nhận yêu cầu xử lý ảnh");
+    var filepath = base64Img.imgSync(req.body.result, 'assets/images/data', req.body.name);
+    imgur.setClientID("cd1685e78d29685");
+    imgur.upload(filepath, function (err, res) {
+        fs.unlinkSync(filepath);
+      console.log("Đã upload xong file ảnh : ",res.data.link);
+      res2.send({link:res.data.link}); // Log the imgur url
+    });
 
   },
   getPostNewsfeed: function(req, res){
@@ -149,4 +160,3 @@ module.exports = {
  //    }
   // }
 };
-

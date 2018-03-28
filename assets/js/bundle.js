@@ -12153,7 +12153,6 @@ var Post = function (_React$Component) {
         image: this.state.nameImg,
         userId: this.props.user.id
       };
-
       if (Post.content.length === 0 && Post.image === null) {
         this.msg.show('ERROR: Not enough information to post !! ', {
           time: 5000,
@@ -12166,19 +12165,19 @@ var Post = function (_React$Component) {
           var position = nameImg.lastIndexOf(".");
           if (position > 0) nameImg = nameImg.substring(0, position);
           io.socket.post('/post/handleImg', { result: this.state.image, name: nameImg }, function (resData, jwres) {
-
+            Post.image = resData.link;
+            console.log(Post);
             io.socket.post('/post/addPost', Post, function (resData, jwres) {
               if (resData.ok) {
-                console.log(Date());
                 that.msg.show('Your post was success <3 Waiting process your image... ', {
                   time: 5000,
                   theme: 'light',
                   type: 'success',
                   icon: _react2.default.createElement('img', { src: '/images/success.png' })
                 });
-                setTimeout(function () {
-                  dispatch((0, _postAction.add_new_post)(resData.ok));
-                }, 6000);
+
+                dispatch((0, _postAction.add_new_post)(resData.ok));
+
                 that.handleCloseImage.bind(that);
                 that.state.contentPost = "";
                 that.setState(that.state);
@@ -12231,21 +12230,31 @@ var Post = function (_React$Component) {
       var typeImage = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png', 'image/svg+xml'];
       if (event.target.files && event.target.files[0]) {
         var i = 0;
-        typeImage.forEach(function (item) {
-          if (item === event.target.files[0].type) {
-            var reader = new FileReader();
-            var val = Math.floor(1000 + Math.random() * 9000);
-            var nameImg = "" + val + "_" + event.target.files[0].name;
-            reader.onload = function (e) {
-              that.setState({ image: e.target.result, nameImg: nameImg });
-            };
-            reader.readAsDataURL(event.target.files[0]);
-          } else {
-            i++;
+        console.log(event.target.files[0]);
+        if (event.target.files[0] < 1048576) {
+          typeImage.forEach(function (item) {
+            if (item === event.target.files[0].type) {
+              var reader = new FileReader();
+              var val = Math.floor(1000 + Math.random() * 9000);
+              var nameImg = "" + val + "_" + event.target.files[0].name;
+              reader.onload = function (e) {
+                that.setState({ image: e.target.result, nameImg: nameImg });
+              };
+              reader.readAsDataURL(event.target.files[0]);
+            } else {
+              i++;
+            }
+          });
+          if (i === typeImage.length) {
+            this.msg.show('ERROR: You can only select image file !! ', {
+              time: 5000,
+              theme: 'light',
+              type: 'error',
+              icon: _react2.default.createElement('img', { src: '/images/error.png' })
+            });
           }
-        });
-        if (i === typeImage.length) {
-          this.msg.show('ERROR: You can only select image file !! ', {
+        } else {
+          this.msg.show('ERROR: Your image is too large. It must < 10MB !! ', {
             time: 5000,
             theme: 'light',
             type: 'error',
@@ -12280,7 +12289,7 @@ var Post = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'form-group' },
-              _react2.default.createElement('img', { src: "/images/data/" + this.props.user.picture, alt: true, className: 'profile-photo-md' }),
+              _react2.default.createElement('img', { src: this.props.user.picture, alt: true, className: 'profile-photo-md' }),
               _react2.default.createElement('textarea', { onChange: this.onChangeContentPost.bind(this), value: this.state.contentPost, ref: 'content', id: 'exampleTextarea', cols: '40', rows: '2', className: 'form-control', placeholder: 'Write what you want..' })
             )
           ),
@@ -12310,7 +12319,7 @@ var Post = function (_React$Component) {
                 _react2.default.createElement(
                   'li',
                   null,
-                  _react2.default.createElement('img', { src: "" + this.state.image, alt: 'no photo', className: 'preview-image-post' })
+                  _react2.default.createElement('img', { src: this.state.image, alt: 'no photo', className: 'preview-image-post' })
                 )
               ),
               _react2.default.createElement(
@@ -22811,7 +22820,7 @@ var NewsfeedContent = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'post-container' },
-          _react2.default.createElement('img', { src: "/images/data/" + this.props.owner.picture, className: 'profile-photo-md pull-left', alt: '' }),
+          _react2.default.createElement('img', { src: this.props.owner.picture, className: 'profile-photo-md pull-left', alt: '' }),
           _react2.default.createElement(
             'div',
             { className: 'post-detail' },
@@ -22841,7 +22850,7 @@ var NewsfeedContent = function (_React$Component) {
               )
             ),
             _react2.default.createElement('div', { className: 'line-divider' }),
-            _react2.default.createElement('img', { src: "/images/data/" + this.props.image, alt: '', className: 'img-responsive post-image' }),
+            _react2.default.createElement('img', { src: this.props.image, alt: '', className: 'img-responsive post-image' }),
             _react2.default.createElement(
               'div',
               { className: 'post-text' },
@@ -22907,7 +22916,7 @@ var NewsfeedContent = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'post-comment' },
-              _react2.default.createElement('img', { src: "/images/data/" + this.props.owner.picture, alt: '', className: 'profile-photo-sm' }),
+              _react2.default.createElement('img', { src: this.props.owner.picture, alt: '', className: 'profile-photo-sm' }),
               _react2.default.createElement('input', { type: 'text', className: 'form-control', onKeyUp: this.handleType.bind(this), placeholder: 'Post a comment' })
             )
           )
@@ -40409,8 +40418,9 @@ var FormReg = function (_React$Component) {
         gender: sex,
         address: this.refs.address.value,
         country: this.refs.country.value,
-        picture: "defaultAvatar.jpg",
-        cover: "defaultCover.jpg",
+        point: 10,
+        picture: "https://i.imgur.com/x53FmYL.jpg",
+        cover: "https://i.imgur.com/8jp0Y6M.jpg",
         isActive: true,
         enableFollow: true,
         enableSound: true,
@@ -46441,7 +46451,7 @@ var MenuVertical = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'profile-card', style: { cursor: "pointer" }, onClick: this.showPopupUser.bind(this) },
-          _react2.default.createElement('img', { src: "/images/data/" + this.props.user.picture, alt: 'user', className: 'profile-photo' }),
+          _react2.default.createElement('img', { src: this.props.user.picture, alt: 'user', className: 'profile-photo' }),
           _react2.default.createElement(
             'h5',
             null,
@@ -60013,7 +60023,7 @@ var Profile = function (_React$Component) {
           { className: 'timeline' },
           _react2.default.createElement(
             'div',
-            { className: 'timeline-cover', style: { backgroundImage: "url(/images/data/" + this.props.user.cover + ")", backgroundPosition: "center", backgroundSize: "cover" } },
+            { className: 'timeline-cover', style: { backgroundImage: "url(" + this.props.user.cover + ")", backgroundPosition: "center", backgroundSize: "cover" } },
             _react2.default.createElement(
               'div',
               { className: 'change-cover hidden-sm hidden-xs', onClick: this.changeCover.bind(this) },
@@ -60032,7 +60042,7 @@ var Profile = function (_React$Component) {
                   _react2.default.createElement(
                     'div',
                     { className: 'profile-info' },
-                    _react2.default.createElement('img', { src: "/images/data/" + this.props.user.picture, alt: '', className: 'img-responsive profile-photo',
+                    _react2.default.createElement('img', { src: this.props.user.picture, alt: '', className: 'img-responsive profile-photo',
                       style: { cursor: "pointer" }, onClick: this.changePicture.bind(this) }),
                     _react2.default.createElement(
                       'h3',
@@ -60108,7 +60118,7 @@ var Profile = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'profile-info' },
-                _react2.default.createElement('img', { src: "/images/data/" + this.props.user.picture, alt: '', className: 'img-responsive profile-photo' }),
+                _react2.default.createElement('img', { src: this.props.user.picture, alt: '', className: 'img-responsive profile-photo' }),
                 _react2.default.createElement(
                   'h4',
                   null,
@@ -62303,11 +62313,11 @@ var Follower = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'friend-card' },
-          _react2.default.createElement('img', { src: "/images/data/" + this.props.cover, alt: 'profile-cover', className: 'img-responsive cover' }),
+          _react2.default.createElement('img', { src: this.props.cover, alt: 'profile-cover', className: 'img-responsive cover' }),
           _react2.default.createElement(
             'div',
             { className: 'card-info' },
-            _react2.default.createElement('img', { src: "/images/data/" + this.props.picture, alt: 'user', className: 'profile-photo-lg' }),
+            _react2.default.createElement('img', { src: this.props.picture, alt: 'user', className: 'profile-photo-lg' }),
             _react2.default.createElement(
               'div',
               { className: 'friend-info' },
@@ -62548,7 +62558,7 @@ var PopupChangePicture = function (_React$Component) {
         io.socket.post('/post/handleImg', { result: this.state.image, name: nameImg }, function (resData, jwres) {
           // if Type of Popup is picture, it's mean that will change User's Picture
           if (that.props.type === "picture") {
-            io.socket.post('/user/changePicture', { link: that.state.nameImg, id: that.props.user.id }, function (resData, jwres) {
+            io.socket.post('/user/changePicture', { link: resData.link, id: that.props.user.id }, function (resData, jwres) {
               if (resData.ok) {
                 var user = resData.ok[0];
                 that.msg.show('Your picture was change success <3 Waiting process your image... ', {
@@ -62613,12 +62623,12 @@ var PopupChangePicture = function (_React$Component) {
       var that = this;
       if (!this.state.newPicture) {
         if (this.props.type === "picture") {
-          return _react2.default.createElement('img', { src: "/images/data/" + that.props.user.picture, alt: '', className: 'img-responsive post-image' });
+          return _react2.default.createElement('img', { src: that.props.user.picture, alt: '', className: 'img-responsive post-image' });
         } else {
-          return _react2.default.createElement('img', { src: "/images/data/" + that.props.user.cover, alt: '', className: 'img-responsive post-image' });
+          return _react2.default.createElement('img', { src: that.props.user.cover, alt: '', className: 'img-responsive post-image' });
         }
       } else {
-        return _react2.default.createElement('img', { src: "" + that.state.image, alt: '', className: 'img-responsive post-image' });
+        return _react2.default.createElement('img', { src: that.state.image, alt: '', className: 'img-responsive post-image' });
       }
     }
   }, {
@@ -62627,7 +62637,7 @@ var PopupChangePicture = function (_React$Component) {
       var _this2 = this;
 
       var that = this;
-      var renderPicture = this.state.newPicture === false ? _react2.default.createElement('img', { src: "/images/data/" + that.props.user.picture, alt: '', className: 'img-responsive post-image' }) : _react2.default.createElement('img', { src: "" + that.state.image, alt: '', className: 'img-responsive post-image' });
+      var renderPicture = this.state.newPicture === false ? _react2.default.createElement('img', { src: that.props.user.picture, alt: '', className: 'img-responsive post-image' }) : _react2.default.createElement('img', { src: "" + that.state.image, alt: '', className: 'img-responsive post-image' });
       return _react2.default.createElement(
         'div',
         { className: 'popup-form' },

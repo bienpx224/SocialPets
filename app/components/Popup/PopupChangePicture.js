@@ -63,7 +63,7 @@ class PopupChangePicture extends React.Component{
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
             // if Type of Popup is picture, it's mean that will change User's Picture
             if(that.props.type === "picture"){
-              io.socket.post('/user/changePicture', {link: that.state.nameImg, id: that.props.user.id}, function(resData, jwres){
+              io.socket.post('/user/changePicture', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
                 if(resData.ok){
                   var user = resData.ok[0];
                   that.msg.show('Your picture was change success <3 Waiting process your image... ', {
@@ -126,22 +126,22 @@ class PopupChangePicture extends React.Component{
     if(!this.state.newPicture){
       if(this.props.type==="picture"){
         return(
-               <img src={"/images/data/"+that.props.user.picture} alt="" className="img-responsive post-image" />
+               <img src={that.props.user.picture} alt="" className="img-responsive post-image" />
                )
       }else{
         return(
-               <img src={"/images/data/"+that.props.user.cover} alt="" className="img-responsive post-image" />
+               <img src={that.props.user.cover} alt="" className="img-responsive post-image" />
                )
       }
     }else{
       return(
-              <img src={""+that.state.image} alt="" className="img-responsive post-image" />
+              <img src={that.state.image} alt="" className="img-responsive post-image" />
              )
     }
   }
   render(){
     let that = this;
-    var renderPicture = this.state.newPicture===false ? <img src={"/images/data/"+that.props.user.picture} alt="" className="img-responsive post-image" /> : <img src={""+that.state.image} alt="" className="img-responsive post-image" />;
+    var renderPicture = this.state.newPicture===false ? <img src={that.props.user.picture} alt="" className="img-responsive post-image" /> : <img src={""+that.state.image} alt="" className="img-responsive post-image" />;
     return(
       <div className="popup-form">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />

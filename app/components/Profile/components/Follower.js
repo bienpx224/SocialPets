@@ -9,9 +9,9 @@ class Follower extends React.Component{
     return(
       <div className="col-md-6 col-sm-6">
           <div className="friend-card">
-            <img src={"/images/data/"+this.props.cover} alt="profile-cover" className="img-responsive cover" />
+            <img src={this.props.cover} alt="profile-cover" className="img-responsive cover" />
             <div className="card-info">
-              <img src={"/images/data/"+this.props.picture} alt="user" className="profile-photo-lg" />
+              <img src={this.props.picture} alt="user" className="profile-photo-lg" />
               <div className="friend-info">
                 <a href="#" className="pull-right text-green">Followed</a>
                 <h5><a href="#" className="profile-link">{this.props.name}</a></h5>

@@ -8,9 +8,6 @@
 module.exports = {
   connection: 'mongo',
   attributes: {
-    title:{
-      type: 'string'
-    },
     content:{
       type:'string'
     },
@@ -32,4 +29,3 @@ module.exports = {
 
   }
 };
-

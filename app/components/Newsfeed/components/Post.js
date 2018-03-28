@@ -28,7 +28,6 @@ class Post extends React.Component{
       image: this.state.nameImg,
       userId: this.props.user.id
     };
-
     if(Post.content.length === 0 && Post.image === null){
       this.msg.show('ERROR: Not enough information to post !! ', {
                             time: 5000,
@@ -41,18 +40,19 @@ class Post extends React.Component{
         var position = nameImg.lastIndexOf(".");
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
-
+              Post.image = resData.link;
+              console.log(Post);
               io.socket.post('/post/addPost', Post, function(resData, jwres){
-                if(resData.ok){ console.log(Date());
+                if(resData.ok){
                   that.msg.show('Your post was success <3 Waiting process your image... ', {
                                     time: 5000,
                                     theme: 'light',
                                     type: 'success',
                                     icon: <img src="/images/success.png" />
                   })
-                  setTimeout(function(){
+
                     dispatch(add_new_post(resData.ok));
-                  },6000);
+
                   that.handleCloseImage.bind(that);
                   that.state.contentPost = "";
                   that.setState(that.state);
@@ -101,24 +101,34 @@ class Post extends React.Component{
     var that = this;
     var typeImage = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png', 'image/svg+xml'];
     if(event.target.files && event.target.files[0]){ var i = 0;
-      typeImage.forEach(function(item){
-        if(item === event.target.files[0].type){
-          let reader = new FileReader();
-          var val = Math.floor(1000 + Math.random() * 9000);
-          var nameImg =""+val+"_"+ event.target.files[0].name;
-          reader.onload = (e)=>{
-            that.setState({image: e.target.result, nameImg: nameImg});
-          }
-          reader.readAsDataURL(event.target.files[0]);
-        }else{ i++;}
-      })
-      if(i === typeImage.length){
-          this.msg.show('ERROR: You can only select image file !! ', {
-                            time: 5000,
-                            theme: 'light',
-                            type: 'error',
-                            icon: <img src="/images/error.png" />
-          })
+      console.log(event.target.files[0]);
+      if(event.target.files[0]<1048576){
+        typeImage.forEach(function(item){
+          if(item === event.target.files[0].type){
+            let reader = new FileReader();
+            var val = Math.floor(1000 + Math.random() * 9000);
+            var nameImg =""+val+"_"+ event.target.files[0].name;
+            reader.onload = (e)=>{
+              that.setState({image: e.target.result, nameImg: nameImg});
+            }
+            reader.readAsDataURL(event.target.files[0]);
+          }else{ i++;}
+        })
+        if(i === typeImage.length){
+            this.msg.show('ERROR: You can only select image file !! ', {
+                              time: 5000,
+                              theme: 'light',
+                              type: 'error',
+                              icon: <img src="/images/error.png" />
+            })
+        }
+      }else{
+        this.msg.show('ERROR: Your image is too large. It must < 10MB !! ', {
+                          time: 5000,
+                          theme: 'light',
+                          type: 'error',
+                          icon: <img src="/images/error.png" />
+        })
       }
     }
   }
@@ -134,7 +144,7 @@ class Post extends React.Component{
 
             <div className="col-md-7 col-sm-7">
               <div className="form-group">
-                <img src={"/images/data/"+this.props.user.picture} alt className="profile-photo-md" />
+                <img src={this.props.user.picture} alt className="profile-photo-md" />
 
                   <textarea onChange={this.onChangeContentPost.bind(this)} value={this.state.contentPost} ref="content" id="exampleTextarea" cols="40" rows="2" className="form-control" placeholder="Write what you want.."></textarea>
 
@@ -151,7 +161,7 @@ class Post extends React.Component{
                       <i className="ion-images"><input type="file" onChange={this.handleChangeImage.bind(this)}/></i>
                   </li>
                   <li>
-                    <img src={""+this.state.image} alt="no photo" className="preview-image-post"/>
+                    <img src={this.state.image} alt="no photo" className="preview-image-post"/>
                   </li>
                 </ul>
 

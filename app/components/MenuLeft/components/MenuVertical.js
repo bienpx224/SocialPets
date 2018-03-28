@@ -18,7 +18,7 @@ class MenuVertical extends React.Component{
       <div>
       <PopupUser />
         <div className="profile-card" style={{cursor:"pointer"}} onClick={this.showPopupUser.bind(this)}>
-          <img src={"/images/data/"+this.props.user.picture} alt="user" className="profile-photo" />
+          <img src={this.props.user.picture} alt="user" className="profile-photo" />
           <h5>
             <Link to="/profile/timeline" className="text-white">{this.props.user.name}</Link>
           </h5>

@@ -62,7 +62,7 @@ class Profile extends React.Component{
 
               <div className="timeline">
                 {/* Avatar and COver picture */}
-                <div className="timeline-cover" style={{backgroundImage:"url(/images/data/"+this.props.user.cover+")", backgroundPosition:"center", backgroundSize:"cover"}}>
+                <div className="timeline-cover" style={{backgroundImage:"url("+this.props.user.cover+")", backgroundPosition:"center", backgroundSize:"cover"}}>
                     <div className="change-cover hidden-sm hidden-xs" onClick={this.changeCover.bind(this)}>
                         <span className="ion-camera pull-left" style={{fontSize:"30px"}}></span>Change cover
 
@@ -72,7 +72,7 @@ class Profile extends React.Component{
                         <div className="col-md-3">
 
                           <div className="profile-info">
-                            <img src={"/images/data/"+this.props.user.picture} alt="" className="img-responsive profile-photo"
+                            <img src={this.props.user.picture} alt="" className="img-responsive profile-photo"
                             style={{cursor:"pointer"}} onClick={this.changePicture.bind(this)} />
 
                             <h3>{this.props.user.name}</h3>
@@ -96,7 +96,7 @@ class Profile extends React.Component{
                     {/*Timeline Menu htmlFor Small Screens */}
                     <div className="navbar-mobile hidden-lg hidden-md">
                       <div className="profile-info">
-                        <img src={"/images/data/"+this.props.user.picture} alt="" className="img-responsive profile-photo" />
+                        <img src={this.props.user.picture} alt="" className="img-responsive profile-photo" />
                         <h4>{this.props.user.name}</h4>
                         <p className="text-muted">Creative Director</p>
                       </div>
@@ -122,5 +122,3 @@ class Profile extends React.Component{
 module.exports = (connect( function(state){
   return {user: state.userReducer.user};
 })(Profile));
-
-

@@ -28,6 +28,8 @@
     "grunt-contrib-watch": "1.0.0",
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.5.2",
+    "https": "^1.0.0",
+    "imgur-node-api": "^0.1.0",
     "include-all": "^1.0.0",
     "material-ui": "^0.19.0",
     "nested-pop": "^0.1.4",

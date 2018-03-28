@@ -1,0 +1,4 @@
+imgur: {
+  Client ID: cd1685e78d29685
+  Client secret:  34e3aa1a991cbe0c76f0c0f3b4ab8ec3a53c52d9
+}
