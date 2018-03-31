@@ -8,21 +8,21 @@
 module.exports = {
   login: function(req,res){
     Obj = req.body;
-     console.log("Có user Đăng nhập : ", Obj);
+     sails.log.info("Có user Đăng nhập : ", Obj);
     User.findOne({email: Obj.email}, function(err, user){
       if(err){ return res.send("Error")}
       if(!user){
-        console.log("Sai email");
+        sails.log.info("Sai email");
         return res.send({error:"Your email is wrong !!"});
       }else{
         if(user.secret === Obj.password){
           req.session.authenticated = true;
           User.update({email: Obj.email},{isOnline: true}, function(err2, user2){
-            console.log("Đăng nhập thành công");
+            sails.log.info("Đăng nhập thành công");
             return res.send({user: user2[0]});
           })
         }else{
-          console.log("Sai password");
+          sails.log.info("Sai password");
           return res.send({error:"Your password is wrong !!"});
         }
       }
@@ -43,38 +43,74 @@ module.exports = {
   },
   register: function(req,res){
     var Obj = req.body;
-    console.log("Có yêu cầu đăng ký tài khoản : ", Obj);
+    sails.log.info("Có yêu cầu đăng ký tài khoản : ", Obj);
     User.create(Obj).exec(function( err, user){
-      if(err) return res.send(err);
+      if(err) {sails.log.error("Lỗi đăng ký tài khoản: ", err); return res.send(err);}
       if(!user) return res.send("Not found user");
-      console.log("Đăng ký thành công ");
+      sails.log.info("Đăng ký thành công ");
       return res.send(user);
     });
   },
   changePicture: function(req,res){
     let {link, id} = req.body;
-    console.log("Có yêu cầu Thay đổi ảnh đại diện của id : ", id);
+    sails.log.info("Có yêu cầu Thay đổi ảnh đại diện của id : ", id);
     User.update({id: id}, {picture: link})
     .exec(function(err, updated){
       if(err){
-        console.log("Đã có lỗi khi đổi ảnh đại diện: ", err);
+        sails.log.error("Đã có lỗi khi đổi ảnh đại diện: ", err);
         return res.send({err: err})
       }else{
-        console.log("Thay đổi thành công: ", updated);
+        sails.log.info("Thay đổi thành công cho user: ", updated[0].name);
+        let point = parseInt(updated[0].point)+5;
+        User.update({id: id}, {point: point}, (err, userUpdatedPoint)=>{
+          if(err) sails.log.error("Lỗi update point: ", err)
+          sails.log.info("Update point thành công : ");
+        })
+        let historyInfo = {
+          userId : updated[0].id,
+          action : "Cập nhật ảnh đại diện mới",
+          isActive : true,
+        }
+        History.create(historyInfo ,(err, history)=>{
+          if(err) sails.log.error("Có lỗi khi tạo lịch sử : ", err);
+          if(!history){
+            sails.log.error("không tạo được History");
+          }else{
+            sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+          }
+        })
         return res.send({ok: updated})
       }
     })
   },
   changeCover: function(req,res){
     let {link, id} = req.body;
-    console.log("Có yêu cầu Thay đổi ảnh bìa của id : ", id);
+    sails.log.info("Có yêu cầu Thay đổi ảnh bìa của id : ", id);
     User.update({id: id}, {cover: link})
     .exec(function(err, updated){
       if(err){
-        console.log("Đã có lỗi khi đổi ảnh bìa: ", err);
+        sails.log.error("Đã có lỗi khi đổi ảnh bìa: ", err);
         return res.send({err: err})
       }else{
-        console.log("Thay đổi thành công: ", updated);
+        sails.log.info("Thay đổi thành công cho user: ", updated[0].name);
+        let point = parseInt(updated[0].point)+5;
+        User.update({id: id}, {point: point}, (err, userUpdatedPoint)=>{
+          if(err) sails.log.error("Lỗi update point: ", err)
+          sails.log.info("Update point thành công : ");
+        })
+        let historyInfo = {
+          userId : updated[0].id,
+          action : "Cập nhật ảnh bìa mới",
+          isActive : true,
+        }
+        History.create(historyInfo ,(err, history)=>{
+          if(err) sails.log.error("Có lỗi khi tạo lịch sử : ", err);
+          if(!history){
+            sails.log.error("không tạo được History");
+          }else{
+            sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+          }
+        })
         return res.send({ok: updated})
       }
     })

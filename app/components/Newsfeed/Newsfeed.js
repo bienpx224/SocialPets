@@ -4,16 +4,17 @@ import AlertContainer from 'react-alert';
 import {set_user} from 'userAction';
 import Post from 'Post';
 import NewsfeedContent from 'NewsfeedContent';
-import {get_post_err, get_postNewsfeed} from 'postAction';
+import {get_post_err, get_postNewsfeed,add_new_post,add_more_post} from 'postAction';
 import ReactPlaceholder from 'react-placeholder';
 
 class Newsfeed extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      loading: false,
+      loading: true,
       postsNewsfeed: []
     }
+    this.getMorePost = this.getMorePost.bind(this);
   }
   componentDidMount(){
     this.getPostNewsfeed(this.props.user);
@@ -25,32 +26,33 @@ class Newsfeed extends React.Component{
     let {dispatch} = this.props;
     io.socket.post('/post/getPostNewsfeed',{},function(resData, jwres){
       if(resData.posts){
-        return that.setState({postsNewsfeed: resData.posts, loading: false});
+        var listPostNewfeed = resData.posts;
+          dispatch(get_postNewsfeed(listPostNewfeed));
+        return that.setState({...that.state,loading: false});
       }
     })
   }
-  // componentWillMount(){
-  //   var {dispatch} = this.props;
-  //   console.log("Newsfeed: componentWillMount: ", this.props.user);
-  //   io.socket.post('/post/getPostNewsfeed',{},function(resData, jwres){
-  //     if(resData.notFound){
-  //       dispatch(get_post_err(resData.notFound));
-  //     }else if(resData.posts){
-  //       dispatch(get_postNewsfeed(resData.posts));
-  //     }else{
-  //       dispatch(get_post_err(resData.err));
-  //     }
-  //   })
-  // }
-  componentWillReceiveProps(nextProps){
-      if (
-        (!this.props.user && nextProps.user) ||
-        this.props.user.id !== nextProps.user.id
-      ) {
-        this.getPostNewsfeed(nextProps.user);
+
+  getMorePost(){
+    var that = this;
+    let {dispatch} = this.props;
+    io.socket.post('/post/getPostNewsfeed',{},function(resData, jwres){
+      if(resData.posts){
+        var listPostNewfeed = resData.posts;
+        for(let i = listPostNewfeed.length-1; i >= 0; i--){
+          dispatch(add_more_post(listPostNewfeed[i]));
+        }
+        return that.setState({...that.state,loading: false});
       }
+    })
+  }
+
+  componentWillReceiveProps(nextProps){ console.log("next  Newfeed: ", nextProps)
+    this.setState({...this.state, postsNewsfeed : nextProps.postsNewsfeed});
   }
   render(){
+    let that = this;
+    var countPost = this.state.postsNewsfeed.length;
     if(this.state.loading) return(
         <div className="col-md-8 static">
         <Post />
@@ -58,23 +60,32 @@ class Newsfeed extends React.Component{
           <h3></h3>
         </ReactPlaceholder>
       </div>
-                                  )
+    )
     else if(this.state.postsNewsfeed.length === 0)
       return(
              <div className="col-md-8 static">
         <Post />
         <h3>Nothing to show!!!</h3>
       </div>
-                                                      )
+    )
     else
     return(
       <div className="col-md-8 static">
         <Post />
         {this.state.postsNewsfeed.map(function(i,index){
-            return(
-                   <NewsfeedContent key={index} content={i.content} image={i.image} title={i.title} createdAt={i.createdAt} owner={i.userId} />
-                   )
-          })
+          if(index === countPost-1)
+          return (
+            <div key={index}>
+              <NewsfeedContent key={index} content={i.content} image={i.image} title={i.title}
+              createdAt={i.createdAt} owner={i.userId} />
+              <input type="button" className="btn btn-success" defaultValue="Show more" onClick={that.getMorePost} />
+            </div>
+          )
+          else return(
+              <NewsfeedContent key={index} content={i.content} image={i.image} title={i.title}
+              createdAt={i.createdAt} owner={i.userId} />
+          )
+        })
         }
       </div>
     )

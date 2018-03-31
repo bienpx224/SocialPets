@@ -14,28 +14,57 @@ module.exports = {
   index: function(req,res){
     return res.view();
   },
-  addPost: function(req,res){ console.log("Có người vừa đăng bài");
+  addPost: function(req,res){ sails.log.info("Có người vừa đăng bài");
     var post = req.body;
     Post.create(post, function(err, post){
       if(err){
-        console.log("Đăng bài thất bại", err);
+        sails.log.error("Đăng bài thất bại :", err);
         return res.send({err: err});
       }
       if(post){
         Post.findOne({id: post.id}).populate('userId')
-        .then( (newPost)=>{ console.log("Đăng bài thành công ", newPost);
-          return res.send({ok:newPost});
+        .then( (newPost)=>{
+          sails.log.info("Đăng bài thành công : ", newPost.content);
+          var point = parseInt(newPost.userId.point) + 5;
+          User.update({id: newPost.userId.id}, {point})
+          .exec(function(err, userUpdated){
+            if(err){
+              sails.log.error("Đã có lỗi khi update point: ", err);
+              res.send({err: err})
+            }else{
+              sails.log.info("Update point thành công : ");
+              let historyInfo = {
+                userId : newPost.userId.id,
+                action : "Cập nhật bài đăng mới",
+                isActive : true,
+                related_postId : newPost.id
+              }
+              History.create(historyInfo ,(err, history)=>{
+                if(err) sails.log.info("Có lỗi khi tạo lịch sử : ", err);
+                if(!history){
+                  sails.log.error("không tạo được History");
+                }else{
+                  sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+                }
+              })
+
+            }
+          })
+          res.send({ok: newPost})
         })
         .catch( err2 => res.send({err: err2}));
       }
     })
   },
-  handleImg: function(req,res2){ console.log("Đã nhận yêu cầu xử lý ảnh");
+  handleImg: function(req,res2){ sails.log("Đã nhận yêu cầu xử lý ảnh");
     var filepath = base64Img.imgSync(req.body.result, 'assets/images/data', req.body.name);
     imgur.setClientID("cd1685e78d29685");
     imgur.upload(filepath, function (err, res) {
-        fs.unlinkSync(filepath);
-      console.log("Đã upload xong file ảnh : ",res.data.link);
+      fs.unlink(filepath, (err) => {
+        if (err) sails.log.info(err);
+        sails.log.info(filepath+' was deleted');
+      });
+      sails.log.info("Đã upload xong file ảnh : ",res.data.link);
       res2.send({link:res.data.link}); // Log the imgur url
     });
 
@@ -45,6 +74,7 @@ module.exports = {
     .then( (posts)=>{
       if(!posts){ res.send({notFound: "not found post"}); }
       else{
+        sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
         res.send({posts: posts});
       }
     })
@@ -53,7 +83,7 @@ module.exports = {
 
 	// addPost: function(req,res,next){   // POST data
  //    var title = req.body ? req.body.title : undefined,
- //        detail = req.body ? req.body.detail : undefined;      console.log("title :"+title+"   Detail: "+detail)
+ //        detail = req.body ? req.body.detail : undefined;      sails.log.info("title :"+title+"   Detail: "+detail)
  //    // if(!req.user){
  //    //   return res.badRequest("Cannot add Post without a logged in user!!");
  //    // }else if(! title && ! detail){

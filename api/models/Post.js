@@ -17,9 +17,9 @@ module.exports = {
     userId:{
       model:'user'
     },
-    // loves:{
-    //   collection:'love', via:'postId'
-    // },
+    react:{
+      collection:'react', via:'postId'
+    },
     // dislike:{
     //   collection:'dislike', via:'postId'
     // },

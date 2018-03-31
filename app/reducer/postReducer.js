@@ -11,9 +11,10 @@ var postReducer = (state = data, action)=>{
       return {...state, postsNewsfeed: action.posts}
     case "ADD_NEW_POST":
       return {...state, postsNewsfeed: [action.post,...state.postsNewsfeed]}
+    case "ADD_MORE_POST":
+      return {...state, postsNewsfeed: [...state.postsNewsfeed,action.post]}
     default: return state;
   }
 }
 
 module.exports = postReducer;
-

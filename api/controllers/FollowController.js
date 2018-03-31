@@ -74,9 +74,9 @@ module.exports = {
   //   User.find({id: userId})
   //   .populate('followers')
   //   .then( (user)=>{
-  //     var ok_followers = user[0].followers.toObject(); if(typeof ok_followers ==='object'){ console.log("Object")}
-  //                                           if(typeof ok_followers ==='undefined'){ console.log("undefined")}
-  //             console.log("data firsttttt: "); console.log(typeof ok_followers[0]);
+  //     var ok_followers = user[0].followers.toObject(); if(typeof ok_followers ==='object'){ sails.log.info("Object")}
+  //                                           if(typeof ok_followers ==='undefined'){ sails.log.info("undefined")}
+  //             sails.log.info("data firsttttt: "); sails.log.info(typeof ok_followers[0]);
   //     var len = ok_followers.length;
   //     var i = 0;
   //     for(i=0; i < len; i++){
@@ -85,15 +85,15 @@ module.exports = {
   //       var p2 = UserService.get_user(ok_followers[i].followed);
   //       Promise.all([p1, p2])
   //       .then( (data)=>{
-  //         // console.log("data Promise all: ", data);
+  //         // sails.log.info("data Promise all: ", data);
   //         // ok_followers[i].userId = data[0];
   //         // ok_followers[i].followed = data[1];
-  //         console.log("data okeeeeeeeeeeeee: "); console.log(ok_followers);
+  //         sails.log.info("data okeeeeeeeeeeeee: "); sails.log.info(ok_followers);
   //         if(i == len-1 ){
   //         return res.send({user: user, followers: ok_followers});
   //         }
   //       })
-  //       .catch( err => console.log(err))
+  //       .catch( err => sails.log.info(err))
 
   //     }
   //   })
@@ -101,7 +101,7 @@ module.exports = {
   // },
 
   get_followers: function(req,res){
-    var userId = req.body.userId; console.log(userId);
+    var userId = req.body.userId; sails.log.info(userId);
     User.findOne({id: userId})
     .populate('followers')
     .then( (user)=>{  // Thông tin người dùng
@@ -113,11 +113,11 @@ module.exports = {
         // Follow.findOne({id: follow.id})
         // .populateAll()
         // .exec(function(err, result){
-        //   console.log(result);
+        //   sails.log.info(result);
         // })
       }
       Promise.all(promises).then( (followers)=>{
-        console.log(followers);
+        sails.log.info(followers);
         final_followers = followers;
         user.followers = final_followers;
         return res.send({ok:final_followers});
@@ -132,7 +132,7 @@ module.exports = {
   get_followings: function(req,res){
     var userId = req.body.userId;
     User.find({id: userId}).populate('followings')
-    .then( (followings)=>{  console.log('followings: ', followings);
+    .then( (followings)=>{  sails.log.info('followings: ', followings);
       return res.send({followings: followings});
     } )
     .catch( (err)=>{ return res.send({err: err})} )

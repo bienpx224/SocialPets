@@ -10,8 +10,9 @@ class Post extends React.Component{
     this.state = {
       nameImg: null,
       image: null,
-      contentPost: ""
+      contentPost: "",
     }
+    this.handleCloseImage = this.handleCloseImage.bind(this);
   }
   alertOptions = {
     offset: 14,
@@ -20,7 +21,9 @@ class Post extends React.Component{
     time: 5000,
     transition: 'scale'
   }
-  handlePost(){ var that = this; var {dispatch} = this.props;
+  handlePost(){
+    document.getElementById("btnPost").disabled = true;
+    var that = this; var {dispatch} = this.props;
     var nameImg = this.state.nameImg;
     var Post = {
       title: null,
@@ -41,20 +44,21 @@ class Post extends React.Component{
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
               Post.image = resData.link;
-              console.log(Post);
               io.socket.post('/post/addPost', Post, function(resData, jwres){
+                document.getElementById("btnPost").disabled = false;
                 if(resData.ok){
-                  that.msg.show('Your post was success <3 Waiting process your image... ', {
+                  that.msg.show('Your post was success <3', {
                                     time: 5000,
                                     theme: 'light',
                                     type: 'success',
                                     icon: <img src="/images/success.png" />
                   })
 
-                    dispatch(add_new_post(resData.ok));
+                  dispatch(add_new_post(resData.ok));
 
-                  that.handleCloseImage.bind(that);
+                  that.handleCloseImage();
                   that.state.contentPost = "";
+                  that.refs.content.value = "";
                   that.setState(that.state);
                 }else{
                   that.msg.show('ERROR: Somethings are wrong !! ', {
@@ -65,10 +69,10 @@ class Post extends React.Component{
                   })
                 }
               })
-
         })
       }else{
           io.socket.post('/post/addPost', Post, function(resData, jwres){
+            document.getElementById("btnPost").disabled = false;
             if(resData.ok){
               that.msg.show('Your post was success <3 ', {
                                 time: 5000,
@@ -77,8 +81,9 @@ class Post extends React.Component{
                                 icon: <img src="/images/success.png" />
               })
               dispatch(add_new_post(resData.ok));
-              that.handleCloseImage.bind(that);
+              that.handleCloseImage();
               that.state.contentPost = "";
+              that.refs.content.value = "";
               that.setState(that.state);
             }else{
               that.msg.show('ERROR: Somethings are wrong !! ', {
@@ -93,6 +98,7 @@ class Post extends React.Component{
     }
   }
   handleCloseImage(){
+    console.log('delete temp image');
     this.state.nameImg = null;
     this.state.image = null;
     this.setState(this.state);
@@ -102,7 +108,7 @@ class Post extends React.Component{
     var typeImage = ['image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png', 'image/svg+xml'];
     if(event.target.files && event.target.files[0]){ var i = 0;
       console.log(event.target.files[0]);
-      if(event.target.files[0]<1048576){
+      if(event.target.files[0].size<1048576){
         typeImage.forEach(function(item){
           if(item === event.target.files[0].type){
             let reader = new FileReader();
@@ -112,7 +118,9 @@ class Post extends React.Component{
               that.setState({image: e.target.result, nameImg: nameImg});
             }
             reader.readAsDataURL(event.target.files[0]);
-          }else{ i++;}
+          }else{
+            i++;
+          }
         })
         if(i === typeImage.length){
             this.msg.show('ERROR: You can only select image file !! ', {
@@ -146,7 +154,7 @@ class Post extends React.Component{
               <div className="form-group">
                 <img src={this.props.user.picture} alt className="profile-photo-md" />
 
-                  <textarea onChange={this.onChangeContentPost.bind(this)} value={this.state.contentPost} ref="content" id="exampleTextarea" cols="40" rows="2" className="form-control" placeholder="Write what you want.."></textarea>
+                  <textarea onChange={this.onChangeContentPost.bind(this)} defaultValue={this.state.contentPost} ref="content" id="exampleTextarea" cols="40" rows="2" className="form-control" placeholder="Write what you want.."></textarea>
 
               </div>
             </div>
@@ -165,7 +173,7 @@ class Post extends React.Component{
                   </li>
                 </ul>
 
-                <button onClick={this.handlePost.bind(this)} className="btn btn-primary pull-right"><span className="ion-paper-airplane pull-left"></span>Post</button>
+                <button id="btnPost" onClick={this.handlePost.bind(this)} className="btn btn-primary pull-right"><span className="ion-paper-airplane pull-left"></span>Post</button>
               </div>
             </div>
           </div>

@@ -13,4 +13,9 @@ function add_new_post(post){
     type:"ADD_NEW_POST", post
   }
 }
-module.exports = {get_post_err, get_postNewsfeed, add_new_post};
+function add_more_post(post){
+  return{
+    type:"ADD_NEW_POST", post
+  }
+}
+module.exports = {get_post_err, get_postNewsfeed, add_new_post,add_more_post};

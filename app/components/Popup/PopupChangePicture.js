@@ -62,6 +62,7 @@ class PopupChangePicture extends React.Component{
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
             // if Type of Popup is picture, it's mean that will change User's Picture
+            alert(resData.link);
             if(that.props.type === "picture"){
               io.socket.post('/user/changePicture', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
                 if(resData.ok){
@@ -87,7 +88,7 @@ class PopupChangePicture extends React.Component{
                 }
               })
             }else{  // else change User's Cover
-              io.socket.post('/user/changeCover', {link: that.state.nameImg, id: that.props.user.id}, function(resData, jwres){
+              io.socket.post('/user/changeCover', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
                 if(resData.ok){
                   var user = resData.ok[0];
                   that.msg.show('Your cover was change success <3 Waiting process your image... ', {

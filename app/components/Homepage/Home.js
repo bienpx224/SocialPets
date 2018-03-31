@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {setUserLocalStorage} from 'authenticated';
 import {BrowserRouter as Router,Route,Switch,Ridirect,hashHistory,Redirect,NavLink} from 'react-router-dom';
-import {set_user} from 'userAction';
+import {set_user,login_error,login_success} from 'userAction';
 import MenuLeft from 'MenuLeft';
 import Newsfeed from 'Newsfeed';
 import ChatRoom from 'ChatRoom';
@@ -20,19 +20,27 @@ class Home extends React.Component{
     time: 5000,
     transition: 'scale'
   }
-  componentWillMount(){
-    var {dispatch} = this.props; console.log("localStorage", localStorage.email);
+  componentDidMount(){
+    var {dispatch} = this.props;
+    let that = this;
+    if(localStorage.email){
+      console.log("localStorage", localStorage.email);
+    }else{ console.log("khong ton tai email in local")}
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
+      console.log("getUser: ", resData);
       if(resData.error){
+        dispatch(login_error());
       }
       if(resData.notFound){
+        dispatch(login_error());
       }else{
-        dispatch(set_user(resData.user));
+        dispatch(login_success(resData.user));
       }
     });
   }
-  render(){
 
+
+  render(){
     return(
     <div className="container" style={{marginLeft:"0%"}}>
 

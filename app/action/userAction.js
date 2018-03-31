@@ -1,6 +1,6 @@
-function login_error(err){
+function login_error(){
   return{
-    type:"LOGIN_ERROR", err
+    type:"LOGIN_ERROR"
   };
 }
 function set_user(user){

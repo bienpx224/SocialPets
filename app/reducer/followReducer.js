@@ -9,7 +9,6 @@ var followReducer = (state = data, action)=>{
       return {...state, followers: action.followers};
     case "GET_FOLLOWINGS":
       return {...state, followings: action.followings};
-
     default: return state;
   }
 }

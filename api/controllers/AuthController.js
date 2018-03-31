@@ -27,16 +27,16 @@ module.exports = {
   // Facebook login screen
     facebook: function (req, res) {
 
-        console.log("+ AUTH.FACEBOOK");
+        sails.log.info("+ AUTH.FACEBOOK");
         passport.authenticate('facebook', {failureRedirect: '/login'}, function (err, user) {
 
-            console.log("Facebook Auth Response error=", err, "user=", user);
+            sails.log.info("Facebook Auth Response error=", err, "user=", user);
 
             if (user) {
                 req.logIn(user, function (err) {
 
                     if (err) {
-                        console.log("Auth Error", err);
+                        sails.log.info("Auth Error", err);
                         return res.view('500');
                     }
 

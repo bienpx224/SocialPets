@@ -23,8 +23,8 @@ class App extends React.Component{
             <Router history={hashHistory}>
                   <Layout>
                    <Switch>
-                      <Route   exact path="/" component={Home}/>
-                      <Route   path="/home" component={Home}/>
+                      <Route   exact path="/" component={Homepage}/>
+                      <Route   path="/home" component={Homepage}/>
                       <Route   exact path="/test" component={Test}/>
                       <Route   exact path="/login" component={Login} />
                       <Route   path='/profile' component={Profile} />

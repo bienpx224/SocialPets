@@ -20,14 +20,6 @@ class Profile extends React.Component{
   }
   componentDidMount(){
     var {dispatch} = this.props;
-    // io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
-    //   if(resData.error){
-    //   }
-    //   if(resData.notFound){
-    //   }else{
-    //     dispatch(set_user(resData.user));
-    //   }
-    // });
     get_alldata_user(localStorage.email)
     .then( (user)=>{ console.log("first user: ", user);
       dispatch(set_user(user));

@@ -1,4 +1,5 @@
 var data = {
+  isLogin : false,
   user: {},
   showPopupUser: false,
   showPopupChangePicture: false
@@ -7,9 +8,9 @@ var data = {
 var userReducer = (state = data, action)=>{
   switch(action.type){
     case "LOGIN_ERROR":
-      return {...state, errorLogin: action.err};
+      return {...state, isLogin: false};
     case "LOGIN_SUCCESS":
-      return {...state, user: action.user};
+      return {...state, isLogin: true, user: action.user};
     case "SET_USER":
       return {...state, user: action.user};
     case "CLOSE_POPUP_USER":
