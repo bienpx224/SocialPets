@@ -55,6 +55,13 @@ class FormLogin extends React.Component{
     }
   }
 
+  handleKeyPress(e){
+    if (e.key === 'Enter') {
+      console.log("enter");
+      this.handleSubmit(e);
+    }
+  }
+
   render(){
     var renderLogin = this.state.isLogin ? <Redirect to='/home' /> : null;
     return(
@@ -68,13 +75,13 @@ class FormLogin extends React.Component{
                      <div className="row">
                       <div className="form-group col-xs-12">
                         <label htmlFor="my-email" className="sr-only">Email</label>
-                        <input id="my-email" ref="email" className="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                        <input onKeyPress={this.handleKeyPress.bind(this)} id="my-email" ref="email" className="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
                       </div>
                     </div>
                     <div className="row">
                       <div className="form-group col-xs-12">
                         <label htmlFor="my-password" className="sr-only">Password</label>
-                        <input id="my-password" ref="password" className="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                        <input onKeyPress={this.handleKeyPress.bind(this)} id="my-password" ref="password" className="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
                       </div>
                     </div>
                   </form>

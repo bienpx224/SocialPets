@@ -127,7 +127,7 @@ class FormReg extends React.Component{
                     <option>19</option>
                     <option>20</option>
                     <option>21</option>
-                    <option selected>22</option>
+                    <option value>22</option>
                     <option>23</option>
                     <option>24</option>
                     <option>25</option>
@@ -146,7 +146,7 @@ class FormReg extends React.Component{
                     <option>Jan</option>
                     <option>Feb</option>
                     <option>Mar</option>
-                    <option selected>Apr</option>
+                    <option>Apr</option>
                     <option>May</option>
                     <option>Jun</option>
                     <option>Jul</option>
@@ -161,6 +161,11 @@ class FormReg extends React.Component{
                   <label htmlFor="year" className="sr-only"></label>
                   <select ref="year" className="form-control" id="year">
                     <option defaultValue="year" disabled >Year</option>
+                    <option>1980</option>
+                    <option>1981</option>
+                    <option>1982</option>
+                    <option>1983</option>
+                    <option>1984</option>
                     <option>1985</option>
                     <option>1986</option>
                     <option>1987</option>
@@ -188,6 +193,9 @@ class FormReg extends React.Component{
                     <option>2010</option>
                     <option>2011</option>
                     <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
                   </select>
                 </div>
               </div>

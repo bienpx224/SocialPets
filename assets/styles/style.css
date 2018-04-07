@@ -76,6 +76,7 @@ h1, h2, h3, h4, h5, h6{color: #27aae1;}
 h1.grey, h2.grey, h3.grey, h4.grey, h5.grey, h6.grey{
   color: #6d6e71;
   margin: 0 auto 20px;
+  font-family: fantasy;
 }
 
 .text-white{color: #fff;}
@@ -126,7 +127,7 @@ section h2.sub-title{
   ==================================================*/
 
 .container{
-  max-width: 1050px;
+  max-width: 100%;
 }
 
 section .wrapper{
@@ -180,22 +181,30 @@ section img{
 img.profile-photo{
   height: 58px;
   width: 58px;
+  min-height: 58px;
+  min-width: 58px;
   border-radius: 50%;
 }
 
 img.profile-photo-lg{
   height: 80px;
   width: 80px;
+  min-height: 80px;
+  min-width: 80px;
   border-radius: 50%;
 }
 
 img.profile-photo-md{
+  min-height: 50px;
+  min-width: 50px;
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
 
 img.profile-photo-sm{
+  min-height: 40px;
+  min-width: 40px;
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -1080,7 +1089,12 @@ ul.online-users li span.online-dot{
 }
 
 .follow-user{
+  padding: 5px;
+  border: 1px solid #d5bbff;
   margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: fit-content;
 }
 
 .follow-user div{

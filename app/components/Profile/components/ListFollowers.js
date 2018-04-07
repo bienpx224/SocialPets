@@ -5,7 +5,7 @@ import Follower from 'Follower';
 import {get_followers} from 'followAction';
 import ReactPlaceholder from 'react-placeholder';
 
-class ListFollowers extends React.Component{
+class RecommendFollow extends React.Component{
   constructor(props){
     super(props); console.log("listFollower:constructor: props: ", props);
     this.state = {
@@ -48,7 +48,8 @@ class ListFollowers extends React.Component{
         </div>
       </div>
       );
-    else if (this.state.ListFollowers.length === 0) return (
+    else if (this.state.ListFollowers.length === 0)
+    return (
       <div className="friend-list">
         <div className="row">
           <div className="col-md-3"></div>
@@ -57,7 +58,7 @@ class ListFollowers extends React.Component{
           </div>
         </div>
       </div>
-                                                       );
+    );
     else return(
       <div className="friend-list">
         <div className="row">
@@ -76,4 +77,4 @@ class ListFollowers extends React.Component{
 }
 module.exports = connect( function(state){
   return {user: state.userReducer.user};
-})(ListFollowers);
+})(RecommendFollow);

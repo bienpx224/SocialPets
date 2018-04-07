@@ -1,6 +1,8 @@
 var data = {
   followers: [],
-  followings: []
+  followings: [],
+  ListRecommendRank : [],
+  ListRecommendCommon : []
 };
 
 var followReducer = (state = data, action)=>{
@@ -9,6 +11,10 @@ var followReducer = (state = data, action)=>{
       return {...state, followers: action.followers};
     case "GET_FOLLOWINGS":
       return {...state, followings: action.followings};
+    case "GET_RECOMMEND_COMMON":
+      return {...state, ListRecommendCommon: action.ListRecommendCommon};
+    case "GET_RECOMMEND_RANK":
+      return {...state, ListRecommendRank: action.ListRecommendRank};
     default: return state;
   }
 }

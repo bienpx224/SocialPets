@@ -7,6 +7,7 @@ import {set_user,login_error,login_success} from 'userAction';
 import MenuLeft from 'MenuLeft';
 import Newsfeed from 'Newsfeed';
 import ChatRoom from 'ChatRoom';
+import IndexListRecommend from 'IndexListRecommend';
 import {get_post_err, get_postNewsfeed} from 'postAction';
 
 class Home extends React.Component{
@@ -47,6 +48,7 @@ class Home extends React.Component{
       <MenuLeft />
       <Switch>
               <Route  exact path="/" component={Newsfeed} />
+              <Route  exact path="/newsfeed" component={Newsfeed} />
               <Route  exact path="/home" component={Newsfeed} />
               <Route  exact path="/home/newsfeed" component={Newsfeed} />
               <Route  exact path="/home/chatroom" component={ChatRoom} />
@@ -54,9 +56,9 @@ class Home extends React.Component{
                 return <p> not found in home</p>
             } } />
       </Switch>
-      <div className="col-md-2 static">
 
-      </div>
+      <IndexListRecommend />
+
     </div>
     )
   }

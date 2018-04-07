@@ -35,6 +35,7 @@ class Menu extends React.Component{
           <li><Link to='/profile'>Profile</Link></li>
           <li><Link to='/profile/information'>Update Account</Link></li>
           <li><Link to='/profile/timeline'>Timeline</Link></li>
+          <li><Link to='/login'>Logout</Link></li>
         </ul>
       </li>
       <li className="dropdown"><a href="contact.html">Contact</a></li>

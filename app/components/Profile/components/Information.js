@@ -13,7 +13,7 @@ class Information extends React.Component{
     return(
             <div id="page-contents">
                   <div className="row">
-                    <div className="col-md-5">
+                    <div className="col-md-3">
 
                       {/* Edit Profile Menu */}
                       <ul className="edit-menu">

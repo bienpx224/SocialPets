@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Menu from 'Menu';
 import Search from 'Search';
-import {NavLink,withRouter} from 'react-router-dom';
+import {NavLink,withRouter,Link} from 'react-router-dom';
 
 class Layout extends React.Component{
   constructor(props){
@@ -25,7 +25,7 @@ class Layout extends React.Component{
                     <span className="icon-bar"></span>
 
                 </button>
-                <a className="navbar-brand" href="#"><img src="/images/logo.png" alt="logo" /></a>
+                <a className="navbar-brand" href="#"><Link to='/home'><img src="/images/logo.png" alt="logo" /></Link></a>
               </div>
 
               <div className="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">

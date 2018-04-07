@@ -24,19 +24,36 @@ class Newsfeed extends React.Component{
     if(!user) return;
     this.setState({loading: true})
     let {dispatch} = this.props;
-    io.socket.post('/post/getPostNewsfeed',{},function(resData, jwres){
+    io.socket.post('/post/getPostNewsfeed',{userId:user.id},function(resData, jwres){
+      if(resData.err){
+        that.msg.show('ERROR: '+resData.err, {
+                          type: 'error',
+                          icon: <img src="/images/error.png" />
+        })
+              console.log(resData);
+        var listPostNewfeed = [];
+        dispatch(get_postNewsfeed(listPostNewfeed));
+        return that.setState({...that.state,loading: false});
+      }
       if(resData.posts){
         var listPostNewfeed = resData.posts;
-          dispatch(get_postNewsfeed(listPostNewfeed));
+        dispatch(get_postNewsfeed(listPostNewfeed));
         return that.setState({...that.state,loading: false});
       }
     })
   }
 
   getMorePost(){
+    let {id}= this.props.user;
     var that = this;
     let {dispatch} = this.props;
-    io.socket.post('/post/getPostNewsfeed',{},function(resData, jwres){
+    io.socket.post('/post/getPostNewsfeed',{userId: id},function(resData, jwres){
+      if(resData.err){
+        that.msg.show('ERROR: '+resData.err, {
+                          type: 'error',
+                          icon: <img src="/images/error.png" />
+        })
+      }
       if(resData.posts){
         var listPostNewfeed = resData.posts;
         for(let i = listPostNewfeed.length-1; i >= 0; i--){
@@ -47,14 +64,22 @@ class Newsfeed extends React.Component{
     })
   }
 
-  componentWillReceiveProps(nextProps){ console.log("next  Newfeed: ", nextProps)
+  alertOptions = {
+    offset: 14,
+    position: 'bottom left',
+    theme: 'dark',
+    time: 3000,
+    transition: 'scale'
+  }
+  componentWillReceiveProps(nextProps){
     this.setState({...this.state, postsNewsfeed : nextProps.postsNewsfeed});
   }
   render(){
     let that = this;
     var countPost = this.state.postsNewsfeed.length;
     if(this.state.loading) return(
-        <div className="col-md-8 static">
+        <div className="col-md-7 static">
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
         <ReactPlaceholder ready={false} type="media" rows={7} showLoadingAnimation={true}>
           <h3></h3>
@@ -63,14 +88,16 @@ class Newsfeed extends React.Component{
     )
     else if(this.state.postsNewsfeed.length === 0)
       return(
-             <div className="col-md-8 static">
+      <div className="col-md-7 static">
+      <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
         <h3>Nothing to show!!!</h3>
       </div>
     )
     else
     return(
-      <div className="col-md-8 static">
+      <div className="col-md-7 static">
+      <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
         {this.state.postsNewsfeed.map(function(i,index){
           if(index === countPost-1)

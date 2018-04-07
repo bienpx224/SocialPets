@@ -74,6 +74,11 @@ module.exports = {
           TimelineContent :'app/components/Profile/components/TimelineContent.js',
           ListFollowers:'app/components/Profile/components/ListFollowers.js',
           Follower: 'app/components/Profile/components/Follower.js',
+          // RecommendFollow
+          IndexListRecommend : 'app/components/RecommendFollow/IndexListRecommend.js',
+          ListRecommendRank : 'app/components/RecommendFollow/ListRecommendRank.js',
+          ListRecommendCommon : 'app/components/RecommendFollow/ListRecommendCommon.js',
+          RecommendFollow : 'app/components/RecommendFollow/components/RecommendFollow.js',
 
     }
   },

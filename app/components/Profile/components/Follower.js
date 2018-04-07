@@ -19,7 +19,6 @@ class Follower extends React.Component{
               </div>
             </div>
           </div>
-
       </div>
     )
   }

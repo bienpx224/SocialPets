@@ -62,7 +62,6 @@ class PopupChangePicture extends React.Component{
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
             // if Type of Popup is picture, it's mean that will change User's Picture
-            alert(resData.link);
             if(that.props.type === "picture"){
               io.socket.post('/user/changePicture', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
                 if(resData.ok){

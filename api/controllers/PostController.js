@@ -25,7 +25,7 @@ module.exports = {
         Post.findOne({id: post.id}).populate('userId')
         .then( (newPost)=>{
           sails.log.info("Đăng bài thành công : ", newPost.content);
-          var point = parseInt(newPost.userId.point) + 5;
+          var point = parseInt(newPost.userId.point) + 3;
           User.update({id: newPost.userId.id}, {point})
           .exec(function(err, userUpdated){
             if(err){
@@ -70,15 +70,29 @@ module.exports = {
 
   },
   getPostNewsfeed: function(req, res){
-    Post.find().sort({createdAt: -1}).populate('userId')
-    .then( (posts)=>{
-      if(!posts){ res.send({notFound: "not found post"}); }
-      else{
-        sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
-        res.send({posts: posts});
-      }
-    })
-    .catch( err => res.send({err: err}))
+    let {userId} = req.body;
+    if(!userId) res.send({err: "Không có userId"});
+    User.findOne({id: userId})
+		.populate('followings')
+		.then( (user)=>{
+			let list_following = user.followings;
+			let list_id_following = [];
+			for(let i=0; i<list_following.length; i++){
+				list_id_following.push(list_following[i].followed);
+			}
+			list_id_following.push(userId);
+			Post.find({ userId: {$in: list_id_following} })
+      .populate('userId')
+      .sort({createdAt: -1, updatedAt: -1})
+			.limit(10)
+			.then( (posts)=>{
+			  sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
+				res.send({posts: posts})
+			})
+			.catch( (err) =>{ return res.send({err:"Có lỗi tìm posts"})} )
+		})
+    .catch( (err)=>{ return res.send({err:"Có lỗi tìm user"}) })
+
   }
 
 	// addPost: function(req,res,next){   // POST data
