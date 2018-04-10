@@ -70,7 +70,7 @@ module.exports = {
 
   },
   getPostNewsfeed: function(req, res){
-    let {userId} = req.body;
+    let {userId, skip} = req.body;
     if(!userId) res.send({err: "Không có userId"});
     User.findOne({id: userId})
 		.populate('followings')
@@ -80,19 +80,36 @@ module.exports = {
 			for(let i=0; i<list_following.length; i++){
 				list_id_following.push(list_following[i].followed);
 			}
-			list_id_following.push(userId);
+			list_id_following.push(userId, skip);
 			Post.find({ userId: {$in: list_id_following} })
       .populate('userId')
       .sort({createdAt: -1, updatedAt: -1})
+      .skip(skip)
 			.limit(10)
 			.then( (posts)=>{
 			  sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
-				res.send({posts: posts})
+				return res.send({posts: posts})
 			})
-			.catch( (err) =>{ return res.send({err:"Có lỗi tìm posts"})} )
+			.catch( (err) =>{ res.send({err:"Có lỗi tìm posts"})} )
 		})
-    .catch( (err)=>{ return res.send({err:"Có lỗi tìm user"}) })
+    .catch( (err)=>{ res.send({err:"Có lỗi tìm user"}) })
 
+  },
+
+  getListMyPost: function(req,res){
+    let {userId,skip} = req.body;
+    if(!userId) return res.send({err: "Không có userId"});
+    Post.find({userId})
+    .populate('userId')
+    .sort({createdAt: -1, updatedAt: -1})
+    .limit(10)
+    .skip(skip)
+    .then( (posts)=>{
+      sails.log.info("skip : "+skip);
+      sails.log.info("Lấy tất cả bài đăng gồm:  "+posts.length+" của user : "+userId);
+      return  res.send({posts: posts})
+    })
+    .catch( (err)=>{ res.send({err:"Có lỗi tìm user"})})
   }
 
 	// addPost: function(req,res,next){   // POST data

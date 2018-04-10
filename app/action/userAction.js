@@ -1,17 +1,11 @@
 function login_error(){
-  return{
-    type:"LOGIN_ERROR"
-  };
+  return{ type:"LOGIN_ERROR" };
 }
 function set_user(user){
-  return{
-    type:"SET_USER", user
-  };
+  return{ type:"SET_USER", user };
 }
 function login_success(user){
-  return{
-    type:"LOGIN_SUCCESS", user
-  };
+  return{ type:"LOGIN_SUCCESS", user };
 }
 function register_error(err){
   return{

@@ -23,11 +23,13 @@ module.exports = {
       userReducer : 'app/reducer/userReducer.js',
       followReducer : 'app/reducer/followReducer.js',
       postReducer : 'app/reducer/postReducer.js',
+      historyReducer : 'app/reducer/historyReducer.js',
       // action
       testAction : 'app/action/test.js',
       followAction : 'app/action/followAction.js',
       userAction : 'app/action/userAction.js',
       postAction : 'app/action/postAction.js',
+      historyAction : 'app/action/historyAction.js',
       // api
       apiUser: 'app/api/apiUser.js',
 
@@ -46,6 +48,8 @@ module.exports = {
           Layout: 'app/components/Layout/Layout.js',
           Menu: 'app/components/Layout/Menu.js',
           Search: 'app/components/Layout/Search.js',
+          Footer: 'app/components/Layout/Footer.js',
+          Header: 'app/components/Layout/Header.js',
           // Homepage
           Home:'app/components/Homepage/Home.js',
           Homepage:'app/components/Homepage/Homepage.js',
@@ -69,11 +73,15 @@ module.exports = {
           IndexContent :'app/components/Profile/IndexContent.js',
           Profile : 'app/components/Profile/Profile.js',
           Information: 'app/components/Profile/components/Information.js',
+          ListHistoryUser: 'app/components/Profile/components/ListHistoryUser.js',
+          HistoryUser: 'app/components/Profile/components/HistoryUser.js',
           BasicInformation: 'app/components/Profile/components/BasicInformation.js',
           Timeline: 'app/components/Profile/components/Timeline.js',
           TimelineContent :'app/components/Profile/components/TimelineContent.js',
           ListFollowers:'app/components/Profile/components/ListFollowers.js',
           Follower: 'app/components/Profile/components/Follower.js',
+          ListFollowings:'app/components/Profile/components/ListFollowings.js',
+          Following: 'app/components/Profile/components/Following.js',
           // RecommendFollow
           IndexListRecommend : 'app/components/RecommendFollow/IndexListRecommend.js',
           ListRecommendRank : 'app/components/RecommendFollow/ListRecommendRank.js',

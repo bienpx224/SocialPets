@@ -12,7 +12,8 @@ class Newsfeed extends React.Component{
     super(props);
     this.state = {
       loading: true,
-      postsNewsfeed: []
+      postsNewsfeed: [],
+      total : 0
     }
     this.getMorePost = this.getMorePost.bind(this);
   }
@@ -24,13 +25,12 @@ class Newsfeed extends React.Component{
     if(!user) return;
     this.setState({loading: true})
     let {dispatch} = this.props;
-    io.socket.post('/post/getPostNewsfeed',{userId:user.id},function(resData, jwres){
+    io.socket.post('/post/getPostNewsfeed',{userId:user.id,skip: this.state.total},function(resData, jwres){
       if(resData.err){
         that.msg.show('ERROR: '+resData.err, {
                           type: 'error',
                           icon: <img src="/images/error.png" />
         })
-              console.log(resData);
         var listPostNewfeed = [];
         dispatch(get_postNewsfeed(listPostNewfeed));
         return that.setState({...that.state,loading: false});
@@ -38,7 +38,7 @@ class Newsfeed extends React.Component{
       if(resData.posts){
         var listPostNewfeed = resData.posts;
         dispatch(get_postNewsfeed(listPostNewfeed));
-        return that.setState({...that.state,loading: false});
+        return that.setState({...that.state,loading: false, total: listPostNewfeed.length});
       }
     })
   }
@@ -47,7 +47,7 @@ class Newsfeed extends React.Component{
     let {id}= this.props.user;
     var that = this;
     let {dispatch} = this.props;
-    io.socket.post('/post/getPostNewsfeed',{userId: id},function(resData, jwres){
+    io.socket.post('/post/getPostNewsfeed',{userId: id, skip: this.state.total},function(resData, jwres){
       if(resData.err){
         that.msg.show('ERROR: '+resData.err, {
                           type: 'error',
@@ -56,7 +56,9 @@ class Newsfeed extends React.Component{
       }
       if(resData.posts){
         var listPostNewfeed = resData.posts;
+        if(listPostNewfeed.length === 0) document.getElementById('show-more').style.display = 'none';
         for(let i = listPostNewfeed.length-1; i >= 0; i--){
+          that.state.total ++;
           dispatch(add_more_post(listPostNewfeed[i]));
         }
         return that.setState({...that.state,loading: false});
@@ -68,7 +70,7 @@ class Newsfeed extends React.Component{
     offset: 14,
     position: 'bottom left',
     theme: 'dark',
-    time: 3000,
+    time: 1000,
     transition: 'scale'
   }
   componentWillReceiveProps(nextProps){
@@ -99,13 +101,13 @@ class Newsfeed extends React.Component{
       <div className="col-md-7 static">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
-        {this.state.postsNewsfeed.map(function(i,index){
+        {this.state.postsNewsfeed.slice(0).reverse().map(function(i,index){
           if(index === countPost-1)
           return (
             <div key={index}>
               <NewsfeedContent key={index} content={i.content} image={i.image} title={i.title}
               createdAt={i.createdAt} owner={i.userId} />
-              <input type="button" className="btn btn-success" defaultValue="Show more" onClick={that.getMorePost} />
+              <input id="show-more" type="button" className="show-more btn btn-success" defaultValue="Show more" onClick={that.getMorePost} />
             </div>
           )
           else return(

@@ -1,46 +1,132 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
-import {set_user, open_popup_user,get_post_err,get_postNewsfeed} from 'userAction';
+import validateInfoUser from 'validateInfoUser';
+import {set_user} from 'userAction';
 
 class BasicInformation extends React.Component{
   constructor(props){
     super(props);
+    this.checkChange = this.checkChange.bind(this);
+  }
+  alertOptions = {
+    offset: 14,
+    position: 'bottom left',
+    theme: 'light',
+    time: 3000,
+    transition: 'scale'
+  }
+  checkChange(new_user){
+    if((new_user.name == this.props.user.name) && (new_user.phone == this.props.user.phone) && (new_user.day_date == this.props.user.day_date)
+      && (new_user.month_date == this.props.user.month_date)&& (new_user.year_date == this.props.user.year_date)&& (new_user.gender == this.props.user.gender)
+      && (new_user.address == this.props.user.address)&& (new_user.country == this.props.user.country)&& (new_user.petlove == this.props.user.petlove)
+      && (new_user.description == this.props.user.description)&& (new_user.job == this.props.user.job)&& (new_user.university == this.props.user.university)
+    ){
+      return false;
+    }else{
+      return true;
+    }
+  }
+  handleUpdate(event){
+    var that = this;
+    let {dispatch} = this.props;
+    event.preventDefault();
+    var d = new Date();
+    var age = d.getFullYear() - parseInt(this.refs.year.value);
+    var date = ""+this.refs.month.value+" "+this.refs.day.value+" "+this.refs.year.value;
+    var sex = ""+this.refs.gender.value;
+    var Obj = {
+        name: this.refs.name.value,
+        phone: this.refs.phone.value,
+        day_date: this.refs.day.value,
+        month_date: this.refs.month.value,
+        year_date: this.refs.year.value,
+        age_range: ""+age,
+        gender: sex,
+        address: this.refs.address.value,
+        country: this.refs.country.value,
+        petlove: this.refs.petlove.value,
+        description: this.refs.description.value,
+        job: this.refs.job.value,
+        university : this.refs.university.value,
+    };
+    if(this.checkChange(Obj) === true){
+      io.socket.post('/user/updateInfo',{Obj, userId:this.props.user.id}, function(resData, jwres){
+        console.log(resData);
+          if(resData.error){
+              var errors = resData.invalidAttributes;
+              validateInfoUser(errors, function(errContent){
+                  if(errContent.length != 0){
+                      errContent.map(function(i,index){
+                          that.msg.show('ERROR: '+errContent[index], {
+                            type: 'error',
+                            icon: <img src="/images/error.png" />
+                          })
+                      })
+                  }
+              })
+          }else{
+                      that.msg.show('SUCCESS: You are sign up success', {
+                            type: 'success',
+                            icon: <img src="/images/success.png" />
+                      })
+                      dispatch(set_user(resData.user));
+          }
+      })
+    }else{
+      that.msg.show('Không có sự thay đổi ', {
+        type: 'warning',
+        icon: <img src="/images/error.png" />
+      })
+    }
+
   }
   render(){
     return(
                   <div className="col-md-7">
+                  <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                       <div className="edit-profile-container">
                         <div className="block-title">
                           <h4 className="grey"><i className="icon ion-android-checkmark-circle"></i>Edit basic information</h4>
-                          <div className="line"></div>
-                          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
                           <div className="line"></div>
                         </div>
                         <div className="edit-block">
                           <form name="basic-info" id="basic-info" className="form-inline">
                             <div className="row">
                               <div className="form-group col-xs-6">
-                                <label htmlFor="firstname">First name</label>
-                                <input id="firstname" className="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="John" />
+                                <label htmlFor="firstname">Name</label>
+                                <input className="form-control input-group-lg" type="text" ref="name" title="Enter name" placeholder="Your name" defaultValue={this.props.user.name} />
                               </div>
                               <div className="form-group col-xs-6">
-                                <label htmlFor="lastname" className="">Last name</label>
-                                <input id="lastname" className="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Last name" value="Doe" />
+                                <label htmlFor="lastname" className="">Phone number</label>
+                                <input className="form-control input-group-lg" type="text" ref="phone" title="Enter phone" placeholder="Phone number" defaultValue={this.props.user.phone} />
                               </div>
                             </div>
                             <div className="row">
-                              <div className="form-group col-xs-12">
+                              <div className="form-group col-xs-6">
                                 <label htmlFor="email">My email</label>
-                                <input id="email" className="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="My Email" value="razor.venon@gmail.com" />
+                                <input className="form-control input-group-lg" type="text" title="Enter Email" placeholder="My Email" value={this.props.user.email} />
+                              </div>
+                              <div className="form-group col-xs-6">
+                                <label htmlFor="email">Pet love</label>
+                                <input className="form-control input-group-lg" type="text" ref="petlove" title="Enter pet" placeholder="pet you love" defaultValue={this.props.user.petlove} />
+                              </div>
+                            </div>
+                            <div className="row">
+                              <div className="form-group col-xs-6">
+                                <label htmlFor="email">Yout Job</label>
+                                <input className="form-control input-group-lg" type="text" ref="job" title="Enter job" placeholder="My job" defaultValue={this.props.user.job} />
+                              </div>
+                              <div className="form-group col-xs-6">
+                                <label htmlFor="email">University</label>
+                                <input className="form-control input-group-lg" type="text" ref="university" title="Enter pet" placeholder="Your university" defaultValue={this.props.user.university} />
                               </div>
                             </div>
                             <div className="row">
                               <p className="custom-label"><strong>Date of Birth</strong></p>
                               <div className="form-group col-sm-3 col-xs-6">
                                 <label htmlFor="month" className="sr-only"></label>
-                                <select className="form-control" id="day">
-                                  <option defaultValue="Day">Day</option>
+                                <select defaultValue={this.props.user.day_date} ref="day" className="form-control">
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
@@ -76,8 +162,7 @@ class BasicInformation extends React.Component{
                               </div>
                               <div className="form-group col-sm-3 col-xs-6">
                                 <label htmlFor="month" className="sr-only"></label>
-                                <select ref="month" className="form-control" id="month">
-                                  <option defaultValue="month" >Month</option>
+                                <select defaultValue={this.props.user.month_date} ref="month"  className="form-control">
                                   <option>Jan</option>
                                   <option>Feb</option>
                                   <option>Mar</option>
@@ -94,8 +179,7 @@ class BasicInformation extends React.Component{
                               </div>
                               <div className="form-group col-sm-6 col-xs-12">
                                 <label htmlFor="year" className="sr-only"></label>
-                                <select ref="year" className="form-control" id="year">
-                                  <option defaultValue="year">Year</option>
+                                <select defaultValue={this.props.user.year_date} ref="year" className="form-control">
                                   <option>1985</option>
                                   <option>1986</option>
                                   <option>1987</option>
@@ -128,22 +212,19 @@ class BasicInformation extends React.Component{
                             </div>
                             <div className="form-group gender">
                               <span className="custom-label"><strong>I am a: </strong></span>
-                              <label className="radio-inline">
-                                <input type="radio" name="optradio" checked/>Male
-                              </label>
-                              <label className="radio-inline">
-                                <input type="radio" name="optradio"/>Female
-                              </label>
+                              <select defaultValue={this.props.user.gender} ref="gender"  className="form-control" >
+                                <option>Female</option>
+                                <option>Male</option>
+                              </select>
                             </div>
                             <div className="row">
                               <div className="form-group col-xs-6">
-                                <label htmlFor="city"> My city</label>
-                                <input id="city" className="form-control input-group-lg" type="text" name="city" title="Enter city" placeholder="Your city" value="New York"/>
+                                <label htmlFor="city">Address</label>
+                                <input ref="address" className="form-control input-group-lg" type="text"title="Enter address" placeholder="Your address" defaultValue={this.props.user.address}/>
                               </div>
                               <div className="form-group col-xs-6">
                                 <label htmlFor="country">My country</label>
-                                <select ref="country" className="form-control" id="country">
-                                  <option defaultValue="country" disabled>Country</option>
+                                <select defaultValue={this.props.user.country} ref="country"  className="form-control">
                                   <option defaultValue="AFG">Afghanistan</option>
                                   <option defaultValue="ALA">Bland Islands</option>
                                   <option defaultValue="ALB">Albania</option>
@@ -399,10 +480,10 @@ class BasicInformation extends React.Component{
                             <div className="row">
                               <div className="form-group col-xs-12">
                                 <label htmlFor="my-info">About me</label>
-                                <textarea id="my-info" name="information" className="form-control" placeholder="Some texts about me" rows="4" cols="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur</textarea>
+                                <textarea ref="description" defaultValue={this.props.user.description} className="form-control" placeholder="Some texts about me" rows="4" cols="400"></textarea>
                               </div>
                             </div>
-                            <button className="btn btn-primary">Save Changes</button>
+                            <button className="btn btn-primary" onClick={this.handleUpdate.bind(this)}>Save Changes</button>
                           </form>
                         </div>
                       </div>

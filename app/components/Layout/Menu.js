@@ -9,36 +9,36 @@ class Menu extends React.Component{
   render(){
     return(
       <ul className="nav navbar-nav navbar-right main-menu">
-      <li className="dropdown">
-        <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="/images/down-arrow.png" alt="" /></span></a>
-          <ul className="dropdown-menu newsfeed-home">
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/login'>Login</Link></li>
+        <li className="dropdown">
+          <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="/images/down-arrow.png" alt="" /></span></a>
+            <ul className="dropdown-menu newsfeed-home">
+              <li><Link to='/'>Home</Link></li>
+              <li><Link to='/login'>Login</Link></li>
+            </ul>
+        </li>
+        <li className="dropdown">
+          <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="/images/down-arrow.png" alt="" /></span></a>
+            <ul className="dropdown-menu newsfeed-home">
+              <li><Link to='/newsfeed'>Newsfeed</Link></li>
+            </ul>
+        </li>
+        <li className="dropdown">
+          <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="/images/down-arrow.png" alt="" /></span></a>
+          <ul className="dropdown-menu login">
+            <li><a href="edit-profile-settings.html">Account Settings</a></li>
+            <li><a href="edit-profile-password.html">Change Password</a></li>
           </ul>
-      </li>
-      <li className="dropdown">
-        <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="/images/down-arrow.png" alt="" /></span></a>
-          <ul className="dropdown-menu newsfeed-home">
-            <li><Link to='/newsfeed'>Newsfeed</Link></li>
+        </li>
+        <li className="dropdown">
+          <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span><img src="/images/down-arrow.png" alt="" /></span></a>
+          <ul className="dropdown-menu page-list">
+            <li><Link to='/profile'>Profile</Link></li>
+            <li><Link to='/profile/information'>Update Account</Link></li>
+            <li><Link to='/profile/timeline'>Timeline</Link></li>
+            <li><Link to='/login'>Logout</Link></li>
           </ul>
-      </li>
-      <li className="dropdown">
-        <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="/images/down-arrow.png" alt="" /></span></a>
-        <ul className="dropdown-menu login">
-          <li><a href="edit-profile-settings.html">Account Settings</a></li>
-          <li><a href="edit-profile-password.html">Change Password</a></li>
-        </ul>
-      </li>
-      <li className="dropdown">
-        <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span><img src="/images/down-arrow.png" alt="" /></span></a>
-        <ul className="dropdown-menu page-list">
-          <li><Link to='/profile'>Profile</Link></li>
-          <li><Link to='/profile/information'>Update Account</Link></li>
-          <li><Link to='/profile/timeline'>Timeline</Link></li>
-          <li><Link to='/login'>Logout</Link></li>
-        </ul>
-      </li>
-      <li className="dropdown"><a href="contact.html">Contact</a></li>
+        </li>
+        <li className="dropdown"><a href="contact.html">Contact</a></li>
       </ul>
     )
   }

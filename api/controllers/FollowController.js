@@ -115,6 +115,22 @@ module.exports = {
               return res.send({err: err});
             }
             if(updated){
+
+							let historyInfo = {
+								userId : userId,
+								action : "Đã hủy theo dõi ",
+								isActive : true,
+								related_userId : followed
+							}
+							History.create(historyInfo ,(err, history)=>{
+								if(err) sails.log.info("Có lỗi khi tạo lịch sử : ", err);
+								if(!history){
+									sails.log.error("không tạo được History");
+								}else{
+									sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+								}
+							})
+
               return res.send({updated: updated});
             }
               return res.send({err: "Something wrong when update!!"});
@@ -135,34 +151,47 @@ module.exports = {
     User.findOne({id: userId})
     .populate('followers')
     .then( (user)=>{  // Thông tin người dùng
-			if(!user) res.send({err: "Không tìm thấy danh sách user!"});
+			if(!user) res.send({err: "Không tìm thấy user!"});
       let final_followers = user.followers;
       let promises=[];
       for(var i = 0 ; i < final_followers.length; i++){
         promises.push(UserService.get_follow(final_followers[i]));
       }
       Promise.all(promises).then( (followers)=>{
-				if(!followings) res.send({err: "Không tìm thấy danh sách followers!"});
-        sails.log.info("Danh sách những người  đang theo dõi user trên : ",followers.length);
+				if(!followers) res.send({err: "Không tìm thấy danh sách followers!"});
         final_followers = followers;
         user.followers = final_followers;
-        return res.send({ok:final_followers});
+				sails.log.info("Danh sách những người  đang theo dõi user trên : ",final_followers.length);
+        res.send({ok:final_followers});
       })
-      .catch( err => res.send({err: err}))
+      .catch( (err) => {res.send({err: "Lỗi danh sách list followers"})})
 
     })
-    .catch( (err)=>{ res.send({err: err})} )
+    .catch( (err)=>{ res.send({err: "Lỗi khi tìm người dùng userId"})} )
   },
 
   get_followings: function(req,res){
-    var userId = req.body.userId;
-    User.find({id: userId}).populate('followings')
-    .then( (followings)=>{
-			if(!followings) res.send({err: "Không tìm thấy danh sách followings!"});
-			sails.log.info('followings: ', followings);
-      return res.send({followings: followings});
-    } )
-    .catch( (err)=>{ return res.send({err: err})} )
+		var userId = req.body.userId;
+		sails.log.info(" Có yêu cầu lấy danh sách đang được user này theo dõi : ",userId);
+    User.findOne({id: userId})
+    .populate('followings')
+    .then( (user)=>{  // Thông tin người dùng
+			if(!user) res.send({err: "Không tìm thấy user!"});
+      let final_followings = user.followings;
+      let promises=[];
+      for(var i = 0 ; i < final_followings.length; i++){
+        if(final_followings[i].isActive === true)	promises.push(UserService.get_follow(final_followings[i]));
+      }
+      Promise.all(promises).then( (followings)=>{
+				if(!followings) res.send({err: "Không tìm thấy danh sách followers!"});
+        final_followings = followings;
+        user.followings = final_followings;
+				sails.log.info("Danh sách những người  đang theo dõi user trên : ",final_followings.length);
+        res.send({ok:final_followings});
+      })
+      .catch( (err) => {res.send({err: "Lỗi danh sách list followings"})})
+    })
+    .catch( (err)=>{ res.send({err: "Lỗi khi tìm người dùng userId"})} )
   },
 
 	recommend_rank: function(req,res){
@@ -171,22 +200,22 @@ module.exports = {
 		User.findOne({id: userId})
 		.populate('followings')
 		.then( (user)=>{
-			if(!users) res.send({err: "Không tìm thấy user!"});
+			if(!user) res.send({err: "Không tìm thấy user!"});
 			let list_following = user.followings;
 			let list_id_following = [];
 			for(let i=0; i<list_following.length; i++){
-				list_id_following.push(list_following[i].followed);
+				if(list_following[i].isActive === true) list_id_following.push(list_following[i].followed);
 			}
 			list_id_following.push(userId);
 			User.find({id: {$nin: list_id_following}})
 			.limit(10)
-			.sort({rank: -1})
+			.sort({point: -1})
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
 				sails.log.info("Danh sach recommend_rank: ", users.length);
-				res.send({ok: users})
+				return res.send({ok: users})
 			})
-			.catch( (err) =>{ return res.send({err:err})} )
+			.catch( (err) =>{ res.send({err:err})} )
 
 		})
 		///////////////////////////////  END  ////////////////////////////
@@ -203,7 +232,7 @@ module.exports = {
 			let list_following = user.followings;
 			let list_id_following = [];
 			for(let i=0; i<list_following.length; i++){
-				list_id_following.push(list_following[i].followed);
+				if(list_following[i].isActive === true) list_id_following.push(list_following[i].followed);
 			}
 			list_id_following.push(userId);
 			User.find({ id: {$nin: list_id_following}, $or: [{"gender": new RegExp(user.gender)}, {"address":new RegExp(user.address)}, {"year_date": new RegExp(user.year_date)}  ] })
@@ -211,9 +240,9 @@ module.exports = {
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
 				sails.log.info("Danh sach recommend_common: ", users.length);
-				res.send({ok: users})
+				return res.send({ok: users})
 			})
-			.catch( (err) =>{ return res.send({err:err})} )
+			.catch( (err) =>{ res.send({err:err})} )
 
 		})
 		///////////////////////////////  END  ////////////////////////////

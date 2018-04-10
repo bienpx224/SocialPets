@@ -16,7 +16,7 @@ class FormLogin extends React.Component{
     offset: 14,
     position: 'bottom left',
     theme: 'light',
-    time: 5000,
+    time: 1000,
     transition: 'scale'
   }
   handleSubmit(event){
@@ -29,8 +29,6 @@ class FormLogin extends React.Component{
     }
     if(Obj.email === "" || Obj.password === ""){
       that.msg.show('ERROR: Email and Password must be fill !! ', {
-                            time: 5000,
-                            theme: 'light',
                             type: 'error',
                             icon: <img src="/images/error.png" />
             })
@@ -38,8 +36,6 @@ class FormLogin extends React.Component{
       io.socket.post('/user/login',Obj,function(resData, jwres){
           if(resData.error){
             that.msg.show('ERROR: '+resData.error, {
-                            time: 5000,
-                            theme: 'light',
                             type: 'error',
                             icon: <img src="/images/error.png" />
             })
@@ -57,7 +53,6 @@ class FormLogin extends React.Component{
 
   handleKeyPress(e){
     if (e.key === 'Enter') {
-      console.log("enter");
       this.handleSubmit(e);
     }
   }
@@ -81,7 +76,7 @@ class FormLogin extends React.Component{
                     <div className="row">
                       <div className="form-group col-xs-12">
                         <label htmlFor="my-password" className="sr-only">Password</label>
-                        <input onKeyPress={this.handleKeyPress.bind(this)} id="my-password" ref="password" className="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                        <input defaultValue="123456" onKeyPress={this.handleKeyPress.bind(this)} id="my-password" ref="password" className="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
                       </div>
                     </div>
                   </form>

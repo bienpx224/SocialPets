@@ -43,13 +43,48 @@ module.exports = {
   },
   register: function(req,res){
     var Obj = req.body;
-    sails.log.info("Có yêu cầu đăng ký tài khoản : ", Obj);
+    sails.log.info("Có yêu cầu đăng ký tài khoản : ", Obj.name);
     User.create(Obj).exec(function( err, user){
       if(err) {sails.log.error("Lỗi đăng ký tài khoản: ", err); return res.send(err);}
       if(!user) return res.send("Not found user");
       sails.log.info("Đăng ký thành công ");
       return res.send(user);
     });
+  },
+  updateInfo: function (req,res){
+    let {Obj,userId} = req.body;
+    sails.log.info("Có yêu cầu thay đổi thông tin cá nhân : ");
+    User.update({id: userId}, Obj,function(err, user){
+      if(err){
+        sails.log.error("Đã có lỗi thay đổi thông tin cá nhân: ", err);
+        return res.send(err)
+      }
+      if(user){
+        user = user[0];
+        sails.log.info("Thay đổi thành công cho user: ", user);
+        let point = parseInt(user.point)+1;
+        User.update({id: userId}, {point: point}, (err, userUpdatedPoint)=>{
+          if(err) sails.log.error("Lỗi update point: ", err);
+          if(userUpdatedPoint) sails.log.info("Update point thành công :  point: ",userUpdatedPoint);
+        })
+        let historyInfo = {
+          userId : userId,
+          action : "Cập nhật thông tin cá nhân",
+          isActive : true,
+        }
+        History.create(historyInfo ,(err, history)=>{
+          if(err) sails.log.error("Có lỗi khi tạo lịch sử : ", err);
+          if(!history){
+            sails.log.error("không tạo được History");
+          }else{
+            sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+          }
+        })
+        return res.send({user:user})
+      }else{
+        sails.log.error("update xong không có user");
+      }
+    })
   },
   changePicture: function(req,res){
     let {link, id} = req.body;

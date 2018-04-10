@@ -18,7 +18,7 @@ class Post extends React.Component{
     offset: 14,
     position: 'bottom left',
     theme: 'light',
-    time: 5000,
+    time: 1000,
     transition: 'scale'
   }
   handlePost(){
@@ -33,8 +33,6 @@ class Post extends React.Component{
     };
     if(Post.content.length === 0 && Post.image === null){
       this.msg.show('ERROR: Not enough information to post !! ', {
-                            time: 5000,
-                            theme: 'light',
                             type: 'error',
                             icon: <img src="/images/error.png" />
       })
@@ -48,8 +46,6 @@ class Post extends React.Component{
                 document.getElementById("btnPost").disabled = false;
                 if(resData.ok){
                   that.msg.show('Your post was success <3', {
-                                    time: 5000,
-                                    theme: 'light',
                                     type: 'success',
                                     icon: <img src="/images/success.png" />
                   })
@@ -62,8 +58,6 @@ class Post extends React.Component{
                   that.setState(that.state);
                 }else{
                   that.msg.show('ERROR: Somethings are wrong !! ', {
-                                    time: 5000,
-                                    theme: 'light',
                                     type: 'error',
                                     icon: <img src="/images/error.png" />
                   })
@@ -75,8 +69,6 @@ class Post extends React.Component{
             document.getElementById("btnPost").disabled = false;
             if(resData.ok){
               that.msg.show('Your post was success <3 ', {
-                                time: 5000,
-                                theme: 'light',
                                 type: 'success',
                                 icon: <img src="/images/success.png" />
               })
@@ -87,8 +79,6 @@ class Post extends React.Component{
               that.setState(that.state);
             }else{
               that.msg.show('ERROR: Somethings are wrong !! ', {
-                                time: 5000,
-                                theme: 'light',
                                 type: 'error',
                                 icon: <img src="/images/error.png" />
               })
@@ -98,7 +88,6 @@ class Post extends React.Component{
     }
   }
   handleCloseImage(){
-    console.log('delete temp image');
     this.state.nameImg = null;
     this.state.image = null;
     this.setState(this.state);

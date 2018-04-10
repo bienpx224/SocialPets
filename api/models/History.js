@@ -11,6 +11,7 @@ module.exports = {
     uid : 'STRING',
     userId:{ model: 'user' },
     action : {type:'string'},
+    image: {type: 'string'},
     isActive : {type: 'boolean'},
     related_postId : {model: 'post'},
     related_userId : {model: 'user'},

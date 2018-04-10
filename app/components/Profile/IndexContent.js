@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Information from 'Information';
 import ListFollowers from 'ListFollowers';
+import ListFollowings from 'ListFollowings';
 import Timeline from 'Timeline';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
@@ -20,6 +21,7 @@ class IndexContent extends React.Component{
                         <Route  exact path="/profile/timeline" component={Timeline} />
                         <Route  exact path="/profile/information" component={Information} />
                         <Route  exact path="/profile/followers" component={ListFollowers} />
+                        <Route  exact path="/profile/followings" component={ListFollowings} />
                         <Route render={function(){
                           return <p> not found in profile</p>
                       } } />

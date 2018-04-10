@@ -2,10 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import IndexContent from 'IndexContent';
+import Login from 'Login';
 import PopupChangePicture from 'PopupChangePicture';
-import {set_user, open_popup_user,get_post_err, open_popup_change_picture} from 'userAction';
+import {set_user, open_popup_user,get_post_err, open_popup_change_picture,login_error,login_success} from 'userAction';
 import {get_alldata_user} from 'apiUser';
-import {get_postNewsfeed} from 'postAction';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
 var {Provider} = require('react-redux');
@@ -15,24 +15,25 @@ class Profile extends React.Component{
   constructor(props){
     super(props);
     this.state={
+      isLogin : false,
       type: ""
     }
   }
   componentDidMount(){
     var {dispatch} = this.props;
-    get_alldata_user(localStorage.email)
-    .then( (user)=>{ console.log("first user: ", user);
-      dispatch(set_user(user));
-    })
-    .catch( err => console.log(err))
-
-    io.socket.post('/post/getPostNewsfeed',{},function(resData, jwres){
+    let that = this;
+    if(localStorage.email){
+      console.log("localStorage", localStorage.email);
+    }else{ console.log("khong ton tai email in local")}
+    io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
+      console.log("getUser: ", resData);
+      if(resData.error){
+        dispatch(login_error());
+      }
       if(resData.notFound){
-        dispatch(get_post_err(resData.notFound));
-      }else if(resData.posts){
-        dispatch(get_postNewsfeed(resData.posts));
+        dispatch(login_error());
       }else{
-        dispatch(get_post_err(resData.err));
+        dispatch(login_success(resData.user));
       }
     });
   }
@@ -46,9 +47,12 @@ class Profile extends React.Component{
     this.setState({type:"cover"})
     dispatch(open_popup_change_picture());
   }
+  componentWillReceiveProps(nextProps){
+    this.setState({...this.state,isLogin: nextProps.isLogin});
+  }
   render(){
     if(!this.props.isLogin){
-      return <Redirect to="/login"/>
+      return ( <Login />)
     }else{
       return(
              <div className="container" style={{marginTop:"-24px"}}>
@@ -77,11 +81,12 @@ class Profile extends React.Component{
                           <div className="col-md-9">
                             <ul className="list-inline profile-menu">
                               <li><Link to='/profile/timeline'>Timeline</Link></li>
-                              <li><Link to='/profile/information'>Update Info</Link></li>
+                              <li><Link to='/profile/information'>Information</Link></li>
                               <li><Link to='/profile/followers'>Follwers</Link></li>
+                              <li><Link to='/profile/followings'>Follwings</Link></li>
                             </ul>
                             <ul className="follow-me list-inline">
-                              <li>1,299 people following her</li>
+                              <li>Yours point : <span  className="ion-star pull-left"></span>{this.props.user.point}</li>
                               <li><button className="btn-primary"><span className="ion-person-add pull-left"></span>Follow </button></li>
                             </ul>
                           </div>
@@ -98,10 +103,13 @@ class Profile extends React.Component{
                         <div className="mobile-menu">
                           <ul className="list-inline">
                             <li><Link to='/profile/timeline'>Timeline</Link></li>
-                            <li><Link to='/profile/information'>Update Info</Link></li>
+                            <li><Link to='/profile/information'>Information</Link></li>
                             <li><Link to='/profile/followers'>Follwers</Link></li>
+                            <li><Link to='/profile/followings'>Follwers</Link></li>
                           </ul>
-                          <button className="btn-primary"><span className="ion-person-add pull-left"></span>Add Friend</button>
+                          <ul className="follow-me list-inline">
+                            <li><span  className="ion-star pull-left"></span>{this.props.user.point}</li>
+                          </ul>
                         </div>
                        </div>
                   </div>

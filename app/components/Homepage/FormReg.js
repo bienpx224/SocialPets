@@ -12,7 +12,7 @@ class FormReg extends React.Component{
     offset: 14,
     position: 'bottom left',
     theme: 'light',
-    time: 5000,
+    time: 3000,
     transition: 'scale'
   }
   handleSubmit(event){
@@ -35,6 +35,10 @@ class FormReg extends React.Component{
         gender: sex,
         address: this.refs.address.value,
         country: this.refs.country.value,
+        petlove: "",
+        description: "",
+        job: "",
+        university : "",
         point: 10,
         picture: "https://i.imgur.com/x53FmYL.jpg",
         cover: "https://i.imgur.com/8jp0Y6M.jpg",
@@ -51,8 +55,6 @@ class FormReg extends React.Component{
                 if(errContent.length != 0){
                     errContent.map(function(i,index){
                         that.msg.show('ERROR: '+errContent[index], {
-                          time: 5000,
-                          theme: 'light',
                           type: 'error',
                           icon: <img src="/images/error.png" />
                         })
@@ -61,8 +63,6 @@ class FormReg extends React.Component{
             })
         }else{
                     that.msg.show('SUCCESS: You are sign up success', {
-                          time: 5000,
-                          theme: 'light',
                           type: 'success',
                           icon: <img src="/images/success.png" />
                     })

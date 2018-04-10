@@ -76,7 +76,6 @@ h1, h2, h3, h4, h5, h6{color: #27aae1;}
 h1.grey, h2.grey, h3.grey, h4.grey, h5.grey, h6.grey{
   color: #6d6e71;
   margin: 0 auto 20px;
-  font-family: fantasy;
 }
 
 .text-white{color: #fff;}
@@ -93,7 +92,7 @@ h1.grey, h2.grey, h3.grey, h4.grey, h5.grey, h6.grey{
 
 .profile-link{font-weight: 600;}
 
-.text-muted{color: #a09be2;}
+.text-muted{color: #a09be2;text-align: center;}
 
 a{color: #27aae1;}
 
@@ -284,7 +283,7 @@ textarea{
 
 .form-control{
   background: #fff;
-  border: 1px solid #f1f2f2;
+  border: 1px solid #abe2e2;
   box-shadow: none;
   border-radius: 4px;
   color: #939598;
@@ -755,7 +754,7 @@ textarea{
   background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url(../images/bg/bg-3.jpg) fixed no-repeat;
   background-size: cover;
   background-position: center;
-  position: absolute;
+  margin: -30px 0px;
   top: 0;
   width: 100%;
 }
@@ -2010,6 +2009,7 @@ input:checked + .slider:before{
 
 img.footer-logo{
   margin-bottom: 20px;
+  background-color: #906161;
 }
 
 ul.social-icons{

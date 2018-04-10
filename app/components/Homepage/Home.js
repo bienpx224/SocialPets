@@ -18,7 +18,7 @@ class Home extends React.Component{
     offset: 14,
     position: 'bottom left',
     theme: 'light',
-    time: 5000,
+    time: 1000,
     transition: 'scale'
   }
   componentDidMount(){

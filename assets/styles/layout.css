@@ -1,5 +1,8 @@
+.history-temp{position: static; width: 592.5px; height: 370px; display: block; vertical-align: baseline; float: none;}
+.is_stuck{position: fixed; top: 70px; width: 592.5px;}
+.show-more{width: 100%;color: #43519a; background-color: #6f886f4d; border-color: #ffffff;}
 .hr-style{ border: 0; height: 25px; background-image: url("https://images.formget.com/wp-content/uploads/2014/12/type_6.png"); background-repeat: no-repeat;}
-.yellow-text{color: #bb1b1b; margin-left: -50px; width: auto; float: left;}
+.red-text{color: #bb1b1b; margin-left: -50px; width: auto; float: left;}
 .pull-left{margin-right: 5px;}
 .btnS{border:none;border-radius: 30px;}
 .preview-image-post{border-radius: 0;height: 50px; width: 50px;}

@@ -14,10 +14,11 @@ class TimelineContent extends React.Component{
           <div className="post-content">
 
                 <div className="post-date hidden-xs hidden-sm">
-                  <h5>{this.props.user.name}</h5>
+                  <h5>{this.props.owner.name}</h5>
                   <p className="text-grey">Sometimes ago</p>
                 </div>
-                <NewsfeedContent key="1" content={this.props.user.address} image={this.props.user.picture} title="no title" createdAt={this.props.user.createdAt} owner={this.props.user} />
+                <NewsfeedContent key={this.props.key} content={this.props.post.content} image={this.props.post.image} title={this.props.post.title}
+                createdAt={this.props.post.createdAt} owner={this.props.owner} />
 
           </div>
 

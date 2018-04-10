@@ -18,4 +18,14 @@ function add_more_post(post){
     type:"ADD_NEW_POST", post
   }
 }
-module.exports = {get_post_err, get_postNewsfeed, add_new_post,add_more_post};
+function add_more_my_post(post){
+  return{
+    type:"ADD_MORE_MY_POST", post
+  }
+}
+function list_my_post(posts){
+  return {
+    type: "LIST_MY_POST", posts
+  }
+}
+module.exports = {get_post_err, get_postNewsfeed, add_new_post,add_more_post,list_my_post,add_more_my_post};

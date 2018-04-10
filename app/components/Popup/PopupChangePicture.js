@@ -17,7 +17,7 @@ class PopupChangePicture extends React.Component{
     offset: 14,
     position: 'bottom left',
     theme: 'light',
-    time: 5000,
+    time: 1000,
     transition: 'scale'
   }
   close(){
@@ -44,8 +44,6 @@ class PopupChangePicture extends React.Component{
       })
       if(i === typeImage.length){
           this.msg.show('ERROR: You can only select image file !! ', {
-                            time: 5000,
-                            theme: 'light',
                             type: 'error',
                             icon: <img src="/images/error.png" />
           })
@@ -53,6 +51,8 @@ class PopupChangePicture extends React.Component{
     }
   }
   savePicture(){
+    document.getElementById("changeImg").disabled = true;
+    document.getElementById("closeChangeImg").disabled = true;
     let {dispatch} = this.props;
     let that = this;
     let {nameImg} = this.state;
@@ -61,26 +61,23 @@ class PopupChangePicture extends React.Component{
         var position = nameImg.lastIndexOf(".");
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
+          document.getElementById("changeImg").disabled = false;
+          document.getElementById("closeChangeImg").disabled = false;
             // if Type of Popup is picture, it's mean that will change User's Picture
             if(that.props.type === "picture"){
               io.socket.post('/user/changePicture', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
                 if(resData.ok){
                   var user = resData.ok[0];
                   that.msg.show('Your picture was change success <3 Waiting process your image... ', {
-                                    time: 5000,
-                                    theme: 'light',
                                     type: 'success',
                                     icon: <img src="/images/success.png" />
                   })
-                  setTimeout(function(){
-                    dispatch(change_picture(user));
-                  },6000);
 
+                    dispatch(change_picture(user));
                     dispatch(close_popup_change_picture());
+
                 }else{
                   that.msg.show('ERROR: Somethings are wrong !! ', {
-                                    time: 5000,
-                                    theme: 'light',
                                     type: 'error',
                                     icon: <img src="/images/error.png" />
                   })
@@ -88,23 +85,20 @@ class PopupChangePicture extends React.Component{
               })
             }else{  // else change User's Cover
               io.socket.post('/user/changeCover', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
+                document.getElementById("changeImg").disabled = false;
+                document.getElementById("closeChangeImg").disabled = false;
                 if(resData.ok){
                   var user = resData.ok[0];
                   that.msg.show('Your cover was change success <3 Waiting process your image... ', {
-                                    time: 5000,
-                                    theme: 'light',
                                     type: 'success',
                                     icon: <img src="/images/success.png" />
                   })
-                  setTimeout(function(){
-                    dispatch(change_picture(user));
-                  },6000);
 
+                    dispatch(change_picture(user));
                     dispatch(close_popup_change_picture());
+
                 }else{
                   that.msg.show('ERROR: Somethings are wrong !! ', {
-                                    time: 5000,
-                                    theme: 'light',
                                     type: 'error',
                                     icon: <img src="/images/error.png" />
                   })
@@ -114,8 +108,6 @@ class PopupChangePicture extends React.Component{
         })
       }else{
         that.msg.show('Nothing change !! ', {
-                                    time: 5000,
-                                    theme: 'light',
                                     type: 'warning',
                                     icon: <img src="/images/error.png" />
                   })
@@ -160,9 +152,9 @@ class PopupChangePicture extends React.Component{
                   </li>
                 </ul>
                 <button className="btnS btn-success" onClick={this.savePicture.bind(this)}>
-                  <span className="ion-checkmark-circled pull-left"></span>Change Picture
+                  <span id="changeImg" className="ion-checkmark-circled pull-left"></span>Change Picture
                 </button>
-                <button className="btnS btn-warning" onClick={this.close.bind(this)}><span className="ion-close-circled pull-left"></span>Thoát</button>
+                <button id="closeChangeImg" className="btnS btn-warning" onClick={this.close.bind(this)}><span className="ion-close-circled pull-left"></span>Thoát</button>
               </Modal.Footer>
           </Modal>
       </div>

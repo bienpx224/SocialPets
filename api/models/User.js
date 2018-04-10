@@ -12,25 +12,26 @@ module.exports = {
   attributes: {
     provider: 'STRING',
     uid: 'STRING',
-    name:{type:'string', required:true},
-    email:{type:'string', unique:true, required:true, email:true },
-    password:{type:'string', minLength:6, required:true},
-    phone:{type:'string'},
-    day_date:{type:'string'},
-    month_date:{type:'string'},
-    year_date:{type:'string'},
-    age_range:{type:'string'},
-    gender:{type:'string'},
-    picture:{type:'string'},
-    cover:{type:'string'},
-    address:{type:'string'},
-    country:{type:'string'},
+    name:{type:'string', required:true,maxLength: 50},
+    email:{type:'string', unique:true, required:true, email:true ,maxLength: 200},
+    password:{type:'string', minLength:6, required:true,maxLength: 200},
+    phone:{type:'string',maxLength: 20},
+    day_date:{type:'string',maxLength: 10},
+    month_date:{type:'string',maxLength: 10},
+    year_date:{type:'string',maxLength: 10},
+    age_range:{type:'string',maxLength: 10},
+    gender:{type:'string',maxLength: 10},
+    picture:{type:'string',maxLength: 255},
+    cover:{type:'string',maxLength: 255},
+    address:{type:'string',maxLength: 255},
+    country:{type:'string',maxLength: 255},
     isActive:{type: 'boolean'},
     isOnline:{type:'boolean'},
-    description:{type:'string'},
-    job:{type:'string'},
-    university:{type:'string'},
-    point : {type: 'integer'},
+    description:{type:'string',maxLength: 255},
+    job:{type:'string',maxLength: 10},
+    university:{type:'string',maxLength: 100},
+    point : {type: 'int'},
+    petlove: {type: 'string',maxLength: 50},
     // Setting your account
     enableFollow:{type:'boolean'},
     enableSound:{type:'boolean'},
@@ -54,7 +55,7 @@ module.exports = {
     toJSON: function(){
       var obj = this.toObject();
       delete obj.password;
-      delete obj.secret;
+      // delete obj.secret;
       return obj;
     }
   },

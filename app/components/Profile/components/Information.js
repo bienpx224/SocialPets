@@ -4,6 +4,7 @@ import AlertContainer from 'react-alert';
 import {set_user, open_popup_user,get_post_err,get_postNewsfeed} from 'userAction';
 import {withRouter} from 'react-router-dom';
 import BasicInformation from 'BasicInformation';
+import ListHistoryUser from 'ListHistoryUser';
 
 class Information extends React.Component{
   constructor(props){
@@ -19,7 +20,7 @@ class Information extends React.Component{
                       <ul className="edit-menu">
                         <li className="active"><i className="icon ion-ios-information-outline"></i><a data-toggle="tab" href="#BasicInformation">Basic Information</a></li>
                         <li ><i className="icon ion-social-github"></i><a data-toggle="tab" href="#PetInformation">Pet Information</a></li>
-                        <li ><i className="icon ion-ios-settings"></i><a data-toggle="tab" href="#AccountSettings">Account Settings</a></li>
+                        <li ><i className="icon ion-ios-settings"></i><a data-toggle="tab" href="#AccountSettings">History User</a></li>
                         <li ><i className="icon ion-ios-locked"></i><a data-toggle="tab" href="#ChangePassword">Change Password</a></li>
                       </ul>
                     </div>
@@ -32,7 +33,7 @@ class Information extends React.Component{
                           <BasicInformation />
                       </div>
                       <div id="AccountSettings" className="tab-pane fade" style={{color:"#6d6e71"}}>
-                          <BasicInformation />
+                          <ListHistoryUser />
                       </div>
                       <div id="ChangePassword" className="tab-pane fade" style={{color:"#6d6e71"}}>
                           <BasicInformation />
