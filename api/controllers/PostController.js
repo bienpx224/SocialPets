@@ -64,8 +64,13 @@ module.exports = {
         if (err) sails.log.info(err);
         sails.log.info(filepath+' was deleted');
       });
-      sails.log.info("Đã upload xong file ảnh : ",res.data.link);
-      res2.send({link:res.data.link}); // Log the imgur url
+      if(err) res2.send({err:"Server upload ảnh hiện không được ! Thử lại sau"})
+
+      if(res) {
+        sails.log.info("Link ảnh đã xử lý xong: ", res.data.link);
+        res2.send({link:res.data.link});
+      }
+      else{ res2.send({err:"Lỗi.. Không lưu được ảnh. "})} // Log the imgur url
     });
 
   },

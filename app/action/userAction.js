@@ -28,10 +28,19 @@ function open_popup_change_picture(){
 function close_popup_change_picture(){
   return{type:"CLOSE_POPUP_CHANGE_PICTURE"}
 }
+function open_popup_add_pet(popupPet){
+  return{type:"OPEN_POPUP_ADD_PET",popupPet}
+}
+function close_popup_add_pet(){
+  return{type:"CLOSE_POPUP_ADD_PET"}
+}
 function change_picture(user){
   return{type:"CHANGE_PICTURE", user: user}
 }
 function change_cover(user){
   return{type:"CHANGE_COVER", user: user}
 }
-module.exports = {login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};
+function get_pet(listPet){
+  return{type:"GET_PET", listPet: listPet}
+}
+module.exports = {close_popup_add_pet,open_popup_add_pet,get_pet,login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};

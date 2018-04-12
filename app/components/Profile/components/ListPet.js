@@ -3,19 +3,18 @@ import {connect} from 'react-redux';
 import ReactPlaceholder from 'react-placeholder';
 import validateInfoUser from 'validateInfoUser';
 import AlertContainer from 'react-alert';
-import {set_user} from 'userAction';
-import {list_history,add_more_history} from 'historyAction';
-import HistoryUser from 'HistoryUser';
+import {get_pet,open_popup_add_pet} from 'userAction';
+import Pet from 'Pet';
+import PopupAddPet from 'PopupAddPet';
 
-class ListHistoryUser extends React.Component{
+class ListPet extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       loading: true,
-      total: 0,
-      listHistory : []
+      listPet : [],
+      typePopup: "add",
     }
-    this.getMoreHistory = this.getMoreHistory.bind(this);
     // this.getHistoryUser = this.getHistoryUser.bind(this);
   }
   alertOptions = {
@@ -27,65 +26,45 @@ class ListHistoryUser extends React.Component{
   }
   componentDidMount(){
     let userId = this.props.user.id;
-    this.getHistoryUser(userId);
+    this.getListPet(userId);
   }
-  getHistoryUser(userId){
+  getListPet(userId){
     let that = this;
     let {dispatch} = this.props;
-    let skip = this.state.total;
     this.setState({loading: true});
-    io.socket.post('/history/getHistoryUser',{userId,skip},function(resData, jwres){
+    io.socket.post('/pet/getListPet',{userId},function(resData, jwres){
       if(resData.err){
         that.msg.show('ERROR: '+resData.err, {
                           type: 'error',
                           icon: <img src="/images/error.png" />
         })
-        var listHistory = [];
-        dispatch(list_history(listHistory));
+        var listPet = [];
+        dispatch(list_history(listPet));
         return that.setState({...that.state,loading: false});
       }
-      if(resData.listHistory){
-        var listHistory = resData.listHistory;
-        dispatch(list_history(listHistory));
-        return that.setState({...that.state,loading: false, total: listHistory.length});
+      if(resData.listPet){
+        var listPet = resData.listPet;
+        dispatch(get_pet(listPet));
+        return that.setState({...that.state,loading: false});
       }
     })
   }
-  getMoreHistory(){
-    let {id}= this.props.user;
-    var that = this;
+  showPopupAddPet(){
     let {dispatch} = this.props;
-    io.socket.post('/history/getHistoryUser',{userId: id, skip: this.state.total},function(resData, jwres){
-      if(resData.err){
-        that.msg.show('ERROR: '+resData.err, {
-                          type: 'error',
-                          icon: <img src="/images/error.png" />
-        })
-      }
-      if(resData.listHistory){
-        var listHistory = resData.listHistory;
-        if(listHistory.length === 0) document.getElementById('show-more').style.display = 'none';
-        for(let i = listHistory.length-1; i >= 0; i--){
-          that.state.total ++;
-          dispatch(add_more_history(listHistory[i]));
-        }
-        return that.setState({...that.state,loading: false});
-      }
-    })
+    dispatch(open_popup_add_pet("add"));
   }
   componentWillReceiveProps(nextProps){
-    this.setState({...this.state, listHistory : nextProps.listHistory});
+    this.setState({...this.state, listPet : nextProps.listPet});
   }
   render(){
     let that = this;
-    var countPost = this.state.listHistory.length;
     if(this.state.loading) return(
       <div className="col-md-7 static edit-profile-container">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <div className="block-title">
           <h4 className="grey">
             <i className="icon ion-android-checkmark-circle"></i>
-          {that.props.user.name} activity
+            Pets of {that.props.user.name}
           </h4>
           <hr />
           <ReactPlaceholder ready={false} type="media" rows={7} showLoadingAnimation={true}>
@@ -94,15 +73,20 @@ class ListHistoryUser extends React.Component{
         </div>
         <div className="history-temp"></div>
       </div>
+
     )
-    else if(this.state.listHistory.length === 0)
+    else if(this.state.listPet.length === 0)
       return(
         <div className="col-md-7 static edit-profile-container">
+        <PopupAddPet type={that.state.typePopup} />
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
           <div className="block-title">
             <h4 className="grey">
               <i className="icon ion-android-checkmark-circle"></i>
-            {that.props.user.name} activity
+              Pets of {that.props.user.name}
+              <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
+                <i className="ion-social-twitter" style={{color:"white"}}></i>Add pet
+              </button>
             </h4>
             <hr />
             <h3>Nothing to show</h3>
@@ -113,26 +97,23 @@ class ListHistoryUser extends React.Component{
     else
     return(
       <div className="col-md-7 static edit-profile-container">
+      <PopupAddPet />
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <div className="block-title">
           <h4 className="grey">
             <i className="icon ion-android-checkmark-circle"></i>
-            {that.props.user.name} activity
+            Pets of {that.props.user.name}
+            <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
+              <i className="ion-social-twitter" style={{color:"white"}}></i>Add pet
+            </button>
           </h4>
           <hr />
         </div>
-        {this.state.listHistory.map(function(i,index){
-          if(index === countPost-1)
+        {this.state.listPet.map(function(i,index){
           return (
             <div key={index}>
-
-              <HistoryUser key={index} data={i} />
-
-              <input id="show-more" type="button" className="show-more btn btn-success" defaultValue="Show more" onClick={that.getMoreHistory} />
+              <Pet key={index} data={i} />
             </div>
-          )
-          else return(
-            <HistoryUser key={index} data={i} />
           )
         })
         }
@@ -142,5 +123,5 @@ class ListHistoryUser extends React.Component{
   }
 }
 module.exports = (connect( function(state){
-  return {user: state.userReducer.user, listHistory:state.historyReducer.listHistory};
-})(ListHistoryUser));
+  return {user: state.userReducer.user, listPet:state.userReducer.listPet};
+})(ListPet));

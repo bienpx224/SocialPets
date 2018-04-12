@@ -39,6 +39,8 @@ module.exports = {
     // this defines the others half of our association
     //with idea, this is the 'many' side.
 
+    // Pets of your
+    pets:{collection:'Pet', via:'userId'},
     // Posts of your
     posts:{collection:'Post', via:'userId'},
     // Những người mà bạn đang theo dõi

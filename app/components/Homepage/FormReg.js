@@ -10,7 +10,7 @@ class FormReg extends React.Component{
   }
   alertOptions = {
     offset: 14,
-    position: 'bottom left',
+    position: 'top right',
     theme: 'light',
     time: 3000,
     transition: 'scale'
@@ -47,7 +47,6 @@ class FormReg extends React.Component{
         enableSound: true,
         enableNotification: true
     };
-    console.log(Obj);
     io.socket.post('/user/register',Obj, function(resData, jwres){
         if(resData.error){
             var errors = resData.invalidAttributes;

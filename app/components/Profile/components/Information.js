@@ -4,6 +4,7 @@ import AlertContainer from 'react-alert';
 import {set_user, open_popup_user,get_post_err,get_postNewsfeed} from 'userAction';
 import {withRouter} from 'react-router-dom';
 import BasicInformation from 'BasicInformation';
+import ListPet from 'ListPet';
 import ListHistoryUser from 'ListHistoryUser';
 
 class Information extends React.Component{
@@ -30,7 +31,7 @@ class Information extends React.Component{
                           <BasicInformation />
                       </div>
                       <div id="PetInformation" className="tab-pane fade" style={{color:"#6d6e71"}}>
-                          <BasicInformation />
+                          <ListPet />
                       </div>
                       <div id="AccountSettings" className="tab-pane fade" style={{color:"#6d6e71"}}>
                           <ListHistoryUser />

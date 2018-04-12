@@ -14,14 +14,21 @@ class PopupUser extends React.Component{
   render(){
     return(
       <div className="popup-form">
-          <Modal bsSize="sm" show={this.props.showPopupUser} onHide={this.close}>
+          <Modal bsSize="sm" show={this.props.showPopupUser} onHide={this.close.bind(this)}>
               <Modal.Header>
                   <Modal.Title> </Modal.Title>
               </Modal.Header>
               <Modal.Body style={{overflow:"auto",height:"100%"}}>
-
-                <div>hahah</div>
-
+              <div className="container">
+                <div className="col-md-6">
+                  <div className="profile-info">
+                    <img src={this.props.user.picture} alt="" className="img-responsive profile-photo"
+                    style={{cursor:"pointer"}} />
+                    <h3>{this.props.user.name}</h3>
+                    <p className="text-muted">Creative Director</p>
+                  </div>
+                </div>
+              </div>
               </Modal.Body>
               <Modal.Footer>
                 <input type="button" style={{marginLeft:"10px",height:"30px"}} className="btn btn-success" defaultValue="Chấp nhận" />

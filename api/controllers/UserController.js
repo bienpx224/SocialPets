@@ -104,6 +104,7 @@ module.exports = {
         let historyInfo = {
           userId : updated[0].id,
           action : "Cập nhật ảnh đại diện mới",
+          image  : link,
           isActive : true,
         }
         History.create(historyInfo ,(err, history)=>{
@@ -136,6 +137,7 @@ module.exports = {
         let historyInfo = {
           userId : updated[0].id,
           action : "Cập nhật ảnh bìa mới",
+          image  : link,
           isActive : true,
         }
         History.create(historyInfo ,(err, history)=>{

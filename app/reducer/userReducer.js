@@ -1,8 +1,11 @@
 var data = {
   isLogin : false,
   user: {},
+  listPet: [],
   showPopupUser: false,
-  showPopupChangePicture: false
+  showPopupChangePicture: false,
+  showPopupAddPet: false,
+  popupPet: "add"
 };
 
 var userReducer = (state = data, action)=>{
@@ -23,6 +26,12 @@ var userReducer = (state = data, action)=>{
       return {...state, showPopupChangePicture: false};
     case "CHANGE_PICTURE":
       return {...state, user: action.user};
+    case "GET_PET":
+      return {...state, listPet: action.listPet};
+    case "OPEN_POPUP_ADD_PET":
+      return {...state, showPopupAddPet: true, popupPet:action.popupPet};
+    case "CLOSE_POPUP_ADD_PET":
+      return {...state, showPopupAddPet: false};
     default: return state;
   }
 }

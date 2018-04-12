@@ -41,6 +41,7 @@ class Post extends React.Component{
         var position = nameImg.lastIndexOf(".");
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
+          if(!resData.err && resData.link){
               Post.image = resData.link;
               io.socket.post('/post/addPost', Post, function(resData, jwres){
                 document.getElementById("btnPost").disabled = false;
@@ -63,6 +64,12 @@ class Post extends React.Component{
                   })
                 }
               })
+          }else{
+            that.msg.show('ERROR: '+resData.err, {
+                              type: 'error',
+                              icon: <img src="/images/error.png" />
+            })
+          }
         })
       }else{
           io.socket.post('/post/addPost', Post, function(resData, jwres){

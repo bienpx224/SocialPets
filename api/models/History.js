@@ -13,6 +13,7 @@ module.exports = {
     action : {type:'string'},
     image: {type: 'string'},
     isActive : {type: 'boolean'},
+    related_petId : {model: 'pet'},
     related_postId : {model: 'post'},
     related_userId : {model: 'user'},
     related_cmtId  : {model: 'comment'}

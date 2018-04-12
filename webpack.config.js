@@ -40,6 +40,7 @@ module.exports = {
           // Popup
           PopupUser : 'app/components/Popup/PopupUser.js',
           PopupChangePicture : 'app/components/Popup/PopupChangePicture.js',
+          PopupAddPet : 'app/components/Popup/PopupAddPet.js',
           // utilities
           InputComponent : 'app/components/Utilities/InputComponent.js',
           validateInfoUser:'app/components/Utilities/validateInfoUser.js',
@@ -82,6 +83,8 @@ module.exports = {
           Follower: 'app/components/Profile/components/Follower.js',
           ListFollowings:'app/components/Profile/components/ListFollowings.js',
           Following: 'app/components/Profile/components/Following.js',
+          Pet: 'app/components/Profile/components/Pet.js',
+          ListPet: 'app/components/Profile/components/ListPet.js',
           // RecommendFollow
           IndexListRecommend : 'app/components/RecommendFollow/IndexListRecommend.js',
           ListRecommendRank : 'app/components/RecommendFollow/ListRecommendRank.js',

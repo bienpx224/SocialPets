@@ -8,18 +8,11 @@
 module.exports = {
   connection: 'mongo',
   attributes: {
-    content:{
-      type:'string'
-    },
-    image:{
-      type:'string'
-    },
-    userId:{
-      model:'user'
-    },
-    react:{
-      collection:'react', via:'postId'
-    },
+    content:{ type:'string', maxLength: 500},
+    image:{ type:'string' },
+    petRelate:{ model: 'pet'},
+    userId:{ model:'user' },
+    react:{ collection:'react', via:'postId' },
     // dislike:{
     //   collection:'dislike', via:'postId'
     // },

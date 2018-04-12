@@ -36,7 +36,6 @@ class PopupChangePicture extends React.Component{
           var val = Math.floor(1000 + Math.random() * 9000);
           var nameImg =""+val+"_"+ event.target.files[0].name;
           reader.onload = (e)=>{
-            console.log("load image success"+that.state.newPicture);
             that.setState({newPicture: true,image: e.target.result, nameImg: nameImg});
           }
           reader.readAsDataURL(event.target.files[0]);
@@ -63,6 +62,7 @@ class PopupChangePicture extends React.Component{
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
           document.getElementById("changeImg").disabled = false;
           document.getElementById("closeChangeImg").disabled = false;
+          if(!resData.err && resData.link){
             // if Type of Popup is picture, it's mean that will change User's Picture
             if(that.props.type === "picture"){
               io.socket.post('/user/changePicture', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
@@ -105,12 +105,18 @@ class PopupChangePicture extends React.Component{
                 }
               })
             }
+          }else{
+            that.msg.show('ERROR: '+resData.err, {
+                                        type: 'error',
+                                        icon: <img src="/images/error.png" />
+            })
+          }
         })
       }else{
         that.msg.show('Nothing change !! ', {
                                     type: 'warning',
                                     icon: <img src="/images/error.png" />
-                  })
+        })
       }
   }
   renderPicture(){
@@ -151,8 +157,8 @@ class PopupChangePicture extends React.Component{
                       <i className="ion-images">Select picture<input type="file" style={{maxWidth:"100%", minHeight:"80%"}} onChange={this.handleChangeImage.bind(this)}/></i>
                   </li>
                 </ul>
-                <button className="btnS btn-success" onClick={this.savePicture.bind(this)}>
-                  <span id="changeImg" className="ion-checkmark-circled pull-left"></span>Change Picture
+                <button id="changeImg" className="btnS btn-success" onClick={this.savePicture.bind(this)}>
+                  <span className="ion-checkmark-circled pull-left"></span>Change Picture
                 </button>
                 <button id="closeChangeImg" className="btnS btn-warning" onClick={this.close.bind(this)}><span className="ion-close-circled pull-left"></span>Thoát</button>
               </Modal.Footer>

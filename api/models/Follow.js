@@ -8,13 +8,8 @@
 module.exports = {
   connection:'mongo',
   attributes: {
-    userId:{
-      model:'user'
-    },
-    followed:{
-      model:'user'
-    },
+    userId:{ model:'user' },
+    followed:{ model:'user' },
     isActive: {type: 'boolean'}
   }
 };
-
