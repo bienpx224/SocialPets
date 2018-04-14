@@ -75,7 +75,8 @@ class Profile extends React.Component{
                               style={{cursor:"pointer"}} onClick={this.changePicture.bind(this)} />
 
                               <h3>{this.props.user.name}</h3>
-                              <p className="text-muted">Creative Director</p>
+                              <p className="text-muted">{this.props.user.email}</p>
+                              <p className="text-muted">{this.props.user.day_date+","+this.props.user.month_date+","+this.props.user.year_date}</p>
                             </div>
                           </div>
                           <div className="col-md-9">

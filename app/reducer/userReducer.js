@@ -32,6 +32,8 @@ var userReducer = (state = data, action)=>{
       return {...state, showPopupAddPet: true, popupPet:action.popupPet};
     case "CLOSE_POPUP_ADD_PET":
       return {...state, showPopupAddPet: false};
+    case "ADD_NEW_PET":
+      return {...state, listPet: [action.pet,...state.listPet]}
     default: return state;
   }
 }

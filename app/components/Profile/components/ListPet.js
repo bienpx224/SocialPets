@@ -85,7 +85,7 @@ class ListPet extends React.Component{
               <i className="icon ion-android-checkmark-circle"></i>
               Pets of {that.props.user.name}
               <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
-                <i className="ion-social-twitter" style={{color:"white"}}></i>Add pet
+                <i className="ion-social-octocat" style={{color:"white"}}></i>Add pet
               </button>
             </h4>
             <hr />
@@ -104,7 +104,7 @@ class ListPet extends React.Component{
             <i className="icon ion-android-checkmark-circle"></i>
             Pets of {that.props.user.name}
             <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
-              <i className="ion-social-twitter" style={{color:"white"}}></i>Add pet
+              <i className="ion-social-octocat" style={{color:"white"}}></i>Add pet
             </button>
           </h4>
           <hr />

@@ -1468,7 +1468,10 @@ function change_cover(user) {
 function get_pet(listPet) {
   return { type: "GET_PET", listPet: listPet };
 }
-module.exports = { close_popup_add_pet: close_popup_add_pet, open_popup_add_pet: open_popup_add_pet, get_pet: get_pet, login_error: login_error, set_user: set_user, login_success: login_success, register_error: register_error, close_popup_user: close_popup_user, open_popup_user: open_popup_user, open_popup_change_picture: open_popup_change_picture, close_popup_change_picture: close_popup_change_picture, change_picture: change_picture };
+function add_new_pet(pet) {
+  return { type: "ADD_NEW_PET", pet: pet };
+}
+module.exports = { add_new_pet: add_new_pet, close_popup_add_pet: close_popup_add_pet, open_popup_add_pet: open_popup_add_pet, get_pet: get_pet, login_error: login_error, set_user: set_user, login_success: login_success, register_error: register_error, close_popup_user: close_popup_user, open_popup_user: open_popup_user, open_popup_change_picture: open_popup_change_picture, close_popup_change_picture: close_popup_change_picture, change_picture: change_picture };
 
 /***/ }),
 /* 21 */
@@ -18823,7 +18826,7 @@ var Menu = function (_React$Component) {
               null,
               _react2.default.createElement(
                 'a',
-                { href: 'edit-profile-settings.html' },
+                null,
                 'Account Settings'
               )
             ),
@@ -18832,7 +18835,7 @@ var Menu = function (_React$Component) {
               null,
               _react2.default.createElement(
                 'a',
-                { href: 'edit-profile-password.html' },
+                null,
                 'Change Password'
               )
             )
@@ -18897,7 +18900,7 @@ var Menu = function (_React$Component) {
           { className: 'dropdown' },
           _react2.default.createElement(
             'a',
-            { href: 'contact.html' },
+            null,
             'Contact'
           )
         )
@@ -23861,7 +23864,7 @@ var RecommendFollow = function (_React$Component) {
               null,
               _react2.default.createElement(
                 'a',
-                { href: 'timeline.html' },
+                null,
                 this.props.followed.name
               )
             ),
@@ -23870,7 +23873,7 @@ var RecommendFollow = function (_React$Component) {
               null,
               _react2.default.createElement(
                 'a',
-                { href: 'timeline.html' },
+                null,
                 this.props.followed.email
               )
             ),
@@ -40521,7 +40524,7 @@ var Layout = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'content', id: 'top' },
+        { className: 'content' },
         _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(
           'a',
@@ -40584,6 +40587,8 @@ var _reactRouterDom = __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -40604,7 +40609,7 @@ var Header = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'header',
-        { id: 'header' },
+        _defineProperty({ id: 'header' }, 'id', 'top'),
         _react2.default.createElement(
           'nav',
           { className: 'navbar navbar-default navbar-fixed-top menu' },
@@ -41272,8 +41277,8 @@ var FormReg = function (_React$Component) {
 
     _this.alertOptions = {
       offset: 14,
-      position: 'top right',
-      theme: 'light',
+      position: 'bottom left',
+      theme: 'dark',
       time: 3000,
       transition: 'scale'
     };
@@ -46941,8 +46946,8 @@ var FormLogin = function (_React$Component) {
     _this.alertOptions = {
       offset: 14,
       position: 'bottom left',
-      theme: 'light',
-      time: 1000,
+      theme: 'dark',
+      time: 2000,
       transition: 'scale'
     };
 
@@ -61428,7 +61433,12 @@ var Profile = function (_React$Component) {
                       _react2.default.createElement(
                         'p',
                         { className: 'text-muted' },
-                        'Creative Director'
+                        this.props.user.email
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        { className: 'text-muted' },
+                        this.props.user.day_date + "," + this.props.user.month_date + "," + this.props.user.year_date
                       )
                     )
                   ),
@@ -63787,7 +63797,7 @@ var ListPet = function (_React$Component) {
             _react2.default.createElement(
               'button',
               { onClick: this.showPopupAddPet.bind(this), type: 'button', className: 'btn btn-success pull-right' },
-              _react2.default.createElement('i', { className: 'ion-social-twitter', style: { color: "white" } }),
+              _react2.default.createElement('i', { className: 'ion-social-octocat', style: { color: "white" } }),
               'Add pet'
             )
           ),
@@ -63818,7 +63828,7 @@ var ListPet = function (_React$Component) {
             _react2.default.createElement(
               'button',
               { onClick: this.showPopupAddPet.bind(this), type: 'button', className: 'btn btn-success pull-right' },
-              _react2.default.createElement('i', { className: 'ion-social-twitter', style: { color: "white" } }),
+              _react2.default.createElement('i', { className: 'ion-social-octocat', style: { color: "white" } }),
               'Add pet'
             )
           ),
@@ -63850,6 +63860,8 @@ module.exports = (0, _reactRedux.connect)(function (state) {
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -63876,20 +63888,96 @@ var Pet = function (_React$Component) {
   function Pet(props) {
     _classCallCheck(this, Pet);
 
-    return _possibleConstructorReturn(this, (Pet.__proto__ || Object.getPrototypeOf(Pet)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Pet.__proto__ || Object.getPrototypeOf(Pet)).call(this, props));
+
+    _this.alertOptions = {
+      offset: 14,
+      position: 'bottom left',
+      theme: 'dark',
+      time: 2000,
+      transition: 'scale'
+    };
+
+    _this.state = {
+      isActive: true
+    };
+    return _this;
   }
 
   _createClass(Pet, [{
+    key: 'deletePet',
+    value: function deletePet() {
+      var that = this;
+      var petId = this.props.data.id;
+      io.socket.post('/pet/deletePet', { petId: petId }, function (resData, jwres) {
+        if (resData.pet) {
+          that.msg.show('Success: You left that pet', {
+            type: 'success',
+            icon: _react2.default.createElement('img', { src: '/images/success.png' })
+          });
+          that.state.isActive = false;
+          that.setState(that.state);
+        } else if (resData.err) {
+          that.msg.show('ERROR: ' + resData.err, {
+            type: 'error',
+            icon: _react2.default.createElement('img', { src: '/images/error.png' })
+          });
+        } else {
+          alert('Có lỗi bất thường');
+        }
+      });
+    }
+  }, {
+    key: 'unDeletePet',
+    value: function unDeletePet() {
+      var that = this;
+      var petId = this.props.data.id;
+      io.socket.post('/pet/unDeletePet', { petId: petId }, function (resData, jwres) {
+        if (resData.pet) {
+          that.msg.show('Success: You came back to that pet ', {
+            type: 'success',
+            icon: _react2.default.createElement('img', { src: '/images/success.png' })
+          });
+          that.state.isActive = true;
+          that.setState(that.state);
+        } else if (resData.err) {
+          that.msg.show('ERROR: ' + resData.err, {
+            type: 'error',
+            icon: _react2.default.createElement('img', { src: '/images/error.png' })
+          });
+        } else {
+          alert('Có lỗi bất thường');
+        }
+      });
+    }
+  }, {
+    key: 'renderBtn',
+    value: function renderBtn() {
+      if (this.state.isActive === true) {
+        return _react2.default.createElement(
+          'button',
+          { title: 'give up pet', onClick: this.deletePet.bind(this), className: 'btn btn-danger cssDelete' },
+          _react2.default.createElement('span', { style: { fontSize: "20px" }, className: 'ion-close-circled pull-left' })
+        );
+      } else {
+        return _react2.default.createElement(
+          'button',
+          { title: 'Got it\'s back', onClick: this.unDeletePet.bind(this), className: 'btn btn-primary cssDelete' },
+          _react2.default.createElement('span', { style: { fontSize: "20px" }, className: 'ion-ios-heart pull-left' })
+        );
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var cssDelete = {
-        height: "100%",
-        width: "auto",
-        marginLeft: "20px"
-      };
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         { className: 'feed-item' },
+        _react2.default.createElement(_reactAlert2.default, _extends({ ref: function ref(a) {
+            return _this2.msg = a;
+          } }, this.alertOptions)),
         _react2.default.createElement(
           'div',
           { className: 'live-activity' },
@@ -63926,11 +64014,7 @@ var Pet = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'col-xs-2' },
-              _react2.default.createElement(
-                'button',
-                { style: cssDelete, className: 'btn btn-danger' },
-                _react2.default.createElement('span', { style: { fontSize: "20px" }, className: 'ion-close-circled pull-left' })
-              )
+              this.renderBtn()
             )
           ),
           _react2.default.createElement(
@@ -64030,9 +64114,9 @@ var PopupAddPet = function (_React$Component) {
         name: this.refs.name.value,
         type: this.refs.type.value,
         image: this.state.nameImg,
-        userId: this.props.user.id
+        userId: this.props.user.id,
+        isActive: true
       };
-      console.log(Pet);
       if (Pet.name.length === 0 || Pet.image === null || Pet.type.length === 0) {
         this.msg.show('ERROR: Not enough information for pet !! ', {
           type: 'error',
@@ -64068,7 +64152,7 @@ var PopupAddPet = function (_React$Component) {
                   icon: _react2.default.createElement('img', { src: '/images/success.png' })
                 });
 
-                // dispatch(add_new_post(resData.ok));
+                dispatch((0, _userAction.add_new_pet)(resData.ok));
 
                 that.handleCloseImage();
                 that.refs.name.value = "";
@@ -65580,6 +65664,8 @@ module.exports = test;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var data = {
   isLogin: false,
   user: {},
@@ -65617,6 +65703,8 @@ var userReducer = function userReducer() {
       return _extends({}, state, { showPopupAddPet: true, popupPet: action.popupPet });
     case "CLOSE_POPUP_ADD_PET":
       return _extends({}, state, { showPopupAddPet: false });
+    case "ADD_NEW_PET":
+      return _extends({}, state, { listPet: [action.pet].concat(_toConsumableArray(state.listPet)) });
     default:
       return state;
   }

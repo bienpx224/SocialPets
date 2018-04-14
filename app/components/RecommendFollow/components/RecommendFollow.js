@@ -35,8 +35,8 @@ class RecommendFollow extends React.Component{
       <div className="follow-user" style={{minWidth:"222px"}}>
         <img src={this.props.followed.picture} alt="" className="profile-photo-sm pull-left" />
         <div>
-          <h5><a href="timeline.html">{this.props.followed.name}</a></h5>
-          <h6><a href="timeline.html">{this.props.followed.email}</a></h6>
+          <h5><a >{this.props.followed.name}</a></h5>
+          <h6><a >{this.props.followed.email}</a></h6>
           <h6 className="red-text"><span  className="ion-star pull-left"></span>{this.props.followed.point}</h6>
             <button style={{padding:"1px 5px"}} onClick={this.handleFollow.bind(this)} className="btn-primary">
               <span className="ion-person-add pull-left"></span>Follow

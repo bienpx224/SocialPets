@@ -1,0 +1,160 @@
+{ 
+    "_id" : ObjectId("5ac9a60a9d3911e030e89fb6"), 
+    "userId" : ObjectId("5ac9a5419d3911e030e89fae"), 
+    "followed" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-08T05:18:02.574+0000"), 
+    "updatedAt" : ISODate("2018-04-08T05:18:02.574+0000")
+}
+{ 
+    "_id" : ObjectId("5ac9a6119d3911e030e89fb8"), 
+    "userId" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "followed" : ObjectId("5ac9a5419d3911e030e89fae"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-08T05:18:09.926+0000"), 
+    "updatedAt" : ISODate("2018-04-09T08:20:56.294+0000")
+}
+{ 
+    "_id" : ObjectId("5ac9a85c46236f084af6bbfa"), 
+    "userId" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "followed" : ObjectId("5ac9a55f9d3911e030e89faf"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-08T05:27:56.278+0000"), 
+    "updatedAt" : ISODate("2018-04-08T05:27:56.278+0000")
+}
+{ 
+    "_id" : ObjectId("5acb048de6dbdaf404d993cf"), 
+    "userId" : ObjectId("5ac9a56c9d3911e030e89fb0"), 
+    "followed" : ObjectId("5ac9a55f9d3911e030e89faf"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-09T06:13:33.529+0000"), 
+    "updatedAt" : ISODate("2018-04-09T06:13:33.529+0000")
+}
+{ 
+    "_id" : ObjectId("5acb0496e6dbdaf404d993d1"), 
+    "userId" : ObjectId("5ac9a56c9d3911e030e89fb0"), 
+    "followed" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-09T06:13:42.623+0000"), 
+    "updatedAt" : ISODate("2018-04-09T06:13:42.623+0000")
+}
+{ 
+    "_id" : ObjectId("5acb24bb01be42040f50cc6c"), 
+    "userId" : ObjectId("5acb242901be42040f50cc69"), 
+    "followed" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-09T08:30:51.182+0000"), 
+    "updatedAt" : ISODate("2018-04-09T08:30:51.182+0000")
+}
+{ 
+    "_id" : ObjectId("5acb24bd01be42040f50cc6e"), 
+    "userId" : ObjectId("5acb242901be42040f50cc69"), 
+    "followed" : ObjectId("5acb23dd01be42040f50cc65"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-09T08:30:53.942+0000"), 
+    "updatedAt" : ISODate("2018-04-09T08:30:53.942+0000")
+}
+{ 
+    "_id" : ObjectId("5acb26d79178704003af3f0d"), 
+    "userId" : ObjectId("5acb242901be42040f50cc69"), 
+    "followed" : ObjectId("5acb267e9178704003af3f09"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-09T08:39:51.504+0000"), 
+    "updatedAt" : ISODate("2018-04-09T08:39:51.504+0000")
+}
+{ 
+    "_id" : ObjectId("5acb28a561c290240502e33b"), 
+    "userId" : ObjectId("5acb267e9178704003af3f09"), 
+    "followed" : ObjectId("5acb242901be42040f50cc69"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-09T08:47:33.588+0000"), 
+    "updatedAt" : ISODate("2018-04-09T08:47:33.588+0000")
+}
+{ 
+    "_id" : ObjectId("5acc93a8d1db59bc2736570e"), 
+    "userId" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "followed" : ObjectId("5acb242901be42040f50cc69"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-10T10:36:24.213+0000"), 
+    "updatedAt" : ISODate("2018-04-10T10:36:24.213+0000")
+}
+{ 
+    "_id" : ObjectId("5acd66681ef29228074de392"), 
+    "userId" : ObjectId("5acd662c1ef29228074de38f"), 
+    "followed" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-11T01:35:36.233+0000"), 
+    "updatedAt" : ISODate("2018-04-11T01:35:36.233+0000")
+}
+{ 
+    "_id" : ObjectId("5acd666a1ef29228074de394"), 
+    "userId" : ObjectId("5acd662c1ef29228074de38f"), 
+    "followed" : ObjectId("5acb267e9178704003af3f09"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-11T01:35:38.112+0000"), 
+    "updatedAt" : ISODate("2018-04-11T01:35:38.112+0000")
+}
+{ 
+    "_id" : ObjectId("5ad01f0f61ad59a028d22d4a"), 
+    "userId" : ObjectId("5ad01eda61ad59a028d22d46"), 
+    "followed" : ObjectId("5acb242901be42040f50cc69"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-13T03:07:59.533+0000"), 
+    "updatedAt" : ISODate("2018-04-13T03:07:59.533+0000")
+}
+{ 
+    "_id" : ObjectId("5ad01f1161ad59a028d22d4c"), 
+    "userId" : ObjectId("5ad01eda61ad59a028d22d46"), 
+    "followed" : ObjectId("5acd662c1ef29228074de38f"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-13T03:08:01.301+0000"), 
+    "updatedAt" : ISODate("2018-04-13T03:08:17.857+0000")
+}
+{ 
+    "_id" : ObjectId("5ad01f1461ad59a028d22d4e"), 
+    "userId" : ObjectId("5ad01eda61ad59a028d22d46"), 
+    "followed" : ObjectId("5ac9a55f9d3911e030e89faf"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-13T03:08:04.085+0000"), 
+    "updatedAt" : ISODate("2018-04-13T03:08:04.085+0000")
+}
+{ 
+    "_id" : ObjectId("5ad01f1461ad59a028d22d50"), 
+    "userId" : ObjectId("5ad01eda61ad59a028d22d46"), 
+    "followed" : ObjectId("5ac9a5419d3911e030e89fae"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-13T03:08:04.640+0000"), 
+    "updatedAt" : ISODate("2018-04-14T03:44:38.648+0000")
+}
+{ 
+    "_id" : ObjectId("5ad181d1e24c985c143159ef"), 
+    "userId" : ObjectId("5ad180b1e24c985c143159e4"), 
+    "followed" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-14T04:21:37.033+0000"), 
+    "updatedAt" : ISODate("2018-04-14T04:21:37.033+0000")
+}
+{ 
+    "_id" : ObjectId("5ad181eae24c985c143159f1"), 
+    "userId" : ObjectId("5ad181c3e24c985c143159ed"), 
+    "followed" : ObjectId("5acb242901be42040f50cc69"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-14T04:22:02.728+0000"), 
+    "updatedAt" : ISODate("2018-04-14T04:22:02.728+0000")
+}
+{ 
+    "_id" : ObjectId("5ad181ebe24c985c143159f3"), 
+    "userId" : ObjectId("5ad181c3e24c985c143159ed"), 
+    "followed" : ObjectId("5ac9a5249d3911e030e89fad"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-14T04:22:03.581+0000"), 
+    "updatedAt" : ISODate("2018-04-14T04:22:03.581+0000")
+}
+{ 
+    "_id" : ObjectId("5ad181ede24c985c143159f5"), 
+    "userId" : ObjectId("5ad180b1e24c985c143159e4"), 
+    "followed" : ObjectId("5acb242901be42040f50cc69"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-14T04:22:05.876+0000"), 
+    "updatedAt" : ISODate("2018-04-14T04:22:05.876+0000")
+}

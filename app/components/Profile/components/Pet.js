@@ -5,16 +5,75 @@ import AlertContainer from 'react-alert';
 class Pet extends React.Component{
   constructor(props){
     super(props);
-  }
-
-  render(){
-    let cssDelete={
-      height:"100%",
-      width: "auto",
-      marginLeft: "20px",
+    this.state = {
+      isActive: true,
     }
+  }
+  alertOptions = {
+    offset: 14,
+    position: 'bottom left',
+    theme: 'dark',
+    time: 2000,
+    transition: 'scale'
+  }
+  deletePet(){
+    let that = this;
+    let petId = this.props.data.id;
+    io.socket.post('/pet/deletePet',{petId}, function(resData, jwres){
+      if(resData.pet){
+        that.msg.show('Success: You left that pet', {
+                          type: 'success',
+                          icon: <img src="/images/success.png" />
+        })
+        that.state.isActive = false;
+        that.setState(that.state);
+      }else if(resData.err){
+        that.msg.show('ERROR: '+resData.err, {
+                          type: 'error',
+                          icon: <img src="/images/error.png" />
+        })
+      }else{ alert('Có lỗi bất thường');}
+    })
+  }
+  unDeletePet(){
+    let that = this;
+    let petId = this.props.data.id;
+    io.socket.post('/pet/unDeletePet',{petId}, function(resData, jwres){
+      if(resData.pet){
+        that.msg.show('Success: You came back to that pet ', {
+                          type: 'success',
+                          icon: <img src="/images/success.png" />
+        })
+        that.state.isActive = true;
+        that.setState(that.state);
+      }else if(resData.err){
+        that.msg.show('ERROR: '+resData.err, {
+                          type: 'error',
+                          icon: <img src="/images/error.png" />
+        })
+      }else{ alert('Có lỗi bất thường');}
+    })
+  }
+  renderBtn(){
+    if(this.state.isActive === true){
+      return (
+        <button title="give up pet" onClick={this.deletePet.bind(this)} className="btn btn-danger cssDelete" >
+          <span style={{fontSize:"20px"}} className="ion-close-circled pull-left"></span>
+        </button>
+      )
+    }else{
+      return (
+        <button title="Got it's back" onClick={this.unDeletePet.bind(this)} className="btn btn-primary cssDelete" >
+          <span style={{fontSize:"20px"}} className="ion-ios-heart pull-left"></span>
+        </button>
+      )
+    }
+  }
+  render(){
+
     return(
       <div className="feed-item">
+      <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <div className="live-activity">
           <div className="col-xs-12">
             <div className="col-xs-3 profile-info">
@@ -26,9 +85,7 @@ class Pet extends React.Component{
               <p>Description: {this.props.data.description}</p>
             </div>
             <div className="col-xs-2">
-              <button style={cssDelete} className="btn btn-danger" >
-                <span style={{fontSize:"20px"}} className="ion-close-circled pull-left"></span>
-              </button>
+              {this.renderBtn()}
             </div>
           </div>
           <p className="text-muted">{this.props.data.createdAt}</p>

@@ -208,7 +208,7 @@ module.exports = {
 			}
 			list_id_following.push(userId);
 			User.find({id: {$nin: list_id_following}})
-			.limit(10)
+			.limit(5)
 			.sort({point: -1})
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
@@ -236,7 +236,7 @@ module.exports = {
 			}
 			list_id_following.push(userId);
 			User.find({ id: {$nin: list_id_following}, $or: [{"gender": new RegExp(user.gender)}, {"address":new RegExp(user.address)}, {"year_date": new RegExp(user.year_date)}  ] })
-			.limit(10)
+			.limit(8)
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
 				sails.log.info("Danh sach recommend_common: ", users.length);

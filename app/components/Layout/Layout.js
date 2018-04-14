@@ -10,7 +10,7 @@ class Layout extends React.Component{
   }
   render(){
     return(
-      <div className="content" id="top">
+      <div className="content">
 
       <Header />
 

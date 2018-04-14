@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Modal,Button} from 'react-bootstrap';
-import {close_popup_add_pet} from 'userAction';
+import {close_popup_add_pet, add_new_pet} from 'userAction';
 import AlertContainer from 'react-alert';
 import validateInfoUser from 'validateInfoUser';
 
@@ -34,9 +34,9 @@ class PopupAddPet extends React.Component{
       name: this.refs.name.value,
       type: this.refs.type.value,
       image: this.state.nameImg,
-      userId: this.props.user.id
+      userId: this.props.user.id,
+      isActive: true
     };
-    console.log(Pet);
     if(Pet.name.length === 0 || Pet.image === null || Pet.type.length === 0 ){
       this.msg.show('ERROR: Not enough information for pet !! ', {
                             type: 'error',
@@ -72,7 +72,7 @@ class PopupAddPet extends React.Component{
                                     icon: <img src="/images/success.png" />
                   })
 
-                  // dispatch(add_new_post(resData.ok));
+                  dispatch(add_new_pet(resData.ok));
 
                   that.handleCloseImage();
                   that.refs.name.value = "";

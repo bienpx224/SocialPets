@@ -15,8 +15,8 @@ class FormLogin extends React.Component{
   alertOptions = {
     offset: 14,
     position: 'bottom left',
-    theme: 'light',
-    time: 1000,
+    theme: 'dark',
+    time: 2000,
     transition: 'scale'
   }
   handleSubmit(event){

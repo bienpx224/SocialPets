@@ -10,8 +10,8 @@ class FormReg extends React.Component{
   }
   alertOptions = {
     offset: 14,
-    position: 'top right',
-    theme: 'light',
+    position: 'bottom left',
+    theme: 'dark',
     time: 3000,
     transition: 'scale'
   }

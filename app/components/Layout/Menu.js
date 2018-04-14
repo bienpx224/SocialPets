@@ -25,8 +25,8 @@ class Menu extends React.Component{
         <li className="dropdown">
           <a href="#" className="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="/images/down-arrow.png" alt="" /></span></a>
           <ul className="dropdown-menu login">
-            <li><a href="edit-profile-settings.html">Account Settings</a></li>
-            <li><a href="edit-profile-password.html">Change Password</a></li>
+            <li><a>Account Settings</a></li>
+            <li><a >Change Password</a></li>
           </ul>
         </li>
         <li className="dropdown">
@@ -38,7 +38,7 @@ class Menu extends React.Component{
             <li><Link to='/login'>Logout</Link></li>
           </ul>
         </li>
-        <li className="dropdown"><a href="contact.html">Contact</a></li>
+        <li className="dropdown"><a >Contact</a></li>
       </ul>
     )
   }

@@ -1,3 +1,4 @@
+.cssDelete{ height:100%; width: auto; margin-left: 20px };
 .input-group-lg{margin-bottom: 10px;}
 .history-temp{position: static; width: 592.5px; height: 370px; display: block; vertical-align: baseline; float: none;}
 .is_stuck{position: fixed; top: 70px; width: 592.5px;}
@@ -14,7 +15,7 @@
 .btn-facebook{background-color: #3b5998; color: #fff;}
 .btn-facebook:hover{color: #fff;}
 body{overflow: auto;}
-.back-to-top{position: fixed;bottom:0px; right:0px; width: 200px; height: 30px; padding: 0px 10px;text-align:center;color: black;background-color: #fff;}
+.back-to-top{z-index: 9990;position: fixed;bottom:0px; right:0px; width: 200px; height: 30px; padding: 0px 10px;text-align:center;color: black;background-color: #fff;}
 .tab-pane{color:#fff;}
 .ion-close-circled{cursor: pointer;}
 .ion-images [type=file]{cursor: pointer; display: block; min-height: 100%; min-width: 30%;max-width: 40%;
