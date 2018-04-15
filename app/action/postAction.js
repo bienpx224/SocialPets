@@ -15,7 +15,7 @@ function add_new_post(post){
 }
 function add_more_post(post){
   return{
-    type:"ADD_NEW_POST", post
+    type:"ADD_MORE_POST", post
   }
 }
 function add_more_my_post(post){

@@ -11,13 +11,13 @@ var postReducer = (state = data, action)=>{
     case "GET_POST_NEWSFEED":
       return {...state, postsNewsfeed: action.posts}
     case "ADD_NEW_POST":
-      return {...state, postsNewsfeed: [action.post,...state.postsNewsfeed]}
+      return {...state, postsNewsfeed: [action.post,...state.postsNewsfeed], listMyPost:[action.post,...state.listMyPost] }
     case "ADD_MORE_POST":
       return {...state, postsNewsfeed: [...state.postsNewsfeed,action.post]}
     case "LIST_MY_POST":
       return {...state, listMyPost: action.posts};
     case "ADD_MORE_MY_POST":
-      return {...state, listMyPost: [action.post,...state.listMyPost]}
+      return {...state, listMyPost: [...state.listMyPost,action.post]}
     default: return state;
   }
 }

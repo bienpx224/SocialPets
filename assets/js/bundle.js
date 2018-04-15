@@ -8147,7 +8147,7 @@ function add_new_post(post) {
 }
 function add_more_post(post) {
   return {
-    type: "ADD_NEW_POST", post: post
+    type: "ADD_MORE_POST", post: post
   };
 }
 function add_more_my_post(post) {
@@ -24201,7 +24201,7 @@ var Timeline = function (_React$Component) {
           'div',
           { className: 'col-md-8' },
           _react2.default.createElement(_Post2.default, null),
-          this.state.listMyPost.slice(0).reverse().map(function (i, index) {
+          this.state.listMyPost.map(function (i, index) {
             if (index === countPost - 1) {
               return _react2.default.createElement(
                 'div',
@@ -58718,7 +58718,7 @@ var Newsfeed = function (_React$Component) {
         if (resData.posts) {
           var listPostNewfeed = resData.posts;
           if (listPostNewfeed.length === 0) document.getElementById('show-more').style.display = 'none';
-          for (var i = listPostNewfeed.length - 1; i >= 0; i--) {
+          for (var i = 0; i <= listPostNewfeed.length - 1; i++) {
             that.state.total++;
             dispatch((0, _postAction.add_more_post)(listPostNewfeed[i]));
           }
@@ -58769,7 +58769,7 @@ var Newsfeed = function (_React$Component) {
             return _this2.msg = a;
           } }, this.alertOptions)),
         _react2.default.createElement(_Post2.default, null),
-        this.state.postsNewsfeed.slice(0).reverse().map(function (i, index) {
+        this.state.postsNewsfeed.map(function (i, index) {
           if (index === countPost - 1) return _react2.default.createElement(
             'div',
             { key: index },
@@ -65739,13 +65739,13 @@ var postReducer = function postReducer() {
     case "GET_POST_NEWSFEED":
       return _extends({}, state, { postsNewsfeed: action.posts });
     case "ADD_NEW_POST":
-      return _extends({}, state, { postsNewsfeed: [action.post].concat(_toConsumableArray(state.postsNewsfeed)) });
+      return _extends({}, state, { postsNewsfeed: [action.post].concat(_toConsumableArray(state.postsNewsfeed)), listMyPost: [action.post].concat(_toConsumableArray(state.listMyPost)) });
     case "ADD_MORE_POST":
       return _extends({}, state, { postsNewsfeed: [].concat(_toConsumableArray(state.postsNewsfeed), [action.post]) });
     case "LIST_MY_POST":
       return _extends({}, state, { listMyPost: action.posts });
     case "ADD_MORE_MY_POST":
-      return _extends({}, state, { listMyPost: [action.post].concat(_toConsumableArray(state.listMyPost)) });
+      return _extends({}, state, { listMyPost: [].concat(_toConsumableArray(state.listMyPost), [action.post]) });
     default:
       return state;
   }

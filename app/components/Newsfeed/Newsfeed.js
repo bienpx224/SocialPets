@@ -57,7 +57,7 @@ class Newsfeed extends React.Component{
       if(resData.posts){
         var listPostNewfeed = resData.posts;
         if(listPostNewfeed.length === 0) document.getElementById('show-more').style.display = 'none';
-        for(let i = listPostNewfeed.length-1; i >= 0; i--){
+        for(let i =0 ; i <= listPostNewfeed.length-1; i++){
           that.state.total ++;
           dispatch(add_more_post(listPostNewfeed[i]));
         }
@@ -101,7 +101,7 @@ class Newsfeed extends React.Component{
       <div className="col-md-7 static">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
-        {this.state.postsNewsfeed.slice(0).reverse().map(function(i,index){
+        {this.state.postsNewsfeed.map(function(i,index){
           if(index === countPost-1)
           return (
             <div key={index}>

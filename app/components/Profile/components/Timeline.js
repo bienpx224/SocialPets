@@ -86,7 +86,7 @@ class Timeline extends React.Component{
       <div className="col-md-3"></div>
       <div className="col-md-8">
               <Post />
-              {this.state.listMyPost.slice(0).reverse().map(function(i,index){
+              {this.state.listMyPost.map(function(i,index){
                 if(index === countPost-1){
                   return (
                     <div key={index}>
