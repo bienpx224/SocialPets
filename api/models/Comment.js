@@ -8,7 +8,9 @@
 module.exports = {
   connection: 'mongo',
   attributes: {
-
+    content:{ type:'string', maxLength: 1000},
+    isActive: {type: 'boolean'},
+    userId:{model:'user'},
+    postId:{ model: 'post'},
   }
 };
-

@@ -17,8 +17,7 @@ class TimelineContent extends React.Component{
                   <h5>{this.props.owner.name}</h5>
                   <p className="text-grey">Sometimes ago</p>
                 </div>
-                <NewsfeedContent key={this.props.key} content={this.props.post.content} image={this.props.post.image} title={this.props.post.title}
-                createdAt={this.props.post.createdAt} owner={this.props.owner} />
+                <NewsfeedContent key={this.props.key} data={this.props.post} owner={this.props.owner} />
 
           </div>
 

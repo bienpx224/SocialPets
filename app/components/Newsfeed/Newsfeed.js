@@ -105,14 +105,12 @@ class Newsfeed extends React.Component{
           if(index === countPost-1)
           return (
             <div key={index}>
-              <NewsfeedContent key={index} content={i.content} image={i.image} title={i.title}
-              createdAt={i.createdAt} owner={i.userId} />
+              <NewsfeedContent key={index} data={i} owner={i.userId} />
               <input id="show-more" type="button" className="show-more btn btn-success" defaultValue="Show more" onClick={that.getMorePost} />
             </div>
           )
           else return(
-              <NewsfeedContent key={index} content={i.content} image={i.image} title={i.title}
-              createdAt={i.createdAt} owner={i.userId} />
+              <NewsfeedContent key={index} data={i} owner={i.userId} />
           )
         })
         }

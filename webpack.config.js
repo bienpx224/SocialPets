@@ -58,6 +58,7 @@ module.exports = {
           FormLoginReg :'app/components/Homepage/FormLoginReg.js',
           FormLogin:'app/components/Homepage/FormLogin.js',
           FormReg: 'app/components/Homepage/FormReg.js',
+          Notify: 'app/components/Homepage/Notify.js',
           //MenuLeft
           MenuLeft:'app/components/MenuLeft/MenuLeft.js',
           ChatList:'app/components/MenuLeft/components/ChatList.js',
@@ -65,6 +66,7 @@ module.exports = {
           //Newsfeed
           Newsfeed:'app/components/Newsfeed/Newsfeed.js',
           NewsfeedContent:'app/components/Newsfeed/components/NewsfeedContent.js',
+          Comment:'app/components/Newsfeed/components/Comment.js',
           Post:'app/components/Newsfeed/components/Post.js',
           //ChatRoom
           ChatRoom : 'app/components/ChatRoom/ChatRoom.js',

@@ -147,7 +147,7 @@ module.exports = {
 
   get_followers: function(req,res){
     var userId = req.body.userId;
-		sails.log.info(" Có yêu cầu lấy danh sách người đang theo dõi user này : ",userId);
+		// sails.log.info(" Có yêu cầu lấy danh sách người đang theo dõi user này : ",userId);
     User.findOne({id: userId})
     .populate('followers')
     .then( (user)=>{  // Thông tin người dùng
@@ -172,7 +172,7 @@ module.exports = {
 
   get_followings: function(req,res){
 		var userId = req.body.userId;
-		sails.log.info(" Có yêu cầu lấy danh sách đang được user này theo dõi : ",userId);
+		// sails.log.info(" Có yêu cầu lấy danh sách đang được user này theo dõi : ",userId);
     User.findOne({id: userId})
     .populate('followings')
     .then( (user)=>{  // Thông tin người dùng
