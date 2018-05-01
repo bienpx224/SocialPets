@@ -6,9 +6,16 @@
  */
 
 module.exports = {
-
+  connection: 'mongo',
   attributes: {
-
+    uid : 'STRING',
+    userId:{ model: 'user' },
+    action : {type:'string'},
+    isRead: {type: 'boolean'},
+    isActive : {type: 'boolean'},
+    related_petId : {model: 'pet'},
+    related_postId : {model: 'post'},
+    related_userId : {model: 'user'},
+    related_cmtId  : {model: 'comment'}
   }
 };
-

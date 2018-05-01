@@ -7,6 +7,7 @@ import {set_user,login_error,login_success} from 'userAction';
 import MenuLeft from 'MenuLeft';
 import Newsfeed from 'Newsfeed';
 import ChatRoom from 'ChatRoom';
+import Notify from 'Notify';
 import IndexListRecommend from 'IndexListRecommend';
 import {get_post_err, get_postNewsfeed} from 'postAction';
 
@@ -18,10 +19,11 @@ class Home extends React.Component{
     offset: 14,
     position: 'bottom left',
     theme: 'light',
-    time: 1000,
+    time: 3000,
     transition: 'scale'
   }
   componentDidMount(){
+    document.getElementById('sound').play();
     var {dispatch} = this.props;
     let that = this;
     if(localStorage.email){
@@ -38,13 +40,28 @@ class Home extends React.Component{
         dispatch(login_success(resData.user));
       }
     });
+
+    io.socket.on('notify', (data) => {
+      let related_userId = data.data.related_userId;
+      if(related_userId.id === this.props.user.id){
+        that.msg.show(<Notify data={data.data} />)
+        document.getElementById('sound').play();
+        if(!document.hasFocus()){
+        }
+      }
+    });
+
   }
 
 
   render(){
     return(
     <div className="container" style={{marginLeft:"0%"}}>
-
+      <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+      <audio id='sound' preload='auto'>
+        <source src='/sound/notify.mp3' type='audio/mpeg' />
+        <embed hidden='true' autostart='false' loop='false' src='/sound/notify.mp3' />
+      </audio>
       <MenuLeft />
       <Switch>
               <Route  exact path="/" component={Newsfeed} />

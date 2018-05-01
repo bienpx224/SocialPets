@@ -41,6 +41,19 @@ module.exports = {
       }
     })
   },
+  getUserById: function(req,res){
+    let {userId} = req.body;
+    User.findOne({id:userId}, function(err, user){
+      if(err){
+        return res.send({error: err});
+      }
+      if(!user){
+        return res.send({err: "notFound"});
+      }else{
+        return res.send({user: user});
+      }
+    })
+  },
   register: function(req,res){
     var Obj = req.body;
     sails.log.info("Có yêu cầu đăng ký tài khoản : ", Obj.name);

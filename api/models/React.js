@@ -13,7 +13,6 @@ module.exports = {
     },
     userId:{
       model: 'user'
-    },
-    react:{ type: 'boolean' }
+    }
   }
 };

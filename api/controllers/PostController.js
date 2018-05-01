@@ -78,7 +78,7 @@ module.exports = {
     let {userId, skip} = req.body;
     if(!userId) res.send({err: "Không có userId"});
     User.findOne({id: userId})
-		.populate('followings')
+		.populateAll()
 		.then( (user)=>{
 			let list_following = user.followings;
 			let list_id_following = [];
@@ -87,12 +87,12 @@ module.exports = {
 			}
 			list_id_following.push(userId, skip);
 			Post.find({ userId: {$in: list_id_following} })
-      .populate('userId')
+      .populateAll()
       .sort({createdAt: -1, updatedAt: -1})
       .skip(skip)
 			.limit(10)
 			.then( (posts)=>{
-			  sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
+			  // sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
 				return res.send({posts: posts})
 			})
 			.catch( (err) =>{ res.send({err:"Có lỗi tìm posts"})} )
@@ -105,7 +105,7 @@ module.exports = {
     let {userId,skip} = req.body;
     if(!userId) return res.send({err: "Không có userId"});
     Post.find({userId})
-    .populate('userId')
+    .populateAll()
     .sort({createdAt: -1, updatedAt: -1})
     .limit(10)
     .skip(skip)

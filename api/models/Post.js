@@ -13,12 +13,7 @@ module.exports = {
     petRelate:{ model: 'pet'},
     userId:{ model:'user' },
     react:{ collection:'react', via:'postId' },
-    // dislike:{
-    //   collection:'dislike', via:'postId'
-    // },
-    // comments:{
-    //   collection:'comment', via:'postId'
-    // }
+    comments:{ collection:'comment', via:'postId' }
 
   }
 };
