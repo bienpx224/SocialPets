@@ -10,7 +10,7 @@ class Notify extends React.Component{
     return(
         <div className="post-comment">
           <img src={this.props.data.userId.picture} alt="" className="profile-photo-sm" />
-          <p><a className="profile-link">{this.props.data.related_userId.name} </a><i className="em em-laughing"></i> {"đã "+this.props.data.action + " của bạn"} </p>
+          <p><a className="profile-link">{this.props.data.userId.name} </a><i className="em em-laughing"></i> {"đã "+this.props.data.action + " của bạn"} </p>
         </div>
     )
   }

@@ -22,7 +22,7 @@ module.exports = {
         return res.send({err: err});
       }
       if(post){
-        Post.findOne({id: post.id}).populate('userId')
+        Post.findOne({id: post.id}).populateAll()
         .then( (newPost)=>{
           sails.log.info("Đăng bài thành công : ", newPost.content);
           var point = parseInt(newPost.userId.point) + 3;

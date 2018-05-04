@@ -26,6 +26,7 @@ module.exports = {
     address:{type:'string',maxLength: 255},
     country:{type:'string',maxLength: 255},
     isActive:{type: 'boolean'},
+    isAdmin : {type: 'boolean'},
     isOnline:{type:'boolean'},
     description:{type:'string',maxLength: 255},
     job:{type:'string',maxLength: 10},

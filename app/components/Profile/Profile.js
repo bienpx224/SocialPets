@@ -8,9 +8,6 @@ import {set_user, open_popup_user,get_post_err, open_popup_change_picture,login_
 import {get_alldata_user} from 'apiUser';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
-var {Provider} = require('react-redux');
-var store = require('store');
-
 class Profile extends React.Component{
   constructor(props){
     super(props);

@@ -59,6 +59,7 @@ module.exports = {
           FormLogin:'app/components/Homepage/FormLogin.js',
           FormReg: 'app/components/Homepage/FormReg.js',
           Notify: 'app/components/Homepage/Notify.js',
+          IndexHome: 'app/components/Homepage/IndexHome.js',
           //MenuLeft
           MenuLeft:'app/components/MenuLeft/MenuLeft.js',
           ChatList:'app/components/MenuLeft/components/ChatList.js',

@@ -4,10 +4,16 @@
  * @description :: Server-side logic for managing friends
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+let request = require('request');
 module.exports = {
 	follow: function(req,res){
-    let {userId, followed} = req.body;
+		let {userId, followed} = req.body;
+		url_request = Config.url_local;
+		//////////////////////////////////////   Tạo Inbox giữa 2 người này //////////////////////////
+		request.post({url:url_request+'/inbox/createInbox', form:{first_userId: userId, second_userId: followed, isActive:true, messageIdLatest:""} }, function(err,httpResponse,body){
+			sails.log.info(body);
+		});
+
 		sails.log.info("Có yêu cầu follow của "+userId+" gửi cho "+followed+" !");
     Follow.findOne({userId, followed})
     .then( (follow)=>{

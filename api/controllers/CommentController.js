@@ -50,7 +50,6 @@ module.exports = {
 							if(!notification2){
 								sails.log.error("không lấy được Notify");
 							}else{
-								sails.log.info("lấy notify : ", notification2);
 								sails.io.sockets.emit('notify', {userId, data: notification2});
 							}
 						})

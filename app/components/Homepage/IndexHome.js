@@ -1,18 +1,14 @@
-/////////////////////// KHOONG DUNG DEN COMPONENT NAY NUA //////////////////////////
-
 import React from 'react';
 import {connect} from 'react-redux';
+import Newsfeed from 'Newsfeed';
 import Login from 'Login';
-import Home from 'Home';
-import {set_user,login_error,login_success} from 'userAction';
+import ChatRoom from 'ChatRoom';
+import {login_error,login_success} from 'userAction';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
-class Homepage extends React.Component{
+class IndexHome extends React.Component{
   constructor(props){
     super(props);
-    this.state={
-      isLogin: false
-    }
   }
   componentDidMount(){
     var {dispatch} = this.props;
@@ -32,25 +28,30 @@ class Homepage extends React.Component{
       }
     });
   }
-
   componentWillReceiveProps(nextProps){
     this.setState({...this.state,isLogin: nextProps.isLogin});
   }
   render(){
-    var renderContent = null;
-    if(this.state.isLogin){
-      renderContent = <Home />;
+    if(!this.props.isLogin){
+      return ( <Login />)
     }else{
-      renderContent = <Login />;
+      return(
+        <div>
+          <Switch>
+                <Route  exact path="/" component={Newsfeed} />
+                <Route  exact path="/home" component={Newsfeed} />
+                <Route  exact path="/newsfeed" component={Newsfeed} />
+                <Route  exact path="/newsfeed/notify" component={ChatRoom} />
+                <Route  exact path="/newsfeed/chatroom" component={ChatRoom} />
+                <Route render={function(){
+                  return <p> not found in home</p>
+                } } />
+          </Switch>
+        </div>
+      )
     }
-
-    return(
-      <div>
-        {renderContent}
-      </div>
-    )
   }
 }
 module.exports = withRouter(connect( function(state){
-  return {isLogin: state.userReducer.isLogin};
-})(Homepage));
+  return {user: state.userReducer.user,isLogin: state.userReducer.isLogin};
+})(IndexHome));

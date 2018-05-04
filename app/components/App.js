@@ -23,12 +23,12 @@ class App extends React.Component{
             <Router history={hashHistory}>
                   <Layout>
                    <Switch>
-                      <Route   exact path="/" component={Homepage}/>
-                      <Route   path="/home" component={Homepage}/>
-                      <Route   path="/newsfeed" component={Homepage}/>
-                      <Route   exact path="/test" component={Test}/>
-                      <Route   exact path="/login" component={Login} />
-                      <Route   path='/profile' component={Profile} />
+                      <Route  exact path="/" component={Home}/>
+                      <Route  path="/home" component={Home}/>
+                      <Route  path="/newsfeed" component={Home}/>
+                      <Route  exact path="/test" component={Test}/>
+                      <Route  exact path="/login" component={Login} />
+                      <Route  path='/profile' component={Profile} />
                       <Route render={function(){
                           return <p> not found</p>
                       } } />

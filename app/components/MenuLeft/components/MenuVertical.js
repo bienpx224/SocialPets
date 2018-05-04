@@ -46,19 +46,19 @@ class MenuVertical extends React.Component{
           <li>
             <i className="icon ion-ios-paper"></i>
             <div>
-              <Link to='/home/newsfeed'>Newsfeed</Link>
+              <Link to='/newsfeed'>Newsfeed</Link>
             </div>
           </li>
           <li>
             <i className="icon ion-chatboxes"></i>
             <div>
-              <Link to='/home/chatroom'>ChatRoom</Link>
+              <Link to='/newsfeed/chatroom'>ChatRoom</Link>
             </div>
           </li>
           <li>
             <i className="icon ion-ios-people"></i>
             <div>
-              <a href="#">People Nearby</a>
+              <Link to='/newsfeed/notify'>ChatRoom</Link>
             </div>
           </li>
           <li>

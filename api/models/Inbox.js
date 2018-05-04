@@ -6,9 +6,11 @@
  */
 
 module.exports = {
-
+  connection:'mongo',
   attributes: {
-
+    first_userId:{ model:'user' },
+    second_userId:{ model:'user' },
+    messageIdLatest: {model: 'message'},
+    isActive: {type: 'boolean'},
   }
 };
-
