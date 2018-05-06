@@ -24,12 +24,14 @@ module.exports = {
       followReducer : 'app/reducer/followReducer.js',
       postReducer : 'app/reducer/postReducer.js',
       historyReducer : 'app/reducer/historyReducer.js',
+      chatReducer : 'app/reducer/chatReducer.js',
       // action
       testAction : 'app/action/test.js',
       followAction : 'app/action/followAction.js',
       userAction : 'app/action/userAction.js',
       postAction : 'app/action/postAction.js',
       historyAction : 'app/action/historyAction.js',
+      chatAction : 'app/action/chatAction.js',
       // api
       apiUser: 'app/api/apiUser.js',
 
@@ -71,7 +73,9 @@ module.exports = {
           Post:'app/components/Newsfeed/components/Post.js',
           //ChatRoom
           ChatRoom : 'app/components/ChatRoom/ChatRoom.js',
-          MessageList : 'app/components/ChatRoom/components/MessageList.js',
+          InboxList : 'app/components/ChatRoom/components/InboxList.js',
+          Inbox : 'app/components/ChatRoom/components/Inbox.js',
+          SearchInbox : 'app/components/ChatRoom/components/SearchInbox.js',
           ChatMessage : 'app/components/ChatRoom/components/ChatMessage.js',
           //Profile
           IndexContent :'app/components/Profile/IndexContent.js',

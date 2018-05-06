@@ -1,3 +1,5 @@
+.border-chat{padding: 5px; border: 1px solid #6376d0; margin:-5px 0px 30px 0px; border-radius: 16px; overflow: hidden; min-width: fit-content;}
+.isChoose{background-color: #b9ccef80; margin: 0px 10px;}
 .cssDelete{ height:100%; width: auto; margin-left: 20px };
 .input-group-lg{margin-bottom: 10px;}
 .history-temp{position: static; width: 592.5px; height: 370px; display: block; vertical-align: baseline; float: none;}

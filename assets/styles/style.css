@@ -1090,7 +1090,7 @@ ul.online-users li span.online-dot{
 
 .follow-user{
   padding: 5px;
-  border: 1px solid #d5bbff;
+  border: 1px solid #6376d0;
   margin-bottom: 20px;
   border-radius: 8px;
   overflow: hidden;
@@ -1105,7 +1105,7 @@ ul.online-users li span.online-dot{
 .follow-user div::after{
   content: "";
   background: none;
-  border-top: 1px solid #f1f2f2;
+  border-top: 1px solid #6376d0;
   position: absolute;
   width: 100%;
   left: 0;
@@ -1306,7 +1306,7 @@ ul.online-users li span.online-dot{
 }
 
 .chat-room ul.contact-list li a .contact .msg-preview small{
-  position: absolute;
+  /* position: absolute; */
   top: 20px;
   right: 10px;
 }
@@ -1397,7 +1397,7 @@ ul.online-users li span.online-dot{
 }
 
 .chat-room .chat-body ul.chat-message li .chat-item .chat-item-header small{
-  position: absolute;
+  /* position: absolute; */
   top: 15px;
   right: 20px;
 }
@@ -1420,7 +1420,7 @@ ul.online-users li span.online-dot{
 }
 .scrollbar-wrapper.tab-content{
     overflow-y: auto;
-    height: 400px;
+    height: 450px;
 }
 
 .scrollbar-wrapper.contact-list{

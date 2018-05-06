@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
-import Post from 'Post';
-import MessageList from 'MessageList';
+import SearchInbox from 'SearchInbox';
+import InboxList from 'InboxList';
 import ChatMessage from 'ChatMessage';
 
 class ChatRoom extends React.Component{
@@ -11,11 +11,11 @@ class ChatRoom extends React.Component{
   }
   render(){
     return(
-          <div className="col-md-8 static">
-            <Post />
+          <div className="col-md-7 static">
+            <SearchInbox />
             <div className="chat-room">
               <div className="row">
-                <MessageList />
+                <InboxList />
                 <ChatMessage />
                 <div className="clearfix"></div>
               </div>

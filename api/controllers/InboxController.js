@@ -10,12 +10,14 @@ module.exports = {
     // let {first_userId, second_userId} = req.body;
 		let inbox_data = req.body;
 
-    Inbox.findOne({first_userId:inbox_data.first_userId, second_userId:inbox_data.second_userId})
+    Inbox.findOne( {$or:[{first_userId:inbox_data.first_userId, second_userId:inbox_data.second_userId},
+			 {second_userId:inbox_data.first_userId, first_userId:inbox_data.second_userId}] }
+		)
 		.populateAll()
     .then( (inbox)=>{
       if(inbox){
         if(inbox.isActive === true) {
-					sails.log.info("Đã có inbox người này rồi: ", inbox);
+					sails.log.info("Đã có inbox người này rồi: ");
 					return res.send({ok: 'Đã có inbox'});
 				}
       }else{
@@ -35,4 +37,32 @@ module.exports = {
     })
     .catch( err => res.send({err: "err:"+err}))
   },
+
+	getListInbox: function(req,res){
+		let {userId} = req.body;
+		Inbox.find({$or:[{first_userId:userId}, {second_userId: userId}]})
+		// Inbox.find({first_userId:userId, second_userId:userId})
+		.populateAll()
+		.sort({updatedAt: -1})
+		.then( (listInbox)=>{
+			if(listInbox){
+				sails.log.info("listInbox: ", listInbox.length);
+				return res.send({listInbox});
+			}else{ return res.send({err:"not found list inbox"})}
+		})
+		.catch( (err)=>{ return res.send({err:err})})
+	},
+	getInboxById: function(req,res){
+		let id = req.body.inboxId;
+		console.log(id);
+		Inbox.findOne({id})
+		.populateAll()
+		.then( (inboxData)=>{
+			if(inboxData){
+				sails.log.info("inboxNow: ", inboxData);
+				return res.send({inboxData});
+			}else{ return res.send({err:"not found list inbox"})}
+		})
+		.catch( (err)=>{ console.log(err); return res.send({err:err})})
+	},
 };

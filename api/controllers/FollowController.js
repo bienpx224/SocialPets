@@ -5,10 +5,10 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 let request = require('request');
+let url_request = Config.url_local;
 module.exports = {
 	follow: function(req,res){
 		let {userId, followed} = req.body;
-		url_request = Config.url_local;
 		//////////////////////////////////////   Tạo Inbox giữa 2 người này //////////////////////////
 		request.post({url:url_request+'/inbox/createInbox', form:{first_userId: userId, second_userId: followed, isActive:true, messageIdLatest:""} }, function(err,httpResponse,body){
 			sails.log.info(body);
@@ -90,6 +90,32 @@ module.exports = {
 		                }
 		              })
 
+									let notifyInfo = {
+										userId : data_follow.userId.id,
+										action : "Bắt đầu theo dõi",
+										isActive : true,
+										related_userId: data_follow.followed.id
+									}
+									Notification.create(notifyInfo, (err, notification)=>{
+										if(err) sails.log.info("Có lỗi khi tạo notify : ", err);
+										if(!notification){
+											sails.log.error("không tạo được Notify");
+										}else{
+											sails.log.info("Đã tạo thông báo thành công : ", notification.action);
+											Notification.findOne({id: notification.id})
+												.populateAll()
+												.then((notification2)=>{
+												if(!notification2){
+													sails.log.error("không lấy được Notify");
+												}else{
+													sails.io.sockets.emit('notify', {userId, data: notification2});
+												}
+											})
+											.catch( (err)=>{sails.log.info("Có lỗi khi lấy notify : ", err);})
+
+										}
+									})
+
 									User.update({id: userId_2}, {point: point_2})
 									.exec( (err, userUpdated_2)=>{
 										if(err) sails.log.error("Lỗi khi update");
@@ -167,7 +193,7 @@ module.exports = {
 				if(!followers) res.send({err: "Không tìm thấy danh sách followers!"});
         final_followers = followers;
         user.followers = final_followers;
-				sails.log.info("Danh sách những người  đang theo dõi user trên : ",final_followers.length);
+				// sails.log.info("Danh sách những người  đang theo dõi user trên : ",final_followers.length);
         res.send({ok:final_followers});
       })
       .catch( (err) => {res.send({err: "Lỗi danh sách list followers"})})
@@ -192,7 +218,7 @@ module.exports = {
 				if(!followings) res.send({err: "Không tìm thấy danh sách followers!"});
         final_followings = followings;
         user.followings = final_followings;
-				sails.log.info("Danh sách những người  đang theo dõi user trên : ",final_followings.length);
+				// sails.log.info("Danh sách những người  đang theo dõi user trên : ",final_followings.length);
         res.send({ok:final_followings});
       })
       .catch( (err) => {res.send({err: "Lỗi danh sách list followings"})})
@@ -218,7 +244,7 @@ module.exports = {
 			.sort({point: -1})
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
-				sails.log.info("Danh sach recommend_rank: ", users.length);
+				// sails.log.info("Danh sach recommend_rank: ", users.length);
 				return res.send({ok: users})
 			})
 			.catch( (err) =>{ res.send({err:err})} )
@@ -245,7 +271,7 @@ module.exports = {
 			.limit(8)
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
-				sails.log.info("Danh sach recommend_common: ", users.length);
+				// sails.log.info("Danh sach recommend_common: ", users.length);
 				return res.send({ok: users})
 			})
 			.catch( (err) =>{ res.send({err:err})} )

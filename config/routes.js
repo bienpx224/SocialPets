@@ -51,6 +51,12 @@ module.exports.routes = {
   '/newsfeed': {
     view: 'homepage'
   },
+  '/newsfeed/chatroom': {
+    view: 'homepage'
+  },
+  '/newsfeed/notify': {
+    view: 'homepage'
+  },
   '/profile': {
     view: 'homepage'
   },
