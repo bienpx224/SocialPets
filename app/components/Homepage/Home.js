@@ -12,6 +12,7 @@ import Notify from 'Notify';
 import IndexHome from 'IndexHome';
 import IndexListRecommend from 'IndexListRecommend';
 import {get_post_err, get_postNewsfeed} from 'postAction';
+import {get_list_inbox, get_list_msg, get_inbox} from 'chatAction';
 
 class Home extends React.Component{
   constructor(props){
@@ -45,15 +46,7 @@ class Home extends React.Component{
       }
     });
 
-    io.socket.on('notify', (data) => { console.log(data);
-      let related_userId = data.data.related_userId;
-      if((related_userId.id === this.props.user.id)&&(related_userId.id !== data.data.userId.id)){
-        that.msg.show(<Notify data={data.data} />)
-        document.getElementById('sound').play();
-        if(!document.hasFocus()){
-        }
-      }
-    });
+
   }
 
   componentWillReceiveProps(nextProps){
@@ -67,10 +60,7 @@ class Home extends React.Component{
       return(
       <div className="container" style={{marginLeft:"0%"}}>
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-        <audio id='sound' preload='auto'>
-          <source src='/sound/notify.mp3' type='audio/mpeg' />
-          <embed hidden='true' loop='false' src='/sound/notify.mp3' />
-        </audio>
+
         <MenuLeft />
 
         <IndexHome />
@@ -83,5 +73,5 @@ class Home extends React.Component{
   }
 }
 module.exports = withRouter(connect( function(state){
-  return {user: state.userReducer.user, isLogin: state.userReducer.isLogin};
+  return {user: state.userReducer.user, isLogin: state.userReducer.isLogin, inboxData:state.chatReducer.inboxData};
 })(Home));

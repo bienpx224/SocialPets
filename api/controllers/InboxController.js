@@ -41,12 +41,10 @@ module.exports = {
 	getListInbox: function(req,res){
 		let {userId} = req.body;
 		Inbox.find({$or:[{first_userId:userId}, {second_userId: userId}]})
-		// Inbox.find({first_userId:userId, second_userId:userId})
 		.populateAll()
 		.sort({updatedAt: -1})
 		.then( (listInbox)=>{
 			if(listInbox){
-				sails.log.info("listInbox: ", listInbox.length);
 				return res.send({listInbox});
 			}else{ return res.send({err:"not found list inbox"})}
 		})
@@ -54,12 +52,10 @@ module.exports = {
 	},
 	getInboxById: function(req,res){
 		let id = req.body.inboxId;
-		console.log(id);
 		Inbox.findOne({id})
 		.populateAll()
 		.then( (inboxData)=>{
 			if(inboxData){
-				sails.log.info("inboxNow: ", inboxData);
 				return res.send({inboxData});
 			}else{ return res.send({err:"not found list inbox"})}
 		})

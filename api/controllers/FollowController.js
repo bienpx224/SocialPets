@@ -179,7 +179,7 @@ module.exports = {
 
   get_followers: function(req,res){
     var userId = req.body.userId;
-		// sails.log.info(" Có yêu cầu lấy danh sách người đang theo dõi user này : ",userId);
+		sails.log.info(" Có yêu cầu lấy danh sách người đang theo dõi user này : ",userId);
     User.findOne({id: userId})
     .populate('followers')
     .then( (user)=>{  // Thông tin người dùng
@@ -240,7 +240,7 @@ module.exports = {
 			}
 			list_id_following.push(userId);
 			User.find({id: {$nin: list_id_following}})
-			.limit(5)
+			.limit(2)
 			.sort({point: -1})
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
@@ -268,7 +268,7 @@ module.exports = {
 			}
 			list_id_following.push(userId);
 			User.find({ id: {$nin: list_id_following}, $or: [{"gender": new RegExp(user.gender)}, {"address":new RegExp(user.address)}, {"year_date": new RegExp(user.year_date)}  ] })
-			.limit(8)
+			.limit(3)
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
 				// sails.log.info("Danh sach recommend_common: ", users.length);

@@ -1315,10 +1315,19 @@ ul.online-users li span.online-dot{
   background: red;
   text-align: center;
   border-radius: 4px;
-  padding: 1px 6px;
+  padding: 0px 6px;
   position: absolute;
   right: 10px;
   bottom: 20px;
+  color: #fff;
+}
+.chat-alert-menu{
+  background: red;
+  text-align: center;
+  border-radius: 4px;
+  padding: 1px 6px;
+  position: absolute;
+  right: 10px;
   color: #fff;
 }
 
@@ -1340,10 +1349,11 @@ ul.online-users li span.online-dot{
 .chat-room .chat-body ul.chat-message li{
   list-style: none;
   margin-bottom: 20px;
+  margin-right: 5%;
 }
 
 .chat-room .chat-body ul.chat-message li.left .chat-item{
-  background: rgba(141,198,63, .1);
+  background: rgba(146, 65, 18, 0.19);
   margin-left: 50px;
   padding: 5px 10px;
   position: relative;
@@ -1368,7 +1378,7 @@ ul.online-users li span.online-dot{
 }
 
 .chat-room .chat-body ul.chat-message li.right .chat-item{
-  background: rgba(39,170,225, .1);
+  background:rgba(39, 170, 225, 0.36);
   margin-right: 50px;
   padding: 5px 10px;
   position: relative;

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import Inbox from 'Inbox';
+import {get_list_inbox} from 'chatAction';
 
 class InboxList extends React.Component{
   constructor(props){
@@ -19,7 +20,8 @@ class InboxList extends React.Component{
   }
   componentDidMount(){
     let userId = this.props.user.id;
-    let that = this
+    let that = this;
+    let {dispatch} = this.props;
     io.socket.post('/inbox/getListInbox',{userId},function(resData, jwres){
       if(resData.err){
         that.msg.show('ERROR: '+resData.err, {
@@ -28,13 +30,18 @@ class InboxList extends React.Component{
         })
       }
       if(resData.listInbox){
-        that.state.listInbox = resData.listInbox;
-        that.setState(that.state);
+        dispatch(get_list_inbox(resData.listInbox));
       }
     })
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.listInbox){
+      this.state.listInbox = nextProps.listInbox;
+      this.setState(this.state);
+    }
+  }
   render(){
-    if(this.state.listInbox.length >0){
+    if(this.state.listInbox && this.state.listInbox.length >0){
       return(
               <div className="col-md-5">
               <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
@@ -62,7 +69,7 @@ class InboxList extends React.Component{
         <div className="col-md-5">
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
           <ul className="nav nav-tabs contact-list scrollbar-wrapper scrollbar-outer" id="style-11">
-            <h2>Không có cái gì hêt</h2>
+            <h2><i>You dont have conversaion</i></h2>
           </ul>
         </div>
       )
@@ -71,5 +78,5 @@ class InboxList extends React.Component{
 }
 
 module.exports = connect(function(state){
-return {user: state.userReducer.user};
+return {user: state.userReducer.user, listInbox:state.chatReducer.listInbox};
 })(InboxList);

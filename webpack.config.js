@@ -76,7 +76,8 @@ module.exports = {
           InboxList : 'app/components/ChatRoom/components/InboxList.js',
           Inbox : 'app/components/ChatRoom/components/Inbox.js',
           SearchInbox : 'app/components/ChatRoom/components/SearchInbox.js',
-          ChatMessage : 'app/components/ChatRoom/components/ChatMessage.js',
+          ListMessage : 'app/components/ChatRoom/components/ListMessage.js',
+          Message : 'app/components/ChatRoom/components/Message.js',
           //Profile
           IndexContent :'app/components/Profile/IndexContent.js',
           Profile : 'app/components/Profile/Profile.js',

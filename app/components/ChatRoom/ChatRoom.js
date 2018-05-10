@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import SearchInbox from 'SearchInbox';
 import InboxList from 'InboxList';
-import ChatMessage from 'ChatMessage';
+import ListMessage from 'ListMessage';
 
 class ChatRoom extends React.Component{
   constructor(props){
@@ -16,7 +16,7 @@ class ChatRoom extends React.Component{
             <div className="chat-room">
               <div className="row">
                 <InboxList />
-                <ChatMessage />
+                <ListMessage />
                 <div className="clearfix"></div>
               </div>
             </div>

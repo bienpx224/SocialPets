@@ -12,5 +12,6 @@ module.exports = {
     second_userId:{ model:'user' },
     messageIdLatest: {model: 'message'},
     isActive: {type: 'boolean'},
+    listMsg : {collection:'Message', via:'inboxId'},
   }
 };

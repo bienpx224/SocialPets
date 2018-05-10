@@ -1,13 +1,17 @@
 var data = {
   inboxData: {},
-  listMsg: [],
+  listInbox: [],
+  listMsg : [],
+  countMsgUnread : 0,
 };
 
 var chatReducer = (state = data, action)=>{
   switch(action.type){
     case "GET_INBOX":
-      return {...state, inboxData: action.inboxData};
-    case "GET_LISTMSG":
+      return {...state, inboxData: action.inboxData, listMsg: action.inboxData.listMsg};
+    case "GET_LIST_INBOX":
+      return {...state, listInbox: action.listInbox};
+    case "GET_LIST_MSG":
       return {...state, listMsg: action.listMsg};
     default: return state;
   }
