@@ -35,6 +35,8 @@ module.exports.routes = {
     controller: 'AuthController',
     action: 'logout'
   },
+
+
   '/home': {
     controller: 'HomeController',
     action: 'index'
@@ -75,7 +77,7 @@ module.exports.routes = {
   '/chatroom':{
     view:'homepage'
   },
-  '/roster/*':{
+  '/user':{
     view:'homepage'
   },
 

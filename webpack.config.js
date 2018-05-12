@@ -39,6 +39,7 @@ module.exports = {
       AppTest : 'components/App.js',
       Test : 'app/components/Test.js',
       App : 'app/components/App.js',
+      Notfound: 'app/components/Notfound.js',
           // Popup
           PopupUser : 'app/components/Popup/PopupUser.js',
           PopupChangePicture : 'app/components/Popup/PopupChangePicture.js',
@@ -93,6 +94,9 @@ module.exports = {
           Following: 'app/components/Profile/components/Following.js',
           Pet: 'app/components/Profile/components/Pet.js',
           ListPet: 'app/components/Profile/components/ListPet.js',
+          // User
+          User : 'app/components/User/User.js',
+          IndexUser : 'app/components/User/IndexUser.js',
           // RecommendFollow
           IndexListRecommend : 'app/components/RecommendFollow/IndexListRecommend.js',
           ListRecommendRank : 'app/components/RecommendFollow/ListRecommendRank.js',

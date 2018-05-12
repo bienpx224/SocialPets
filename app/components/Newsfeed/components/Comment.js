@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {set_user} from 'userAction';
+import {Link} from 'react-router-dom';
 
 class Comment extends React.Component{
   constructor(props){
@@ -27,8 +28,9 @@ class Comment extends React.Component{
     let name = this.state.load===false?this.props.data.userId:this.state.user.name;
     return(
         <div className="post-comment">
-          <img src={avatar} alt="" className="profile-photo-sm" />
-          <p><a className="profile-link">{name} </a><i className="em em-laughing"></i> {this.props.data.content} </p>
+          <Link to={"/user/"+this.state.user.email}><img src={avatar} alt="" className="profile-photo-sm" /></Link>
+          <p><Link to={"/user/"+this.state.user.email} className="profile-link">{name} </Link>
+          <i className="em em-laughing"></i> {this.props.data.content} </p>
         </div>
     )
   }

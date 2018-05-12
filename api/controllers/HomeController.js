@@ -11,6 +11,6 @@ module.exports = {
     // res.view({
     //   user: req.user
     // });
-    res.redirect('/');
+    res.view('/homepage');
   }
 };

@@ -33,7 +33,6 @@ class ListHistoryUser extends React.Component{
     let that = this;
     let {dispatch} = this.props;
     let skip = this.state.total;
-    this.setState({loading: true});
     io.socket.post('/history/getHistoryUser',{userId,skip},function(resData, jwres){
       if(resData.err){
         that.msg.show('ERROR: '+resData.err, {

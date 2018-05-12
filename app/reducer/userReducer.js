@@ -1,4 +1,5 @@
 var data = {
+  person: {},
   isLogin : false,
   user: {},
   listPet: [],
@@ -33,7 +34,10 @@ var userReducer = (state = data, action)=>{
     case "CLOSE_POPUP_ADD_PET":
       return {...state, showPopupAddPet: false};
     case "ADD_NEW_PET":
-      return {...state, listPet: [action.pet,...state.listPet]}
+      return {...state, listPet: [action.pet,...state.listPet]};
+    case "GET_PERSON":
+      return {...state, person : action.person};
+
     default: return state;
   }
 }

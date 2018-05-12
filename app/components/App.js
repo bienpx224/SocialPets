@@ -10,7 +10,8 @@ import Home from 'Home';
 import Profile from 'Profile';
 import Timeline from 'Timeline';
 import Information from 'Information';
-// import Message from 'Message';
+import User from 'User';
+import Notfound from 'Notfound';
 
 var {Provider} = require('react-redux');
 var store = require('store');
@@ -29,8 +30,9 @@ class App extends React.Component{
                       <Route  exact path="/test" component={Test}/>
                       <Route  exact path="/login" component={Login} />
                       <Route  path='/profile' component={Profile} />
+                      <Route  path='/user/:email' component={User} />
                       <Route render={function(){
-                          return <p> not found</p>
+                          return <Notfound />
                       } } />
                     </Switch>
                   </Layout>

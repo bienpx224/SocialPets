@@ -4,6 +4,9 @@ function login_error(){
 function set_user(user){
   return{ type:"SET_USER", user };
 }
+function get_person(person){
+  return{ type:"GET_PERSON", person };
+}
 function login_success(user){
   return{ type:"LOGIN_SUCCESS", user };
 }
@@ -18,9 +21,7 @@ function close_popup_user(){
   }
 }
 function open_popup_user(){
-  return{
-    type:"OPEN_POPUP_USER"
-  }
+  return{ type:"OPEN_POPUP_USER" }
 }
 function open_popup_change_picture(){
   return{type:"OPEN_POPUP_CHANGE_PICTURE"}
@@ -46,4 +47,4 @@ function get_pet(listPet){
 function add_new_pet(pet){
   return{type:"ADD_NEW_PET", pet: pet}
 }
-module.exports = {add_new_pet,close_popup_add_pet,open_popup_add_pet,get_pet,login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};
+module.exports = {get_person,add_new_pet,close_popup_add_pet,open_popup_add_pet,get_pet,login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};

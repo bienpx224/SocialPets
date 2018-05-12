@@ -57,7 +57,45 @@ body{
   font-size: 13px;
 }
 
+/*==================================================
+  404 Error page
+  ==================================================*/
+.error-page{
+  display: table;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
 
+.error-page .error-content{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.error-page .error-content img{
+  margin: auto;
+}
+
+.error-page .error-content h1.error-title{
+  font-family: "Agency FB";
+  color: #6d6e71;
+  font-size: 60px;
+}
+
+.error-page .error-content p{
+  font-size: 16px;
+}
+
+.error-page .error-content form .form-group{
+  width: 50%;
+  margin: 0 auto 15px;
+}
+
+.error-page .error-content form .form-group .form-control{
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 /*==================================================
   Typography
   ==================================================*/
@@ -1105,7 +1143,7 @@ ul.online-users li span.online-dot{
 .follow-user div::after{
   content: "";
   background: none;
-  border-top: 1px solid #6376d0;
+  /* border-top: 1px solid #6376d0; */
   position: absolute;
   width: 100%;
   left: 0;
@@ -1166,10 +1204,10 @@ ul.online-users li span.online-dot{
   ==================================================*/
 
 .post-content{
+  border: 1px solid #d3dfff;
   background: #f8f8f8;
   border-radius: 4px;
   width: 100%;
-  border: 1px solid #f1f2f2;
   margin-bottom: 20px;
   overflow: hidden;
   position: relative;

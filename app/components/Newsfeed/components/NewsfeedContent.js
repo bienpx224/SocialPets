@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {set_user} from 'userAction';
 import Comment from 'Comment';
+import {Link} from 'react-router-dom';
 
 class NewsfeedContent extends React.Component{
   constructor(props){
@@ -90,19 +91,19 @@ class NewsfeedContent extends React.Component{
       <div className="post-content">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <div className="post-container">
-          <img src={this.props.owner.picture} className="profile-photo-md pull-left" alt="" />
+          <Link to={"/user/"+this.props.owner.email} ><img src={this.props.owner.picture} className="profile-photo-md pull-left" alt="" /></Link>
           <div className="post-detail">
 
                   <div className="user-info">
-                    <h5><a href="#" className="profile-link">{this.props.owner.name}</a> <span className="following">following</span></h5>
-                    <p className="text-muted">Published a photo time: {this.props.data.createdAt}</p>
-                  </div>
+                    <h5><Link to={"/user/"+this.props.owner.email} className="profile-link" >{this.props.owner.name}</Link> <span className="following">following</span></h5>
 
-                  <div className="line-divider"></div>
-                  <img src={this.props.data.image} alt="" className="img-responsive post-image"/>
+                  </div>
                   <div className="post-text">
                     <p>{this.props.data.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p>
                   </div>
+                  <div className="line-divider"></div>
+                  <img src={this.props.data.image} alt="" className="img-responsive post-image"/>
+                  <p className="text-muted">Published at time: {this.props.data.createdAt}</p>
                   <div className="">
                     {renderBtnReact}
                   </div>

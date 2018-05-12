@@ -16,24 +16,45 @@ class Timeline extends React.Component{
     }
     this.getMorePost = this.getMorePost.bind(this);
   }
-  componentDidMount(){
-    this.getListMyPost(this.props.user);
+  componentWillReceiveProps(nextProps){ console.log("next: ", nextProps);
+    if(this.props.person !== nextProps.person ){
+      this.getListMyPost(nextProps.person.id);
+    }
+    if(nextProps.listMyPost){
+      this.setState({...this.state, listMyPost : nextProps.listMyPost});
+    }
   }
-  getListMyPost(user){
+  componentDidMount(){
+    let id = "";
+    if(this.props.type === "person"){
+      id = this.props.person?this.props.person.id:"";
+    }else{
+      id = this.props.user?this.props.user.id:"";
+    }
+    console.log(id);
+    this.getListMyPost(id);
+  }
+  getListMyPost(id){
+    console.log("getList");
     let {dispatch} = this.props;
     let that = this;
-    io.socket.post('/post/getListMyPost',{userId: this.props.user.id, skip: this.state.total},function(resData, jwres){
+    io.socket.post('/post/getListMyPost',{userId:id, skip: this.state.total},function(resData, jwres){
       if(resData.posts){
         dispatch(list_my_post(resData.posts));
         return that.setState({...that.state,loading: false, total: resData.posts.length});
       }else{
         dispatch(list_my_post([]));
-        return that.setState({...that.state,loading: false, total: resData.posts.length});
+        return that.setState({...that.state,loading: false, total: 0});
       }
     });
   }
   getMorePost(){
-    let {id}= this.props.user;
+    let id = "";
+    if(this.props.type === "person" && this.props.person){
+      id = this.props.person.id;
+    }else if(this.props.user){
+      id = this.props.user.id;
+    }
     var that = this;
     let {dispatch} = this.props;
     io.socket.post('/post/getListMyPost',{userId: id, skip: this.state.total},function(resData, jwres){
@@ -51,10 +72,8 @@ class Timeline extends React.Component{
       }
     })
   }
-  componentWillReceiveProps(nextProps){
-    this.setState({...this.state, listMyPost : nextProps.listMyPost});
-  }
   render(){
+    let renderPost = this.props.type==="person"?<div className="create-post"></div>:<Post/>;
     let that = this;
     var countPost = this.state.listMyPost.length;
     if(this.state.loading){
@@ -62,7 +81,7 @@ class Timeline extends React.Component{
         <div>
           <div className="col-md-3"></div>
           <div className="col-md-8">
-              <Post />
+              {renderPost}
               <ReactPlaceholder ready={false} type="media" rows={7} showLoadingAnimation={true}>
                 <h3></h3>
               </ReactPlaceholder>
@@ -75,7 +94,7 @@ class Timeline extends React.Component{
         <div>
           <div className="col-md-3"></div>
           <div className="col-md-8">
-              <Post />
+              {renderPost}
               <h3> Nothing to show !!! </h3>
           </div>
         </div>
@@ -85,7 +104,7 @@ class Timeline extends React.Component{
     <div>
       <div className="col-md-3"></div>
       <div className="col-md-8">
-              <Post />
+              {renderPost}
               {this.state.listMyPost.map(function(i,index){
                 if(index === countPost-1){
                   return (
@@ -103,5 +122,5 @@ class Timeline extends React.Component{
   }
 }
 module.exports = connect( function(state){
-  return {user: state.userReducer.user, listMyPost: state.postReducer.listMyPost};
+  return {user: state.userReducer.user, listMyPost: state.postReducer.listMyPost, person: state.userReducer.person};
 })(Timeline);
