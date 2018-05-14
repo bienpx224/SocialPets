@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
+import time from 'time-ago';
 
 class Message extends React.Component{
   constructor(props){
@@ -21,8 +22,16 @@ class Message extends React.Component{
   render(){
     let userId = this.props.user.id;
     let renderPos = (userId===this.props.data.send_userId)?"right":"left";
-    let date = new Date(this.props.data.createdAt);
-    let renderCreateTime = date.getTime();
+    var date = new Date(this.props.data.createdAt);
+    let timeMsg = date.getTime();
+    console.log("timeMsg: ", timeMsg);
+    var date = new Date();
+    let timeNow = date.getTime();
+    console.log("timeNow: ", timeNow);
+    let timeDiff = timeNow - timeMsg;
+    timeDiff = Math.round(timeDiff) ;
+    console.log("timeDiff: ", timeDiff);
+    let renderCreateTime = time.ago(timeNow-timeDiff);
     let renderImageF = ()=>{
       if(userId === this.props.data.send_userId){
         if(userId === this.props.inbox.first_userId.id){

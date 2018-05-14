@@ -11,7 +11,7 @@ class MenuLeft extends React.Component{
   }
   render(){
     return(
-      <div className="col-md-3 static scrollbar" id="style-11">
+      <div className=" fixed-menu col-md-3 static scrollbar" id="style-11" >
         <MenuVertical />
         <ChatList />
       </div>

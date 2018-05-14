@@ -1,0 +1,33 @@
+{ 
+    "_id" : ObjectId("5ad2da2babf77f3023437072"), 
+    "description" : "bé 6 tháng tuổi, kute đáng yêu ", 
+    "name" : "Meow Lucky", 
+    "type" : "cat", 
+    "image" : "https://i.imgur.com/7PbvMCU.jpg", 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-15T04:50:51.943+0000"), 
+    "updatedAt" : ISODate("2018-04-15T04:50:51.943+0000")
+}
+{ 
+    "_id" : ObjectId("5ad2da49abf77f3023437074"), 
+    "description" : "6 tháng tuổi, chị em với bé Lucky", 
+    "name" : "Bé Bông lan", 
+    "type" : "cat", 
+    "image" : "https://i.imgur.com/6EvBdRN.jpg", 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-15T04:51:21.525+0000"), 
+    "updatedAt" : ISODate("2018-04-15T04:51:21.525+0000")
+}
+{ 
+    "_id" : ObjectId("5ad2db41abf77f3023437088"), 
+    "description" : "", 
+    "name" : "Quàng thượng", 
+    "type" : "cat", 
+    "image" : "https://i.imgur.com/9l3gwSD.jpg", 
+    "userId" : ObjectId("5ad2d8a7abf77f302343705b"), 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-04-15T04:55:29.436+0000"), 
+    "updatedAt" : ISODate("2018-04-15T04:55:29.436+0000")
+}

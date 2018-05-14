@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Newsfeed from 'Newsfeed';
 import Login from 'Login';
 import ChatRoom from 'ChatRoom';
+import Notfound from 'Notfound';
 import {login_error,login_success} from 'userAction';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
@@ -36,7 +37,6 @@ class IndexHome extends React.Component{
       return ( <Login />)
     }else{
       return(
-        <div>
           <Switch>
                 <Route  exact path="/" component={Newsfeed} />
                 <Route  exact path="/home" component={Newsfeed} />
@@ -44,10 +44,9 @@ class IndexHome extends React.Component{
                 <Route  exact path="/newsfeed/notify" component={ChatRoom} />
                 <Route  exact path="/newsfeed/chatroom" component={ChatRoom} />
                 <Route render={function(){
-                  return <p> not found in home</p>
+                  return <Notfound />
                 } } />
           </Switch>
-        </div>
       )
     }
   }

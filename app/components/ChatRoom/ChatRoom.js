@@ -11,7 +11,7 @@ class ChatRoom extends React.Component{
   }
   render(){
     return(
-          <div className="col-md-7 static">
+          <div className="col-md-7 static fixed-content">
             <SearchInbox />
             <div className="chat-room">
               <div className="row">

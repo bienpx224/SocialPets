@@ -13,7 +13,7 @@ class IndexListRecommend extends React.Component{
   }
   render(){
     return(
-      <div className="col-md-2 static">
+      <div className=" fixed-recommend col-md-2" >
         <ListRecommendRank />
         <hr className="hr-style" style={{width: "222px"}} />
         <ListRecommendCommon />
