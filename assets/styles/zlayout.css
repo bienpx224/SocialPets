@@ -1,6 +1,6 @@
 @media only screen and (min-width: 869px) {
    .fixed-menu { position: fixed; left: 0;}
-   .fixed-content { margin-left: 26%;}
+   .fixed-content { margin-left: 26%; min-height: 500px;}
    .fixed-recommend { position: fixed; right: 5%;}
 }
 .border-chat{padding: 5px; margin:-5px 0px 30px 0px; border-radius: 16px; overflow: hidden; min-width: fit-content;}

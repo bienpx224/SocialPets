@@ -4,6 +4,7 @@ import Newsfeed from 'Newsfeed';
 import Login from 'Login';
 import ChatRoom from 'ChatRoom';
 import Notfound from 'Notfound';
+import Notification from 'Notification';
 import {login_error,login_success} from 'userAction';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
@@ -43,6 +44,7 @@ class IndexHome extends React.Component{
                 <Route  exact path="/newsfeed" component={Newsfeed} />
                 <Route  exact path="/newsfeed/notify" component={ChatRoom} />
                 <Route  exact path="/newsfeed/chatroom" component={ChatRoom} />
+                <Route  exact path="/newsfeed/notification" component={Notification} />
                 <Route render={function(){
                   return <Notfound />
                 } } />

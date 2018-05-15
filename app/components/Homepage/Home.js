@@ -46,7 +46,6 @@ class Home extends React.Component{
       }
     });
 
-
   }
 
   componentWillReceiveProps(nextProps){

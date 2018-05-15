@@ -47,4 +47,10 @@ function get_pet(listPet){
 function add_new_pet(pet){
   return{type:"ADD_NEW_PET", pet: pet}
 }
-module.exports = {get_person,add_new_pet,close_popup_add_pet,open_popup_add_pet,get_pet,login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};
+function get_notify(listNotify){
+  return{type:"GET_NOTIFY", listNotify: listNotify}
+}
+function add_notify(notify){
+  return{type:"ADD_NOTIFY", notify: notify}
+}
+module.exports = {add_notify,get_notify,get_person,add_new_pet,close_popup_add_pet,open_popup_add_pet,get_pet,login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};

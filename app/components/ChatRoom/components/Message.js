@@ -24,14 +24,7 @@ class Message extends React.Component{
     let renderPos = (userId===this.props.data.send_userId)?"right":"left";
     var date = new Date(this.props.data.createdAt);
     let timeMsg = date.getTime();
-    console.log("timeMsg: ", timeMsg);
-    var date = new Date();
-    let timeNow = date.getTime();
-    console.log("timeNow: ", timeNow);
-    let timeDiff = timeNow - timeMsg;
-    timeDiff = Math.round(timeDiff) ;
-    console.log("timeDiff: ", timeDiff);
-    let renderCreateTime = time.ago(timeNow-timeDiff);
+    let renderCreateTime = time.ago(new Date()-(new Date()-timeMsg));
     let renderImageF = ()=>{
       if(userId === this.props.data.send_userId){
         if(userId === this.props.inbox.first_userId.id){

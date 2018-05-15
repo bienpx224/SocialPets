@@ -91,10 +91,11 @@ module.exports = {
 		              })
 
 									let notifyInfo = {
-										userId : data_follow.userId.id,
+										userId : data_follow.followed.id,
 										action : "Bắt đầu theo dõi",
 										isActive : true,
-										related_userId: data_follow.followed.id
+										isRead : false,
+										related_userId: data_follow.userId.id
 									}
 									Notification.create(notifyInfo, (err, notification)=>{
 										if(err) sails.log.info("Có lỗi khi tạo notify : ", err);

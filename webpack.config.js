@@ -40,6 +40,9 @@ module.exports = {
       Test : 'app/components/Test.js',
       App : 'app/components/App.js',
       Notfound: 'app/components/Notfound.js',
+          // Notification
+          Notification : 'app/components/Notification/Notification.js',
+          NotificationItem : 'app/components/Notification/NotificationItem.js',
           // Popup
           PopupUser : 'app/components/Popup/PopupUser.js',
           PopupChangePicture : 'app/components/Popup/PopupChangePicture.js',

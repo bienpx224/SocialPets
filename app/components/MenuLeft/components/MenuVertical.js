@@ -13,12 +13,17 @@ class MenuVertical extends React.Component{
     super(props);
     this.state = {
       listInbox : [],
+      listNotify: [],
       user : false
     }
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.listInbox){
       this.state.listInbox = nextProps.listInbox;
+      this.setState(this.state);
+    }
+    if(nextProps.listNotify){
+      this.state.listNotify = nextProps.listNotify;
       this.setState(this.state);
     }
     if(!this.state.user && nextProps.user){
@@ -76,6 +81,22 @@ class MenuVertical extends React.Component{
       }
     }
     let renderMsgUnread = renderMsgUnreadF();
+    let renderNotifyUnreadF = ()=>{
+      let count = 0;
+      if(this.state.listNotify.length>0){
+        this.state.listNotify.map( (value, key)=>{
+          if(value.isRead === false){
+            count ++;
+          }
+        })
+      }
+      if(count >0){ document.title = "Social Pets ("+count+" notification)";
+        return (<div className="pull-right"><div className="chat-alert-menu">{count}</div></div>)
+      }else{ document.title = "Social Pets";
+        return (<div className="pull-right"><i className="icon ion-checkmark-round"></i></div>)
+      }
+    }
+    let renderNotifyUnread = renderNotifyUnreadF();
     let cover = this.state.user.cover;
     let renderListFollower = this.props.listFollowers?this.props.listFollowers.length:0;
     let styleProfile = {
@@ -101,7 +122,8 @@ class MenuVertical extends React.Component{
           <li>
             <i className="icon ion-ios-paper"></i>
             <div>
-              <Link to='/newsfeed'>Newsfeed</Link>
+              <Link to='/newsfeed/notification'>Notification</Link>
+              {renderNotifyUnread}
             </div>
           </li>
           <li>
@@ -135,5 +157,5 @@ class MenuVertical extends React.Component{
   }
 }
 module.exports = connect( function(state){
-    return {user: state.userReducer.user, listInbox:state.chatReducer.listInbox, listFollowers: state.followReducer.listFollowers};
+    return {user: state.userReducer.user, listInbox:state.chatReducer.listInbox, listFollowers: state.followReducer.listFollowers, listNotify: state.userReducer.listNotify};
 })(MenuVertical);

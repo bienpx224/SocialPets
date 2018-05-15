@@ -4,6 +4,7 @@ import AlertContainer from 'react-alert';
 import {set_user} from 'userAction';
 import Comment from 'Comment';
 import {Link} from 'react-router-dom';
+import time from 'time-ago';
 
 class NewsfeedContent extends React.Component{
   constructor(props){
@@ -86,6 +87,9 @@ class NewsfeedContent extends React.Component{
     })
   }
   render(){
+    var date = new Date(this.props.data.createdAt);
+    let timeMsg = date.getTime();
+    let renderTime = time.ago(new Date()-(new Date()-timeMsg));
     let renderBtnReact = this.renderBtnReact();
     return(
       <div className="post-content">
@@ -95,7 +99,7 @@ class NewsfeedContent extends React.Component{
           <div className="post-detail">
 
                   <div className="user-info">
-                    <h5><Link to={"/user/"+this.props.owner.email} className="profile-link" >{this.props.owner.name}</Link> <span className="following">following</span></h5>
+                    <h5><Link to={"/user/"+this.props.owner.email} className="profile-link" >{this.props.owner.name}</Link> <span className="following">{renderTime}</span></h5>
 
                   </div>
                   <div className="post-text">

@@ -6,7 +6,8 @@ var data = {
   showPopupUser: false,
   showPopupChangePicture: false,
   showPopupAddPet: false,
-  popupPet: "add"
+  popupPet: "add",
+  listNotify: [],
 };
 
 var userReducer = (state = data, action)=>{
@@ -37,7 +38,10 @@ var userReducer = (state = data, action)=>{
       return {...state, listPet: [action.pet,...state.listPet]};
     case "GET_PERSON":
       return {...state, person : action.person};
-
+    case "GET_NOTIFY":
+      return {...state, listNotify: action.listNotify};
+    case "ADD_NOTIFY":
+      return {...state, listNotify: [...state.listNotify, action.notify]};
     default: return state;
   }
 }

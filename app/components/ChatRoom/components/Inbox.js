@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {get_inbox, get_list_msg,get_list_inbox} from 'chatAction';
+import time from 'time-ago';
 
 class Inbox extends React.Component{
   constructor(props){
@@ -72,6 +73,9 @@ class Inbox extends React.Component{
   }
   render(){
     let renderLatestMsg = this.checkLatestMsg();
+    let date = new Date(this.props.data.updatedAt);
+    let timeMsg = date.getTime();
+    let renderTime = time.ago(new Date()-(new Date()-timeMsg));
     let listMsg = this.state.listMsg;
     let renderMsgUnreadF = ()=>{
       let count = 0;
@@ -98,7 +102,7 @@ class Inbox extends React.Component{
             <div className="msg-preview">
               <h6>{this.props.receiveUser.name}</h6>
               <p className="text-muted">{renderLatestMsg}</p>
-              <small className="text-muted">{this.props.data.updatedAt}</small>
+              <small className="text-muted">{renderTime}</small>
               {renderMsgUnread}
             </div>
           </div>
