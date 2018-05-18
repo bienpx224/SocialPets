@@ -64,7 +64,7 @@ module.exports = {
 			return res.send({err:err});
 		})
 	},
-	setIsRead: function(req,res){ console.log("Set is read: ");
+	setIsRead: function(req,res){
 		let {id, userId} = req.body;
 		Message.update({$and:[{inboxId:id}, {isRead: false}, {receive_userId: userId}]}, {isRead: true}, (err, listMsg)=>{
 			if(err){ return res.send({err:err})}

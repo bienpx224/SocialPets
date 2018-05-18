@@ -71,7 +71,7 @@ class Header extends React.Component{
       <header id="header"  id="top">
         <nav className="navbar navbar-default navbar-fixed-top menu">
           <div className="container">
-<AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+          <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
           <audio id='sound' preload='auto'>
             <source src='/sound/notify.mp3' type='audio/mpeg' />
             <embed hidden='true' loop='false' src='/sound/notify.mp3' />

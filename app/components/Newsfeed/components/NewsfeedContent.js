@@ -62,9 +62,9 @@ class NewsfeedContent extends React.Component{
   }
   renderBtnReact(){
     if(this.state.isReact === true){
-      return (<a onClick={this.react.bind(this)} className="btn text-green"><i className="ion-ios-heart"></i>{this.state.react}</a>)
+      return (<a onClick={this.react.bind(this)} className="btn text-green pull-left"><i className="ion-ios-heart"></i>{this.state.react}</a>)
     }else{
-      return (<a onClick={this.react.bind(this)} className="btn text-red"><i className="ion-ios-heart"></i>{this.state.react}</a>)
+      return (<a onClick={this.react.bind(this)} className="btn text-red pull-left"><i className="ion-ios-heart"></i>{this.state.react}</a>)
     }
   }
   react(){
@@ -107,9 +107,10 @@ class NewsfeedContent extends React.Component{
                   </div>
                   <div className="line-divider"></div>
                   <img src={this.props.data.image} alt="" className="img-responsive post-image"/>
-                  <p className="text-muted">Published at time: {this.props.data.createdAt}</p>
+
                   <div className="">
                     {renderBtnReact}
+                    <p className="text-muted pull-right">Published at time: {this.props.data.createdAt}</p>
                   </div>
                   <div className="line-divider"></div>
 

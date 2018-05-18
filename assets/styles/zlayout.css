@@ -1,3 +1,4 @@
+th{cursor: pointer;}
 @media only screen and (min-width: 869px) {
    .fixed-menu { position: fixed; left: 0;}
    .fixed-content { margin-left: 26%; min-height: 500px;}

@@ -6,6 +6,119 @@
  */
 
 module.exports = {
+  searchUser: function(req, res){
+    let {name, email, phone} = req.body;
+    User.find({$and:[{"name": new RegExp(name)},{"email": new RegExp(email)},{"phone": new RegExp(phone)}]})
+    .then( (listUser)=>{
+      if(!listUser) res.send({err:"Not found"})
+      console.log(listUser);
+      res.send({listUser})
+    })
+    .catch( err=>res.send({err}))
+  },
+  blockUserById: function(req,res){
+    let {id} = req.body;
+    User.update({id},{isActive: false}, (err, listUser)=>{
+      if(err) res.send({err:"Có lỗi:"+err})
+      if(!listUser || listUser.length === 0 ){
+        res.send({err:"Not found, not success"})
+      }else{
+        User.find()
+        .populateAll()
+        .sort({createdAt: -1})
+        .then( (listAllUser)=>{
+          if(!listAllUser){
+            sails.log.error("Not found listAllUser");
+            res.send({err:"Not found listAllUser"})
+          }else{
+            res.send({listAllUser});
+          }
+        })
+        .catch( err=>res.send({err}))
+      }
+    })
+  },
+  activeUserById: function(req,res){
+    let {id} = req.body;
+    User.update({id},{isActive: true}, (err, listUser)=>{
+      if(err) res.send({err:"Có lỗi:"+err})
+      if(!listUser || listUser.length === 0 ){
+        res.send({err:"Not found, not success"})
+      }else{
+        User.find()
+        .populateAll()
+        .sort({createdAt: -1})
+        .then( (listAllUser)=>{
+          if(!listAllUser){
+            sails.log.error("Not found listAllUser");
+            res.send({err:"Not found listAllUser"})
+          }else{
+            res.send({listAllUser});
+          }
+        })
+        .catch( err=>res.send({err}))
+      }
+    })
+  },
+  setAdminById: function(req,res){
+    let {id} = req.body;
+    User.update({id},{isAdmin: true}, (err, listUser)=>{
+      if(err) res.send({err:"Có lỗi:"+err})
+      if(!listUser || listUser.length === 0 ){
+        res.send({err:"Not found, not success"})
+      }else{
+        User.find()
+        .populateAll()
+        .sort({createdAt: -1})
+        .then( (listAllUser)=>{
+          if(!listAllUser){
+            sails.log.error("Not found listAllUser");
+            res.send({err:"Not found listAllUser"})
+          }else{
+            res.send({listAllUser});
+          }
+        })
+        .catch( err=>res.send({err}))
+      }
+    })
+  },
+  unsetAdminById: function(req,res){
+    let {id} = req.body;
+    User.update({id},{isAdmin: false}, (err, listUser)=>{
+      if(err) res.send({err:"Có lỗi:"+err})
+      if(!listUser || listUser.length === 0 ){
+        res.send({err:"Not found, not success"})
+      }else{
+        User.find()
+        .populateAll()
+        .sort({createdAt: -1})
+        .then( (listAllUser)=>{
+          if(!listAllUser){
+            sails.log.error("Not found listAllUser");
+            res.send({err:"Not found listAllUser"})
+          }else{
+            res.send({listAllUser});
+          }
+        })
+        .catch( err=>res.send({err}))
+      }
+    })
+  },
+  getAllUser: function(req,res){
+    User.find()
+    .populateAll()
+    .sort({createdAt: -1})
+    .then( (listAllUser)=>{
+      if(!listAllUser){
+        sails.log.error("Not found listAllUser");
+        res.send({err:"Not found listAllUser"})
+      }else{
+        res.send({listAllUser});
+      }
+
+    })
+    .catch( err=>res.send({err}))
+  },
   login: function(req,res){
     Obj = req.body;
      sails.log.info("Có user Đăng nhập : ", Obj);
@@ -16,11 +129,16 @@ module.exports = {
         return res.send({error:"Your email is wrong !!"});
       }else{
         if(user.secret === Obj.password){
-          req.session.authenticated = true;
-          User.update({email: Obj.email},{isOnline: true}, function(err2, user2){
-            sails.log.info("Đăng nhập thành công");
-            return res.send({user: user2[0]});
-          })
+          if(user.isActive === true){
+            req.session.authenticated = true;
+            User.update({email: Obj.email},{isOnline: true}, function(err2, user2){
+              sails.log.info("Đăng nhập thành công");
+              return res.send({user: user2[0]});
+            })
+          }else{
+            return res.send({error:"Your account was blocked !!"});
+          }
+
         }else{
           sails.log.info("Sai password");
           return res.send({error:"Your password is wrong !!"});
@@ -56,13 +174,44 @@ module.exports = {
   },
   register: function(req,res){
     var Obj = req.body;
+
+    if(!Obj.secret){Obj.secret = Obj.password}
+    if(!Obj.day_date){Obj.day_date = "22"}
+    if(!Obj.month_date){Obj.month_date = "4"}
+    if(!Obj.year_date){Obj.year_date = "1996"}
+    if(!Obj.age_range){Obj.age_range = "23"}
+    if(!Obj.gender){Obj.gender = "Female"}
+    if(!Obj.address){Obj.address = "Somewhere"}
+    if(!Obj.country){Obj.country = "Viet Nam"}
+    if(!Obj.point){Obj.point = "10"}
+    if(!Obj.picture){Obj.picture = "https://i.imgur.com/x53FmYL.jpg"}
+    if(!Obj.cover){Obj.cover = "https://i.imgur.com/8jp0Y6M.jpg"}
+    if(!Obj.isActive){Obj.isActive = "true"}
+    if(!Obj.point){Obj.point = "10"}
+
     sails.log.info("Có yêu cầu đăng ký tài khoản : ", Obj.name);
-    User.create(Obj).exec(function( err, user){
-      if(err) {sails.log.error("Lỗi đăng ký tài khoản: ", err); return res.send(err);}
-      if(!user) return res.send("Not found user");
-      sails.log.info("Đăng ký thành công ");
-      return res.send(user);
-    });
+
+    User.findOne({email: Obj.email}, function(err2, this_user){
+      if(this_user){
+          res.send({exist:"Đã tồn tại tài khoản này", id:this_user.id});
+      }else if(err2){
+        sails.log.error("Lỗi đăng ký tài khoản:22222222222 ", err2);
+        res.send({err, err2})
+      }else{
+
+        User.create(Obj).exec(function( err, user){
+          if(err) {
+            sails.log.error("Lỗi đăng ký tài khoản: ", err);
+          }
+          if(!user)  res.send("Not found user");
+          sails.log.info("Đăng ký thành công ");
+           res.send(user);
+        });
+
+      }
+    })
+
+
   },
   updateInfo: function (req,res){
     let {Obj,userId} = req.body;

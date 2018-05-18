@@ -23,6 +23,14 @@ function close_popup_user(){
 function open_popup_user(){
   return{ type:"OPEN_POPUP_USER" }
 }
+function close_popup_feedback(){
+  return{
+    type:"CLOSE_POPUP_FEEDBACK"
+  }
+}
+function open_popup_feedback(){
+  return{ type:"OPEN_POPUP_FEEDBACK" }
+}
 function open_popup_change_picture(){
   return{type:"OPEN_POPUP_CHANGE_PICTURE"}
 }
@@ -53,4 +61,8 @@ function get_notify(listNotify){
 function add_notify(notify){
   return{type:"ADD_NOTIFY", notify: notify}
 }
-module.exports = {add_notify,get_notify,get_person,add_new_pet,close_popup_add_pet,open_popup_add_pet,get_pet,login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};
+function change_loading(loading){ return{type:"CHANGE_LOADING", loading: loading}}
+function get_listalluser(listAllUser){
+  return{type:"GET_LISTALLUSER", listAllUser: listAllUser}
+}
+module.exports = {get_listalluser,change_loading,close_popup_feedback,open_popup_feedback,add_notify,get_notify,get_person,add_new_pet,close_popup_add_pet,open_popup_add_pet,get_pet,login_error,set_user,login_success,register_error,close_popup_user,open_popup_user,open_popup_change_picture,close_popup_change_picture,change_picture};

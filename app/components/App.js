@@ -20,6 +20,7 @@ var store = require('store');
 class App extends React.Component{
      render(){
         return(
+
             <Provider store={store}>
             <Router history={hashHistory}>
                   <Layout>
