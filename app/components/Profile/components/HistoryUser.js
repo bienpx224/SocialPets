@@ -37,8 +37,8 @@ class HistoryUser extends React.Component{
     if(h.image){
       return (
         <p className="col-xs-6">
-          <a target="_blank" href={h.image} className="profile-link"><i>"{h.image}"</i>
-          <img src={h.image} className="profile-photo-sm pull-left" /></a>
+        <a target="_blank" href={h.image} className="profile-link"><i>{h.image}</i></a>
+        <img src={h.image} className="profile-photo-sm pull-left" />
         </p>
       )
     }else{
@@ -48,7 +48,7 @@ class HistoryUser extends React.Component{
   renderRelateComment(h){
     if(h.related_cmtId){
       return (
-        <p className="col-xs-6">"{h.related_cmtId.content}"
+        <p className="col-xs-6"><i>{h.related_cmtId.content}</i>
         </p>
       )
     }else{
@@ -59,13 +59,13 @@ class HistoryUser extends React.Component{
     if(h.related_postId){
       if(h.related_postId.image !== null){
         return (
-          <p className="col-xs-6"><i>"{h.related_postId.content}"</i>
+          <p className="col-xs-6"><i>{h.related_postId.content}</i>
             <img src={h.related_postId.image} className="img-responsive post-image pull-left" />
           </p>
         )
       }else{
         return(
-        <p className="col-xs-6"><i>"{h.related_postId.content}"
+        <p className="col-xs-6"><i>{h.related_postId.content}
         </i></p>
         )
       }

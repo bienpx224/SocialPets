@@ -14,12 +14,20 @@ module.exports = {
   index: function(req,res){
     return res.view();
   },
-  addPost: function(req,res){ sails.log.info("Có người vừa đăng bài");
+  addPost: function(req,res){
     var post = req.body;
+    post.isActive = true;
+    if(!post.content || post.content.length ===0){
+      if(!post.image || post.image.length === 0 || post.image.indexOf('http:') === -1){
+        res.send({err:"Not enought information"})
+      }else{
+
+      }
+    }
     Post.create(post, function(err, post){
       if(err){
         sails.log.error("Đăng bài thất bại :", err);
-        return res.send({err: err});
+         res.send({err: err});
       }
       if(post){
         Post.findOne({id: post.id}).populateAll()
@@ -86,7 +94,7 @@ module.exports = {
 				list_id_following.push(list_following[i].followed);
 			}
 			list_id_following.push(userId, skip);
-			Post.find({ userId: {$in: list_id_following} })
+			Post.find({$and:[ {userId: {$in: list_id_following}},{isActive: true}] })
       .populateAll()
       .sort({createdAt: -1, updatedAt: -1})
       .skip(skip)
@@ -95,24 +103,56 @@ module.exports = {
 			  // sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
 				return res.send({posts: posts})
 			})
-			.catch( (err) =>{ res.send({err:"Có lỗi tìm posts"})} )
+			.catch( (err) =>{ res.send({err:"Có lỗi tìm posts:"})} )
 		})
-    .catch( (err)=>{ res.send({err:"Có lỗi tìm user"}) })
+    .catch( (err)=>{ res.send({err:err}) })
 
+  },
+  deleteAllPostOfUser: function(req,res){
+    let {userId} = req.body;
+    Post.update({userId}, {isActive:false}, (err, listPost)=>{
+			if(err){ res.send({err})}
+			else if(listPost){
+				let historyInfo = {
+					userId : listPost[0].userId,
+					action : "Đã từ bỏ 1 em listPost đáng yêu",
+					related_listPostId : listPost[0].id,
+					isActive : true,
+				}
+				History.create(historyInfo ,(err, history)=>{
+					if(err) sails.log.error("Có lỗi khi tạo lịch sử : ", err);
+					if(!history){
+						sails.log.error("không tạo được History");
+					}else{
+						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+					}
+				})
+					res.send({listPost})
+			}
+			else { res.send({err:"Không thấy listPost"}) }
+		})
+  },
+  activeAllPost: function(req,res){
+    Post.update({}, {isActive:true}, (err, listPost)=>{
+			if(err){ res.send({err})}
+			else if(listPost){
+
+					res.send({listPost})
+			}
+			else { res.send({err:"Không thấy listPost"}) }
+		})
   },
 
   getListMyPost: function(req,res){
     let {userId,skip} = req.body;
-    if(!userId) return res.send({err: "Không có userId"});
-    Post.find({userId})
+    if(!userId)  res.send({err: "Không có userId"});
+    Post.find({userId, isActive:true})
     .populateAll()
     .sort({createdAt: -1, updatedAt: -1})
     .limit(10)
     .skip(skip)
     .then( (posts)=>{
-      sails.log.info("skip : "+skip);
-      sails.log.info("Lấy tất cả bài đăng gồm:  "+posts.length+" của user : "+userId);
-      return  res.send({posts: posts})
+        res.send({posts: posts})
     })
     .catch( (err)=>{ res.send({err:"Có lỗi tìm user"})})
   }

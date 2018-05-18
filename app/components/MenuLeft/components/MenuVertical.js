@@ -1,8 +1,9 @@
  import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
-import {set_user, open_popup_user} from 'userAction';
+import {set_user, open_popup_user, open_popup_feedback} from 'userAction';
 import PopupUser from 'PopupUser';
+import PopupFeedback from 'PopupFeedback';
 import {Link} from 'react-router-dom';
 import {get_list_inbox} from 'chatAction';
 import {get_followers} from 'followAction';
@@ -13,12 +14,17 @@ class MenuVertical extends React.Component{
     super(props);
     this.state = {
       listInbox : [],
+      listNotify: [],
       user : false
     }
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.listInbox){
       this.state.listInbox = nextProps.listInbox;
+      this.setState(this.state);
+    }
+    if(nextProps.listNotify){
+      this.state.listNotify = nextProps.listNotify;
       this.setState(this.state);
     }
     if(!this.state.user && nextProps.user){
@@ -29,7 +35,7 @@ class MenuVertical extends React.Component{
         let userId = this.props.user.id;
         let that = this;
         let {dispatch} = this.props;
-        io.socket.post('/inbox/getListInbox',{userId},(resData, jwres)=>{
+        io.socket.post('/inbox/getListInbox',{userId,name:""},(resData, jwres)=>{
           if(resData.err){
             alert("lỗi trong MenuVertical getListInbox");
           }
@@ -39,6 +45,10 @@ class MenuVertical extends React.Component{
         })
 
         this.getListFollowers(this.props.user);
+  }
+  showPopupFeedback(){
+    let {dispatch} = this.props;
+    dispatch(open_popup_feedback());
   }
   getListFollowers(user){
     var that = this;
@@ -59,6 +69,28 @@ class MenuVertical extends React.Component{
     var {dispatch} = this.props;
     dispatch(open_popup_user());
   }
+  renderAdmin = ()=>{
+    if(this.props.user.isAdmin === true){
+      return(
+      <div>
+        <li>
+          <i className="icon ion-ios-paper"></i>
+          <div>
+            <Link to='/newsfeed/feedback'>Feedback Management</Link>
+          </div>
+        </li>
+        <li>
+          <i className="icon ion-planet"></i>
+          <div>
+            <Link to='/newsfeed/listuser'>User Management</Link>
+          </div>
+        </li>
+      </div>
+      )
+    }else{
+      return null;
+    }
+  }
   render(){
     let renderMsgUnreadF = ()=>{
       let count = 0;
@@ -76,6 +108,22 @@ class MenuVertical extends React.Component{
       }
     }
     let renderMsgUnread = renderMsgUnreadF();
+    let renderNotifyUnreadF = ()=>{
+      let count = 0;
+      if(this.state.listNotify.length>0){
+        this.state.listNotify.map( (value, key)=>{
+          if(value.isRead === false){
+            count ++;
+          }
+        })
+      }
+      if(count >0){ document.title = "Social Pets ("+count+" notification)";
+        return (<div className="pull-right"><div className="chat-alert-menu">{count}</div></div>)
+      }else{ document.title = "Social Pets";
+        return (<div className="pull-right"><i className="icon ion-checkmark-round"></i></div>)
+      }
+    }
+    let renderNotifyUnread = renderNotifyUnreadF();
     let cover = this.state.user.cover;
     let renderListFollower = this.props.listFollowers?this.props.listFollowers.length:0;
     let styleProfile = {
@@ -84,24 +132,27 @@ class MenuVertical extends React.Component{
       backgroundSize : 'cover',
 
     }
+    let renderAdmin = this.renderAdmin();
     return(
       <div>
       <PopupUser />
-        <div className="profile-card" style={styleProfile} onClick={this.showPopupUser.bind(this)}>
-          <img src={this.state.user.picture} alt="user" className="profile-photo" />
+      <PopupFeedback />
+        <div className="profile-card" style={styleProfile} >
+          <Link to="/profile/timeline"><img src={this.state.user.picture} alt="user" className="profile-photo" /></Link>
           <h5>
             <Link to="/profile/timeline" className="text-white">{this.state.user.name}</Link>
           </h5>
           <a href="#" className="text-white">
-            <i className="ion ion-android-person-add">{"  "+renderListFollower+" follower"}</i>
+            <Link className="text-white" to="/profile/followers"><i className="ion ion-android-person-add">{"  "+renderListFollower+" follower"}</i></Link>
           </a>
         </div>
 
         <ul className="nav-news-feed">
           <li>
-            <i className="icon ion-ios-paper"></i>
+            <i className="icon ion-android-notifications"></i>
             <div>
-              <Link to='/newsfeed'>Newsfeed</Link>
+              <Link to='/newsfeed/notification'>Notification</Link>
+              {renderNotifyUnread}
             </div>
           </li>
           <li>
@@ -124,16 +175,19 @@ class MenuVertical extends React.Component{
             </div>
           </li>
           <li>
-            <i className="icon ion-images"></i>
+            <i className="icon ion-navigate"></i>
             <div>
-              <Link to='/profile'>Profile</Link>
+              <a style={{cursor:"pointer"}} onClick={this.showPopupFeedback.bind(this)}>Feedback</a>
             </div>
           </li>
+
+          {renderAdmin}
+
         </ul>
       </div>
     )
   }
 }
 module.exports = connect( function(state){
-    return {user: state.userReducer.user, listInbox:state.chatReducer.listInbox, listFollowers: state.followReducer.listFollowers};
+    return {user: state.userReducer.user, listInbox:state.chatReducer.listInbox, listFollowers: state.followReducer.listFollowers, listNotify: state.userReducer.listNotify};
 })(MenuVertical);

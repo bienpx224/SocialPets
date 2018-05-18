@@ -47,25 +47,30 @@ class FormReg extends React.Component{
         enableSound: true,
         enableNotification: true
     };
-    io.socket.post('/user/register',Obj, function(resData, jwres){
-        if(resData.error){
-            var errors = resData.invalidAttributes;
-            validateInfoUser(errors, function(errContent){
-                if(errContent.length != 0){
-                    errContent.map(function(i,index){
-                        that.msg.show('ERROR: '+errContent[index], {
-                          type: 'error',
-                          icon: <img src="/images/error.png" />
-                        })
-                    })
-                }
-            })
-        }else{
-                    that.msg.show('SUCCESS: You are sign up success', {
-                          type: 'success',
-                          icon: <img src="/images/success.png" />
-                    })
-        }
+    io.socket.post('/user/register',Obj, function(resData, jwres){ console.log(resData);
+      if(resData.exist){
+        that.msg.show('SUCCESS: This account (Email) has exist', {
+              type: 'error',
+              icon: <img src="/images/error.png" />
+        })
+      }else if(resData.error){
+          var errors = resData.invalidAttributes;
+          validateInfoUser(errors, function(errContent){
+              if(errContent.length != 0){
+                  errContent.map(function(i,index){
+                      that.msg.show('ERROR: '+errContent[index], {
+                        type: 'error',
+                        icon: <img src="/images/error.png" />
+                      })
+                  })
+              }
+          })
+      }else{
+                  that.msg.show('SUCCESS: You are sign up success', {
+                        type: 'success',
+                        icon: <img src="/images/success.png" />
+                  })
+      }
     })
   }
   render(){

@@ -40,10 +40,17 @@ module.exports = {
       Test : 'app/components/Test.js',
       App : 'app/components/App.js',
       Notfound: 'app/components/Notfound.js',
+          //Feedback
+          Feedback : 'app/components/Feedback/Feedback.js',
+          FeedbackItem : 'app/components/Feedback/FeedbackItem.js',
+          // Notification
+          Notification : 'app/components/Notification/Notification.js',
+          NotificationItem : 'app/components/Notification/NotificationItem.js',
           // Popup
           PopupUser : 'app/components/Popup/PopupUser.js',
           PopupChangePicture : 'app/components/Popup/PopupChangePicture.js',
           PopupAddPet : 'app/components/Popup/PopupAddPet.js',
+          PopupFeedback : 'app/components/Popup/PopupFeedback.js',
           // utilities
           InputComponent : 'app/components/Utilities/InputComponent.js',
           validateInfoUser:'app/components/Utilities/validateInfoUser.js',
@@ -96,6 +103,8 @@ module.exports = {
           ListPet: 'app/components/Profile/components/ListPet.js',
           // User
           User : 'app/components/User/User.js',
+          UserManagement : 'app/components/User/UserManagement.js',
+          UserManagementItem : 'app/components/User/UserManagementItem.js',
           IndexUser : 'app/components/User/IndexUser.js',
           // RecommendFollow
           IndexListRecommend : 'app/components/RecommendFollow/IndexListRecommend.js',

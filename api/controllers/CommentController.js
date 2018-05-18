@@ -30,33 +30,37 @@ module.exports = {
 						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 					}
 				})
-				let notifyInfo = {
-					userId : userId,
-					action : "Bình luận trong bài đăng",
-					isActive : true,
-					related_postId : postId,
-					related_cmtId : comment.id,
-					related_userId: related_userId
-				}
-				Notification.create(notifyInfo, (err, notification)=>{
-					if(err) sails.log.info("Có lỗi khi tạo notify : ", err);
-					if(!notification){
-						sails.log.error("không tạo được Notify");
-					}else{
-						sails.log.info("Đã tạo thông báo thành công : ", notification.action);
-						Notification.findOne({id: notification.id})
-							.populateAll()
-							.then((notification2)=>{
-							if(!notification2){
-								sails.log.error("không lấy được Notify");
-							}else{
-								sails.io.sockets.emit('notify', {userId, data: notification2});
-							}
-						})
-						.catch( (err)=>{sails.log.info("Có lỗi khi lấy notify : ", err);})
 
+				if(related_userId !== userId){
+					let notifyInfo = {
+						userId : related_userId,
+						action : "Bình luận trong bài đăng",
+						isActive : true,
+						isRead : false,
+						related_postId : postId,
+						related_cmtId : comment.id,
+						related_userId: userId,
 					}
-				})
+					Notification.create(notifyInfo, (err, notification)=>{
+						if(err) sails.log.info("Có lỗi khi tạo notify : ", err);
+						if(!notification){
+							sails.log.error("không tạo được Notify");
+						}else{
+							sails.log.info("Đã tạo thông báo thành công : ", notification.action);
+							Notification.findOne({id: notification.id})
+								.populateAll()
+								.then((notification2)=>{
+								if(!notification2){
+									sails.log.error("không lấy được Notify");
+								}else{
+									sails.io.sockets.emit('notify', {userId, data: notification2});
+								}
+							})
+							.catch( (err)=>{sails.log.info("Có lỗi khi lấy notify : ", err);})
+
+						}
+					})
+				}
 
 				res.send({comment});
 			}else{

@@ -4,7 +4,7 @@ import Menu from 'Menu';
 import Search from 'Search';
 import {NavLink,withRouter,Link} from 'react-router-dom';
 import AlertContainer from 'react-alert';
-import {set_user,login_error,login_success} from 'userAction';
+import {add_notify,set_user,login_error,login_success} from 'userAction';
 import {get_post_err, get_postNewsfeed} from 'postAction';
 import {get_list_inbox, get_list_msg, get_inbox} from 'chatAction';
 import Notify from 'Notify';
@@ -28,10 +28,12 @@ class Header extends React.Component{
   componentDidMount(){
 
 
-    io.socket.on('notify', (data) => {
-      let related_userId = data.data.related_userId;
-      if((related_userId.id === this.props.user.id)&&(related_userId.id !== data.data.userId.id)){
-        that.msg.show(<Notify type="notify" data={data.data} />)
+    io.socket.on('notify', (data) => { console.log(data);
+      let userId = data.data.userId;
+      let {dispatch} = this.props;
+      if((userId.id === this.props.user.id)&&(userId.id !== data.data.related_userId.id)){
+        dispatch(add_notify(data.data));
+        this.msg.show(<Notify type="notify" data={data.data} />)
         document.getElementById('sound').play();
         if(!document.hasFocus()){
         }
@@ -69,7 +71,7 @@ class Header extends React.Component{
       <header id="header"  id="top">
         <nav className="navbar navbar-default navbar-fixed-top menu">
           <div className="container">
-<AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+          <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
           <audio id='sound' preload='auto'>
             <source src='/sound/notify.mp3' type='audio/mpeg' />
             <embed hidden='true' loop='false' src='/sound/notify.mp3' />

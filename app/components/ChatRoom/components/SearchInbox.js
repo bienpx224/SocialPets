@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
+import {get_list_inbox} from 'chatAction';
 
 class SearchInbox extends React.Component{
   constructor(props){
@@ -52,6 +53,22 @@ class SearchInbox extends React.Component{
       return <h6>unknown</h6>;
     }
   }
+  handleSearch(){
+    let userId = this.props.user.id;
+    let name = this.refs.name.value;
+    let {dispatch} = this.props;
+    io.socket.post('/inbox/getListInbox',{userId,name:name},(resData, jwres)=>{
+      if(resData.err){
+        this.msg.show('ERROR: '+resData.err, {
+                          type: 'error',
+                          icon: <img src="/images/error.png" />
+        })
+      }
+      if(resData.listInbox){
+        dispatch(get_list_inbox(resData.listInbox));
+      }
+    })
+  }
   render(){
     let data = this.state.inboxData;
     let renderPicture = this.renderPicture(data);
@@ -68,7 +85,7 @@ class SearchInbox extends React.Component{
           <div className="row">
 
             <div className="col-md-5 col-sm-5">
-                <input type="text" className="form form-control" placeholder="Search friends, photos, videos"/>
+                <input type="text" ref="name" className="form form-control" onChange={this.handleSearch.bind(this)} placeholder="Search friends, photos, videos"/>
             </div>
 
             <div className="col-md-7 col-sm-7">
@@ -86,5 +103,5 @@ class SearchInbox extends React.Component{
   }
 }
 module.exports = connect( function(state){
-  return {user: state.userReducer.user, inboxData: state.chatReducer.inboxData};
+  return {user: state.userReducer.user, inboxData: state.chatReducer.inboxData, listInbox: state.chatReducer.listInbox};
 })(SearchInbox);

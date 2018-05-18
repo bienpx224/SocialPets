@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Modal,Button} from 'react-bootstrap';
-import {close_popup_add_pet, add_new_pet, change_loading} from 'userAction';
+import {close_popup_feedback, change_loading} from 'userAction';
 import AlertContainer from 'react-alert';
 import validateInfoUser from 'validateInfoUser';
 
-class PopupAddPet extends React.Component{
+class PopupFeedback extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -15,7 +15,7 @@ class PopupAddPet extends React.Component{
   }
   close(){
     var {dispatch} = this.props;
-    dispatch(close_popup_add_pet());
+    dispatch(close_popup_feedback());
   }
   alertOptions = {
     offset: 14,
@@ -24,32 +24,39 @@ class PopupAddPet extends React.Component{
     time: 2000,
     transition: 'scale'
   }
-  handleAddPet(){
-    dispatch(change_loading(true));
+  handleAddFeed(){
     let that = this; let {dispatch} = this.props;
+      dispatch(change_loading(true));
     var nameImg = this.state.nameImg;
-    var Pet = {
-      description: this.refs.description.value,
-      name: this.refs.name.value,
-      type: this.refs.type.value,
+    var Feedback = {
+      content: this.refs.content.value,
+      title: this.refs.title.value,
       image: this.state.nameImg,
       userId: this.props.user.id,
-      isActive: true
+      isActive: true,
+      isRead : false,
     };
-    if(Pet.name.length === 0 || Pet.image === null || Pet.type.length === 0 ){
-      this.msg.show('ERROR: Not enough information for pet !! ', {
+    if(Feedback.title.length === 0 || Feedback.content.length === 0 ){
+      this.msg.show('ERROR: Not enough information for Feedback !! ', {
                             type: 'error',
                             icon: <img src="/images/error.png" />
       })
-        document.getElementById("btnAddPet").disabled = false;
-        document.getElementById("btnCloseAdd").disabled = false;
-    } else{
+      dispatch(change_loading(false));
+    } else if(Feedback.title.length >= 199 || Feedback.content.length === 999){
+      this.msg.show('ERROR: Information Feedback is too long !! ', {
+                            type: 'error',
+                            icon: <img src="/images/error.png" />
+      })
+        dispatch(change_loading(false));
+    }else{
+      if(Feedback.image){
         var position = nameImg.lastIndexOf(".");
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
+
           if(!resData.err && resData.link){
-              Pet.image = resData.link;
-              io.socket.post('/pet/addPet', {userId: that.props.user.id,pet_data:Pet}, function(resData, jwres){
+              Feedback.image = resData.link;
+              io.socket.post('/feedback/add', {userId: that.props.user.id,feedback_data:Feedback}, function(resData, jwres){
                 dispatch(change_loading(false));
                 if(resData.error){
                     var errors = resData.invalidAttributes;
@@ -65,17 +72,14 @@ class PopupAddPet extends React.Component{
                     })
                 }
                 if(resData.ok){
-                  that.msg.show('WOW: Your pet is so cute <3', {
+                  that.msg.show('WOW: Your Feedback already <3 Thanks you', {
                                     type: 'success',
                                     icon: <img src="/images/success.png" />
                   })
 
-                  dispatch(add_new_pet(resData.ok));
-
                   that.handleCloseImage();
-                  that.refs.name.value = "";
-                  that.refs.type.value = "";
-                  that.refs.description.value = "";
+                  that.refs.title.value = "";
+                  that.refs.content.value = "";
                   that.close();
                 }else{
                   that.msg.show('ERROR: Somethings are wrong !! ', {
@@ -92,6 +96,41 @@ class PopupAddPet extends React.Component{
             })
           }
         })
+      }else{
+        Feedback.image = "";
+        io.socket.post('/feedback/add', {userId: that.props.user.id,feedback_data:Feedback}, function(resData, jwres){
+          dispatch(change_loading(false));
+          if(resData.error){
+              var errors = resData.invalidAttributes;
+              validateInfoUser(errors, function(errContent){
+                  if(errContent.length != 0){
+                      errContent.map(function(i,index){
+                          that.msg.show('ERROR: '+errContent[index], {
+                            type: 'error',
+                            icon: <img src="/images/error.png" />
+                          })
+                      })
+                  }
+              })
+          }
+          if(resData.ok){
+            that.msg.show('WOW: Your Feedback already <3 Thanks you', {
+                              type: 'success',
+                              icon: <img src="/images/success.png" />
+            })
+
+            that.handleCloseImage();
+            that.refs.title.value = "";
+            that.refs.content.value = "";
+            that.close();
+          }else{
+            that.msg.show('ERROR: Somethings are wrong !! ', {
+                              type: 'error',
+                              icon: <img src="/images/error.png" />
+            })
+          }
+        })
+      }
     }
   }
   handleCloseImage(){
@@ -140,9 +179,9 @@ class PopupAddPet extends React.Component{
     return(
       <div className="popup-form">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-          <Modal bsSize="sm" show={this.props.showPopupAddPet} onHide={this.close.bind(this)}>
+          <Modal bsSize="lg" show={this.props.showPopupFeedback} onHide={this.close.bind(this)}>
               <Modal.Header>
-                  <Modal.Title> ADD NEW PET </Modal.Title>
+                  <Modal.Title> FEED BACK  </Modal.Title>
               </Modal.Header>
               <Modal.Body style={{overflow:"auto",height:"100%"}}>
               <div className="container">
@@ -154,17 +193,16 @@ class PopupAddPet extends React.Component{
                         <img src={this.state.image} alt="no photo" style={{height:"100px", width:"100px"}} className="img-responsive profile-photo preview-image-post"/>
                       </li>
                     </ul>
-                    <input ref="name" className="form-control input-group-lg" placeholder="Name of pet: ..." />
-                    <input ref="type" className="form-control input-group-lg" placeholder="Type: dog, cat,..." />
-                    <input ref="description" className="form-control input-group-lg" placeholder="Description: age, gender, info..." />
-                    <p className="text-muted">{this.props.user.name}</p>
+                    <input ref="title" className="form-control input-group-lg" placeholder="Title of feedback: ..." />
+                    <textarea ref="content" className="form-control input-group-lg" placeholder="content ..." ></textarea>
+                    <p className="text-muted"> Thanks for you feedback</p>
                   </div>
                 </div>
               </div>
               </Modal.Body>
               <Modal.Footer>
-                <input id="btnAddPet" onClick={this.handleAddPet.bind(this)} type="button" style={{marginLeft:"10px",height:"30px"}} className="btn btn-success" defaultValue="Chấp nhận" />
-                <Button id="btnCloseAdd" onClick={this.close.bind(this)}>Thoát</Button>
+                <input id="btnAddFeed" onClick={this.handleAddFeed.bind(this)} type="button" style={{marginLeft:"10px",height:"30px"}} className="btn btn-success" defaultValue="Chấp nhận" />
+                <Button id="btnCloseFeed" onClick={this.close.bind(this)}>Thoát</Button>
               </Modal.Footer>
           </Modal>
       </div>
@@ -173,5 +211,5 @@ class PopupAddPet extends React.Component{
 }
 
 module.exports = connect(function(state){
-    return{showPopupAddPet: state.userReducer.showPopupAddPet,user: state.userReducer.user, type: state.userReducer.popupPet};
-})(PopupAddPet);
+    return{showPopupFeedback: state.userReducer.showPopupFeedback,user: state.userReducer.user};
+})(PopupFeedback);

@@ -11,6 +11,7 @@ import ChatRoom from 'ChatRoom';
 import Notify from 'Notify';
 import IndexHome from 'IndexHome';
 import IndexListRecommend from 'IndexListRecommend';
+import Loadable from 'react-loading-overlay';
 import {get_post_err, get_postNewsfeed} from 'postAction';
 import {get_list_inbox, get_list_msg, get_inbox} from 'chatAction';
 
@@ -19,6 +20,7 @@ class Home extends React.Component{
     super(props);
     this.state={
       isLogin : false,
+      loading: true,
     }
   }
   alertOptions = {
@@ -46,11 +48,13 @@ class Home extends React.Component{
       }
     });
 
-
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({...this.state,isLogin: nextProps.isLogin});
+    if(nextProps.isLogin){
+      this.state.isLogin = nextProps.isLogin;
+      this.setState(this.state);
+    }
   }
 
   render(){
@@ -73,5 +77,5 @@ class Home extends React.Component{
   }
 }
 module.exports = withRouter(connect( function(state){
-  return {user: state.userReducer.user, isLogin: state.userReducer.isLogin, inboxData:state.chatReducer.inboxData};
+  return {user: state.userReducer.user, isLogin: state.userReducer.isLogin, loading:state.userReducer.loading};
 })(Home));

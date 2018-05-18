@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {Modal,Button} from 'react-bootstrap';
-import {close_popup_change_picture,change_picture} from 'userAction';
+import {change_loading,close_popup_change_picture,change_picture} from 'userAction';
 
 class PopupChangePicture extends React.Component{
   constructor(props){
@@ -50,9 +50,8 @@ class PopupChangePicture extends React.Component{
     }
   }
   savePicture(){
-    document.getElementById("changeImg").disabled = true;
-    document.getElementById("closeChangeImg").disabled = true;
     let {dispatch} = this.props;
+      dispatch(change_loading(true));
     let that = this;
     let {nameImg} = this.state;
     if(this.state.newPicture){
@@ -60,12 +59,11 @@ class PopupChangePicture extends React.Component{
         var position = nameImg.lastIndexOf(".");
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
-          document.getElementById("changeImg").disabled = false;
-          document.getElementById("closeChangeImg").disabled = false;
           if(!resData.err && resData.link){
             // if Type of Popup is picture, it's mean that will change User's Picture
             if(that.props.type === "picture"){
               io.socket.post('/user/changePicture', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
+                dispatch(change_loading(false));
                 if(resData.ok){
                   var user = resData.ok[0];
                   that.msg.show('Your picture was change success <3 Waiting process your image... ', {
@@ -85,8 +83,7 @@ class PopupChangePicture extends React.Component{
               })
             }else{  // else change User's Cover
               io.socket.post('/user/changeCover', {link: resData.link, id: that.props.user.id}, function(resData, jwres){
-                document.getElementById("changeImg").disabled = false;
-                document.getElementById("closeChangeImg").disabled = false;
+                dispatch(change_loading(false));
                 if(resData.ok){
                   var user = resData.ok[0];
                   that.msg.show('Your cover was change success <3 Waiting process your image... ', {
@@ -106,6 +103,7 @@ class PopupChangePicture extends React.Component{
               })
             }
           }else{
+            dispatch(change_loading(false));
             that.msg.show('ERROR: '+resData.err, {
                                         type: 'error',
                                         icon: <img src="/images/error.png" />
@@ -113,6 +111,7 @@ class PopupChangePicture extends React.Component{
           }
         })
       }else{
+        dispatch(change_loading(false));
         that.msg.show('Nothing change !! ', {
                                     type: 'warning',
                                     icon: <img src="/images/error.png" />

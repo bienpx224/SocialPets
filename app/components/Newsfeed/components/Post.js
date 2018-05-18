@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
-import {set_user} from 'userAction';
+import {set_user, change_loading} from 'userAction';
 import {add_new_post} from 'postAction';
 
 class Post extends React.Component{
@@ -22,8 +22,8 @@ class Post extends React.Component{
     transition: 'scale'
   }
   handlePost(){
-    document.getElementById("btnPost").disabled = true;
     var that = this; var {dispatch} = this.props;
+    dispatch(change_loading(true));
     var nameImg = this.state.nameImg;
     var Post = {
       title: null,
@@ -44,7 +44,7 @@ class Post extends React.Component{
           if(!resData.err && resData.link){
               Post.image = resData.link;
               io.socket.post('/post/addPost', Post, function(resData, jwres){
-                document.getElementById("btnPost").disabled = false;
+                dispatch(change_loading(false));
                 if(resData.ok){
                   that.msg.show('Your post was success <3', {
                                     type: 'success',
@@ -65,6 +65,7 @@ class Post extends React.Component{
                 }
               })
           }else{
+            dispatch(change_loading(false));
             that.msg.show('ERROR: '+resData.err, {
                               type: 'error',
                               icon: <img src="/images/error.png" />
@@ -73,7 +74,7 @@ class Post extends React.Component{
         })
       }else{
           io.socket.post('/post/addPost', Post, function(resData, jwres){
-            document.getElementById("btnPost").disabled = false;
+            dispatch(change_loading(false));
             if(resData.ok){
               that.msg.show('Your post was success <3 ', {
                                 type: 'success',

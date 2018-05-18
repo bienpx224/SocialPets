@@ -40,6 +40,7 @@
     "react-bootstrap": "^0.31.2",
     "react-datepicker": "^0.53.0",
     "react-dom": "^15.6.1",
+    "react-loading-overlay": "^0.3.0",
     "react-placeholder": "^1.0.10",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.2",

@@ -22,7 +22,7 @@ class InboxList extends React.Component{
     let userId = this.props.user.id;
     let that = this;
     let {dispatch} = this.props;
-    io.socket.post('/inbox/getListInbox',{userId},function(resData, jwres){
+    io.socket.post('/inbox/getListInbox',{userId,name:""},function(resData, jwres){
       if(resData.err){
         that.msg.show('ERROR: '+resData.err, {
                           type: 'error',

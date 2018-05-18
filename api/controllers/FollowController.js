@@ -14,7 +14,6 @@ module.exports = {
 			sails.log.info(body);
 		});
 
-		sails.log.info("Có yêu cầu follow của "+userId+" gửi cho "+followed+" !");
     Follow.findOne({userId, followed})
     .then( (follow)=>{
       if(follow){
@@ -91,10 +90,11 @@ module.exports = {
 		              })
 
 									let notifyInfo = {
-										userId : data_follow.userId.id,
+										userId : data_follow.followed.id,
 										action : "Bắt đầu theo dõi",
 										isActive : true,
-										related_userId: data_follow.followed.id
+										isRead : false,
+										related_userId: data_follow.userId.id
 									}
 									Notification.create(notifyInfo, (err, notification)=>{
 										if(err) sails.log.info("Có lỗi khi tạo notify : ", err);
@@ -179,7 +179,6 @@ module.exports = {
 
   get_followers: function(req,res){
     var userId = req.body.userId;
-		sails.log.info(" Có yêu cầu lấy danh sách người đang theo dõi user này : ",userId);
     User.findOne({id: userId})
     .populate('followers')
     .then( (user)=>{  // Thông tin người dùng

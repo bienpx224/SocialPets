@@ -39,13 +39,24 @@ module.exports = {
   },
 
 	getListInbox: function(req,res){
-		let {userId} = req.body;
+		let {userId, name} = req.body;
 		Inbox.find({$or:[{first_userId:userId}, {second_userId: userId}]})
 		.populateAll()
 		.sort({updatedAt: -1})
 		.then( (listInbox)=>{
 			if(listInbox){
-				return res.send({listInbox});
+				name = name.toUpperCase();
+				let arr = [];
+				let count = listInbox.length;
+				for(let i = 0; i<=count-1; i++){
+					var name1 = listInbox[i].first_userId.name.toUpperCase();
+		      var name2 = listInbox[i].second_userId.name.toUpperCase();
+		      if(name1.search(name) !== -1 || name2.search(name) !== -1){
+		        arr.push(listInbox[i]);
+		      }
+				}
+
+				res.send({listInbox: arr});
 			}else{ return res.send({err:"not found list inbox"})}
 		})
 		.catch( (err)=>{ return res.send({err:err})})

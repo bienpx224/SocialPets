@@ -38,8 +38,7 @@ module.exports.routes = {
 
 
   '/home': {
-    controller: 'HomeController',
-    action: 'index'
+    view: 'homepage'
   },
   '/': {
     view: 'homepage'

@@ -52,7 +52,6 @@ class BasicInformation extends React.Component{
     };
     if(this.checkChange(Obj) === true){
       io.socket.post('/user/updateInfo',{Obj, userId:this.props.user.id}, function(resData, jwres){
-        console.log(resData);
           if(resData.error){
               var errors = resData.invalidAttributes;
               validateInfoUser(errors, function(errContent){
@@ -66,7 +65,7 @@ class BasicInformation extends React.Component{
                   }
               })
           }else{
-                      that.msg.show('SUCCESS: You are sign up success', {
+                      that.msg.show('SUCCESS: You updated success', {
                             type: 'success',
                             icon: <img src="/images/success.png" />
                       })
