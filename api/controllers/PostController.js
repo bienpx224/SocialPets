@@ -152,7 +152,8 @@ module.exports = {
     .limit(10)
     .skip(skip)
     .then( (posts)=>{
-        res.send({posts: posts})
+        if(posts) res.send({posts: posts})
+        else res.send({posts:[]})
     })
     .catch( (err)=>{ res.send({err:"Có lỗi tìm user"})})
   }

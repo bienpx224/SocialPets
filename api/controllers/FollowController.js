@@ -7,6 +7,20 @@
 let request = require('request');
 let url_request = Config.url_local;
 module.exports = {
+	checkFollow: function(req,res){
+		let {userId, followed} = req.body;
+		Follow.findOne({userId, followed})
+		.then( (follow)=>{
+			if(follow){
+				res.send({follow:"exist"})
+			}else if(!follow){
+				res.send({follow:"no"})
+			}else{
+				res.send({err})
+			}
+		})
+	},
+
 	follow: function(req,res){
 		let {userId, followed} = req.body;
 		//////////////////////////////////////   Tạo Inbox giữa 2 người này //////////////////////////
@@ -226,7 +240,7 @@ module.exports = {
   },
 
 	recommend_rank: function(req,res){
-		let userId = req.body.userId;
+		let {userId, skip, limit} = req.body;
 		/////////////////////////////   Danh sách ID của những người dùng mà đang được user này theo dõi
 		User.findOne({id: userId})
 		.populate('followings')
@@ -239,7 +253,8 @@ module.exports = {
 			}
 			list_id_following.push(userId);
 			User.find({id: {$nin: list_id_following}})
-			.limit(2)
+			.limit(limit)
+			.skip(skip)
 			.sort({point: -1})
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
@@ -254,7 +269,7 @@ module.exports = {
 	},
 
 	recommend_common: function(req,res){
-		let userId = req.body.userId;
+		let {userId, skip, limit} = req.body;
 		/////////////////////////////   Danh sách ID của những người dùng mà đang được user này theo dõi
 		User.findOne({id: userId})
 		.populate('followings')
@@ -267,7 +282,8 @@ module.exports = {
 			}
 			list_id_following.push(userId);
 			User.find({ id: {$nin: list_id_following}, $or: [{"gender": new RegExp(user.gender)}, {"address":new RegExp(user.address)}, {"year_date": new RegExp(user.year_date)}  ] })
-			.limit(3)
+			.limit(limit)
+			.skip(skip)
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
 				// sails.log.info("Danh sach recommend_common: ", users.length);

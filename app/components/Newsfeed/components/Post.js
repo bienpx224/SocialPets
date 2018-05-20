@@ -32,6 +32,7 @@ class Post extends React.Component{
       userId: this.props.user.id
     };
     if(Post.content.length === 0 && Post.image === null){
+      dispatch(change_loading(false));
       this.msg.show('ERROR: Not enough information to post !! ', {
                             type: 'error',
                             icon: <img src="/images/error.png" />

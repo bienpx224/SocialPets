@@ -44,10 +44,8 @@ class User extends React.Component{
     io.socket.post('/user/getUser', {email}, (resData, jwres)=>{
       console.log("getUser: ", resData);
       if(resData.error){
-        // dispatch(login_error());
       }
       if(resData.notFound){
-        // dispatch(login_error());
       }else{
         this.setState({isNotfound:false});
         dispatch(get_person(resData.user));
@@ -65,7 +63,7 @@ class User extends React.Component{
       this.setState({...this.state,isLogin: nextProps.person});
     }
   }
-  render(){console.log("reder user");
+  render(){
     if(this.props.isLogin === false){
       return ( <Login />)
     }if(this.state.isNotfound === true){

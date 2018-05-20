@@ -81,6 +81,8 @@ class BasicInformation extends React.Component{
 
   }
   render(){
+    console.log("TYPE=========: ",this.props.type)
+    let renderBtnSave = this.props.type==="person"?null:<button className="btn btn-primary" onClick={this.handleUpdate.bind(this)}>Save Changes</button>;
     return(
                   <div className="col-md-7">
                   <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
@@ -104,7 +106,7 @@ class BasicInformation extends React.Component{
                             <div className="row">
                               <div className="form-group col-xs-6">
                                 <label htmlFor="email">My email</label>
-                                <input className="form-control input-group-lg" type="text" title="Enter Email" placeholder="My Email" value={this.props.user.email} />
+                                <input className="form-control input-group-lg" type="text" title="Enter Email" placeholder="My Email" readOnly value={this.props.user.email} />
                               </div>
                               <div className="form-group col-xs-6">
                                 <label htmlFor="email">Pet love</label>
@@ -482,7 +484,7 @@ class BasicInformation extends React.Component{
                                 <textarea ref="description" defaultValue={this.props.user.description} className="form-control" placeholder="Some texts about me" rows="4" cols="400"></textarea>
                               </div>
                             </div>
-                            <button className="btn btn-primary" onClick={this.handleUpdate.bind(this)}>Save Changes</button>
+                            {renderBtnSave}
                           </form>
                         </div>
                       </div>

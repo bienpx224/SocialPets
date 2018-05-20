@@ -7,6 +7,7 @@ import Notfound from 'Notfound';
 import Feedback from 'Feedback';
 import UserManagement from 'UserManagement';
 import Notification from 'Notification';
+import FindUser from 'FindUser';
 import {login_error,login_success} from 'userAction';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
@@ -49,6 +50,8 @@ class IndexHome extends React.Component{
                 <Route  exact path="/newsfeed/notification" component={Notification} />
                 <Route  exact path="/newsfeed/feedback" component={Feedback} />
                 <Route  exact path="/newsfeed/listuser" component={UserManagement} />
+                <Route  exact path="/newsfeed/search" component={FindUser} />
+                <Route  exact path="/newsfeed/search/:type" component={FindUser} />
                 <Route render={function(){
                   return <Notfound />
                 } } />

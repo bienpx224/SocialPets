@@ -11,6 +11,7 @@ module.exports = {
     content:{ type:'string', maxLength: 500},
     image:{ type:'string' },
     petRelate:{ model: 'pet'},
+    isActive: {type:'boolean'},
     userId:{ model:'user' },
     react:{ collection:'react', via:'postId' },
     comments:{ collection:'comment', via:'postId' }

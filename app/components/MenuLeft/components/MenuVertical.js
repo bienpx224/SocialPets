@@ -15,6 +15,7 @@ class MenuVertical extends React.Component{
     this.state = {
       listInbox : [],
       listNotify: [],
+      listFeedback: [],
       user : false
     }
   }
@@ -70,6 +71,7 @@ class MenuVertical extends React.Component{
     dispatch(open_popup_user());
   }
   renderAdmin = ()=>{
+    let countFeedbackUnread = 0;
     if(this.props.user.isAdmin === true){
       return(
       <div>

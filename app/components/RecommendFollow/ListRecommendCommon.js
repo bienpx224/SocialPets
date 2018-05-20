@@ -6,6 +6,7 @@ import {get_followers} from 'followAction';
 import ReactPlaceholder from 'react-placeholder';
 import RecommendFollow from 'RecommendFollow';
 import {get_recommend_common} from 'followAction';
+import {Link} from 'react-router-dom';
 
 class ListRecommendCommon extends React.Component{
   constructor(props){
@@ -28,7 +29,7 @@ class ListRecommendCommon extends React.Component{
     let {dispatch} = this.props;
     var that = this;
     if(!user) return that.setState({...that.state,loading: true});
-    io.socket.post('/follow/recommend_common',{userId: user.id}, function(resData, jwres){
+    io.socket.post('/follow/recommend_common',{userId: user.id, skip:0, limit:2}, function(resData, jwres){
         if(resData.ok){
           dispatch(get_recommend_common(resData.ok));
           return that.setState({...that.state,loading: false});
@@ -59,11 +60,13 @@ class ListRecommendCommon extends React.Component{
     else return(
 
         <div className="suggestions" id="sticky-sidebar">
-          <h4 className="grey">Having in common</h4>
-          {this.state.ListRecommendCommon.map( (user, i)=>{
-             return <RecommendFollow key={i} followed={user} type="" getNewList = {that.getListRecommendCommon} />
-           })
-          }
+          <Link to="/newsfeed/search/common">
+            <h4 title="show more" className="grey">Having in common <i className="icon ion-more pull-right"></i></h4>
+          </Link>
+            {this.state.ListRecommendCommon.map( (user, i)=>{
+               return <RecommendFollow key={i} followed={user} type="" getNewList = {that.getListRecommendCommon} />
+             })
+            }
         </div>
 
     )

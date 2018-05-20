@@ -14,7 +14,11 @@ class ListFollowers extends React.Component{
     }
   }
   componentDidMount(){
-    this.getListFollowers(this.props.user);
+    if(this.props.type==="person"){
+      this.getListFollowers(this.props.person);
+    }else{
+      this.getListFollowers(this.props.user);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -54,7 +58,7 @@ class ListFollowers extends React.Component{
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-8">
-           <h3>Nobody follow you!!!</h3>
+           <h3>Nobody follow!!!</h3>
           </div>
         </div>
       </div>
@@ -76,5 +80,5 @@ class ListFollowers extends React.Component{
   }
 }
 module.exports = connect( function(state){
-  return {user: state.userReducer.user, listFollowers: state.followReducer.listFollowers};
+  return {user: state.userReducer.user, listFollowers: state.followReducer.listFollowers, person:state.userReducer.person};
 })(ListFollowers);

@@ -40,6 +40,9 @@ module.exports = {
       Test : 'app/components/Test.js',
       App : 'app/components/App.js',
       Notfound: 'app/components/Notfound.js',
+          // Find User
+          FindUser: 'app/components/FindUser/FindUser.js',
+          // FindUser: 'app/components/FindUser/FindUser.js',
           //Feedback
           Feedback : 'app/components/Feedback/Feedback.js',
           FeedbackItem : 'app/components/Feedback/FeedbackItem.js',
