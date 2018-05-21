@@ -238,7 +238,6 @@ module.exports = {
     })
     .catch( (err)=>{ res.send({err: "Lỗi khi tìm người dùng userId"})} )
   },
-
 	recommend_rank: function(req,res){
 		let {userId, skip, limit} = req.body;
 		/////////////////////////////   Danh sách ID của những người dùng mà đang được user này theo dõi

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import Follower from 'Follower';
+import Following from 'Following';
 import {get_followers} from 'followAction';
 import ReactPlaceholder from 'react-placeholder';
 
@@ -68,9 +69,9 @@ class ListFollowers extends React.Component{
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-8">
-          <h3>List Follower</h3>
+          <h3 className="title-follower">List Follower</h3>
            {this.state.listFollowers.map( (follower, i)=>{
-              return <Follower key={i} userId={follower.userId} picture={follower.userId.picture} cover={follower.userId.cover} name={follower.userId.name} email={follower.userId.email} />
+              return <Following key={i} data={follower.userId} />
            })
           }
           </div>

@@ -28,7 +28,7 @@ class Header extends React.Component{
   componentDidMount(){
 
 
-    io.socket.on('notify', (data) => { console.log(data);
+    io.socket.on('notify', (data) => {
       let userId = data.data.userId;
       let {dispatch} = this.props;
       if((userId.id === this.props.user.id)&&(userId.id !== data.data.related_userId.id)){

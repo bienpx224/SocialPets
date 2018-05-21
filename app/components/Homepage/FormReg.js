@@ -77,7 +77,7 @@ class FormReg extends React.Component{
     var error = this.props.errorRegister === null ? null : <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
     return(
       <div className="tab-pane" id="register" style={{marginLeft:"30px"}}>
-        <h3>Register Now !!!</h3>
+        <h3 style={{textAlign:"center"}}>Register</h3>
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
             <p className="text-muted">Be cool and join today. Meet millions</p>
 

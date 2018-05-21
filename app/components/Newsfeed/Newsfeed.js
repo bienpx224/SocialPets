@@ -74,13 +74,16 @@ class Newsfeed extends React.Component{
     transition: 'scale'
   }
   componentWillReceiveProps(nextProps){
-    this.setState({...this.state, postsNewsfeed : nextProps.postsNewsfeed});
+    if(nextProps.postsNewsfeed){
+      this.state.postsNewsfeed = nextProps.postsNewsfeed;
+      this.setState(this.state);
+    }
   }
   render(){
     let that = this;
     var countPost = this.state.postsNewsfeed.length;
     if(this.state.loading) return(
-        <div className="col-md-7  fixed-content" >
+        <div className="col-md-7 fixed-content" >
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
         <ReactPlaceholder ready={false} type="media" rows={7} showLoadingAnimation={true}>
@@ -90,7 +93,7 @@ class Newsfeed extends React.Component{
     )
     else if(this.state.postsNewsfeed.length === 0)
       return(
-      <div className="col-md-7  fixed-content" >
+      <div className="col-md-7 fixed-content" >
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
         <h3>Nothing to show!!!</h3>
@@ -98,7 +101,7 @@ class Newsfeed extends React.Component{
     )
     else
     return(
-      <div className="col-md-7  fixed-content" >
+      <div className="col-md-7 fixed-content" >
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <Post />
         {this.state.postsNewsfeed.map(function(i,index){

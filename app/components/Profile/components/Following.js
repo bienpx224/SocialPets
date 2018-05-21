@@ -19,7 +19,6 @@ class Following extends React.Component{
     let followed = this.props.data.id;
     io.socket.post('/follow/checkFollow',{userId, followed}, (resData, jwres)=>{
         if(resData.follow==="exist"){
-          console.log("exist")
           this.setState({following: true});
         }else{
           this.setState({following: false});

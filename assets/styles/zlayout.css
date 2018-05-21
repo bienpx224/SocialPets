@@ -1,3 +1,4 @@
+.title-follower{text-align: center; margin: 0px auto 40px auto;}
 th{cursor: pointer;}
 @media only screen and (min-width: 869px) {
    .fixed-menu { position: fixed; left: 0;}

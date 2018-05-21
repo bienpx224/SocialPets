@@ -14,24 +14,24 @@ module.exports = {
 		Comment.create(Obj).exec( (err, comment)=>{
 			if( err) res.send({err});
 			if(comment){
-				let historyInfo = {
-					userId : userId,
-					action : "Bình luận trong bài đăng",
-					isActive : true,
-					related_postId : postId,
-					related_cmtId : comment.id,
-					related_userId: related_userId
-				}
-				History.create(historyInfo ,(err, history)=>{
-					if(err) sails.log.info("Có lỗi khi tạo lịch sử : ", err);
-					if(!history){
-						sails.log.error("không tạo được History");
-					}else{
-						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
-					}
-				})
-
 				if(related_userId !== userId){
+					let historyInfo = {
+						userId : userId,
+						action : "Bình luận trong bài đăng",
+						isActive : true,
+						related_postId : postId,
+						related_cmtId : comment.id,
+						related_userId: related_userId
+					}
+					History.create(historyInfo ,(err, history)=>{
+						if(err) sails.log.info("Có lỗi khi tạo lịch sử : ", err);
+						if(!history){
+							sails.log.error("không tạo được History");
+						}else{
+							sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+						}
+					})
+					
 					let notifyInfo = {
 						userId : related_userId,
 						action : "Bình luận trong bài đăng",
@@ -62,10 +62,27 @@ module.exports = {
 					})
 				}
 
-				res.send({comment});
+				Comment.findOne({id:comment.id})
+				.populateAll()
+				.then( (this_comment)=>{
+					if(!this_comment) res.send({err: "not found"})
+					else res.send({comment: this_comment})
+				})
+				.catch( err3=>res.send({err:err3}))
 			}else{
 				res.send({err: "Không có comment"});
 			}
 		})
+	},
+	getListComment: function(req, res){
+		let {postId} = req.body;
+		Comment.find({postId})
+		.populateAll()
+		.sort({createdAt: 1})
+		.then( (listComment)=>{
+			if(!listComment) res.send({err:"not fount"})
+			else res.send({listComment})
+		})
+		.catch( err=>res.send({err}) )
 	}
 };

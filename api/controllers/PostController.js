@@ -6,7 +6,9 @@
  */
 var base64Img = require('base64-img');
 var http = require('https');
-var imgur = require('imgur-node-api'),
+var imgur = require('imgur-node-api');
+let request = require('request');
+let url_request = Config.url_local;
 path = require('path');
 fs = require('fs');
 
@@ -53,12 +55,16 @@ module.exports = {
                   sails.log.error("không tạo được History");
                 }else{
                   sails.log.info("Đã tạo thành công lịch sử : ", history.action);
+
+                  request.post({url:url_request+'/post/getPostNewsfeed', form:{userId:post.userId, skip: 0} }, function(err,httpResponse,body){
+                    let posts = JSON.parse(body);
+                    res.send({posts:posts.posts})
+              		});
                 }
               })
 
             }
           })
-          res.send({ok: newPost})
         })
         .catch( err2 => res.send({err: err2}));
       }

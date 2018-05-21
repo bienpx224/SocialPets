@@ -1,7 +1,7 @@
  import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
-import {set_user, open_popup_user, open_popup_feedback} from 'userAction';
+import {set_user, open_popup_user, open_popup_feedback,get_notify} from 'userAction';
 import PopupUser from 'PopupUser';
 import PopupFeedback from 'PopupFeedback';
 import {Link} from 'react-router-dom';
@@ -42,6 +42,15 @@ class MenuVertical extends React.Component{
           }
           if(resData.listInbox){
             dispatch(get_list_inbox(resData.listInbox));
+          }
+        })
+
+        io.socket.post('/notification/getListNotify',{userId},(resData, jwres)=>{
+          if(resData.err){
+            alert("lỗi trong MenuVertical listNotify");
+          }
+          if(resData.listNotify){
+            dispatch(get_notify(resData.listNotify));
           }
         })
 
