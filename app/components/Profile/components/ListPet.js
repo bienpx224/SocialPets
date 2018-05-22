@@ -58,6 +58,10 @@ class ListPet extends React.Component{
   }
   render(){
     let that = this;
+    let renderBtnAdd = this.props.type==="person"?null:
+      <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
+        <i className="ion-social-octocat" style={{color:"white"}}></i>Add pet
+      </button>;
     if(this.state.loading) return(
       <div className="col-md-7 static edit-profile-container">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
@@ -84,9 +88,7 @@ class ListPet extends React.Component{
             <h4 className="grey">
               <i className="icon ion-android-checkmark-circle"></i>
               Pets of {that.props.user.name}
-              <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
-                <i className="ion-social-octocat" style={{color:"white"}}></i>Add pet
-              </button>
+              {renderBtnAdd}
             </h4>
             <hr />
             <h3>Nothing to show</h3>
@@ -103,16 +105,14 @@ class ListPet extends React.Component{
           <h4 className="grey">
             <i className="icon ion-android-checkmark-circle"></i>
             Pets of {that.props.user.name}
-            <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
-              <i className="ion-social-octocat" style={{color:"white"}}></i>Add pet
-            </button>
+            {renderBtnAdd}
           </h4>
           <hr />
         </div>
-        {this.state.listPet.map(function(i,index){
+        {this.state.listPet.map( (i,index)=>{
           return (
             <div key={index}>
-              <Pet key={index} data={i} />
+              <Pet key={index} type={this.props.type} data={i} />
             </div>
           )
         })

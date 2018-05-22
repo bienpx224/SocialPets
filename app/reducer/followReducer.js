@@ -2,7 +2,8 @@ var data = {
   listFollowers: [],
   listFollowings: [],
   ListRecommendRank : [],
-  ListRecommendCommon : []
+  ListRecommendCommon : [],
+  listSearch: [],
 };
 
 var followReducer = (state = data, action)=>{

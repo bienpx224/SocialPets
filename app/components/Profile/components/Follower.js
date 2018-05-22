@@ -49,8 +49,13 @@ class Follower extends React.Component{
                     </button>
                   </a>
                   <Link to={"/user/"+this.props.email}>
-                    <h5><a className="profile-link">{this.props.name}</a></h5>
+                    <h5>
+                      <h6 className="red-text"><span  className="ion-star pull-left"></span>
+                      </h6>
+                      <a className="profile-link">{this.props.name} </a>
+                    </h5>
                     <p>{this.props.email}</p>
+                    <p>{this.props.point}</p>
                   </Link>
                 </div>
               </div>

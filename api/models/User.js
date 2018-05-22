@@ -31,7 +31,7 @@ module.exports = {
     description:{type:'string',maxLength: 255},
     job:{type:'string',maxLength: 10},
     university:{type:'string',maxLength: 100},
-    point : {type: 'int'},
+    point : {type: 'string', maxLength: 100},
     petlove: {type: 'string',maxLength: 50},
     // Setting your account
     enableFollow:{type:'boolean'},

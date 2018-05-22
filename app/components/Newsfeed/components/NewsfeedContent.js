@@ -12,7 +12,8 @@ class NewsfeedContent extends React.Component{
     this.state = {
       react : this.props.data.react.length,
       isReact : false,
-      listComment : this.props.data.comments
+      listComment : [],
+
     }
   }
   alertOptions = {
@@ -22,44 +23,64 @@ class NewsfeedContent extends React.Component{
     time: 2000,
     transition: 'scale'
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.data){
+      let postId = nextProps.data.id;
+      this.getListComment(postId);
+    }
+  }
   componentDidMount(){
+    let postId = this.props.data.id;
+    this.getListComment(postId);
+  }
+  getListComment(postId){
 
+    io.socket.post('/comment/getListComment',{postId},(resData, jwres)=>{
+      if(resData.err){
+        this.msg.show('ERROR: '+resData.err, {
+                          type: 'error',
+                          icon: <img src="/images/error.png" />
+        })
+      }
+      if(resData.listComment){
+        this.state.listComment = (resData.listComment);
+        this.setState(this.state);
+      }
+    })
   }
   handleType(event){
     var k = event.keyCode;
     if(k == 13){
-      let content = this.refs.content.value;   let that = this;
+      let content = this.refs.content.value;
       if(content.length === 0) return;
       if(content.length >= 999) return;
       let userId = this.props.user; let postId = this.props.data.id;
       let related_userId = this.props.owner;
-      io.socket.post('/comment/addComment',{userId,postId,content,related_userId},function(resData, jwres){
+      io.socket.post('/comment/addComment',{userId,postId,content,related_userId},(resData, jwres)=>{
         if(resData.err){
-          that.msg.show('ERROR: '+resData.err, {
+          this.msg.show('ERROR: '+resData.err, {
                             type: 'error',
                             icon: <img src="/images/error.png" />
           })
         }
         if(resData.comment){
-          that.state.listComment.push(resData.comment);
-          that.setState(that.state);
-          that.refs.content.value = "";
+          this.state.listComment.push(resData.comment);
+          this.setState(this.state);
+          this.refs.content.value = "";
         }
       })
     }
   }
   componentWillMount(){
       let userId = this.props.user.id;
-      let that = this;
       let arrUser = this.props.data.react;
       arrUser.map( (value, key)=>{
         if(userId === value.userId){
-          that.state.isReact = true; that.setState(that.state);
+          this.state.isReact = true; this.setState(this.state);
         }
       })
   }
-  componentWillReceiveProps(nextProps){
-  }
+
   renderBtnReact(){
     if(this.state.isReact === true){
       return (<a onClick={this.react.bind(this)} className="btn text-green pull-left"><i className="ion-ios-heart"></i>{this.state.react}</a>)
@@ -71,18 +92,17 @@ class NewsfeedContent extends React.Component{
     let userId = this.props.user.id;
     let postId = this.props.data.id;
     let related_userId = this.props.owner.id;
-    let that = this;
-    io.socket.post('/react/addReact',{userId, postId, related_userId},function(resData, jwres){
+    io.socket.post('/react/addReact',{userId, postId, related_userId},(resData, jwres)=>{
       if(resData.err){
         alert(resData.err);
       }
       if(resData.react){
-        that.state.react ++; that.state.isReact = true;
-        that.setState(that.state);
+        this.state.react ++; this.state.isReact = true;
+        this.setState(this.state);
       }
       if(resData.ok){
-        that.state.react --; that.state.isReact = false;
-        that.setState(that.state);
+        this.state.react --; this.state.isReact = false;
+        this.setState(this.state);
       }
     })
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {set_user, change_loading} from 'userAction';
-import {add_new_post} from 'postAction';
+import {add_new_post,get_postNewsfeed} from 'postAction';
 
 class Post extends React.Component{
   constructor(props){
@@ -32,12 +32,13 @@ class Post extends React.Component{
       userId: this.props.user.id
     };
     if(Post.content.length === 0 && Post.image === null){
+      dispatch(change_loading(false));
       this.msg.show('ERROR: Not enough information to post !! ', {
                             type: 'error',
                             icon: <img src="/images/error.png" />
       })
     }else{
-      if(Post.image){
+      if(Post.image && Post.image.length>0){
         var position = nameImg.lastIndexOf(".");
         if(position>0) nameImg = nameImg.substring(0,position);
         io.socket.post('/post/handleImg',{result:this.state.image,name:nameImg}, function(resData, jwres){
@@ -45,19 +46,20 @@ class Post extends React.Component{
               Post.image = resData.link;
               io.socket.post('/post/addPost', Post, function(resData, jwres){
                 dispatch(change_loading(false));
-                if(resData.ok){
+                if(resData.posts){
                   that.msg.show('Your post was success <3', {
                                     type: 'success',
                                     icon: <img src="/images/success.png" />
                   })
 
-                  dispatch(add_new_post(resData.ok));
+                  dispatch(get_postNewsfeed(resData.ok));
 
                   that.handleCloseImage();
                   that.state.contentPost = "";
                   that.refs.content.value = "";
                   that.setState(that.state);
                 }else{
+                  console.log("resData ERROR: ", resData)
                   that.msg.show('ERROR: Somethings are wrong !! ', {
                                     type: 'error',
                                     icon: <img src="/images/error.png" />
@@ -75,17 +77,18 @@ class Post extends React.Component{
       }else{
           io.socket.post('/post/addPost', Post, function(resData, jwres){
             dispatch(change_loading(false));
-            if(resData.ok){
+            if(resData.posts){
               that.msg.show('Your post was success <3 ', {
                                 type: 'success',
                                 icon: <img src="/images/success.png" />
               })
-              dispatch(add_new_post(resData.ok));
+              dispatch(get_postNewsfeed(resData.posts));
               that.handleCloseImage();
               that.state.contentPost = "";
               that.refs.content.value = "";
               that.setState(that.state);
             }else{
+              console.log("resData ERROR: ", resData.posts)
               that.msg.show('ERROR: Somethings are wrong !! ', {
                                 type: 'error',
                                 icon: <img src="/images/error.png" />

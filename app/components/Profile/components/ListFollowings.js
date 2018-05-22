@@ -14,7 +14,11 @@ class ListFollowings extends React.Component{
     }
   }
   componentDidMount(){
-    this.getlistFollowings(this.props.user);
+    if(this.props.type==="person"){
+      this.getlistFollowings(this.props.person);
+    }else{
+      this.getlistFollowings(this.props.user);
+    }
   }
   componentWillUnmount(){
     let {dispatch} = this.props;
@@ -57,7 +61,7 @@ class ListFollowings extends React.Component{
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-8">
-           <h3>You have not followed anyone yet !!!</h3>
+           <h3>Have not followed anyone yet !!!</h3>
           </div>
         </div>
       </div>
@@ -69,7 +73,7 @@ class ListFollowings extends React.Component{
           <div className="col-md-8">
           <h3>List Following</h3>
            {this.state.listFollowings.map( (follower, i)=>{
-              return <Following key={i} followed={follower.followed} />
+              return <Following key={i} data={follower.followed} />
            })
           }
           </div>
@@ -79,5 +83,5 @@ class ListFollowings extends React.Component{
   }
 }
 module.exports = connect( function(state){
-  return {user: state.userReducer.user, listFollowings: state.followReducer.listFollowings};
+  return {user: state.userReducer.user, listFollowings: state.followReducer.listFollowings, person: state.userReducer.person};
 })(ListFollowings);

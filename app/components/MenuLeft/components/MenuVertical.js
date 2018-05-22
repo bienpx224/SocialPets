@@ -1,7 +1,7 @@
  import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
-import {set_user, open_popup_user, open_popup_feedback} from 'userAction';
+import {set_user, open_popup_user, open_popup_feedback,get_notify} from 'userAction';
 import PopupUser from 'PopupUser';
 import PopupFeedback from 'PopupFeedback';
 import {Link} from 'react-router-dom';
@@ -15,6 +15,7 @@ class MenuVertical extends React.Component{
     this.state = {
       listInbox : [],
       listNotify: [],
+      listFeedback: [],
       user : false
     }
   }
@@ -44,6 +45,15 @@ class MenuVertical extends React.Component{
           }
         })
 
+        io.socket.post('/notification/getListNotify',{userId},(resData, jwres)=>{
+          if(resData.err){
+            alert("lỗi trong MenuVertical listNotify");
+          }
+          if(resData.listNotify){
+            dispatch(get_notify(resData.listNotify));
+          }
+        })
+
         this.getListFollowers(this.props.user);
   }
   showPopupFeedback(){
@@ -70,6 +80,7 @@ class MenuVertical extends React.Component{
     dispatch(open_popup_user());
   }
   renderAdmin = ()=>{
+    let countFeedbackUnread = 0;
     if(this.props.user.isAdmin === true){
       return(
       <div>

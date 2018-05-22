@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {get_list_inbox} from 'chatAction';
+import {Link} from 'react-router-dom';
 
 class SearchInbox extends React.Component{
   constructor(props){
@@ -29,11 +30,11 @@ class SearchInbox extends React.Component{
     let userId = this.props.user.id;
     if(data.first_userId && data.first_userId.id === userId){
       return(
-        <img src={data.second_userId.picture} alt="" className="profile-photo-sm pull-left"/>
+        <Link to={"/user/"+data.second_userId.email} ><img src={data.second_userId.picture} alt="" className="profile-photo-sm pull-left"/></Link>
       )
     }else if(data.second_userId && data.second_userId.id === userId){
       return(
-        <img src={data.first_userId.picture} alt="" className="profile-photo-sm pull-left"/>
+        <Link to={"/user/"+data.first_userId.email} ><img src={data.first_userId.picture} alt="" className="profile-photo-sm pull-left"/></Link>
       )
     }else{
       return (<img src="" alt="" className="profile-photo-sm pull-left"/>);
@@ -43,11 +44,11 @@ class SearchInbox extends React.Component{
     let userId = this.props.user.id;
     if(data.first_userId && data.first_userId.id === userId){
       return(
-        <h6>{data.second_userId.name}</h6>
+        <Link to={"/user/"+data.second_userId.email} ><h6>{data.second_userId.name}</h6></Link>
       )
     }else if(data.second_userId && data.second_userId.id === userId){
       return(
-        <h6>{data.first_userId.name}</h6>
+        <Link to={"/user/"+data.first_userId.email} ><h6>{data.first_userId.name}</h6></Link>
       )
     }else{
       return <h6>unknown</h6>;

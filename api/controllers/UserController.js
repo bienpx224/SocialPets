@@ -7,11 +7,21 @@
 
 module.exports = {
   searchUser: function(req, res){
-    let {name, email, phone} = req.body;
-    User.find({$and:[{"name": new RegExp(name)},{"email": new RegExp(email)},{"phone": new RegExp(phone)}]})
+    let {userId, key, limit, skip} = req.body;
+    let arrUserId = [];  arrUserId.push(userId);
+    User.find(
+      {$and:[
+        {$or:[
+          {"name": new RegExp(key)},{"email": new RegExp(key)}, {"phone": new RegExp(key)}
+        ]},
+        {id:{$nin:arrUserId} }
+      ]
+      }
+    )
+    .limit(limit)
+    .skip(skip)
     .then( (listUser)=>{
       if(!listUser) res.send({err:"Not found"})
-      console.log(listUser);
       res.send({listUser})
     })
     .catch( err=>res.send({err}))
@@ -150,12 +160,11 @@ module.exports = {
     var {email} = req.body;
     User.findOne({email: email}, function(err, user){
       if(err){
-        return res.send({error: err});
-      }
-      if(!user){
-        return res.send({notFound: "notFound"});
+         res.send({error: err});
+      }else if(!user){
+         res.send({notFound: "notFound"});
       }else{
-        return res.send({user: user});
+         res.send({user: user});
       }
     })
   },
@@ -163,12 +172,11 @@ module.exports = {
     let {userId} = req.body;
     User.findOne({id:userId}, function(err, user){
       if(err){
-        return res.send({error: err});
-      }
-      if(!user){
-        return res.send({err: "notFound"});
+         res.send({error: err});
+      }else if(!user){
+         res.send({err: "notFound"});
       }else{
-        return res.send({user: user});
+         res.send({user: user});
       }
     })
   },

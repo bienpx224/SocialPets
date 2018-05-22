@@ -63,7 +63,7 @@ class FormLogin extends React.Component{
       <div className="tab-pane active" id="login" style={{marginTop:"80px", marginLeft:"30px"}} >
       {renderLogin}
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-                  <h3>Login</h3>
+                  <h3 style={{textAlign:"center"}}>Login</h3>
                   <p className="text-muted">Log into your account</p>
 
                   <form name="Login_form" id='Login_form'>
@@ -82,7 +82,6 @@ class FormLogin extends React.Component{
                   </form>
             <p><a href="#">Forgot Password?</a></p>
             <button onClick={this.handleSubmit.bind(this)} className="btn btn-primary">Login Now</button>
-            <span className="fa fa-facebook"></span><a href="#" className="btn btn-facebook">Login with Facebook</a>
 
       </div>
 

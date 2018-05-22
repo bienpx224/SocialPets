@@ -13,7 +13,7 @@ class Layout extends React.Component{
       loading: false,
     }
   }
-  componentWillReceiveProps(nextProps){ console.log("nextProps Layout: ", nextProps);
+  componentWillReceiveProps(nextProps){ 
       this.state.loading = nextProps.loading;
       this.setState(this.state);
   }

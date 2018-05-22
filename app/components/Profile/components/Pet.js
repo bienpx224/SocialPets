@@ -55,18 +55,22 @@ class Pet extends React.Component{
     })
   }
   renderBtn(){
-    if(this.state.isActive === true){
-      return (
-        <button title="give up pet" onClick={this.deletePet.bind(this)} className="btn btn-danger cssDelete" >
-          <span style={{fontSize:"20px"}} className="ion-close-circled pull-left"></span>
-        </button>
-      )
+    if(this.props.type==="person"){
+      return null;
     }else{
-      return (
-        <button title="Got it's back" onClick={this.unDeletePet.bind(this)} className="btn btn-primary cssDelete" >
-          <span style={{fontSize:"20px"}} className="ion-ios-heart pull-left"></span>
-        </button>
-      )
+      if(this.state.isActive === true){
+        return (
+          <button title="give up pet" onClick={this.deletePet.bind(this)} className="btn btn-danger cssDelete" >
+            <span style={{fontSize:"20px"}} className="ion-close-circled pull-left"></span>
+          </button>
+        )
+      }else{
+        return (
+          <button title="Got it's back" onClick={this.unDeletePet.bind(this)} className="btn btn-primary cssDelete" >
+            <span style={{fontSize:"20px"}} className="ion-ios-heart pull-left"></span>
+          </button>
+        )
+      }
     }
   }
   render(){

@@ -6,6 +6,7 @@ import {get_followers} from 'followAction';
 import ReactPlaceholder from 'react-placeholder';
 import RecommendFollow from 'RecommendFollow';
 import {get_recommend_rank} from 'followAction';
+import {Link} from 'react-router-dom';
 
 class ListRecommendRank extends React.Component{
   constructor(props){
@@ -27,7 +28,7 @@ class ListRecommendRank extends React.Component{
     var that = this;
     let {dispatch} = this.props;
     if(!user) return that.setState({...that.state,loading: true});
-     io.socket.post('/follow/recommend_rank',{userId: user.id}, function(resData, jwres){
+     io.socket.post('/follow/recommend_rank',{userId: user.id, skip:0, limit:3}, function(resData, jwres){
         if(resData.ok){
           dispatch(get_recommend_rank(resData.ok));
           return that.setState({...that.state,loading: false});
@@ -58,11 +59,13 @@ class ListRecommendRank extends React.Component{
     else return(
 
         <div className="suggestions" id="sticky-sidebar">
-          <h4 className="grey">Top rank people</h4>
-          {this.state.ListRecommendRank.map( (user, i)=>{
-             return <RecommendFollow key={i} followed={user} type="" getNewList = {that.getListRecommendRank} />
-           })
-          }
+          <Link to="/newsfeed/search/rank">
+            <h4 title="show more" className="grey">Top rank people <i className="icon ion-more pull-right"></i></h4>
+          </Link>
+            {this.state.ListRecommendRank.map( (user, i)=>{
+               return <RecommendFollow key={i} followed={user} type="" getNewList = {that.getListRecommendRank} />
+             })
+            }
         </div>
 
     )
