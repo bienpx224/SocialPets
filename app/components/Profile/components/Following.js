@@ -86,7 +86,7 @@ class Following extends React.Component{
     }
   }
   render(){
-
+    console.log("===========: ", this.props.data);
     return(
       <div className="col-md-6 col-sm-6">
 

@@ -26,6 +26,7 @@ module.exports = {
 
       }
     }
+    sails.log.info("Có yêu cầu đăng bài : ", post.content);
     Post.create(post, function(err, post){
       if(err){
         sails.log.error("Đăng bài thất bại :", err);
@@ -35,7 +36,7 @@ module.exports = {
         Post.findOne({id: post.id}).populateAll()
         .then( (newPost)=>{
           sails.log.info("Đăng bài thành công : ", newPost.content);
-          var point = parseInt(newPost.userId.point) + 3;
+          var point = parseInt(newPost.userId.point) + 1;
           User.update({id: newPost.userId.id}, {point})
           .exec(function(err, userUpdated){
             if(err){

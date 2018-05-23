@@ -24,7 +24,7 @@ class RecommendFollow extends React.Component{
   }
   alertOptions = {
     offset: 14,
-    position: 'top right',
+    position: 'bottom left',
     theme: 'light',
     time: 1000,
     transition: 'scale'

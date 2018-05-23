@@ -45,7 +45,7 @@ module.exports = {
 			})
 			User.findOne({id:userId}, (err,user)=>{
 				if(err) sails.log.error("không tạo được point");
-				let point = parseInt(user.point) + 3;
+				let point = parseInt(user.point) + 1;
 				User.update({id: userId}, {point})
 				.exec(function(err, userUpdated){
 					if(userUpdated) sails.log.info("Update point thành công: ", userUpdated[0].point);

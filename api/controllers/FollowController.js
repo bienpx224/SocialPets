@@ -79,7 +79,7 @@ module.exports = {
 							let userId_1 = data_follow.userId.id;
 							let userId_2 = data_follow.followed.id;
 							let point_1 = parseInt(data_follow.userId.point)+1;
-							let point_2 = parseInt(data_follow.followed.point)+2;
+							let point_2 = parseInt(data_follow.followed.point)+1;
 
 							User.update({id: userId_1}, {point:point_1})
 		          .exec(function(err, userUpdated_1){
@@ -280,7 +280,13 @@ module.exports = {
 				if(list_following[i].isActive === true) list_id_following.push(list_following[i].followed);
 			}
 			list_id_following.push(userId);
-			User.find({ id: {$nin: list_id_following}, $or: [{"gender": new RegExp(user.gender)}, {"address":new RegExp(user.address)}, {"year_date": new RegExp(user.year_date)}  ] })
+			User.find({ id: {$nin: list_id_following},
+									$or: [
+										{"gender": new RegExp(user.gender)},
+										{"address":new RegExp(user.address)},
+										{"year_date": new RegExp(user.year_date)}
+									]
+								})
 			.limit(limit)
 			.skip(skip)
 			.then( (users)=>{
