@@ -10,7 +10,7 @@ class NewsfeedContent extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      react : this.props.data.react.length,
+      react : this.props.data.count||this.props.data.react.length,
       isReact : false,
       listComment : [],
 
@@ -25,8 +25,19 @@ class NewsfeedContent extends React.Component{
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.data){
+      console.log("PROPS MOI: ", nextProps.data);
       let postId = nextProps.data.id;
       this.getListComment(postId);
+      let userId = this.props.user.id;
+      let arrUser = nextProps.data.react;
+      this.state.react = nextProps.data.count||nextProps.data.react.length;
+      this.state.isReact = false;
+      arrUser.map( (value, key)=>{
+        if(userId === value.userId){
+          this.state.isReact = true;
+        }
+      })
+      this.setState(this.state);
     }
   }
   componentDidMount(){
@@ -54,7 +65,8 @@ class NewsfeedContent extends React.Component{
       let content = this.refs.content.value;
       if(content.length === 0) return;
       if(content.length >= 999) return;
-      let userId = this.props.user; let postId = this.props.data.id;
+      let userId = this.props.user;
+      let postId = this.props.data.id;
       let related_userId = this.props.owner;
       io.socket.post('/comment/addComment',{userId,postId,content,related_userId},(resData, jwres)=>{
         if(resData.err){

@@ -52,7 +52,7 @@ class Post extends React.Component{
                                     icon: <img src="/images/success.png" />
                   })
 
-                  dispatch(get_postNewsfeed(resData.ok));
+                  dispatch(add_new_post(resData.posts));
 
                   that.handleCloseImage();
                   that.state.contentPost = "";
@@ -82,7 +82,7 @@ class Post extends React.Component{
                                 type: 'success',
                                 icon: <img src="/images/success.png" />
               })
-              dispatch(get_postNewsfeed(resData.posts));
+              dispatch(add_new_post(resData.posts));
               that.handleCloseImage();
               that.state.contentPost = "";
               that.refs.content.value = "";

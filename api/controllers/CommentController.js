@@ -31,7 +31,7 @@ module.exports = {
 							sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 						}
 					})
-					
+
 					let notifyInfo = {
 						userId : related_userId,
 						action : "Bình luận trong bài đăng",

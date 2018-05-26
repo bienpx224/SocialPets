@@ -12,6 +12,7 @@ import Timeline from 'Timeline';
 import Information from 'Information';
 import User from 'User';
 import Notfound from 'Notfound';
+import PostInfo from 'PostInfo';
 
 var {Provider} = require('react-redux');
 var store = require('store');
@@ -32,6 +33,7 @@ class App extends React.Component{
                       <Route  exact path="/login" component={Login} />
                       <Route  path='/profile' component={Profile} />
                       <Route  path='/user/:email' component={User} />
+                      <Route  path='/post/:id' component={PostInfo} />
                       <Route render={function(){
                           return <Notfound />
                       } } />

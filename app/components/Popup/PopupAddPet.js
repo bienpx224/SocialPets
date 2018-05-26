@@ -25,8 +25,9 @@ class PopupAddPet extends React.Component{
     transition: 'scale'
   }
   handleAddPet(){
+    let {dispatch} = this.props;
     dispatch(change_loading(true));
-    let that = this; let {dispatch} = this.props;
+    let that = this;
     var nameImg = this.state.nameImg;
     var Pet = {
       description: this.refs.description.value,

@@ -12,6 +12,7 @@ module.exports = {
     image:{ type:'string' },
     petRelate:{ model: 'pet'},
     isActive: {type:'boolean'},
+    count: {type:'integer', defaultsTo:0},
     userId:{ model:'user' },
     react:{ collection:'react', via:'postId' },
     comments:{ collection:'comment', via:'postId' }
