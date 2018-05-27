@@ -1045,50 +1045,6 @@ module.exports = { get_listalluser: get_listalluser, change_loading: change_load
 
 /***/ }),
 /* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-
-/**
- * WARNING: DO NOT manually require this module.
- * This is a replacement for `invariant(...)` used by the error code system
- * and will _only_ be required by the corresponding babel pass.
- * It always throws.
- */
-
-function reactProdInvariant(code) {
-  var argCount = arguments.length - 1;
-
-  var message = 'Minified React error #' + code + '; visit ' + 'http://facebook.github.io/react/docs/error-decoder.html?invariant=' + code;
-
-  for (var argIdx = 0; argIdx < argCount; argIdx++) {
-    message += '&args[]=' + encodeURIComponent(arguments[argIdx + 1]);
-  }
-
-  message += ' for the full message or use the non-minified dev environment' + ' for full errors and additional helpful warnings.';
-
-  var error = new Error(message);
-  error.name = 'Invariant Violation';
-  error.framesToPop = 1; // we don't care about reactProdInvariant's own frame
-
-  throw error;
-}
-
-module.exports = reactProdInvariant;
-
-/***/ }),
-/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1145,6 +1101,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+
+/**
+ * WARNING: DO NOT manually require this module.
+ * This is a replacement for `invariant(...)` used by the error code system
+ * and will _only_ be required by the corresponding babel pass.
+ * It always throws.
+ */
+
+function reactProdInvariant(code) {
+  var argCount = arguments.length - 1;
+
+  var message = 'Minified React error #' + code + '; visit ' + 'http://facebook.github.io/react/docs/error-decoder.html?invariant=' + code;
+
+  for (var argIdx = 0; argIdx < argCount; argIdx++) {
+    message += '&args[]=' + encodeURIComponent(arguments[argIdx + 1]);
+  }
+
+  message += ' for the full message or use the non-minified dev environment' + ' for full errors and additional helpful warnings.';
+
+  var error = new Error(message);
+  error.name = 'Invariant Violation';
+  error.framesToPop = 1; // we don't care about reactProdInvariant's own frame
+
+  throw error;
+}
+
+module.exports = reactProdInvariant;
 
 /***/ }),
 /* 18 */
@@ -1301,7 +1301,7 @@ module.exports = exports['default'];
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var DOMProperty = __webpack_require__(40);
 var ReactDOMComponentFlags = __webpack_require__(175);
@@ -2453,7 +2453,7 @@ module.exports = ReactCurrentOwner;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var CallbackQueue = __webpack_require__(179);
@@ -3201,7 +3201,7 @@ module.exports = exports['default'];
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -3855,7 +3855,7 @@ module.exports = ReactElement;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -4951,7 +4951,7 @@ module.exports = EventPropagators;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var EventPluginRegistry = __webpack_require__(84);
 var EventPluginUtils = __webpack_require__(107);
@@ -6386,7 +6386,7 @@ module.exports = emptyObject;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -6645,7 +6645,7 @@ module.exports = EventPluginRegistry;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -8788,7 +8788,7 @@ var _Comment = __webpack_require__(644);
 
 var _Comment2 = _interopRequireDefault(_Comment);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _timeAgo = __webpack_require__(81);
 
@@ -9050,7 +9050,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(10);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9144,7 +9144,7 @@ var _reactAlert = __webpack_require__(12);
 
 var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9380,7 +9380,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactErrorUtils = __webpack_require__(108);
 
@@ -10141,7 +10141,7 @@ module.exports = createMicrosoftUnsafeLocalFunction;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactPropTypesSecret = __webpack_require__(191);
 var propTypesFactory = __webpack_require__(173);
@@ -10286,7 +10286,7 @@ module.exports = LinkedValueUtils;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -10519,7 +10519,7 @@ module.exports = KeyEscapeUtils;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(32);
 var ReactInstanceMap = __webpack_require__(68);
@@ -13347,7 +13347,7 @@ var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
 var _chatAction = __webpack_require__(48);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13550,7 +13550,7 @@ var _reactAlert = __webpack_require__(12);
 
 var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13747,7 +13747,7 @@ var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
 var _userAction = __webpack_require__(15);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _BasicInformation = __webpack_require__(666);
 
@@ -15884,7 +15884,7 @@ module.exports = ReactDOMComponentFlags;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -16022,7 +16022,7 @@ module.exports = getTextContentAccessor;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -17228,7 +17228,7 @@ module.exports = ReactDOMSelect;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var ReactCompositeComponent = __webpack_require__(347);
@@ -17364,7 +17364,7 @@ module.exports = instantiateReactComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var React = __webpack_require__(49);
 
@@ -17444,7 +17444,7 @@ module.exports = ReactEmptyComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -17518,7 +17518,7 @@ module.exports = ReactHostComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(32);
 var REACT_ELEMENT_TYPE = __webpack_require__(351);
@@ -17955,7 +17955,7 @@ module.exports = getActiveElement;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var DOMLazyTree = __webpack_require__(52);
 var DOMProperty = __webpack_require__(40);
@@ -19662,7 +19662,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(10);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _userAction = __webpack_require__(15);
 
@@ -24666,7 +24666,7 @@ var _reactRedux = __webpack_require__(10);
 
 var _userAction = __webpack_require__(15);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25351,7 +25351,7 @@ var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
 var _authenticated = __webpack_require__(274);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _userAction = __webpack_require__(15);
 
@@ -26520,7 +26520,7 @@ var _NewsfeedContent = __webpack_require__(102);
 
 var _NewsfeedContent2 = _interopRequireDefault(_NewsfeedContent);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _timeAgo = __webpack_require__(81);
 
@@ -26759,7 +26759,7 @@ var _reactAlert = __webpack_require__(12);
 
 var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26904,7 +26904,7 @@ var _Timeline = __webpack_require__(166);
 
 var _Timeline2 = _interopRequireDefault(_Timeline);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27315,7 +27315,7 @@ var _reactDom = __webpack_require__(24);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _App = __webpack_require__(417);
 
@@ -31107,7 +31107,7 @@ module.exports = ReactRef;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -32129,7 +32129,7 @@ module.exports = ReactComponentBrowserEnvironment;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var DOMLazyTree = __webpack_require__(52);
 var ExecutionEnvironment = __webpack_require__(23);
@@ -32545,7 +32545,7 @@ module.exports = ReactDOMIDOperations;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var AutoFocusUtils = __webpack_require__(334);
@@ -34143,7 +34143,7 @@ module.exports = getVendorPrefixedEventName;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var DOMPropertyOperations = __webpack_require__(190);
@@ -34564,7 +34564,7 @@ module.exports = ReactDOMOption;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var LinkedValueUtils = __webpack_require__(115);
@@ -34730,7 +34730,7 @@ module.exports = ReactDOMTextarea;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactComponentEnvironment = __webpack_require__(116);
 var ReactInstanceMap = __webpack_require__(68);
@@ -35341,7 +35341,7 @@ module.exports = ReactChildReconciler;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var React = __webpack_require__(49);
@@ -36247,7 +36247,7 @@ module.exports = ReactCompositeComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactPropTypeLocationNames = __webpack_require__(349);
 var ReactPropTypesSecret = __webpack_require__(191);
@@ -36856,7 +36856,7 @@ module.exports = ReactDOMEmptyComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(11);
 
@@ -36998,7 +36998,7 @@ module.exports = {
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var DOMChildrenOperations = __webpack_require__(112);
@@ -38568,7 +38568,7 @@ module.exports = SelectEventPlugin;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var EventListener = __webpack_require__(198);
 var EventPropagators = __webpack_require__(65);
@@ -39510,7 +39510,7 @@ module.exports = '15.6.1';
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(32);
 var ReactDOMComponentTree = __webpack_require__(20);
@@ -42129,7 +42129,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRedux = __webpack_require__(10);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _Layout = __webpack_require__(443);
 
@@ -43501,7 +43501,7 @@ var _reactLoadingOverlay = __webpack_require__(271);
 
 var _reactLoadingOverlay2 = _interopRequireDefault(_reactLoadingOverlay);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _userAction = __webpack_require__(15);
 
@@ -43603,7 +43603,7 @@ var _Search = __webpack_require__(269);
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _reactAlert = __webpack_require__(12);
 
@@ -58398,7 +58398,7 @@ var _Search = __webpack_require__(269);
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62686,7 +62686,7 @@ var _reactRedux = __webpack_require__(10);
 
 var _testAction = __webpack_require__(635);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62901,7 +62901,7 @@ var _validateInfoUser = __webpack_require__(60);
 
 var _validateInfoUser2 = _interopRequireDefault(_validateInfoUser);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64853,7 +64853,7 @@ var _reactAlert = __webpack_require__(12);
 
 var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _authenticated = __webpack_require__(274);
 
@@ -64996,12 +64996,6 @@ var FormLogin = function (_React$Component) {
           'button',
           { onClick: this.handleSubmit.bind(this), className: 'btn btn-primary' },
           'Login Now'
-        ),
-        _react2.default.createElement('span', { className: 'fa fa-facebook' }),
-        _react2.default.createElement(
-          'a',
-          { href: '#', className: 'btn btn-facebook' },
-          'Login with Facebook'
         )
       );
     }
@@ -65042,7 +65036,7 @@ var _Home2 = _interopRequireDefault(_Home);
 
 var _userAction = __webpack_require__(15);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65290,7 +65284,7 @@ var _PopupFeedback = __webpack_require__(216);
 
 var _PopupFeedback2 = _interopRequireDefault(_PopupFeedback);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _chatAction = __webpack_require__(48);
 
@@ -65765,7 +65759,7 @@ var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
 var _userAction = __webpack_require__(15);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67534,7 +67528,7 @@ var _FindUser2 = _interopRequireDefault(_FindUser);
 
 var _userAction = __webpack_require__(15);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67798,7 +67792,7 @@ var _timeAgo = __webpack_require__(81);
 
 var _timeAgo2 = _interopRequireDefault(_timeAgo);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68045,7 +68039,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(10);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 var _userAction = __webpack_require__(15);
 
@@ -68718,7 +68712,7 @@ var _RecommendFollow = __webpack_require__(285);
 
 var _RecommendFollow2 = _interopRequireDefault(_RecommendFollow);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68860,7 +68854,7 @@ var _RecommendFollow = __webpack_require__(285);
 
 var _RecommendFollow2 = _interopRequireDefault(_RecommendFollow);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -69004,7 +68998,7 @@ var _userAction = __webpack_require__(15);
 
 var _apiUser = __webpack_require__(289);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -72712,7 +72706,7 @@ var _userAction = __webpack_require__(15);
 
 var _apiUser = __webpack_require__(289);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73044,7 +73038,7 @@ var _Notfound = __webpack_require__(103);
 
 var _Notfound2 = _interopRequireDefault(_Notfound);
 
-var _reactRouterDom = __webpack_require__(17);
+var _reactRouterDom = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
