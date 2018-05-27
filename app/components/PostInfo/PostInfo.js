@@ -18,7 +18,7 @@ class PostInfo extends React.Component{
       if(resData.err){
         alert("co loi")
       }
-      if(resData.post){ 
+      if(resData.post){
         this.setState({loading:false, data: resData.post})
       }
     })
@@ -28,7 +28,7 @@ class PostInfo extends React.Component{
     return(
       <div id="page-contents">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-11" style={{marginTop:"-80px"}}>
 
             {renderPost}
 
@@ -38,6 +38,6 @@ class PostInfo extends React.Component{
     )
   }
 }
-module.exports = withRouter(connect( function(state){
+module.exports = (connect( function(state){
   return {user: state.userReducer.user};
 })(PostInfo));

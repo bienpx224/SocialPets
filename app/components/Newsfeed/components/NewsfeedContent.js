@@ -65,9 +65,9 @@ class NewsfeedContent extends React.Component{
       let content = this.refs.content.value;
       if(content.length === 0) return;
       if(content.length >= 999) return;
-      let userId = this.props.user;
+      let userId = this.props.user.id;
       let postId = this.props.data.id;
-      let related_userId = this.props.owner;
+      let related_userId = this.props.owner.id;
       io.socket.post('/comment/addComment',{userId,postId,content,related_userId},(resData, jwres)=>{
         if(resData.err){
           this.msg.show('ERROR: '+resData.err, {
@@ -135,10 +135,10 @@ class NewsfeedContent extends React.Component{
 
                   </div>
                   <div className="post-text">
-                    <p>{this.props.data.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p>
+                    <Link to={"/post/"+this.props.data.id} ><p>{this.props.data.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p></Link>
                   </div>
                   <div className="line-divider"></div>
-                  <img src={this.props.data.image} alt="" className="img-responsive post-image"/>
+                  <Link to={"/post/"+this.props.data.id} ><img src={this.props.data.image} alt="" className="img-responsive post-image"/></Link>
 
                   <div className="">
                     {renderBtnReact}

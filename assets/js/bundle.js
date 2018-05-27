@@ -6367,9 +6367,9 @@ var NewsfeedContent = function (_React$Component) {
         var content = this.refs.content.value;
         if (content.length === 0) return;
         if (content.length >= 999) return;
-        var userId = this.props.user;
+        var userId = this.props.user.id;
         var postId = this.props.data.id;
-        var related_userId = this.props.owner;
+        var related_userId = this.props.owner.id;
         io.socket.post('/comment/addComment', { userId: userId, postId: postId, content: content, related_userId: related_userId }, function (resData, jwres) {
           if (resData.err) {
             _this4.msg.show('ERROR: ' + resData.err, {
@@ -6488,18 +6488,26 @@ var NewsfeedContent = function (_React$Component) {
               'div',
               { className: 'post-text' },
               _react2.default.createElement(
-                'p',
-                null,
-                this.props.data.content,
-                _react2.default.createElement('i', { className: 'em em-anguished' }),
-                ' ',
-                _react2.default.createElement('i', { className: 'em em-anguished' }),
-                ' ',
-                _react2.default.createElement('i', { className: 'em em-anguished' })
+                _reactRouterDom.Link,
+                { to: "/post/" + this.props.data.id },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  this.props.data.content,
+                  _react2.default.createElement('i', { className: 'em em-anguished' }),
+                  ' ',
+                  _react2.default.createElement('i', { className: 'em em-anguished' }),
+                  ' ',
+                  _react2.default.createElement('i', { className: 'em em-anguished' })
+                )
               )
             ),
             _react2.default.createElement('div', { className: 'line-divider' }),
-            _react2.default.createElement('img', { src: this.props.data.image, alt: '', className: 'img-responsive post-image' }),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: "/post/" + this.props.data.id },
+              _react2.default.createElement('img', { src: this.props.data.image, alt: '', className: 'img-responsive post-image' })
+            ),
             _react2.default.createElement(
               'div',
               { className: '' },
@@ -13549,7 +13557,7 @@ module.exports = (0, _reactRedux.connect)(function (state) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(console) {
+
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -13683,7 +13691,6 @@ var Following = function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      console.log("===========: ", this.props.data);
       return _react2.default.createElement(
         'div',
         { className: 'col-md-6 col-sm-6' },
@@ -13741,7 +13748,6 @@ var Following = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user };
 })(Following);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ }),
 /* 165 */
@@ -24626,6 +24632,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(10);
 
+var _reactRouterDom = __webpack_require__(15);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24653,7 +24661,11 @@ var Search = function (_React$Component) {
           'div',
           { className: 'form-group' },
           _react2.default.createElement('i', { className: 'icon ion-android-search' }),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search friends, photos, videos' })
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/newsfeed/search' },
+            _react2.default.createElement('input', { type: 'button', className: 'form-control', placeholder: 'Search friends, photos, videos' })
+          )
         )
       );
     }
@@ -26645,7 +26657,7 @@ var NotificationItem = function (_React$Component) {
         if (h.related_postId.image !== null && h.related_postId.content != "") {
           return _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/home' },
+            { to: "/post/" + h.related_postId.id },
             _react2.default.createElement(
               'p',
               { className: 'col-xs-3' },
@@ -26660,13 +26672,13 @@ var NotificationItem = function (_React$Component) {
         } else if (h.related_postId.image !== null) {
           return _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/home' },
+            { to: "/post/" + h.related_postId.id },
             _react2.default.createElement('img', { src: h.related_postId.image, className: 'profile-photo-sm pull-right' })
           );
         } else if (h.related_postId.content != "") {
           return _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/home' },
+            { to: "/post/" + h.related_postId.id },
             _react2.default.createElement(
               'p',
               { className: 'col-xs-3' },
@@ -26680,7 +26692,7 @@ var NotificationItem = function (_React$Component) {
         } else {
           return _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/home' },
+            { to: "/post/" + h.related_postId.id },
             _react2.default.createElement(
               'p',
               { className: 'col-xs-3' },
@@ -67376,7 +67388,7 @@ module.exports = (0, _reactRedux.connect)(function (state) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -67419,6 +67431,11 @@ var Message = function (_React$Component) {
       time: 2500,
       transition: 'scale'
     };
+
+    _this.state = {
+      isDelete: false
+    };
+
     return _this;
   }
 
@@ -67429,27 +67446,45 @@ var Message = function (_React$Component) {
       if (objDiv) objDiv.scrollTop = objDiv.scrollHeight;
     }
   }, {
+    key: 'deleteMsg',
+    value: function deleteMsg() {
+      var _this2 = this;
+
+      if (this.props.user.id === this.props.data.send_userId) {
+        var id = this.props.data.id;
+        io.socket.post('/message/deleteMsg', { id: id }, function (resData, jwres) {
+          if (resData.ok) {
+            _this2.setState({ isDelete: true });
+          } else console.log(" co loi xoa tin nahn");
+        });
+      } else {
+        console.log("khong phai chu nhan tin nhan nay");
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var userId = this.props.user.id;
       var renderPos = userId === this.props.data.send_userId ? "right" : "left";
+      var hidden = this.state.isDelete === true ? "hidden" : "";
+      var renderDelete = userId === this.props.data.send_userId ? "Delete" : null;
       var date = new Date(this.props.data.createdAt);
       var timeMsg = date.getTime();
       var renderCreateTime = _timeAgo2.default.ago(new Date() - (new Date() - timeMsg));
       var renderImageF = function renderImageF() {
-        if (userId === _this2.props.data.send_userId) {
-          if (userId === _this2.props.inbox.first_userId.id) {
-            return _react2.default.createElement('img', { src: "" + _this2.props.inbox.first_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
+        if (userId === _this3.props.data.send_userId) {
+          if (userId === _this3.props.inbox.first_userId.id) {
+            return _react2.default.createElement('img', { src: "" + _this3.props.inbox.first_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
           } else {
-            return _react2.default.createElement('img', { src: "" + _this2.props.inbox.second_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
+            return _react2.default.createElement('img', { src: "" + _this3.props.inbox.second_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
           }
         } else {
-          if (userId === _this2.props.inbox.first_userId.id) {
-            return _react2.default.createElement('img', { src: "" + _this2.props.inbox.second_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
+          if (userId === _this3.props.inbox.first_userId.id) {
+            return _react2.default.createElement('img', { src: "" + _this3.props.inbox.second_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
           } else {
-            return _react2.default.createElement('img', { src: "" + _this2.props.inbox.first_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
+            return _react2.default.createElement('img', { src: "" + _this3.props.inbox.first_userId.picture, alt: '', className: "profile-photo-sm pull-" + renderPos });
           }
         }
       };
@@ -67461,9 +67496,9 @@ var Message = function (_React$Component) {
       //   <img src={""+this.props.inbox.second_userId.picture} alt="" className="profile-photo-sm pull-left" />;
       return _react2.default.createElement(
         'div',
-        null,
+        { className: "" + hidden },
         _react2.default.createElement(_reactAlert2.default, _extends({ ref: function ref(a) {
-            return _this2.msg = a;
+            return _this3.msg = a;
           } }, this.alertOptions)),
         _react2.default.createElement(
           'li',
@@ -67484,6 +67519,11 @@ var Message = function (_React$Component) {
                 'small',
                 { className: 'text-muted' },
                 renderCreateTime
+              ),
+              _react2.default.createElement(
+                'small',
+                { title: 'Double click', onDoubleClick: this.deleteMsg.bind(this), style: { cursor: "pointer" }, className: 'text-muted pull-right' },
+                renderDelete
               )
             )
           )
@@ -67498,6 +67538,7 @@ var Message = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user };
 })(Message);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ }),
 /* 655 */
@@ -69041,6 +69082,7 @@ var Profile = function (_React$Component) {
     _this.state = {
       isLogin: false,
       type: ""
+
     };
     return _this;
   }
@@ -69194,16 +69236,6 @@ var Profile = function (_React$Component) {
                         'Yours point : ',
                         _react2.default.createElement('span', { className: 'ion-star pull-left' }),
                         this.props.user.point
-                      ),
-                      _react2.default.createElement(
-                        'li',
-                        null,
-                        _react2.default.createElement(
-                          'button',
-                          { className: 'btn-primary' },
-                          _react2.default.createElement('span', { className: 'ion-person-add pull-left' }),
-                          'Follow '
-                        )
                       )
                     )
                   )
@@ -72183,6 +72215,8 @@ var _NewsfeedContent = __webpack_require__(81);
 
 var _NewsfeedContent2 = _interopRequireDefault(_NewsfeedContent);
 
+var _reactRouterDom = __webpack_require__(15);
+
 var _userAction = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -72288,23 +72322,31 @@ var HistoryUser = function (_React$Component) {
       if (h.related_postId) {
         if (h.related_postId.image !== null) {
           return _react2.default.createElement(
-            'p',
-            { className: 'col-xs-6' },
+            _reactRouterDom.Link,
+            { to: "/post/" + h.related_postId.id },
             _react2.default.createElement(
-              'i',
-              null,
-              h.related_postId.content
-            ),
-            _react2.default.createElement('img', { src: h.related_postId.image, className: 'img-responsive post-image pull-left' })
+              'p',
+              { className: 'col-xs-6' },
+              _react2.default.createElement(
+                'i',
+                null,
+                h.related_postId.content
+              ),
+              _react2.default.createElement('img', { src: h.related_postId.image, className: 'img-responsive post-image pull-left' })
+            )
           );
         } else {
           return _react2.default.createElement(
-            'p',
-            { className: 'col-xs-6' },
+            _reactRouterDom.Link,
+            { to: "/post/" + h.related_postId.id },
             _react2.default.createElement(
-              'i',
-              null,
-              h.related_postId.content
+              'p',
+              { className: 'col-xs-6' },
+              _react2.default.createElement(
+                'i',
+                null,
+                h.related_postId.content
+              )
             )
           );
         }
@@ -72749,9 +72791,18 @@ var User = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
 
+    _this.alertOptions = {
+      offset: 14,
+      position: 'bottom left',
+      theme: 'dark',
+      time: 1000,
+      transition: 'scale'
+    };
+
     _this.state = {
       isLogin: false,
-      isNotfound: true
+      isNotfound: true,
+      following: false
     };
     return _this;
   }
@@ -72779,25 +72830,104 @@ var User = function (_React$Component) {
       });
     }
   }, {
+    key: 'handleFollow',
+    value: function handleFollow() {
+      var that = this;
+      var userId = this.props.user.id;
+      var followed = this.props.person.id;
+      io.socket.post('/follow/follow', { userId: userId, followed: followed }, function (resData, jwres) {
+        if (resData.err) {
+          that.msg.show('ERROR: ' + resData.err, {
+            type: 'error',
+            icon: _react2.default.createElement('img', { src: '/images/error.png' })
+          });
+        } else {
+          that.msg.show('SUCCESS: You are following that user ', {
+            type: 'success',
+            icon: _react2.default.createElement('img', { src: '/images/success.png' })
+          });
+          that.setState({ following: true });
+        }
+      });
+    }
+  }, {
+    key: 'handleUnfollow',
+    value: function handleUnfollow() {
+      var that = this;
+      var userId = this.props.user.id;
+      var followed = this.props.person.id;
+      io.socket.post('/follow/unfollow', { userId: userId, followed: followed }, function (resData, jwres) {
+        if (resData.err) {
+          that.msg.show('ERROR: ' + resData.err, {
+            type: 'error',
+            icon: _react2.default.createElement('img', { src: '/images/error.png' })
+          });
+        } else {
+          that.msg.show('SUCCESS: You are unfollow that user ', {
+            type: 'success',
+            icon: _react2.default.createElement('img', { src: '/images/success.png' })
+          });
+          that.setState({ following: false });
+        }
+      });
+    }
+  }, {
+    key: 'renderBtn',
+    value: function renderBtn() {
+      if (this.state.following === true) {
+        return _react2.default.createElement(
+          'button',
+          { style: { padding: "1px 5px" }, onClick: this.handleUnfollow.bind(this), className: 'btn-primary' },
+          _react2.default.createElement('span', { className: 'ion-eye-disabled pull-left' }),
+          'Unfollow'
+        );
+      } else {
+        return _react2.default.createElement(
+          'button',
+          { style: { padding: "1px 5px" }, onClick: this.handleFollow.bind(this), className: 'btn-primary' },
+          _react2.default.createElement('span', { className: 'ion-person-add pull-left' }),
+          'Follow'
+        );
+      }
+    }
+  }, {
+    key: 'checkFollow',
+    value: function checkFollow() {
+      var _this2 = this;
+
+      console.log("check follow");
+      var userId = this.props.user.id;
+      var followed = this.props.person.id;
+      io.socket.post('/follow/checkFollow', { userId: userId, followed: followed }, function (resData, jwres) {
+        console.log(resData);
+        if (resData.follow === "exist") {
+          _this2.setState({ following: true });
+        } else {
+          _this2.setState({ following: false });
+        }
+      });
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var email = this.props.match.params.email;
 
       this.checkLogin();
       this.getPerson(email);
+      console.log("check follow đimount ");
+      this.checkFollow();
     }
   }, {
     key: 'getPerson',
     value: function getPerson(email) {
-      var _this2 = this;
+      var _this3 = this;
 
       var dispatch = this.props.dispatch;
 
       io.socket.post('/user/getUser', { email: email }, function (resData, jwres) {
-        console.log("getUser: ", resData);
         if (resData.error) {}
         if (resData.notFound) {} else {
-          _this2.setState({ isNotfound: false });
+          _this3.setState({ isNotfound: false });
           dispatch((0, _userAction.get_person)(resData.user));
         }
       });
@@ -72805,20 +72935,24 @@ var User = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      console.log("nextProps User: ", nextProps);
+      console.log("==========================================nextProps User: ", nextProps);
       if (nextProps.match.params.email !== this.props.match.params.email) {
         this.getPerson(nextProps.match.params.email);
+        this.checkFollow();
       }
       if (nextProps.isLogin) {
         this.setState(_extends({}, this.state, { isLogin: nextProps.isLogin }));
       }
       if (nextProps.person) {
+        this.checkFollow();
         this.setState(_extends({}, this.state, { isLogin: nextProps.person }));
       }
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this4 = this;
+
       if (this.props.isLogin === false) {
         return _react2.default.createElement(_Login2.default, null);
       }if (this.state.isNotfound === true) {
@@ -72827,6 +72961,9 @@ var User = function (_React$Component) {
         return _react2.default.createElement(
           'div',
           { className: 'container', style: { marginTop: "-24px" } },
+          _react2.default.createElement(_reactAlert2.default, _extends({ ref: function ref(a) {
+              return _this4.msg = a;
+            } }, this.alertOptions)),
           _react2.default.createElement(
             'div',
             { className: 'timeline' },
@@ -72919,19 +73056,14 @@ var User = function (_React$Component) {
                       _react2.default.createElement(
                         'li',
                         null,
-                        'Yours point : ',
+                        'Point : ',
                         _react2.default.createElement('span', { className: 'ion-star pull-left' }),
                         this.props.person.point
                       ),
                       _react2.default.createElement(
                         'li',
                         null,
-                        _react2.default.createElement(
-                          'button',
-                          { className: 'btn-primary' },
-                          _react2.default.createElement('span', { className: 'ion-person-add pull-left' }),
-                          'Follow '
-                        )
+                        this.renderBtn()
                       )
                     )
                   )
@@ -73006,6 +73138,11 @@ var User = function (_React$Component) {
                       null,
                       _react2.default.createElement('span', { className: 'ion-star pull-left' }),
                       this.props.person.point
+                    ),
+                    _react2.default.createElement(
+                      'li',
+                      null,
+                      this.renderBtn()
                     )
                   )
                 )
@@ -73206,7 +73343,7 @@ var PostInfo = function (_React$Component) {
           { className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'col-md-12' },
+            { className: 'col-md-11', style: { marginTop: "-80px" } },
             renderPost
           )
         )
@@ -73217,9 +73354,9 @@ var PostInfo = function (_React$Component) {
   return PostInfo;
 }(_react2.default.Component);
 
-module.exports = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
+module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user };
-})(PostInfo));
+})(PostInfo);
 
 /***/ }),
 /* 678 */
