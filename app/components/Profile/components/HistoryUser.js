@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import NewsfeedContent from 'NewsfeedContent';
+import {Link} from 'react-router-dom';
 import {set_user, open_popup_user,get_post_err,get_postNewsfeed} from 'userAction';
 
 class HistoryUser extends React.Component{
@@ -59,14 +60,18 @@ class HistoryUser extends React.Component{
     if(h.related_postId){
       if(h.related_postId.image !== null){
         return (
+          <Link to={"/post/"+h.related_postId.id}>
           <p className="col-xs-6"><i>{h.related_postId.content}</i>
             <img src={h.related_postId.image} className="img-responsive post-image pull-left" />
           </p>
+          </Link>
         )
       }else{
         return(
-        <p className="col-xs-6"><i>{h.related_postId.content}
-        </i></p>
+        <Link to={"/post/"+h.related_postId.id}>
+          <p className="col-xs-6"><i>{h.related_postId.content}
+          </i></p>
+        </Link>
         )
       }
 

@@ -15,6 +15,7 @@ class User extends React.Component{
     this.state={
       isLogin: false,
       isNotfound: true,
+      following: false,
     }
   }
   checkLogin(){
@@ -34,15 +35,90 @@ class User extends React.Component{
       }
     });
   }
+
+  handleFollow(){
+    let that = this;
+    let userId = this.props.user.id;
+    let followed = this.props.person.id;
+    io.socket.post('/follow/follow',{userId, followed}, function(resData, jwres){
+        if(resData.err){
+          that.msg.show('ERROR: '+resData.err, {
+                            type: 'error',
+                            icon: <img src="/images/error.png" />
+          })
+        }else{
+          that.msg.show('SUCCESS: You are following that user ', {
+                            type: 'success',
+                            icon: <img src="/images/success.png" />
+          })
+          that.setState({following: true});
+        }
+    })
+  }
+  handleUnfollow(){
+    let that = this;
+    let userId = this.props.user.id;
+    let followed = this.props.person.id;
+    io.socket.post('/follow/unfollow',{userId, followed}, function(resData, jwres){
+        if(resData.err){
+          that.msg.show('ERROR: '+resData.err, {
+                            type: 'error',
+                            icon: <img src="/images/error.png" />
+          })
+        }else{
+          that.msg.show('SUCCESS: You are unfollow that user ', {
+                            type: 'success',
+                            icon: <img src="/images/success.png" />
+          })
+          that.setState({following: false});
+        }
+    })
+  }
+  alertOptions = {
+    offset: 14,
+    position: 'bottom left',
+    theme: 'dark',
+    time: 1000,
+    transition: 'scale'
+  }
+  renderBtn(){
+    if(this.state.following===true){
+      return (
+        <button style={{padding:"1px 5px"}} onClick={this.handleUnfollow.bind(this)} className="btn-primary">
+              <span className="ion-eye-disabled pull-left"></span>Unfollow
+            </button>
+      )
+    }else{
+      return (
+        <button style={{padding:"1px 5px"}} onClick={this.handleFollow.bind(this)} className="btn-primary">
+          <span className="ion-person-add pull-left"></span>Follow
+        </button>
+      )
+    }
+  }
+  checkFollow(){
+    console.log("check follow")
+    let userId = this.props.user.id;
+    let followed = this.props.person.id;
+    io.socket.post('/follow/checkFollow',{userId, followed}, (resData, jwres)=>{
+      console.log(resData);
+        if(resData.follow==="exist"){
+          this.setState({following: true});
+        }else{
+          this.setState({following: false});
+        }
+    })
+  }
   componentDidMount(){
     let {email} = this.props.match.params;
     this.checkLogin();
     this.getPerson(email);
+    console.log("check follow đimount ")
+    this.checkFollow();
   }
   getPerson(email){
     let {dispatch} = this.props;
     io.socket.post('/user/getUser', {email}, (resData, jwres)=>{
-      console.log("getUser: ", resData);
       if(resData.error){
       }
       if(resData.notFound){
@@ -52,14 +128,16 @@ class User extends React.Component{
       }
     });
   }
-  componentWillReceiveProps(nextProps){console.log("nextProps User: ", nextProps);
+  componentWillReceiveProps(nextProps){console.log("==========================================nextProps User: ", nextProps);
     if(nextProps.match.params.email !== this.props.match.params.email){
       this.getPerson(nextProps.match.params.email);
+      this.checkFollow();
     }
     if(nextProps.isLogin){
       this.setState({...this.state,isLogin: nextProps.isLogin});
     }
     if(nextProps.person){
+      this.checkFollow();
       this.setState({...this.state,isLogin: nextProps.person});
     }
   }
@@ -72,7 +150,7 @@ class User extends React.Component{
     else{
       return(
              <div className="container" style={{marginTop:"-24px"}}>
-
+             <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
              <div className="timeline">
                {/* Avatar and COver picture */}
                <div className="timeline-cover" style={{backgroundImage:"url("+this.props.person.cover+")", backgroundPosition:"center", backgroundSize:"cover"}}>
@@ -101,8 +179,8 @@ class User extends React.Component{
                            <li><Link to={'/user/'+this.props.person.email+'/followings'}>Follwings</Link></li>
                          </ul>
                          <ul className="follow-me list-inline">
-                           <li>Yours point : <span  className="ion-star pull-left"></span>{this.props.person.point}</li>
-                           <li><button className="btn-primary"><span className="ion-person-add pull-left"></span>Follow </button></li>
+                           <li>Point : <span  className="ion-star pull-left"></span>{this.props.person.point}</li>
+                           <li>{this.renderBtn()}</li>
                          </ul>
                        </div>
                      </div>
@@ -124,6 +202,7 @@ class User extends React.Component{
                        </ul>
                        <ul className="follow-me list-inline">
                          <li><span  className="ion-star pull-left"></span>{this.props.person.point}</li>
+                         <li>{this.renderBtn()}</li>
                        </ul>
                      </div>
                     </div>

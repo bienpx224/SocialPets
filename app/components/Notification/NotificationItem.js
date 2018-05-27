@@ -62,7 +62,7 @@ class NotificationItem extends React.Component{
     if(h.related_postId){
       if(h.related_postId.image !== null && h.related_postId.content != ""){
         return (
-          <Link to="/home">
+          <Link to={"/post/"+h.related_postId.id}>
           <p className="col-xs-3">
             <i>{h.related_postId.content}</i>
             <img src={h.related_postId.image} className="profile-photo-sm pull-left" />
@@ -71,18 +71,18 @@ class NotificationItem extends React.Component{
         )
       }else if(h.related_postId.image !== null){
         return(
-          <Link to="/home">
+          <Link to={"/post/"+h.related_postId.id}>
           <img src={h.related_postId.image} className="profile-photo-sm pull-right" />
           </Link>
         )
       }else if(h.related_postId.content != ""){
         return(
-          <Link to="/home">
+          <Link to={"/post/"+h.related_postId.id}>
               <p className="col-xs-3"><i>{h.related_postId.content}</i></p>
           </Link>
         )
       }else{
-        return(<Link to="/home">
+        return(<Link to={"/post/"+h.related_postId.id}>
                 <p className="col-xs-3"><i>{h.related_postId.content}</i></p>
                 </Link>
         )

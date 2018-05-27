@@ -16,31 +16,58 @@ module.exports = {
   index: function(req,res){
     return res.view();
   },
+  getPostById: function(req,res){
+    console.log("getById")
+    let {id} = req.body;
+    Post.findOne({id})
+    .populateAll()
+    .then( (post)=>{
+      if(post){
+        return res.send({post})
+      }else{
+        return res.send({err:"Not found"})
+      }
+    })
+    .catch( (err)=>{ res.send({err})})
+  },
+  topImageOfWeek: function(req,res){
+    Post.find()
+    .populateAll()
+    .sort({count: -1})
+    .limit(5)
+    .then( (topP)=>{
+      if(topP){
+        return res.send({topP})
+      }else{
+        return res.send({err:"not found"})
+      }
+    })
+    .catch( err => res.send({err}))
+  },
   addPost: function(req,res){
     var post = req.body;
+    post.count = 0;
     post.isActive = true;
-    if(!post.content || post.content.length ===0){
-      if(!post.image || post.image.length === 0 || post.image.indexOf('http:') === -1){
-        res.send({err:"Not enought information"})
-      }else{
-
+    if(!post.content || post.content.length === 0){
+      if(!post.image || post.image.length === 0 || post.image.indexOf('http') === -1){
+        return res.send({err:"Not enought information"})
       }
     }
+    sails.log.info("Có yêu cầu đăng bài : ", post.content);
     Post.create(post, function(err, post){
       if(err){
         sails.log.error("Đăng bài thất bại :", err);
-         res.send({err: err});
+         return res.send({err: err});
       }
       if(post){
         Post.findOne({id: post.id}).populateAll()
         .then( (newPost)=>{
           sails.log.info("Đăng bài thành công : ", newPost.content);
-          var point = parseInt(newPost.userId.point) + 3;
+          var point = parseInt(newPost.userId.point) + 1;
           User.update({id: newPost.userId.id}, {point})
           .exec(function(err, userUpdated){
             if(err){
               sails.log.error("Đã có lỗi khi update point: ", err);
-              res.send({err: err})
             }else{
               sails.log.info("Update point thành công : ");
               let historyInfo = {
@@ -55,11 +82,7 @@ module.exports = {
                   sails.log.error("không tạo được History");
                 }else{
                   sails.log.info("Đã tạo thành công lịch sử : ", history.action);
-
-                  request.post({url:url_request+'/post/getPostNewsfeed', form:{userId:post.userId, skip: 0} }, function(err,httpResponse,body){
-                    let posts = JSON.parse(body);
-                    res.send({posts:posts.posts})
-              		});
+                  return res.send({posts:newPost})
                 }
               })
 
@@ -78,19 +101,19 @@ module.exports = {
         if (err) sails.log.info(err);
         sails.log.info(filepath+' was deleted');
       });
-      if(err) res2.send({err:"Server upload ảnh hiện không được ! Thử lại sau"})
+      if(err) return res2.send({err:"Server upload ảnh hiện không được ! Thử lại sau"})
 
       if(res) {
         sails.log.info("Link ảnh đã xử lý xong: ", res.data.link);
-        res2.send({link:res.data.link});
+        return res2.send({link:res.data.link});
       }
-      else{ res2.send({err:"Lỗi.. Không lưu được ảnh. "})} // Log the imgur url
+      else{ return res2.send({err:"Lỗi.. Không lưu được ảnh. "})} // Log the imgur url
     });
 
   },
   getPostNewsfeed: function(req, res){
     let {userId, skip} = req.body;
-    if(!userId) res.send({err: "Không có userId"});
+    if(!userId) return res.send({err: "Không có userId"});
     User.findOne({id: userId})
 		.populateAll()
 		.then( (user)=>{
@@ -117,7 +140,7 @@ module.exports = {
   deleteAllPostOfUser: function(req,res){
     let {userId} = req.body;
     Post.update({userId}, {isActive:false}, (err, listPost)=>{
-			if(err){ res.send({err})}
+			if(err){ return res.send({err})}
 			else if(listPost){
 				let historyInfo = {
 					userId : listPost[0].userId,
@@ -133,33 +156,33 @@ module.exports = {
 						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 					}
 				})
-					res.send({listPost})
+				return res.send({listPost})
 			}
-			else { res.send({err:"Không thấy listPost"}) }
+			else { return res.send({err:"Không thấy listPost"}) }
 		})
   },
   activeAllPost: function(req,res){
     Post.update({}, {isActive:true}, (err, listPost)=>{
-			if(err){ res.send({err})}
+			if(err){ return res.send({err})}
 			else if(listPost){
 
-					res.send({listPost})
+					return res.send({listPost})
 			}
-			else { res.send({err:"Không thấy listPost"}) }
+			else { return res.send({err:"Không thấy listPost"}) }
 		})
   },
 
   getListMyPost: function(req,res){
     let {userId,skip} = req.body;
-    if(!userId)  res.send({err: "Không có userId"});
+    if(!userId) return res.send({err: "Không có userId"});
     Post.find({userId, isActive:true})
     .populateAll()
     .sort({createdAt: -1, updatedAt: -1})
     .limit(10)
     .skip(skip)
     .then( (posts)=>{
-        if(posts) res.send({posts: posts})
-        else res.send({posts:[]})
+        if(posts) return res.send({posts: posts})
+        else return res.send({posts:[]})
     })
     .catch( (err)=>{ res.send({err:"Có lỗi tìm user"})})
   }

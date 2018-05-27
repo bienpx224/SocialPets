@@ -15,6 +15,7 @@ module.exports = {
 			if( err) res.send({err});
 			if(comment){
 				if(related_userId !== userId){
+					console.log("Khong phải user do tu suong")
 					let historyInfo = {
 						userId : userId,
 						action : "Bình luận trong bài đăng",
@@ -31,7 +32,7 @@ module.exports = {
 							sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 						}
 					})
-					
+
 					let notifyInfo = {
 						userId : related_userId,
 						action : "Bình luận trong bài đăng",

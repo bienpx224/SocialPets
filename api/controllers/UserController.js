@@ -12,7 +12,7 @@ module.exports = {
     User.find(
       {$and:[
         {$or:[
-          {"name": new RegExp(key)},{"email": new RegExp(key)}, {"phone": new RegExp(key)}
+          {"name": new RegExp(key, 'ui')},{"email": new RegExp(key,'ui')}, {"phone": new RegExp(key,'ui')}
         ]},
         {id:{$nin:arrUserId} }
       ]
@@ -210,10 +210,13 @@ module.exports = {
         User.create(Obj).exec(function( err, user){
           if(err) {
             sails.log.error("Lỗi đăng ký tài khoản: ", err);
+            res.send({err})
+          }else if(!user){
+            res.send({err:"Not found user when created"});
+          }else{
+            sails.log.info("Đăng ký thành công ");
+            res.send(user);
           }
-          if(!user)  res.send("Not found user");
-          sails.log.info("Đăng ký thành công ");
-           res.send(user);
         });
 
       }
@@ -266,7 +269,7 @@ module.exports = {
         return res.send({err: err})
       }else{
         sails.log.info("Thay đổi thành công cho user: ", updated[0].name);
-        let point = parseInt(updated[0].point)+5;
+        let point = parseInt(updated[0].point)+1;
         User.update({id: id}, {point: point}, (err, userUpdatedPoint)=>{
           if(err) sails.log.error("Lỗi update point: ", err)
           sails.log.info("Update point thành công : ");
@@ -299,7 +302,7 @@ module.exports = {
         return res.send({err: err})
       }else{
         sails.log.info("Thay đổi thành công cho user: ", updated[0].name);
-        let point = parseInt(updated[0].point)+5;
+        let point = parseInt(updated[0].point)+1;
         User.update({id: id}, {point: point}, (err, userUpdatedPoint)=>{
           if(err) sails.log.error("Lỗi update point: ", err)
           sails.log.info("Update point thành công : ");

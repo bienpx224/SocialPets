@@ -25,12 +25,12 @@ module.exports = {
 						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 					}
 				})
-				User.findOne({id:userId}, (err,user)=>{
-					if(err) sails.log.error("không tạo được point");
-					let point = parseInt(user.point) + 3;
+				User.findOne({id:userId}, (err2,user)=>{
+					if(err2) sails.log.error("không tạo được point: ", err2);
+					let point = parseInt(user.point) + 1;
 					User.update({id: userId}, {point})
-					.exec(function(err, userUpdated){
-						if(userUpdated) sails.log.info("Update point thành công: ", userUpdated[0].point);
+					.exec(function(err3, userUpdated){
+						if(err3) sails.log.error(err3);
 					})
 				})
 	      return res.send({ok:feedback});
@@ -49,7 +49,7 @@ module.exports = {
 		})
 		.catch( (err)=>{res.send({err:err})})
 	},
-	setIsRead: function(req,res){ console.log('setIsRead: ');
+	setIsRead: function(req,res){
 		Feedback.update({}, {isRead: true}, (err, listFeedback)=>{
 			if(err){ return res.send({err:err})}
 			if(!listFeedback) return res.send({err:"not found listMsg is read"});

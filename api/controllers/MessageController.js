@@ -6,6 +6,13 @@
  */
 
 module.exports = {
+	deleteMsg: function(req,res){
+			let {id} = req.body;
+			Message.destroy({id}).exec(function(err){
+				if(err) sails.log.error(" Có lỗi khi xóa tin nhắn : ", err);
+				return res.send({ok:"Đã xóa xong"});
+			})
+	},
 	addMessage : function(req,res){
 		let {msg,userSendName, userSendId} = req.body;
 		Message.create(msg).exec(function( err, message){

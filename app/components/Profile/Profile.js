@@ -13,7 +13,8 @@ class Profile extends React.Component{
     super(props);
     this.state={
       isLogin : false,
-      type: ""
+      type: "",
+
     }
   }
   componentDidMount(){
@@ -85,7 +86,7 @@ class Profile extends React.Component{
                             </ul>
                             <ul className="follow-me list-inline">
                               <li>Yours point : <span  className="ion-star pull-left"></span>{this.props.user.point}</li>
-                              <li><button className="btn-primary"><span className="ion-person-add pull-left"></span>Follow </button></li>
+                              
                             </ul>
                           </div>
                         </div>

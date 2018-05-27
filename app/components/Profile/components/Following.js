@@ -86,7 +86,6 @@ class Following extends React.Component{
     }
   }
   render(){
-
     return(
       <div className="col-md-6 col-sm-6">
 

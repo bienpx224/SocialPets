@@ -13,6 +13,18 @@ module.exports = {
 		.exec( (err, oldReact)=>{
 			if(oldReact){
 				React.destroy({id : oldReact.id }).exec(function(err){
+					Post.findOne({id: postId}, (err, oldPost)=>{
+						if(err){sails.log.error("Có lỗi khi findOne post: ", err)}
+						else{
+							let newCount = oldPost.count-1;
+							newCount = parseInt(newCount);
+							Post.update({id: postId}, {count:newCount})
+							.then( (postUpdate)=>{
+									sails.log.info("Da update point post: ", postUpdate)
+							})
+							.catch( err => sails.log.error("Có lỗi update count Post: ", err))
+						}
+					})
 				})
 				res.send({ok:"Da xoa"});
 			}else{
@@ -26,6 +38,20 @@ module.exports = {
 							related_userId : related_userId,
 		          isActive : true,
 		        }
+
+						Post.findOne({id: postId}, (err, oldPost)=>{
+							if(err){sails.log.error("Có lỗi khi findOne post: ", err)}
+							else{
+								let newCount = oldPost.count+1;
+								newCount = parseInt(newCount);
+								Post.update({id: postId}, {count:newCount})
+								.then( (postUpdate)=>{
+										sails.log.info("Da update point post: ", postUpdate)
+								})
+								.catch( err => sails.log.error("Có lỗi update count Post: ", err))
+							}
+						})
+
 		        History.create(historyInfo ,(err, history)=>{
 		          if(err) sails.log.error("Có lỗi khi tạo lịch sử : ", err);
 		          if(!history){

@@ -8,10 +8,11 @@
 module.exports = {
   connection: 'mongo',
   attributes: {
-    content:{ type:'string', maxLength: 500},
+    content:{ type:'string', maxLength: 1000},
     image:{ type:'string' },
     petRelate:{ model: 'pet'},
     isActive: {type:'boolean'},
+    count: {type:'integer', defaultsTo:0},
     userId:{ model:'user' },
     react:{ collection:'react', via:'postId' },
     comments:{ collection:'comment', via:'postId' }
