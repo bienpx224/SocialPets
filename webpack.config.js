@@ -82,6 +82,7 @@ module.exports = {
           //Newsfeed
           Newsfeed:'app/components/Newsfeed/Newsfeed.js',
           NewsfeedContent:'app/components/Newsfeed/components/NewsfeedContent.js',
+          NewsfeedContent2:'app/components/Newsfeed/components/NewsfeedContent2.js',
           Comment:'app/components/Newsfeed/components/Comment.js',
           Post:'app/components/Newsfeed/components/Post.js',
           //ChatRoom

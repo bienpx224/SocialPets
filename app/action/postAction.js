@@ -28,4 +28,7 @@ function list_my_post(posts){
     type: "LIST_MY_POST", posts
   }
 }
-module.exports = {get_post_err, get_postNewsfeed, add_new_post,add_more_post,list_my_post,add_more_my_post};
+function get_top_image(topP){
+  return{type:"GET_TOP_IMAGE", topP}
+}
+module.exports = {get_top_image,get_post_err, get_postNewsfeed, add_new_post,add_more_post,list_my_post,add_more_my_post};

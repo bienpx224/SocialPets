@@ -2,27 +2,28 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AlertContainer from 'react-alert';
 import {set_user} from 'userAction';
+import NewsfeedContent2 from 'NewsfeedContent2';
 
 class Chatlist extends React.Component{
   constructor(props){
     super(props);
   }
+  componentWillReceiveProps(nextProps){
+
+  }
   render(){
     return(
         <div id="chat-block">
-          <div className="title">Chat Online</div>
+          <div className="title">Top Image of Week</div>
           <ul className="online-users list-inline">
-            <li>
-              <a href="#" title={this.props.user.name}>
-                <img src="/images/data/defaultAvatar.jpg" className="img-responsive profile-photo" />
-                <span className="online-dot"></span>
-              </a>
-            </li>
+            {this.props.topImageOfWeek.map( (value, key)=>{
+              if(key === 0) return <NewsfeedContent2 data={value} key={key} />
+            })}
           </ul>
         </div>
     )
   }
 }
 module.exports = connect( function(state){
-  return {user: state.userReducer.user};
+  return {user: state.userReducer.user, topImageOfWeek: state.postReducer.topImageOfWeek};
 })(Chatlist);

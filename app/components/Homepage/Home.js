@@ -12,7 +12,7 @@ import Notify from 'Notify';
 import IndexHome from 'IndexHome';
 import IndexListRecommend from 'IndexListRecommend';
 import Loadable from 'react-loading-overlay';
-import {get_post_err, get_postNewsfeed} from 'postAction';
+import {get_post_err, get_postNewsfeed, get_top_image} from 'postAction';
 import {get_list_inbox, get_list_msg, get_inbox} from 'chatAction';
 
 class Home extends React.Component{
@@ -48,8 +48,17 @@ class Home extends React.Component{
       }
     });
 
-  }
+    this.getListTopImage();
 
+  }
+  getListTopImage(){
+    let {dispatch} = this.props;
+    io.socket.post('/post/topImageOfWeek',{},(resData, jwres)=>{
+      if(resData.topP){
+        dispatch(get_top_image(resData.topP));
+      }else console.log(" co loi get ListTopImage");
+    })
+  }
   componentWillReceiveProps(nextProps){
     if(nextProps.isLogin){
       this.state.isLogin = nextProps.isLogin;

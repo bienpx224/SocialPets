@@ -59,10 +59,6 @@ class Message extends React.Component{
     };
 
     let renderImage = renderImageF();
-    //
-    // (userId===this.props.data.send_userId.id)?
-    //   <img src={""+this.props.inbox.first_userId.picture} alt="" className="profile-photo-sm pull-right"/>:
-    //   <img src={""+this.props.inbox.second_userId.picture} alt="" className="profile-photo-sm pull-left" />;
       return(
         <div className={""+hidden}>
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />

@@ -1030,7 +1030,7 @@ ul.nav-news-feed{
 ul.nav-news-feed li{
   list-style: none;
   display: block;
-  padding: 15px 0;
+  padding: 5px 0;
 }
 
 ul.nav-news-feed li div{
@@ -1044,7 +1044,7 @@ ul.nav-news-feed li div::after{
   height: 1px;
   border-top: 1px solid #f1f2f2;
   position: absolute;
-  bottom: -15px;
+  bottom: 0px;
   left: 0;
 }
 
@@ -1071,7 +1071,7 @@ ul.nav-news-feed i.ion-ios-videocam{color: #9e1f63;}
 /*Chat Block CSS*/
 
 #chat-block{
-  margin: 0 0 40px 0;
+  margin: -30px 0 40px 0;
   text-align: center;
 }
 

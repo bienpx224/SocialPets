@@ -1,7 +1,8 @@
 var data = {
     err: null,
     postsNewsfeed: [],
-    listMyPost : []
+    listMyPost : [],
+    topImageOfWeek: []
 };
 
 var postReducer = (state = data, action)=>{
@@ -18,6 +19,8 @@ var postReducer = (state = data, action)=>{
       return {...state, listMyPost: action.posts};
     case "ADD_MORE_MY_POST":
       return {...state, listMyPost: [...state.listMyPost,action.post]}
+    case "GET_TOP_IMAGE":
+      return {...state, topImageOfWeek: action.topP}
     default: return state;
   }
 }

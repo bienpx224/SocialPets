@@ -31,7 +31,7 @@ module.exports = {
     .catch( (err)=>{ res.send({err})})
   },
   topImageOfWeek: function(req,res){
-    Post.find()
+    Post.find({image: {$regex:/http/}})
     .populateAll()
     .sort({count: -1})
     .limit(5)
