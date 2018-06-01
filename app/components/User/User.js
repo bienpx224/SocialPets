@@ -128,7 +128,7 @@ class User extends React.Component{
       }
     });
   }
-  componentWillReceiveProps(nextProps){console.log("==========================================nextProps User: ", nextProps);
+  componentWillReceiveProps(nextProps){
     if(nextProps.match.params.email !== this.props.match.params.email){
       this.getPerson(nextProps.match.params.email);
       this.checkFollow();

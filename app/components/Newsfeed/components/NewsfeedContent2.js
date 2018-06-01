@@ -13,7 +13,6 @@ class NewsfeedContent2 extends React.Component{
       react : this.props.data.count||this.props.data.react.length,
       isReact : false,
       listComment : [],
-
     }
   }
   alertOptions = {
@@ -25,8 +24,6 @@ class NewsfeedContent2 extends React.Component{
   }
   componentWillReceiveProps(nextProps){
 
-  }
-  componentDidMount(){
   }
 
   componentWillMount(){
@@ -49,7 +46,14 @@ class NewsfeedContent2 extends React.Component{
   react(){
     let userId = this.props.user.id;
     let postId = this.props.data.id;
-    let related_userId = this.props.owner.id;
+    let related_userId = this.props.data.userId.id;
+    if(!!!userId || !!!postId|| !!!related_userId){
+          this.msg.show('ERROR: Không có đủ id ', {
+                            type: 'error',
+                            icon: <img src="/images/error.png" />
+          })
+          return;
+        }
     io.socket.post('/react/addReact',{userId, postId, related_userId},(resData, jwres)=>{
       if(resData.err){
         alert(resData.err);
@@ -71,23 +75,33 @@ class NewsfeedContent2 extends React.Component{
     let renderBtnReact = this.renderBtnReact();
     return(
       <div className="grid-item col-md-12 col-sm-12" >
+      <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
           <div className="media-grid">
-            <div className="img-wrapper" data-toggle="modal" data-target=".modal-1">
-              <img src={this.props.data.image} alt="" className="img-responsive post-image" />
-            </div>
-            <div className="media-info">
-              <div className="reaction">
-                {renderBtnReact}
-                <a className="btn text-red"><i className="fa fa-thumbs-down"></i>{this.props.data.comments.length}</a>
-              </div>
-              <div className="user-info">
-                <img src={this.props.data.userId.picture} alt="" className="profile-photo-sm pull-left" />
-                <div className="user">
-                  <h6><a href="#" className="profile-link">{this.props.data.userId.name}</a></h6>
-                  <a className="text-green" href="#">{"Point: "+this.props.data.userId.point}</a>
+
+              <div className="img-wrapper" data-toggle="modal" data-target=".modal-1">
+                <img src={this.props.data.image} alt="" className="img-responsive post-image" />
+                <div className="post-text">
+                  <p>{this.props.data.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p>
                 </div>
               </div>
-            </div>
+              <div className="media-info">
+                <a className="text-green">{renderTime}</a>
+                <div className="reaction">
+
+                    {renderBtnReact}
+                    <a className="btn text-red"><i className="icon ion-chatbox"></i>{this.props.data.comments.length}</a>
+                    <Link to={"/post/"+this.props.data.id} >
+                    <a className="btn"><i className="icon ion-navigate"></i>See post</a>
+                    </Link>
+                </div>
+                <div className="user-info">
+                  <img src={this.props.data.userId.picture} alt="" className="profile-photo-sm pull-left" />
+                  <div className="user">
+                    <h6><a href={"/user/"+this.props.data.userId.email} className="profile-link">{this.props.data.userId.name}</a></h6>
+                    <a className="text-green">{"Point: "+this.props.data.userId.point}</a>
+                  </div>
+                </div>
+              </div>
 
                 {/*  Popup
                     <div className="modal fade modal-1" tabIndex="-1" role="dialog" aria-hidden="true">
@@ -109,6 +123,7 @@ class NewsfeedContent2 extends React.Component{
                       </div>
                     </div>
                 */}
+
           </div>
         </div>
     )

@@ -9,6 +9,9 @@ class BasicInformation extends React.Component{
     super(props);
     this.checkChange = this.checkChange.bind(this);
   }
+  componentWillReceiveProps(nextProps){
+
+  }
   alertOptions = {
     offset: 14,
     position: 'bottom left',
@@ -81,8 +84,8 @@ class BasicInformation extends React.Component{
 
   }
   render(){
-    console.log("TYPE=========: ",this.props.type)
     let renderBtnSave = this.props.type==="person"?null:<button className="btn btn-primary" onClick={this.handleUpdate.bind(this)}>Save Changes</button>;
+    let userInfo = this.props.type==="person"?this.props.person:this.props.user;
     return(
                   <div className="col-md-7">
                   <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
@@ -96,38 +99,38 @@ class BasicInformation extends React.Component{
                             <div className="row">
                               <div className="form-group col-xs-6">
                                 <label htmlFor="firstname">Name</label>
-                                <input className="form-control input-group-lg" type="text" ref="name" title="Enter name" placeholder="Your name" defaultValue={this.props.user.name} />
+                                <input className="form-control input-group-lg" type="text" ref="name" title="Enter name" placeholder="Your name" defaultValue={userInfo.name} />
                               </div>
                               <div className="form-group col-xs-6">
                                 <label htmlFor="lastname" className="">Phone number</label>
-                                <input className="form-control input-group-lg" type="text" ref="phone" title="Enter phone" placeholder="Phone number" defaultValue={this.props.user.phone} />
+                                <input className="form-control input-group-lg" type="text" ref="phone" title="Enter phone" placeholder="Phone number" defaultValue={userInfo.phone} />
                               </div>
                             </div>
                             <div className="row">
                               <div className="form-group col-xs-6">
                                 <label htmlFor="email">My email</label>
-                                <input className="form-control input-group-lg" type="text" title="Enter Email" placeholder="My Email" readOnly value={this.props.user.email} />
+                                <input className="form-control input-group-lg" type="text" title="Enter Email" placeholder="My Email" readOnly value={userInfo.email} />
                               </div>
                               <div className="form-group col-xs-6">
                                 <label htmlFor="email">Pet love</label>
-                                <input className="form-control input-group-lg" type="text" ref="petlove" title="Enter pet" placeholder="pet you love" defaultValue={this.props.user.petlove} />
+                                <input className="form-control input-group-lg" type="text" ref="petlove" title="Enter pet" placeholder="pet you love" defaultValue={userInfo.petlove} />
                               </div>
                             </div>
                             <div className="row">
                               <div className="form-group col-xs-6">
                                 <label htmlFor="email">Yout Job</label>
-                                <input className="form-control input-group-lg" type="text" ref="job" title="Enter job" placeholder="My job" defaultValue={this.props.user.job} />
+                                <input className="form-control input-group-lg" type="text" ref="job" title="Enter job" placeholder="My job" defaultValue={userInfo.job} />
                               </div>
                               <div className="form-group col-xs-6">
                                 <label htmlFor="email">University</label>
-                                <input className="form-control input-group-lg" type="text" ref="university" title="Enter pet" placeholder="Your university" defaultValue={this.props.user.university} />
+                                <input className="form-control input-group-lg" type="text" ref="university" title="Enter pet" placeholder="Your university" defaultValue={userInfo.university} />
                               </div>
                             </div>
                             <div className="row">
                               <p className="custom-label"><strong>Date of Birth</strong></p>
                               <div className="form-group col-sm-3 col-xs-6">
                                 <label htmlFor="month" className="sr-only"></label>
-                                <select defaultValue={this.props.user.day_date} ref="day" className="form-control">
+                                <select defaultValue={userInfo.day_date} ref="day" className="form-control">
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
@@ -163,7 +166,7 @@ class BasicInformation extends React.Component{
                               </div>
                               <div className="form-group col-sm-3 col-xs-6">
                                 <label htmlFor="month" className="sr-only"></label>
-                                <select defaultValue={this.props.user.month_date} ref="month"  className="form-control">
+                                <select defaultValue={userInfo.month_date} ref="month"  className="form-control">
                                   <option>Jan</option>
                                   <option>Feb</option>
                                   <option>Mar</option>
@@ -180,7 +183,7 @@ class BasicInformation extends React.Component{
                               </div>
                               <div className="form-group col-sm-6 col-xs-12">
                                 <label htmlFor="year" className="sr-only"></label>
-                                <select defaultValue={this.props.user.year_date} ref="year" className="form-control">
+                                <select defaultValue={userInfo.year_date} ref="year" className="form-control">
                                   <option>1985</option>
                                   <option>1986</option>
                                   <option>1987</option>
@@ -213,7 +216,7 @@ class BasicInformation extends React.Component{
                             </div>
                             <div className="form-group gender">
                               <span className="custom-label"><strong>I am a: </strong></span>
-                              <select defaultValue={this.props.user.gender} ref="gender"  className="form-control" >
+                              <select defaultValue={userInfo.gender} ref="gender"  className="form-control" >
                                 <option>Female</option>
                                 <option>Male</option>
                               </select>
@@ -221,11 +224,11 @@ class BasicInformation extends React.Component{
                             <div className="row">
                               <div className="form-group col-xs-6">
                                 <label htmlFor="city">Address</label>
-                                <input ref="address" className="form-control input-group-lg" type="text"title="Enter address" placeholder="Your address" defaultValue={this.props.user.address}/>
+                                <input ref="address" className="form-control input-group-lg" type="text"title="Enter address" placeholder="Your address" defaultValue={userInfo.address}/>
                               </div>
                               <div className="form-group col-xs-6">
                                 <label htmlFor="country">My country</label>
-                                <select defaultValue={this.props.user.country} ref="country"  className="form-control">
+                                <select defaultValue={userInfo.country} ref="country"  className="form-control">
                                   <option defaultValue="AFG">Afghanistan</option>
                                   <option defaultValue="ALA">Bland Islands</option>
                                   <option defaultValue="ALB">Albania</option>
@@ -481,7 +484,7 @@ class BasicInformation extends React.Component{
                             <div className="row">
                               <div className="form-group col-xs-12">
                                 <label htmlFor="my-info">About me</label>
-                                <textarea ref="description" defaultValue={this.props.user.description} className="form-control" placeholder="Some texts about me" rows="4" cols="400"></textarea>
+                                <textarea ref="description" defaultValue={userInfo.description} className="form-control" placeholder="Some texts about me" rows="4" cols="400"></textarea>
                               </div>
                             </div>
                             {renderBtnSave}
@@ -493,5 +496,5 @@ class BasicInformation extends React.Component{
   }
 }
 module.exports = (connect( function(state){
-  return {user: state.userReducer.user};
+  return {user: state.userReducer.user, person: state.userReducer.person};
 })(BasicInformation));

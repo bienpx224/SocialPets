@@ -35,7 +35,6 @@ class Timeline extends React.Component{
     this.getListMyPost(id);
   }
   getListMyPost(id){
-    console.log("getList");
     let {dispatch} = this.props;
     let that = this;
     io.socket.post('/post/getListMyPost',{userId:id, skip: this.state.total},function(resData, jwres){

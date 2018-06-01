@@ -56,12 +56,14 @@ class UserManagementItem extends React.Component{
     let renderName = this.props.data.isAdmin === true?"#ff3d3d":"black";
     let renderImg = this.props.data.picture?<a target="_blank" href={this.props.data.picture}><img className="profile-photo" src={this.props.data.picture} /></a>:null;
     return (
-      <tr className={renderActive} style={{color:renderName}} onDoubleClick={this.handleSetAdmin.bind(this)}>
-        <th scope="row"  title="Click change active user" onClick={this.handleClickName.bind(this)}>{this.props.data.name}</th>
-        <td><Link to={"/user/"+this.props.data.email}>{this.props.data.email}</Link></td>
+      <tr className={renderActive} style={{color:renderName}}>
+        <th scope="row"  title="Click change active user">{this.props.data.name}</th>
+        <td style={{maxWidth:"390px"}}><Link to={"/user/"+this.props.data.email}>{this.props.data.email}</Link></td>
         <td title="Show image">{renderImg}</td>
-        <td>{this.props.data.age_range}</td>
-        <td>{this.props.data.address}</td>
+        <td>
+          <input type="button" className=" btn-danger" onClick={this.handleClickName.bind(this)} defaultValue="Active" />
+          <input type="button" className=" btn-success" onClick={this.handleSetAdmin.bind(this)} defaultValue="Admin" />
+        </td>
       </tr>
     )
   }

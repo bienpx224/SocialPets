@@ -41,7 +41,6 @@ class FormReg extends React.Component{
         university : "",
         point: 10,
         picture: "https://i.imgur.com/x53FmYL.jpg",
-        cover: "https://i.imgur.com/8jp0Y6M.jpg",
         isActive:true,
         enableFollow:true,
         enableSound: true,

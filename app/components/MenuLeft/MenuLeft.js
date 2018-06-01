@@ -8,10 +8,19 @@ import MenuVertical from 'MenuVertical';
 class MenuLeft extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      style: "col-md-3 static scrollbar ",
+    }
+  }
+  componentDidMount(){
+    window.addEventListener('onScroll', this.handleScroll());
+  }
+  handleScroll(){
+    let p = document.documentElement.scrollTop;
   }
   render(){
     return(
-      <div className=" fixed-menu col-md-3 static scrollbar" id="style-11" >
+      <div   className="fixed-menu col-md-3 static scrollbar " id="style-11" >
         <MenuVertical />
         <ChatList />
       </div>

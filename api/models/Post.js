@@ -15,7 +15,7 @@ module.exports = {
     count: {type:'integer', defaultsTo:0},
     userId:{ model:'user' },
     react:{ collection:'react', via:'postId' },
-    comments:{ collection:'comment', via:'postId' }
-
+    comments:{ collection:'comment', via:'postId' },
+    timeMili: {type: 'integer'}
   }
 };

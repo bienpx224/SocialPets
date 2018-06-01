@@ -25,8 +25,13 @@ class ListPet extends React.Component{
     transition: 'scale'
   }
   componentDidMount(){
-    let userId = this.props.user.id;
-    this.getListPet(userId);
+    if(this.props.type==="person"){
+      let userId = this.props.person.id;
+      this.getListPet(userId);
+    }else{
+      let userId = this.props.user.id;
+      this.getListPet(userId);
+    }
   }
   getListPet(userId){
     let that = this;
@@ -57,6 +62,7 @@ class ListPet extends React.Component{
     this.setState({...this.state, listPet : nextProps.listPet});
   }
   render(){
+    let userInfo = this.props.type==="person"?this.props.person:this.props.user;
     let that = this;
     let renderBtnAdd = this.props.type==="person"?null:
       <button onClick={this.showPopupAddPet.bind(this)} type="button" className="btn btn-success pull-right">
@@ -68,7 +74,7 @@ class ListPet extends React.Component{
         <div className="block-title">
           <h4 className="grey">
             <i className="icon ion-android-checkmark-circle"></i>
-            Pets of {that.props.user.name}
+            Pets of {userInfo.name}
           </h4>
           <hr />
           <ReactPlaceholder ready={false} type="media" rows={7} showLoadingAnimation={true}>
@@ -87,7 +93,7 @@ class ListPet extends React.Component{
           <div className="block-title">
             <h4 className="grey">
               <i className="icon ion-android-checkmark-circle"></i>
-              Pets of {that.props.user.name}
+              Pets of {userInfo.name}
               {renderBtnAdd}
             </h4>
             <hr />
@@ -104,7 +110,7 @@ class ListPet extends React.Component{
         <div className="block-title">
           <h4 className="grey">
             <i className="icon ion-android-checkmark-circle"></i>
-            Pets of {that.props.user.name}
+            Pets of {userInfo.name}
             {renderBtnAdd}
           </h4>
           <hr />
@@ -123,5 +129,5 @@ class ListPet extends React.Component{
   }
 }
 module.exports = (connect( function(state){
-  return {user: state.userReducer.user, listPet:state.userReducer.listPet};
+  return {user: state.userReducer.user, listPet:state.userReducer.listPet, person: state.userReducer.person};
 })(ListPet));

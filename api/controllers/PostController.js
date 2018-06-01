@@ -16,8 +16,17 @@ module.exports = {
   index: function(req,res){
     return res.view();
   },
+  updateTimeMili: function(req,res){
+    let timeMili = new Date();
+    timeMili = timeMili.getTime();
+    Post.update({}, {timeMili})
+    .then( (listP)=>{
+      if(listP) return res.send({ok: listP.length})
+      return res.send({err: "not found "})
+    })
+    .catch( err=>res.send({err}))
+  },
   getPostById: function(req,res){
-    console.log("getById")
     let {id} = req.body;
     Post.findOne({id})
     .populateAll()
@@ -31,12 +40,19 @@ module.exports = {
     .catch( (err)=>{ res.send({err})})
   },
   topImageOfWeek: function(req,res){
-    Post.find({image: {$regex:/http/}})
+    let {weekAgo} = req.body;
+    if(!weekAgo) weekAgo = +new Date()-604800000;
+    weekAgo = +weekAgo;
+    console.log("weekAgo: ", weekAgo)
+    let limit = 5;
+    Post.find( {$and: [ {image: {$regex:/http/}}, {timeMili: {$gt: weekAgo}}]} )
     .populateAll()
     .sort({count: -1})
-    .limit(5)
+    .skip(0)
+    .limit(limit)
     .then( (topP)=>{
       if(topP){
+        console.log(topP)
         return res.send({topP})
       }else{
         return res.send({err:"not found"})
@@ -44,10 +60,14 @@ module.exports = {
     })
     .catch( err => res.send({err}))
   },
+
   addPost: function(req,res){
+    let currentTime = new Date();
+    currentTime = currentTime.getTime();
     var post = req.body;
     post.count = 0;
     post.isActive = true;
+    if(!post.timeMili) post.timeMili = currentTime;
     if(!post.content || post.content.length === 0){
       if(!post.image || post.image.length === 0 || post.image.indexOf('http') === -1){
         return res.send({err:"Not enought information"})
@@ -69,7 +89,6 @@ module.exports = {
             if(err){
               sails.log.error("Đã có lỗi khi update point: ", err);
             }else{
-              sails.log.info("Update point thành công : ");
               let historyInfo = {
                 userId : newPost.userId.id,
                 action : "Cập nhật bài đăng mới",
@@ -81,7 +100,6 @@ module.exports = {
                 if(!history){
                   sails.log.error("không tạo được History");
                 }else{
-                  sails.log.info("Đã tạo thành công lịch sử : ", history.action);
                   return res.send({posts:newPost})
                 }
               })
@@ -93,7 +111,8 @@ module.exports = {
       }
     })
   },
-  handleImg: function(req,res2){ sails.log("Đã nhận yêu cầu xử lý ảnh");
+  handleImg: function(req,res2){
+    sails.log("Đã nhận yêu cầu xử lý ảnh");
     var filepath = base64Img.imgSync(req.body.result, 'assets/images/data', req.body.name);
     imgur.setClientID("cd1685e78d29685");
     imgur.upload(filepath, function (err, res) {
@@ -104,7 +123,6 @@ module.exports = {
       if(err) return res2.send({err:"Server upload ảnh hiện không được ! Thử lại sau"})
 
       if(res) {
-        sails.log.info("Link ảnh đã xử lý xong: ", res.data.link);
         return res2.send({link:res.data.link});
       }
       else{ return res2.send({err:"Lỗi.. Không lưu được ảnh. "})} // Log the imgur url
@@ -117,22 +135,38 @@ module.exports = {
     User.findOne({id: userId})
 		.populateAll()
 		.then( (user)=>{
-			let list_following = user.followings;
-			let list_id_following = [];
-			for(let i=0; i<list_following.length; i++){
-				list_id_following.push(list_following[i].followed);
-			}
-			list_id_following.push(userId, skip);
-			Post.find({$and:[ {userId: {$in: list_id_following}},{isActive: true}] })
-      .populateAll()
-      .sort({createdAt: -1, updatedAt: -1})
-      .skip(skip)
-			.limit(10)
-			.then( (posts)=>{
-			  // sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
-				return res.send({posts: posts})
-			})
-			.catch( (err) =>{ res.send({err:"Có lỗi tìm posts:"})} )
+      ///// for normal user
+      if(!user.isAdmin){
+        let list_following = user.followings;
+  			let list_id_following = [];
+  			for(let i=0; i<list_following.length; i++){
+  				list_id_following.push(list_following[i].followed);
+  			}
+  			list_id_following.push(userId, skip);
+  			Post.find({$and:[ {userId: {$in: list_id_following}},{isActive: true}] })
+        .populateAll()
+        .sort({createdAt: -1, updatedAt: -1})
+        .skip(skip)
+  			.limit(10)
+  			.then( (posts)=>{
+  			  // sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
+  				return res.send({posts: posts})
+  			})
+  			.catch( (err) =>{ res.send({err:"Có lỗi tìm posts:"})} )
+      }else{
+        /// for admin newsfeed
+        Post.find()
+        .populateAll()
+        .sort({createdAt: -1, updatedAt: -1})
+        .skip(skip)
+  			.limit(20)
+        .then( (posts)=>{
+  			  // sails.log.info("Lấy bài đăng cho Newfeed gồm:  ", posts.length);
+  				return res.send({posts: posts})
+  			})
+  			.catch( (err) =>{ res.send({err:"Có lỗi tìm posts:"})} )
+      }
+
 		})
     .catch( (err)=>{ res.send({err:err}) })
 

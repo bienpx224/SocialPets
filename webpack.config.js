@@ -42,6 +42,7 @@ module.exports = {
       Notfound: 'app/components/Notfound.js',
           // PostInfo
           PostInfo: 'app/components/PostInfo/PostInfo.js',
+          PostWeek: 'app/components/PostInfo/PostWeek.js',
           // Find User
           FindUser: 'app/components/FindUser/FindUser.js',
           // FindUser: 'app/components/FindUser/FindUser.js',
@@ -93,6 +94,7 @@ module.exports = {
           ListMessage : 'app/components/ChatRoom/components/ListMessage.js',
           Message : 'app/components/ChatRoom/components/Message.js',
           //Profile
+          ChangePass: 'app/components/Profile/components/ChangePass.js',
           IndexContent :'app/components/Profile/IndexContent.js',
           Profile : 'app/components/Profile/Profile.js',
           Information: 'app/components/Profile/components/Information.js',

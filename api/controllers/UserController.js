@@ -6,6 +6,29 @@
  */
 
 module.exports = {
+  changePassword: function(req,res){
+    let {newP, oldP, id} = req.body;
+    if(newP.length<6 || newP.length >196 ) return res.send({err:"New password invalid!"})
+    if(newP === oldP ) return res.send({err:"Old pass must different new pass!"})
+    User.findOne({id})
+    .then( (user)=>{
+      if(user){
+        if(oldP===user.secret){
+          User.update({id}, {secret: newP})
+          .then( (listUser)=>{
+            if(listUser) return res.send({ok: listUser})
+            else return res.send({err:"not found list user update"})
+          })
+          .catch( err=> res.send({err}))
+        }else{
+          return res.send({err:"Old password is wrong!"})
+        }
+      }else{
+        return res.send({err:"Not found user"})
+      }
+    })
+    .catch( err => res.send({err}))
+  },
   searchUser: function(req, res){
     let {userId, key, limit, skip} = req.body;
     let arrUserId = [];  arrUserId.push(userId);
@@ -188,12 +211,12 @@ module.exports = {
     if(!Obj.month_date){Obj.month_date = "4"}
     if(!Obj.year_date){Obj.year_date = "1996"}
     if(!Obj.age_range){Obj.age_range = "23"}
-    if(!Obj.gender){Obj.gender = "Female"}
+    if(!Obj.gender){Obj.gender = Boolean(Math.round(Math.random()))?"Female":"Male"}
     if(!Obj.address){Obj.address = "Somewhere"}
     if(!Obj.country){Obj.country = "Viet Nam"}
     if(!Obj.point){Obj.point = "10"}
     if(!Obj.picture){Obj.picture = "https://i.imgur.com/x53FmYL.jpg"}
-    if(!Obj.cover){Obj.cover = "https://i.imgur.com/8jp0Y6M.jpg"}
+    if(!Obj.cover){Obj.cover = Boolean(Math.round(Math.random()))?"https://i.imgur.com/8jp0Y6M.jpg":"http://i.imgur.com/9j0Zm64.jpg"}
     if(!Obj.isActive){Obj.isActive = "true"}
     if(!Obj.point){Obj.point = "10"}
 
@@ -261,18 +284,15 @@ module.exports = {
   },
   changePicture: function(req,res){
     let {link, id} = req.body;
-    sails.log.info("Có yêu cầu Thay đổi ảnh đại diện của id : ", id);
     User.update({id: id}, {picture: link})
     .exec(function(err, updated){
       if(err){
         sails.log.error("Đã có lỗi khi đổi ảnh đại diện: ", err);
         return res.send({err: err})
       }else{
-        sails.log.info("Thay đổi thành công cho user: ", updated[0].name);
         let point = parseInt(updated[0].point)+1;
         User.update({id: id}, {point: point}, (err, userUpdatedPoint)=>{
           if(err) sails.log.error("Lỗi update point: ", err)
-          sails.log.info("Update point thành công : ");
         })
         let historyInfo = {
           userId : updated[0].id,
@@ -294,18 +314,15 @@ module.exports = {
   },
   changeCover: function(req,res){
     let {link, id} = req.body;
-    sails.log.info("Có yêu cầu Thay đổi ảnh bìa của id : ", id);
     User.update({id: id}, {cover: link})
     .exec(function(err, updated){
       if(err){
         sails.log.error("Đã có lỗi khi đổi ảnh bìa: ", err);
         return res.send({err: err})
       }else{
-        sails.log.info("Thay đổi thành công cho user: ", updated[0].name);
         let point = parseInt(updated[0].point)+1;
         User.update({id: id}, {point: point}, (err, userUpdatedPoint)=>{
           if(err) sails.log.error("Lỗi update point: ", err)
-          sails.log.info("Update point thành công : ");
         })
         let historyInfo = {
           userId : updated[0].id,

@@ -103,7 +103,15 @@ class NewsfeedContent extends React.Component{
   react(){
     let userId = this.props.user.id;
     let postId = this.props.data.id;
-    let related_userId = this.props.owner.id;
+    let related_userId = this.props.data.userId.id;
+    console.log("user: "+userId+", postId:"+postId+", relate: "+related_userId)
+    if(!!!userId || !!!postId|| !!!related_userId){
+          this.msg.show('ERROR: Không có đủ id ', {
+                            type: 'error',
+                            icon: <img src="/images/error.png" />
+          })
+          return;
+        }
     io.socket.post('/react/addReact',{userId, postId, related_userId},(resData, jwres)=>{
       if(resData.err){
         alert(resData.err);
@@ -123,6 +131,7 @@ class NewsfeedContent extends React.Component{
     let timeMsg = date.getTime();
     let renderTime = time.ago(new Date()-(new Date()-timeMsg));
     let renderBtnReact = this.renderBtnReact();
+
     return(
       <div className="post-content">
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
@@ -135,21 +144,30 @@ class NewsfeedContent extends React.Component{
 
                   </div>
                   <div className="post-text">
-                    <Link to={"/post/"+this.props.data.id} ><p>{this.props.data.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p></Link>
+                    <p>{this.props.data.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p>
                   </div>
                   <div className="line-divider"></div>
-                  <Link to={"/post/"+this.props.data.id} ><img src={this.props.data.image} alt="" className="img-responsive post-image"/></Link>
+                  <img src={this.props.data.image} alt="" className="img-responsive post-image"/>
 
                   <div className="">
                     {renderBtnReact}
+                    <a className="btn text-red"><i className="icon ion-chatbox"></i>{this.props.data.comments.length}</a>
+                    <Link to={"/post/"+this.props.data.id} >
+                    <a className="btn"><i className="icon ion-navigate"></i>See post</a>
+                    </Link>
                     <p className="text-muted pull-right">Published at time: {this.props.data.createdAt}</p>
                   </div>
                   <div className="line-divider"></div>
 
                   {this.state.listComment.map( (value, key)=>{
-                    return (
-                      <Comment key={key} data={value} />
-                    )
+                    if(this.props.type === "all")
+                      return (
+                        <Comment key={key} data={value} />
+                      )
+                    else if(key===this.state.listComment.length-1)
+                      return (
+                        <Comment key={key} data={value} />
+                      )
                   })}
 
                   <div className="post-comment">

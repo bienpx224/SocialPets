@@ -4,6 +4,7 @@ import AlertContainer from 'react-alert';
 import {set_user} from 'userAction';
 import Post from 'Post';
 import NewsfeedContent from 'NewsfeedContent';
+import NewsfeedContent2 from 'NewsfeedContent2';
 import {get_post_err, get_postNewsfeed,add_new_post,add_more_post} from 'postAction';
 import ReactPlaceholder from 'react-placeholder';
 
@@ -107,13 +108,15 @@ class Newsfeed extends React.Component{
         {this.state.postsNewsfeed.map(function(i,index){
           if(index === countPost-1)
           return (
-            <div key={index}>
+            <div className="" key={index}>
               <NewsfeedContent key={index} data={i} owner={i.userId} />
               <input id="show-more" type="button" className="show-more btn btn-success" defaultValue="Show more" onClick={that.getMorePost} />
             </div>
           )
           else return(
+            <div className="" key={index}>
               <NewsfeedContent key={index} data={i} owner={i.userId} />
+            </div>
           )
         })
         }

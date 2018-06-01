@@ -80,7 +80,7 @@ class SearchInbox extends React.Component{
       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
           <div className="row">
             <div className="border-chat">
-              <h2 style={{textAlign:"center"}}>CHAT ROOM </h2>
+              <h2 style={{textAlign:"center"}}>CHAT ROOM</h2>
             </div>
           </div>
           <div className="row">
