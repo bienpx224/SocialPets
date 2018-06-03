@@ -1,0 +1,22 @@
+{ 
+    "_id" : ObjectId("5b122380d7477d38ddb31499"), 
+    "inboxId" : ObjectId("5b12231ed7477d38ddb3143f"), 
+    "send_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "receive_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "content" : "hi", 
+    "isRead" : true, 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-06-02T04:56:32.049+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:35.135+0000")
+}
+{ 
+    "_id" : ObjectId("5b122384d7477d38ddb3149a"), 
+    "inboxId" : ObjectId("5b12231ed7477d38ddb3143f"), 
+    "send_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "receive_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "content" : "ok", 
+    "isRead" : true, 
+    "isActive" : true, 
+    "createdAt" : ISODate("2018-06-02T04:56:36.840+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:41.127+0000")
+}

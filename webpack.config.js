@@ -45,6 +45,7 @@ module.exports = {
           PostWeek: 'app/components/PostInfo/PostWeek.js',
           // Find User
           FindUser: 'app/components/FindUser/FindUser.js',
+          FindPost: 'app/components/FindUser/components/FindPost.js',
           // FindUser: 'app/components/FindUser/FindUser.js',
           //Feedback
           Feedback : 'app/components/Feedback/Feedback.js',

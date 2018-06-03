@@ -45,7 +45,18 @@ module.exports = {
     .skip(skip)
     .then( (listUser)=>{
       if(!listUser) res.send({err:"Not found"})
-      res.send({listUser})
+
+      Post.find( {content: new RegExp(key, 'ui') } )
+      .populateAll()
+      .limit(limit)
+      .skip(skip)
+      .then( (listPost)=>{
+        if(!listPost) res.send({err:"Not found"})
+
+        res.send({listUser, listPost})
+      })
+      .catch( err=>res.send({err}))
+
     })
     .catch( err=>res.send({err}))
   },

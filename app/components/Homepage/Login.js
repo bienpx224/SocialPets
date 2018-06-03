@@ -14,9 +14,8 @@ class Login extends React.Component{
 
           <div className="col-sm-5">
             <div className="intro-texts">
-              <h1 className="text-white">Make Cool Friends !!!</h1>
-              <p>Friend Finder is a social network template that can be used to connect people. The template offers Landing pages, News Feed, Image/Video Feed, Chat Box, Timeline and lot more. <br /> <br />Why are you waiting for? Buy it now.</p>
-              <button className="btn btn-primary">Learn More</button>
+              <h1 className="text-white">World of Pets!!!</h1>
+              <p>Social Pets is a social network that can be used to connect people. Social Pets is place where you use News Feed, Image/Video Feed, Chat Box, Timeline and lot more to relax, share your pet and connect to everyone. <br /> <br />Why are you waiting for? Let join with us.</p>
             </div>
           </div>
 

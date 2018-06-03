@@ -4,6 +4,7 @@ import AlertContainer from 'react-alert';
 import {set_user} from 'userAction';
 import ChatList from 'ChatList';
 import MenuVertical from 'MenuVertical';
+import {get_post_err, get_postNewsfeed, get_top_image} from 'postAction';
 
 class MenuLeft extends React.Component{
   constructor(props){
@@ -13,10 +14,18 @@ class MenuLeft extends React.Component{
     }
   }
   componentDidMount(){
-    window.addEventListener('onScroll', this.handleScroll());
+    this.getListTopImage();
   }
-  handleScroll(){
-    let p = document.documentElement.scrollTop;
+  getListTopImage(){
+    let {dispatch} = this.props;
+    let weekAgo = +new Date()-604800016;
+    weekAgo = ""+weekAgo;
+    io.socket.post('/post/topImageOfWeek',{weekAgo},(resData, jwres)=>{
+      console.log("ListTopImage: ", resData);
+      if(resData.topP){
+        dispatch(get_top_image(resData.topP));
+      }else console.log(" co loi get ListTopImage");
+    })
   }
   render(){
     return(

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import NewsfeedContent from 'NewsfeedContent';
 import Login from 'Login';
 import Notfound from 'Notfound';
+import MenuLeft from 'MenuLeft';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 import {get_person,set_user,login_error,login_success} from 'userAction';
 
@@ -65,14 +66,13 @@ class PostInfo extends React.Component{
     }
     else{
       return(
-        <div id="page-contents">
-          <div className="row">
-            <div className="col-md-11" style={{marginTop:"-80px"}}>
+        <div className="container" style={{marginLeft:"0%"}}>
+            <MenuLeft />
+            <div className="col-md-10 fixed-content">
 
               {renderPost}
 
             </div>
-          </div>
         </div>
       )
     }

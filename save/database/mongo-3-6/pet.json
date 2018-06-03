@@ -5,9 +5,9 @@
     "type" : "cat", 
     "image" : "https://i.imgur.com/7PbvMCU.jpg", 
     "userId" : ObjectId("5ad2d843abf77f3023437055"), 
-    "isActive" : true, 
+    "isActive" : false, 
     "createdAt" : ISODate("2018-04-15T04:50:51.943+0000"), 
-    "updatedAt" : ISODate("2018-04-15T04:50:51.943+0000")
+    "updatedAt" : ISODate("2018-05-20T17:26:11.039+0000")
 }
 { 
     "_id" : ObjectId("5ad2da49abf77f3023437074"), 
@@ -21,13 +21,13 @@
     "updatedAt" : ISODate("2018-04-15T04:51:21.525+0000")
 }
 { 
-    "_id" : ObjectId("5ad2db41abf77f3023437088"), 
-    "description" : "", 
-    "name" : "Quàng thượng", 
-    "type" : "cat", 
-    "image" : "https://i.imgur.com/9l3gwSD.jpg", 
-    "userId" : ObjectId("5ad2d8a7abf77f302343705b"), 
+    "_id" : ObjectId("5b064349161faac069274ed5"), 
+    "description" : "aaaaaaa", 
+    "name" : "aaaaaaa", 
+    "type" : "aaaaaa", 
+    "image" : "https://i.imgur.com/vXsrgzE.jpg", 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
     "isActive" : true, 
-    "createdAt" : ISODate("2018-04-15T04:55:29.436+0000"), 
-    "updatedAt" : ISODate("2018-04-15T04:55:29.436+0000")
+    "createdAt" : ISODate("2018-05-24T04:44:57.394+0000"), 
+    "updatedAt" : ISODate("2018-05-24T04:44:57.394+0000")
 }

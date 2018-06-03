@@ -40,3 +40,7 @@ webpack -w
 -	Mở Browser và nhập URL:
 http://localhost:1337
 -	Tại đó sẽ hiển thị lên giao diện người dùng, trang đăng kí, đăng nhập để người dùng có thể từ đó tiếp tục trải nghiệm hệ thống trên Localhost.
+
+#### VIEW
+
+![Newsfeed](http://i.imgur.com/dhuEzqj.png)

@@ -43,7 +43,6 @@ module.exports = {
     let {weekAgo} = req.body;
     if(!weekAgo) weekAgo = +new Date()-604800000;
     weekAgo = +weekAgo;
-    console.log("weekAgo: ", weekAgo)
     let limit = 5;
     Post.find( {$and: [ {image: {$regex:/http/}}, {timeMili: {$gt: weekAgo}}]} )
     .populateAll()
@@ -52,7 +51,6 @@ module.exports = {
     .limit(limit)
     .then( (topP)=>{
       if(topP){
-        console.log(topP)
         return res.send({topP})
       }else{
         return res.send({err:"not found"})

@@ -4,6 +4,7 @@ import AlertContainer from 'react-alert';
 import SearchInbox from 'SearchInbox';
 import InboxList from 'InboxList';
 import Following from 'Following';
+import FindPost from 'FindPost';
 import ReactPlaceholder from 'react-placeholder';
 
 class FindUser extends React.Component{
@@ -12,6 +13,7 @@ class FindUser extends React.Component{
     this.state = {
       loading: true,
       listSearch: [],
+      listPost: [],
       isSearch: true,
     }
   }
@@ -71,14 +73,14 @@ class FindUser extends React.Component{
     let key = this.refs.key.value;
     if(!user) return this.setState({...this.state,loading: false});
      io.socket.post('/user/searchUser',{userId: user.id,skip, limit, key}, (resData, jwres)=>{
-        if(resData.listUser){ console.log("resData Search: ", resData.listUser);
+        if(resData.listUser && resData.listPost){ console.log("resData Search: ", resData);
           let newListSearch = [];
           if(this.state.isSearch===true){
               newListSearch = resData.listUser;
           }else{
             newListSearch = this.state.listSearch.concat(resData.listUser);
           }
-          return this.setState({...this.state,loading: false, listSearch: newListSearch});
+          return this.setState({...this.state,loading: false, listSearch: newListSearch, listPost:resData.listPost});
         }
       })
   }
@@ -131,6 +133,8 @@ class FindUser extends React.Component{
                         return <Following key={i} data={user} />
                      })
                     }
+
+                    <FindPost listPost={this.state.listPost} />
 
                 </div>
                 <div className="clearfix"></div>

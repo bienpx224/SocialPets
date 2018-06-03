@@ -1,0 +1,2269 @@
+{ 
+    "_id" : ObjectId("5b0a56d83cd3b728b285c0f3"), 
+    "userId" : ObjectId("5b04ca985fee5e406e686a7e"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-27T06:57:28.501+0000"), 
+    "updatedAt" : ISODate("2018-05-27T06:57:28.501+0000")
+}
+{ 
+    "_id" : ObjectId("5b0a9636bd0d515c1652dafd"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-27T11:27:50.600+0000"), 
+    "updatedAt" : ISODate("2018-05-27T11:27:50.600+0000")
+}
+{ 
+    "_id" : ObjectId("5b0a9720bd0d515c1652db05"), 
+    "userId" : ObjectId("5b051f6980b3986c43fa82ab"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-27T11:31:44.030+0000"), 
+    "updatedAt" : ISODate("2018-05-27T11:31:44.030+0000")
+}
+{ 
+    "_id" : ObjectId("5b0a97afbd0d515c1652db0f"), 
+    "userId" : ObjectId("5b04cc915fee5e406e686a8e"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-27T11:34:07.478+0000"), 
+    "updatedAt" : ISODate("2018-05-27T11:34:07.478+0000")
+}
+{ 
+    "_id" : ObjectId("5b0a97d1bd0d515c1652db15"), 
+    "userId" : ObjectId("5b04ccdc5fee5e406e686a99"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-27T11:34:41.685+0000"), 
+    "updatedAt" : ISODate("2018-05-27T11:34:41.685+0000")
+}
+{ 
+    "_id" : ObjectId("5b0a9803bd0d515c1652db19"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-27T11:35:31.156+0000"), 
+    "updatedAt" : ISODate("2018-05-28T02:13:13.705+0000")
+}
+{ 
+    "_id" : ObjectId("5b0b64ea61d752088868dc3d"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-28T02:09:46.841+0000"), 
+    "updatedAt" : ISODate("2018-05-28T02:13:13.705+0000")
+}
+{ 
+    "_id" : ObjectId("5b0b64ec61d752088868dc40"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-28T02:09:48.287+0000"), 
+    "updatedAt" : ISODate("2018-05-28T02:13:13.705+0000")
+}
+{ 
+    "_id" : ObjectId("5b0c3f707237ff0c462f3eeb"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_userId" : null, 
+    "createdAt" : ISODate("2018-05-28T17:42:08.505+0000"), 
+    "updatedAt" : ISODate("2018-05-28T17:42:08.505+0000")
+}
+{ 
+    "_id" : ObjectId("5b0f603ddec616fc2cb3809a"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_cmtId" : ObjectId("5b0f603ddec616fc2cb38098"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-31T02:38:53.878+0000"), 
+    "updatedAt" : ISODate("2018-05-31T02:38:53.878+0000")
+}
+{ 
+    "_id" : ObjectId("5b0f6045dec616fc2cb3809d"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_cmtId" : ObjectId("5b0f6045dec616fc2cb3809b"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-31T02:39:01.936+0000"), 
+    "updatedAt" : ISODate("2018-05-31T02:39:01.936+0000")
+}
+{ 
+    "_id" : ObjectId("5b0f6097dec616fc2cb380a0"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_cmtId" : ObjectId("5b0f6097dec616fc2cb3809e"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-05-31T02:40:23.669+0000"), 
+    "updatedAt" : ISODate("2018-05-31T02:40:23.669+0000")
+}
+{ 
+    "_id" : ObjectId("5b121cf0d7477d38ddb31301"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:28:32.211+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121cf2d7477d38ddb31305"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:28:34.437+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:28:34.437+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d01d7477d38ddb31309"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:28:49.445+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:28:49.445+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d09d7477d38ddb3130c"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:28:57.803+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:28:57.803+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d0bd7477d38ddb3130f"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:28:59.483+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:28:59.483+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d0ed7477d38ddb31312"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a348c94d01370b067e3f5"), 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:29:02.668+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d0fd7477d38ddb31315"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a347794d01370b067e3f0"), 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:29:03.787+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d11d7477d38ddb31318"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a342194d01370b067e3ee"), 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:29:05.837+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d18d7477d38ddb3131b"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a342194d01370b067e3ee"), 
+    "related_cmtId" : ObjectId("5b121d18d7477d38ddb31319"), 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:29:12.685+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121d24d7477d38ddb3131e"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a348c94d01370b067e3f5"), 
+    "related_cmtId" : ObjectId("5b121d24d7477d38ddb3131c"), 
+    "related_userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "createdAt" : ISODate("2018-06-02T04:29:24.235+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dbcd7477d38ddb31333"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:31:56.615+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dbdd7477d38ddb31337"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:31:57.675+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:31:57.675+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dbed7477d38ddb3133b"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:31:58.362+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:31:58.362+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dbfd7477d38ddb3133f"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:31:59.662+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:31:59.662+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dc8d7477d38ddb31342"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:08.743+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:08.743+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dc9d7477d38ddb31345"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:09.794+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:09.794+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dcbd7477d38ddb31348"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:11.004+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:11.004+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dd0d7477d38ddb3134b"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_cmtId" : ObjectId("5b121dd0d7477d38ddb31349"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:16.927+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:16.927+0000")
+}
+{ 
+    "_id" : ObjectId("5b121ddcd7477d38ddb3134e"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_cmtId" : ObjectId("5b121ddcd7477d38ddb3134c"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:28.896+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:28.896+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dded7477d38ddb31351"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:30.829+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:30.829+0000")
+}
+{ 
+    "_id" : ObjectId("5b121de4d7477d38ddb31354"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_cmtId" : ObjectId("5b121de4d7477d38ddb31352"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:36.855+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:36.855+0000")
+}
+{ 
+    "_id" : ObjectId("5b121de8d7477d38ddb31357"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:40.956+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:40.956+0000")
+}
+{ 
+    "_id" : ObjectId("5b121df1d7477d38ddb3135a"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_cmtId" : ObjectId("5b121df1d7477d38ddb31358"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:49.110+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:32:49.110+0000")
+}
+{ 
+    "_id" : ObjectId("5b121df3d7477d38ddb3135d"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0b5a1bcad465d4bbcbec70"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:51.180+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121df5d7477d38ddb31360"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a348c94d01370b067e3f5"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:53.157+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121df9d7477d38ddb31363"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a347794d01370b067e3f0"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:32:57.659+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121dfcd7477d38ddb31366"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a347794d01370b067e3f0"), 
+    "related_cmtId" : ObjectId("5b121dfcd7477d38ddb31364"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:33:00.347+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b121e80d7477d38ddb31369"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a342194d01370b067e3ee"), 
+    "related_userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "createdAt" : ISODate("2018-06-02T04:35:12.588+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b1220e0d7477d38ddb3137e"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:20.732+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b1220e1d7477d38ddb31382"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:21.263+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:21.263+0000")
+}
+{ 
+    "_id" : ObjectId("5b1220e1d7477d38ddb31386"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:21.695+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:21.695+0000")
+}
+{ 
+    "_id" : ObjectId("5b1220e2d7477d38ddb3138a"), 
+    "userId" : ObjectId("5b04ca985fee5e406e686a7e"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:22.153+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:22.153+0000")
+}
+{ 
+    "_id" : ObjectId("5b1220e2d7477d38ddb3138e"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:22.960+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:22.960+0000")
+}
+{ 
+    "_id" : ObjectId("5b1220e3d7477d38ddb31392"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:23.519+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:23.519+0000")
+}
+{ 
+    "_id" : ObjectId("5b1220f6d7477d38ddb31396"), 
+    "userId" : ObjectId("5b051f6980b3986c43fa82ab"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:42.689+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:42.689+0000")
+}
+{ 
+    "_id" : ObjectId("5b122101d7477d38ddb31399"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121da8d7477d38ddb3132b"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:53.479+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:53.479+0000")
+}
+{ 
+    "_id" : ObjectId("5b122102d7477d38ddb3139c"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:54.907+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:54.907+0000")
+}
+{ 
+    "_id" : ObjectId("5b122106d7477d38ddb3139f"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_cmtId" : ObjectId("5b122106d7477d38ddb3139d"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:45:58.338+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:45:58.338+0000")
+}
+{ 
+    "_id" : ObjectId("5b122108d7477d38ddb313a2"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d73d7477d38ddb31322"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:00.340+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:00.340+0000")
+}
+{ 
+    "_id" : ObjectId("5b122110d7477d38ddb313a5"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d73d7477d38ddb31322"), 
+    "related_cmtId" : ObjectId("5b122110d7477d38ddb313a3"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:08.740+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:08.740+0000")
+}
+{ 
+    "_id" : ObjectId("5b122113d7477d38ddb313a8"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:11.141+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:11.141+0000")
+}
+{ 
+    "_id" : ObjectId("5b122118d7477d38ddb313ab"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_cmtId" : ObjectId("5b122118d7477d38ddb313a9"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:16.944+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:16.944+0000")
+}
+{ 
+    "_id" : ObjectId("5b12211bd7477d38ddb313ae"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:19.643+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:19.643+0000")
+}
+{ 
+    "_id" : ObjectId("5b122122d7477d38ddb313b1"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_cmtId" : ObjectId("5b122122d7477d38ddb313af"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:26.979+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:26.979+0000")
+}
+{ 
+    "_id" : ObjectId("5b122125d7477d38ddb313b4"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:29.356+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:29.356+0000")
+}
+{ 
+    "_id" : ObjectId("5b122129d7477d38ddb313b7"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:46:33.021+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:46:33.021+0000")
+}
+{ 
+    "_id" : ObjectId("5b12216ad7477d38ddb313ba"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_cmtId" : ObjectId("5b12216ad7477d38ddb313b8"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:47:38.277+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:47:38.277+0000")
+}
+{ 
+    "_id" : ObjectId("5b12216bd7477d38ddb313bd"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:47:39.886+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:47:39.886+0000")
+}
+{ 
+    "_id" : ObjectId("5b122171d7477d38ddb313c0"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_cmtId" : ObjectId("5b122171d7477d38ddb313be"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:47:45.018+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:47:45.018+0000")
+}
+{ 
+    "_id" : ObjectId("5b1221e8d7477d38ddb313c4"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a348c94d01370b067e3f5"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:49:44.279+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b1221ead7477d38ddb313c7"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a347794d01370b067e3f0"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:49:46.029+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b1221ebd7477d38ddb313ca"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a342194d01370b067e3ee"), 
+    "related_userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "createdAt" : ISODate("2018-06-02T04:49:47.342+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b12227cd7477d38ddb313da"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:12.749+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b12227dd7477d38ddb313de"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:13.567+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:13.567+0000")
+}
+{ 
+    "_id" : ObjectId("5b12227ed7477d38ddb313e2"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:14.431+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:14.431+0000")
+}
+{ 
+    "_id" : ObjectId("5b12227fd7477d38ddb313e6"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:15.228+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:15.228+0000")
+}
+{ 
+    "_id" : ObjectId("5b122281d7477d38ddb313ea"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:17.316+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:17.316+0000")
+}
+{ 
+    "_id" : ObjectId("5b122281d7477d38ddb313ee"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:17.939+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:17.939+0000")
+}
+{ 
+    "_id" : ObjectId("5b122289d7477d38ddb313f2"), 
+    "userId" : ObjectId("5b051fe580b3986c43fa82b3"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:25.485+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:25.485+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222a1d7477d38ddb313f8"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122035d7477d38ddb31377"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:49.239+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:49.239+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222a5d7477d38ddb313fb"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122035d7477d38ddb31377"), 
+    "related_cmtId" : ObjectId("5b1222a5d7477d38ddb313f9"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:53.148+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:53.148+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222a7d7477d38ddb313fe"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122019d7477d38ddb31371"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:52:55.452+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:52:55.452+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222acd7477d38ddb31401"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122019d7477d38ddb31371"), 
+    "related_cmtId" : ObjectId("5b1222acd7477d38ddb313ff"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:00.065+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:00.065+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222aed7477d38ddb31404"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122000d7477d38ddb3136c"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:02.156+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:02.156+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222b0d7477d38ddb31407"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122000d7477d38ddb3136c"), 
+    "related_cmtId" : ObjectId("5b1222b0d7477d38ddb31405"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:04.779+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:04.779+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222b3d7477d38ddb3140a"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121da8d7477d38ddb3132b"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:07.036+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:07.036+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222b5d7477d38ddb3140d"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:09.028+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:09.028+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222b8d7477d38ddb31410"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_cmtId" : ObjectId("5b1222b8d7477d38ddb3140e"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:12.595+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:12.595+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222bad7477d38ddb31413"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d73d7477d38ddb31322"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:14.125+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:14.125+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222bbd7477d38ddb31416"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:15.996+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:15.996+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222c0d7477d38ddb31419"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_cmtId" : ObjectId("5b1222c0d7477d38ddb31417"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:20.774+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:20.774+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222c7d7477d38ddb3141c"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:27.589+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:27.589+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222c9d7477d38ddb3141f"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_cmtId" : ObjectId("5b1222c9d7477d38ddb3141d"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:29.423+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:29.423+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222cbd7477d38ddb31422"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:31.875+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:31.875+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222d1d7477d38ddb31425"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_cmtId" : ObjectId("5b1222d1d7477d38ddb31423"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:37.467+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:37.467+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222d3d7477d38ddb31428"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:39.540+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:39.540+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222d6d7477d38ddb3142b"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_cmtId" : ObjectId("5b1222d6d7477d38ddb31429"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:42.559+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:42.559+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222d8d7477d38ddb3142e"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:44.780+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:44.780+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222ded7477d38ddb31431"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64b761d752088868dc33"), 
+    "related_cmtId" : ObjectId("5b1222ded7477d38ddb3142f"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:50.877+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:53:50.877+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222e1d7477d38ddb31434"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a348c94d01370b067e3f5"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:53.503+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222e3d7477d38ddb31437"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a347794d01370b067e3f0"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:55.830+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b1222e4d7477d38ddb3143a"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_postId" : ObjectId("5b0a342194d01370b067e3ee"), 
+    "related_userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "createdAt" : ISODate("2018-06-02T04:53:56.965+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b12231ed7477d38ddb31441"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:54:54.171+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b12231ed7477d38ddb31445"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:54:54.980+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:54:54.980+0000")
+}
+{ 
+    "_id" : ObjectId("5b12231fd7477d38ddb31449"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:54:55.629+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:54:55.629+0000")
+}
+{ 
+    "_id" : ObjectId("5b122320d7477d38ddb3144d"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:54:56.212+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:54:56.212+0000")
+}
+{ 
+    "_id" : ObjectId("5b122321d7477d38ddb31451"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:54:57.015+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:54:57.015+0000")
+}
+{ 
+    "_id" : ObjectId("5b122322d7477d38ddb31455"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:54:58.071+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:54:58.071+0000")
+}
+{ 
+    "_id" : ObjectId("5b122322d7477d38ddb31459"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:54:58.637+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:54:58.637+0000")
+}
+{ 
+    "_id" : ObjectId("5b12232ad7477d38ddb3145d"), 
+    "userId" : ObjectId("5b051fe580b3986c43fa82b3"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:06.670+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:06.670+0000")
+}
+{ 
+    "_id" : ObjectId("5b122333d7477d38ddb31462"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12226ed7477d38ddb313d5"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:15.957+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:15.957+0000")
+}
+{ 
+    "_id" : ObjectId("5b12233dd7477d38ddb31466"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12226ed7477d38ddb313d5"), 
+    "related_cmtId" : ObjectId("5b12233dd7477d38ddb31464"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:25.674+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:25.674+0000")
+}
+{ 
+    "_id" : ObjectId("5b12233fd7477d38ddb31469"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122251d7477d38ddb313d1"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:27.190+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:27.190+0000")
+}
+{ 
+    "_id" : ObjectId("5b122343d7477d38ddb3146c"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122251d7477d38ddb313d1"), 
+    "related_cmtId" : ObjectId("5b122343d7477d38ddb3146a"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:31.390+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:31.390+0000")
+}
+{ 
+    "_id" : ObjectId("5b122344d7477d38ddb3146f"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122244d7477d38ddb313cd"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:32.925+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:32.925+0000")
+}
+{ 
+    "_id" : ObjectId("5b122347d7477d38ddb31472"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122035d7477d38ddb31377"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:35.877+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:35.877+0000")
+}
+{ 
+    "_id" : ObjectId("5b12234ad7477d38ddb31475"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122019d7477d38ddb31371"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:38.900+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:38.900+0000")
+}
+{ 
+    "_id" : ObjectId("5b122350d7477d38ddb31478"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122035d7477d38ddb31377"), 
+    "related_cmtId" : ObjectId("5b122350d7477d38ddb31476"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:44.036+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:44.036+0000")
+}
+{ 
+    "_id" : ObjectId("5b122356d7477d38ddb3147b"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122000d7477d38ddb3136c"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:50.741+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:50.741+0000")
+}
+{ 
+    "_id" : ObjectId("5b122359d7477d38ddb3147e"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121da8d7477d38ddb3132b"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:53.503+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:53.503+0000")
+}
+{ 
+    "_id" : ObjectId("5b12235bd7477d38ddb31481"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:55:55.140+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:55:55.140+0000")
+}
+{ 
+    "_id" : ObjectId("5b122364d7477d38ddb31486"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_cmtId" : ObjectId("5b122364d7477d38ddb31484"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:56:04.714+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:04.714+0000")
+}
+{ 
+    "_id" : ObjectId("5b122367d7477d38ddb31489"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d73d7477d38ddb31322"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:56:07.380+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:07.380+0000")
+}
+{ 
+    "_id" : ObjectId("5b122369d7477d38ddb3148c"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:56:09.949+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:09.949+0000")
+}
+{ 
+    "_id" : ObjectId("5b122371d7477d38ddb3148f"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:56:17.677+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:17.677+0000")
+}
+{ 
+    "_id" : ObjectId("5b122374d7477d38ddb31492"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:56:20.917+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:20.917+0000")
+}
+{ 
+    "_id" : ObjectId("5b122375d7477d38ddb31495"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:56:21.907+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:21.907+0000")
+}
+{ 
+    "_id" : ObjectId("5b122378d7477d38ddb31498"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_cmtId" : ObjectId("5b122378d7477d38ddb31496"), 
+    "related_userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "createdAt" : ISODate("2018-06-02T04:56:24.034+0000"), 
+    "updatedAt" : ISODate("2018-06-02T04:56:24.034+0000")
+}
+{ 
+    "_id" : ObjectId("5b12245cd7477d38ddb3149e"), 
+    "userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122318d7477d38ddb3143c"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:12.434+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:12.434+0000")
+}
+{ 
+    "_id" : ObjectId("5b12245dd7477d38ddb314a1"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12226ed7477d38ddb313d5"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:13.917+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:13.917+0000")
+}
+{ 
+    "_id" : ObjectId("5b12245fd7477d38ddb314a4"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122251d7477d38ddb313d1"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:15.397+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:15.397+0000")
+}
+{ 
+    "_id" : ObjectId("5b122460d7477d38ddb314a7"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122244d7477d38ddb313cd"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:16.333+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:16.333+0000")
+}
+{ 
+    "_id" : ObjectId("5b122461d7477d38ddb314aa"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122035d7477d38ddb31377"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:17.429+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:17.429+0000")
+}
+{ 
+    "_id" : ObjectId("5b122463d7477d38ddb314ad"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122019d7477d38ddb31371"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:19.149+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:19.149+0000")
+}
+{ 
+    "_id" : ObjectId("5b122464d7477d38ddb314b0"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122000d7477d38ddb3136c"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:20.092+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:20.092+0000")
+}
+{ 
+    "_id" : ObjectId("5b122465d7477d38ddb314b3"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121da8d7477d38ddb3132b"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:21.733+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:21.733+0000")
+}
+{ 
+    "_id" : ObjectId("5b122467d7477d38ddb314b6"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:23.414+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:23.414+0000")
+}
+{ 
+    "_id" : ObjectId("5b122468d7477d38ddb314b9"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d73d7477d38ddb31322"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:24.822+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:24.822+0000")
+}
+{ 
+    "_id" : ObjectId("5b12246ad7477d38ddb314bc"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:26.326+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:26.326+0000")
+}
+{ 
+    "_id" : ObjectId("5b12246bd7477d38ddb314bf"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:27.747+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:27.747+0000")
+}
+{ 
+    "_id" : ObjectId("5b12246dd7477d38ddb314c2"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:29.143+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:29.143+0000")
+}
+{ 
+    "_id" : ObjectId("5b12246fd7477d38ddb314c5"), 
+    "userId" : ObjectId("5b100d38e662f6c86f3dc50c"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b100d38e662f6c86f3dc50d"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:31.730+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:31.730+0000")
+}
+{ 
+    "_id" : ObjectId("5b122471d7477d38ddb314c8"), 
+    "userId" : ObjectId("5b100d66e662f6c86f3dc50f"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b100d66e662f6c86f3dc510"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:33.049+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:33.049+0000")
+}
+{ 
+    "_id" : ObjectId("5b122472d7477d38ddb314cb"), 
+    "userId" : ObjectId("5b100d08e662f6c86f3dc509"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b100d08e662f6c86f3dc50a"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:34.917+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:34.917+0000")
+}
+{ 
+    "_id" : ObjectId("5b122474d7477d38ddb314ce"), 
+    "userId" : ObjectId("5b100ca9e662f6c86f3dc503"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b100ca9e662f6c86f3dc504"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:36.405+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:36.405+0000")
+}
+{ 
+    "_id" : ObjectId("5b122475d7477d38ddb314d1"), 
+    "userId" : ObjectId("5b100c35e662f6c86f3dc500"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b100c35e662f6c86f3dc501"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:37.646+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:37.646+0000")
+}
+{ 
+    "_id" : ObjectId("5b122476d7477d38ddb314d4"), 
+    "userId" : ObjectId("5b100c24e662f6c86f3dc4fd"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b100c24e662f6c86f3dc4fe"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:38.582+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:38.582+0000")
+}
+{ 
+    "_id" : ObjectId("5b122478d7477d38ddb314d7"), 
+    "userId" : ObjectId("5b100bf6e662f6c86f3dc4fa"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b100bf6e662f6c86f3dc4fb"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:00:40.847+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:00:40.847+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b4d7477d38ddb314dd"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:40.212+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b5d7477d38ddb314e1"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:41.038+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:01:41.038+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b5d7477d38ddb314e5"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:41.366+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:01:41.366+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b5d7477d38ddb314e9"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:41.932+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:01:41.932+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b6d7477d38ddb314ed"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:42.800+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:01:42.800+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b7d7477d38ddb314f1"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:43.197+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:01:43.197+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b7d7477d38ddb314f5"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:43.524+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:01:43.524+0000")
+}
+{ 
+    "_id" : ObjectId("5b1224b9d7477d38ddb314f9"), 
+    "userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:01:45.152+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:01:45.152+0000")
+}
+{ 
+    "_id" : ObjectId("5b122517d7477d38ddb31518"), 
+    "userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122318d7477d38ddb3143c"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:19.376+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:19.376+0000")
+}
+{ 
+    "_id" : ObjectId("5b122518d7477d38ddb3151b"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12226ed7477d38ddb313d5"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:20.732+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:20.732+0000")
+}
+{ 
+    "_id" : ObjectId("5b12251ad7477d38ddb3151e"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122251d7477d38ddb313d1"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:22.238+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:22.238+0000")
+}
+{ 
+    "_id" : ObjectId("5b12251cd7477d38ddb31521"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122244d7477d38ddb313cd"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:24.926+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:24.926+0000")
+}
+{ 
+    "_id" : ObjectId("5b12251ed7477d38ddb31524"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122035d7477d38ddb31377"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:26.295+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:26.295+0000")
+}
+{ 
+    "_id" : ObjectId("5b12251fd7477d38ddb31527"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122019d7477d38ddb31371"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:27.553+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:27.553+0000")
+}
+{ 
+    "_id" : ObjectId("5b122520d7477d38ddb3152a"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122000d7477d38ddb3136c"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:28.615+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:28.615+0000")
+}
+{ 
+    "_id" : ObjectId("5b122521d7477d38ddb3152d"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121da8d7477d38ddb3132b"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:29.857+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:29.857+0000")
+}
+{ 
+    "_id" : ObjectId("5b122523d7477d38ddb31530"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:31.551+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:31.551+0000")
+}
+{ 
+    "_id" : ObjectId("5b122524d7477d38ddb31533"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d73d7477d38ddb31322"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:32.691+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:32.691+0000")
+}
+{ 
+    "_id" : ObjectId("5b122525d7477d38ddb31536"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:33.950+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:33.950+0000")
+}
+{ 
+    "_id" : ObjectId("5b122527d7477d38ddb31539"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:35.645+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:35.645+0000")
+}
+{ 
+    "_id" : ObjectId("5b122529d7477d38ddb3153c"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:37.365+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:37.365+0000")
+}
+{ 
+    "_id" : ObjectId("5b12252bd7477d38ddb3153f"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "createdAt" : ISODate("2018-06-02T05:03:39.885+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:03:39.885+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257ad7477d38ddb3154e"), 
+    "userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : true, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:04:58.616+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:16:41.170+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257bd7477d38ddb31552"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:04:59.073+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:04:59.073+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257bd7477d38ddb31556"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:04:59.535+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:04:59.535+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257cd7477d38ddb3155a"), 
+    "userId" : ObjectId("5b051f8480b3986c43fa82ad"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:00.024+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:00.024+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257cd7477d38ddb3155e"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:00.372+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:00.372+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257cd7477d38ddb31562"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:00.805+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:00.805+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257dd7477d38ddb31566"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:01.295+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:01.295+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257dd7477d38ddb3156a"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:01.844+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:01.844+0000")
+}
+{ 
+    "_id" : ObjectId("5b12257fd7477d38ddb3156e"), 
+    "userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:03.958+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:03.958+0000")
+}
+{ 
+    "_id" : ObjectId("5b122590d7477d38ddb3157b"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122508d7477d38ddb31506"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:20.061+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:20.061+0000")
+}
+{ 
+    "_id" : ObjectId("5b122591d7477d38ddb3157e"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224fdd7477d38ddb31504"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:21.270+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:21.270+0000")
+}
+{ 
+    "_id" : ObjectId("5b122593d7477d38ddb31581"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224f4d7477d38ddb31502"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:23.061+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:23.061+0000")
+}
+{ 
+    "_id" : ObjectId("5b122595d7477d38ddb31584"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224ead7477d38ddb31500"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:25.213+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:25.213+0000")
+}
+{ 
+    "_id" : ObjectId("5b122597d7477d38ddb31587"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224ead7477d38ddb31500"), 
+    "related_cmtId" : ObjectId("5b122597d7477d38ddb31585"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:27.909+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:27.909+0000")
+}
+{ 
+    "_id" : ObjectId("5b12259cd7477d38ddb3158a"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224f4d7477d38ddb31502"), 
+    "related_cmtId" : ObjectId("5b12259cd7477d38ddb31588"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:32.815+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:32.815+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225a1d7477d38ddb3158d"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224d8d7477d38ddb314fe"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:37.119+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:37.119+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225a4d7477d38ddb31590"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224d8d7477d38ddb314fe"), 
+    "related_cmtId" : ObjectId("5b1225a4d7477d38ddb3158e"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:40.332+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:40.332+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225a6d7477d38ddb31593"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224ccd7477d38ddb314fc"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:42.622+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:42.622+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225a8d7477d38ddb31596"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224c4d7477d38ddb314fa"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:44.341+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:44.341+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225a9d7477d38ddb31599"), 
+    "userId" : ObjectId("5b121ae8d7477d38ddb312e8"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122318d7477d38ddb3143c"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:45.629+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:45.629+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225abd7477d38ddb3159c"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12226ed7477d38ddb313d5"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:47.948+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:47.948+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225aed7477d38ddb3159f"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Bình luận trong bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12226ed7477d38ddb313d5"), 
+    "related_cmtId" : ObjectId("5b1225aed7477d38ddb3159d"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:50.341+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:50.341+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225b0d7477d38ddb315a2"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122251d7477d38ddb313d1"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:52.333+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:52.333+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225b1d7477d38ddb315a5"), 
+    "userId" : ObjectId("5b121ad9d7477d38ddb312e7"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122244d7477d38ddb313cd"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:53.613+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:53.613+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225b2d7477d38ddb315a8"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122035d7477d38ddb31377"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:54.869+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:54.869+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225b5d7477d38ddb315ab"), 
+    "userId" : ObjectId("5b121acad7477d38ddb312e6"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122000d7477d38ddb3136c"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:57.437+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:57.437+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225b6d7477d38ddb315ae"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121da8d7477d38ddb3132b"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:05:58.598+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:05:58.598+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225b9d7477d38ddb315b1"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d95d7477d38ddb31327"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:06:01.062+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:01.062+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225bad7477d38ddb315b4"), 
+    "userId" : ObjectId("5b121a95d7477d38ddb312e5"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121d73d7477d38ddb31322"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:06:02.238+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:02.238+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225bbd7477d38ddb315b7"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121cb0d7477d38ddb312f3"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:06:03.456+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:03.456+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225bdd7477d38ddb315ba"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c98d7477d38ddb312f1"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:06:05.075+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:05.075+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225bed7477d38ddb315bd"), 
+    "userId" : ObjectId("5b121a85d7477d38ddb312e4"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b121c85d7477d38ddb312ef"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:06:06.950+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:06.950+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225c0d7477d38ddb315c0"), 
+    "userId" : ObjectId("5b051f3b80b3986c43fa82a9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b0b64d361d752088868dc37"), 
+    "related_userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "createdAt" : ISODate("2018-06-02T05:06:08.093+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:08.093+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225d5d7477d38ddb315c3"), 
+    "userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122577d7477d38ddb31549"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:29.448+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:29.448+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225d6d7477d38ddb315c6"), 
+    "userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12256fd7477d38ddb31547"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:30.790+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:30.790+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225d8d7477d38ddb315c9"), 
+    "userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122566d7477d38ddb31545"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:32.021+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:32.021+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225d8d7477d38ddb315cc"), 
+    "userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b12255ed7477d38ddb31543"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:32.886+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:32.886+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225dad7477d38ddb315cf"), 
+    "userId" : ObjectId("5b121af1d7477d38ddb312e9"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122554d7477d38ddb31541"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:34.246+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:34.246+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225dbd7477d38ddb315d2"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b122508d7477d38ddb31506"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:35.894+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:35.894+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225ddd7477d38ddb315d5"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224fdd7477d38ddb31504"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:37.439+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:37.439+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225ded7477d38ddb315d8"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224f4d7477d38ddb31502"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:38.646+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:38.646+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225e0d7477d38ddb315db"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224ead7477d38ddb31500"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:40.286+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:40.286+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225e1d7477d38ddb315de"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224d8d7477d38ddb314fe"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:41.238+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:41.238+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225e2d7477d38ddb315e1"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224ccd7477d38ddb314fc"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:42.559+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:42.559+0000")
+}
+{ 
+    "_id" : ObjectId("5b1225e3d7477d38ddb315e4"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Yêu thích bài đăng", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_postId" : ObjectId("5b1224c4d7477d38ddb314fa"), 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-02T05:06:43.622+0000"), 
+    "updatedAt" : ISODate("2018-06-02T05:06:43.622+0000")
+}
+{ 
+    "_id" : ObjectId("5b13c68875da239903e20931"), 
+    "userId" : ObjectId("5b121b1bd7477d38ddb312ea"), 
+    "action" : "Bắt đầu theo dõi", 
+    "isActive" : true, 
+    "isRead" : false, 
+    "related_userId" : ObjectId("5ad2d843abf77f3023437055"), 
+    "createdAt" : ISODate("2018-06-03T10:44:24.043+0000"), 
+    "updatedAt" : ISODate("2018-06-03T10:44:24.043+0000")
+}
