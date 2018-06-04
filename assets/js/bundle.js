@@ -4101,7 +4101,7 @@ var Login = function (_React$Component) {
                   _react2.default.createElement('br', null),
                   ' ',
                   _react2.default.createElement('br', null),
-                  'Why are you waiting for? Let join with us.'
+                  'What are you waiting for? Let join with us.'
                 )
               )
             ),
@@ -20234,7 +20234,7 @@ var Menu = function (_React$Component) {
             _react2.default.createElement(
               _reactRouterDom.Link,
               { to: '/newsfeed/feedback' },
-              'Feedback Management'
+              'List Feedback'
             )
           ),
           _react2.default.createElement(
@@ -20243,7 +20243,7 @@ var Menu = function (_React$Component) {
             _react2.default.createElement(
               _reactRouterDom.Link,
               { to: '/newsfeed/listuser' },
-              'User Management'
+              'List User'
             )
           )
         );
@@ -65442,7 +65442,7 @@ var FormLogin = function (_React$Component) {
                 { htmlFor: 'my-password', className: 'sr-only' },
                 'Password'
               ),
-              _react2.default.createElement('input', { defaultValue: '123456', onKeyPress: this.handleKeyPress.bind(this), id: 'my-password', ref: 'password', className: 'form-control input-group-lg', type: 'password', name: 'password', title: 'Enter password', placeholder: 'Password' })
+              _react2.default.createElement('input', { onKeyPress: this.handleKeyPress.bind(this), id: 'my-password', ref: 'password', className: 'form-control input-group-lg', type: 'password', name: 'password', title: 'Enter password', placeholder: 'Password' })
             )
           )
         ),

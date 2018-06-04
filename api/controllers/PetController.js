@@ -8,13 +8,11 @@
 module.exports = {
 	getListPet:function(req,res){
     var {userId} = req.body;
-		sails.log.info("Có Yêu cầu lấy listPet của userId: ", userId);
 		Pet.find({userId, isActive:true})
 		.populateAll()
 		.exec( (err, listPet)=>{
 			if( err) res.send({err: err});
 			if(listPet){
-				sails.log.info("listPet cua userId do la: ", listPet.length);
 				res.send({listPet:listPet});
 			}else{
 				res.send({err: "Không có listPet"});
@@ -40,7 +38,6 @@ module.exports = {
 				if(!history){
 					sails.log.error("không tạo được History");
 				}else{
-					sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 				}
 			})
 			User.findOne({id:userId}, (err,user)=>{
@@ -56,7 +53,6 @@ module.exports = {
 	},
 	deletePet : function(req,res){
 		let {petId} = req.body;
-		sails.log.info("Có Yêu delete Pet cho petId: ", petId);
 		Pet.update({id:petId}, {isActive:false}, (err, pet)=>{
 			if(err){ res.send({err})}
 			else if(pet){
@@ -71,7 +67,6 @@ module.exports = {
 					if(!history){
 						sails.log.error("không tạo được History");
 					}else{
-						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 					}
 				})
 
@@ -82,7 +77,6 @@ module.exports = {
 	},
 	unDeletePet: function(req,res){
 		let {petId} = req.body;
-		sails.log.info("Có Yêu Undelete Pet cho petId: ", petId);
 		Pet.update({id:petId}, {isActive:true}, (err, pet)=>{
 			if(err){ res.send({err})}
 			else if(pet){
@@ -97,7 +91,6 @@ module.exports = {
 					if(!history){
 						sails.log.error("không tạo được History");
 					}else{
-						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
 					}
 				})
 				res.send({pet})

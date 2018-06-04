@@ -76,7 +76,7 @@ class FormLogin extends React.Component{
                     <div className="row">
                       <div className="form-group col-xs-12">
                         <label htmlFor="my-password" className="sr-only">Password</label>
-                        <input defaultValue="123456" onKeyPress={this.handleKeyPress.bind(this)} id="my-password" ref="password" className="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                        <input onKeyPress={this.handleKeyPress.bind(this)} id="my-password" ref="password" className="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
                       </div>
                     </div>
                   </form>

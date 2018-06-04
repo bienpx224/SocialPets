@@ -2,16 +2,22 @@ a, a:hover{text-decoration: none;}
 .hidden{display: none;}
 .title-follower{text-align: center; margin: 0px auto 40px auto;}
 th{cursor: pointer;}
-@media only screen and (min-width: 1000px) {
-   .fixed-menu { position: fixed; left: 0;}
-   .fixed-content { margin-left: 33%; min-height: 800px;}
-   .fixed-recommend { position: fixed; right: 5%;}
-}
-@media only screen and (min-width: 869px) {
+@media only screen and (min-width: 825px) and (max-width: 1280px) {
    .fixed-menu { position: fixed; left: 0;}
    .fixed-content { margin-left: 26%; min-height: 800px;}
    .fixed-recommend { position: fixed; right: 5%;}
 }
+@media only screen and (min-width: 1281px)and (max-width: 1580px) {
+   .fixed-menu { position: fixed; left: 0;}
+   .fixed-content { margin-left: 33%; min-height: 850px;}
+   .fixed-recommend { position: fixed; right: 5%;}
+}
+@media only screen and (min-width: 1581px) and (max-width: 2000px) {
+   .fixed-menu { position: fixed; left: 0;}
+   .fixed-content { margin-left: 40%; min-height: 930px;}
+   .fixed-recommend { position: fixed; right: 5%;}
+}
+
 .border-chat{padding: 5px; margin:-5px 0px 30px 0px; border-radius: 16px; overflow: hidden; min-width: fit-content;}
 .isChoose{background-color: #b9ccef80; margin: 0px 10px;}
 .cssDelete{ height:100%; width: auto; margin-left: 20px };

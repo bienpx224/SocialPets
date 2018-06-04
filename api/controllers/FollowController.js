@@ -111,7 +111,6 @@ module.exports = {
 		              sails.log.error("Đã có lỗi khi update point: ", err);
 		              res.send({err: err})
 		            }else{
-		              sails.log.info("Update point thành công : ");
 		              let historyInfo = {
 		                userId : data_follow.userId.id,
 		                action : "Đã bắt đầu theo dõi ",
@@ -139,7 +138,6 @@ module.exports = {
 										if(!notification){
 											sails.log.error("không tạo được Notify");
 										}else{
-											sails.log.info("Đã tạo thông báo thành công : ", notification.action);
 											Notification.findOne({id: notification.id})
 												.populateAll()
 												.then((notification2)=>{

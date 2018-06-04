@@ -169,14 +169,12 @@ module.exports = {
     User.findOne({email: Obj.email}, function(err, user){
       if(err){ return res.send("Error")}
       if(!user){
-        sails.log.info("Sai email");
         return res.send({error:"Your email is wrong !!"});
       }else{
         if(user.secret === Obj.password){
           if(user.isActive === true){
             req.session.authenticated = true;
             User.update({email: Obj.email},{isOnline: true}, function(err2, user2){
-              sails.log.info("Đăng nhập thành công");
               return res.send({user: user2[0]});
             })
           }else{
@@ -184,7 +182,6 @@ module.exports = {
           }
 
         }else{
-          sails.log.info("Sai password");
           return res.send({error:"Your password is wrong !!"});
         }
       }
@@ -218,6 +215,7 @@ module.exports = {
     var Obj = req.body;
 
     if(!Obj.secret){Obj.secret = Obj.password}
+    if(!Obj.phone){Obj.phone = ""}
     if(!Obj.day_date){Obj.day_date = "22"}
     if(!Obj.month_date){Obj.month_date = "4"}
     if(!Obj.year_date){Obj.year_date = "1996"}
@@ -260,7 +258,6 @@ module.exports = {
   },
   updateInfo: function (req,res){
     let {Obj,userId} = req.body;
-    sails.log.info("Có yêu cầu thay đổi thông tin cá nhân : ");
     User.update({id: userId}, Obj,function(err, user){
       if(err){
         sails.log.error("Đã có lỗi thay đổi thông tin cá nhân: ", err);
@@ -268,11 +265,10 @@ module.exports = {
       }
       if(user){
         user = user[0];
-        sails.log.info("Thay đổi thành công cho user: ", user);
         let point = parseInt(user.point)+1;
         User.update({id: userId}, {point: point}, (err, userUpdatedPoint)=>{
           if(err) sails.log.error("Lỗi update point: ", err);
-          if(userUpdatedPoint) sails.log.info("Update point thành công :  point: ",userUpdatedPoint);
+          if(userUpdatedPoint)
         })
         let historyInfo = {
           userId : userId,
@@ -284,7 +280,6 @@ module.exports = {
           if(!history){
             sails.log.error("không tạo được History");
           }else{
-            sails.log.info("Đã tạo thành công lịch sử : ", history.action);
           }
         })
         return res.send({user:user})

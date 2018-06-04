@@ -14,8 +14,6 @@ module.exports = {
 		.limit(10)
 		.skip(skip)
 		.then( (listHistory)=>{
-			sails.log.info("Có yêu cầu lấy danh sách lịch sử của người dùng : ", userId);
-			sails.log.info("danh sách lịch sử của người dùng : ", listHistory.length);
 			return res.send({listHistory});
 		})
 		.catch( (err)=>{ return res.send({err:err}) })

@@ -16,8 +16,8 @@ class Menu extends React.Component{
     if(this.props.user.isAdmin === true){
       return (
         <div>
-          <li><Link to='/newsfeed/feedback'>Feedback Management</Link></li>
-          <li><Link to='/newsfeed/listuser'>User Management</Link></li>
+          <li><Link to='/newsfeed/feedback'>List Feedback</Link></li>
+          <li><Link to='/newsfeed/listuser'>List User</Link></li>
         </div>
       )
     }else{

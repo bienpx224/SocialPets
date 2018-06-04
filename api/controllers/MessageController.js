@@ -18,7 +18,6 @@ module.exports = {
 		Message.create(msg).exec(function( err, message){
       if(err) {sails.log.error("Lỗi tạo message: ", err); return res.send({err});}
       if(!message) return res.send({err:"not found message"});
-      sails.log.info("Tạo thành công message", message.content);
 
 			Message.findOne({id:message.id}, (err,messageData)=>{
 				if(err) sails.log.error("err:",err);
