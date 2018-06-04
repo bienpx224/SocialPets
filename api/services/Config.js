@@ -6,6 +6,5 @@
  */
 
 module.exports = {
-  url_local:"http://localhost:1337",
-  url_server:"http://localhost:1337",
+  url_local:"http://localhost:8888",
 };
