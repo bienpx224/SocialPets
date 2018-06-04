@@ -5,7 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 let request = require('request');
-let url_request = Config.url_local;
 module.exports = {
 	checkFollow: function(req,res){
 		let {userId, followed} = req.body;
@@ -24,9 +23,34 @@ module.exports = {
 	follow: function(req,res){
 		let {userId, followed} = req.body;
 		//////////////////////////////////////   Tạo Inbox giữa 2 người này //////////////////////////
-		request.post({url:url_request+'/inbox/createInbox', form:{first_userId: userId, second_userId: followed, isActive:true, messageIdLatest:""} }, function(err,httpResponse,body){
-			sails.log.info(body);
-		});
+		// request.post({url:url_request+'/inbox/createInbox', form:{first_userId: userId, second_userId: followed, isActive:true, messageIdLatest:""} }, function(err,httpResponse,body){
+		// 	sails.log.info(body);
+		// });
+		let inbox_data = {first_userId: userId, second_userId: followed, isActive:true, messageIdLatest:""};
+		Inbox.findOne( {$or:[{first_userId:userId, second_userId:followed},
+			 {second_userId:userId, first_userId:followed}] }
+		)
+		.populateAll()
+		.then( (inbox)=>{
+			if(inbox){
+				if(inbox.isActive === true) {
+					sails.log.info("Đã có inbox người này rồi: ");
+				}
+			}else{
+				Inbox.create(inbox_data)
+				.exec( (err, inbox_success)=>{
+					if(err){
+						sails.log.error("Có lỗi :"+err);
+					}else
+					if(inbox_success){
+						sails.log.info("Đã bắt đầu có inbox người đó. ", inbox_success.second_userId);
+					}
+				})
+			}
+
+		})
+		.catch( err => sails.log.error({err: "err:"+err}))
+
 
     Follow.findOne({userId, followed})
     .then( (follow)=>{
