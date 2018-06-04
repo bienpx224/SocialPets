@@ -8,7 +8,6 @@ var base64Img = require('base64-img');
 var http = require('https');
 var imgur = require('imgur-node-api');
 let request = require('request');
-let url_request = Config.url_local;
 path = require('path');
 fs = require('fs');
 
