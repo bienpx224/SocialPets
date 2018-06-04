@@ -58,12 +58,25 @@ module.exports.connections = {
   ***************************************************************************/
   mongo: {
     adapter: 'sails-mongo',
-    host: 'localhost',
+    host: '35.187.232.56',
     port: 27017,
-    // user: 'username', //optional
-    // password: 'password', //optional
+    user: 'social', //optional
+    password: 'KkmY6d4jHhpPQdWD7Yhp', //optional
     database: 'social' //optional
   }
+
+  // Lợi Phan, [04.06.18 09:50]
+  // use social
+  // db.createUser(
+  //   {
+  //     user: "social",
+  //     pwd: "KkmY6d4jHhpPQdWD7Yhp",
+  //     roles: [ { role: "readWrite", db: "social" }]
+  //   }
+  // )
+  //
+  // Lợi Phan, [04.06.18 09:50]
+  // 35.187.232.56-27017
 
   /***************************************************************************
   *                                                                          *

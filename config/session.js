@@ -21,12 +21,14 @@ module.exports.session = {
   * of your users, forcing them to log in again.                             *
   *                                                                          *
   ***************************************************************************/
-  secret: 'dc5749dc03ceb086a5716bac18280490',
-  adapter: 'mongo',
-  host: 'localhost',
-  port: 27017,
-  db: 'social',
-  collection: 'sessions'
+  // secret: 'dc5749dc03ceb086a5716bac18280490',
+  // adapter: 'mongo',
+  // host: '35.187.232.56',
+  // port: 27017,
+  // user: 'social', //optional
+  // password: 'KkmY6d4jHhpPQdWD7Yhp', //optional
+  // db: 'social',
+  // collection: 'sessions'
 
 
   /***************************************************************************
