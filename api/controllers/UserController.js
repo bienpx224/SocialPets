@@ -268,7 +268,6 @@ module.exports = {
         let point = parseInt(user.point)+1;
         User.update({id: userId}, {point: point}, (err, userUpdatedPoint)=>{
           if(err) sails.log.error("Lỗi update point: ", err);
-          if(userUpdatedPoint)
         })
         let historyInfo = {
           userId : userId,
