@@ -18,10 +18,9 @@ class Homepage extends React.Component{
     var {dispatch} = this.props;
     let that = this;
     if(localStorage.email){
-      console.log("localStorage", localStorage.email);
-    }else{ console.log("khong ton tai email in local")}
+    }else{
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
-      console.log("getUser: ", resData);
+
       if(resData.error){
         dispatch(login_error());
       }

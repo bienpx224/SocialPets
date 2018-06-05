@@ -59,7 +59,6 @@ class Post extends React.Component{
                   that.refs.content.value = "";
                   that.setState(that.state);
                 }else{
-                  console.log("resData ERROR: ", resData)
                   that.msg.show('ERROR: Somethings are wrong !! ', {
                                     type: 'error',
                                     icon: <img src="/images/error.png" />
@@ -88,7 +87,6 @@ class Post extends React.Component{
               that.refs.content.value = "";
               that.setState(that.state);
             }else{
-              console.log("resData ERROR: ", resData.posts)
               that.msg.show('ERROR: Somethings are wrong !! ', {
                                 type: 'error',
                                 icon: <img src="/images/error.png" />

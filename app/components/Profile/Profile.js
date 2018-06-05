@@ -21,10 +21,9 @@ class Profile extends React.Component{
     var {dispatch} = this.props;
     let that = this;
     if(localStorage.email){
-      console.log("localStorage", localStorage.email);
-    }else{ console.log("khong ton tai email in local")}
+    }else{
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
-      console.log("getUser: ", resData);
+
       if(resData.error){
         dispatch(login_error());
       }
@@ -86,7 +85,7 @@ class Profile extends React.Component{
                             </ul>
                             <ul className="follow-me list-inline">
                               <li>Yours point : <span  className="ion-star pull-left"></span>{this.props.user.point}</li>
-                              
+
                             </ul>
                           </div>
                         </div>

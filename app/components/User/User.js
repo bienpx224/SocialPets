@@ -10,7 +10,7 @@ import {get_alldata_user} from 'apiUser';
 import {BrowserRouter as Router,Route,Switch,hashHistory,Redirect,NavLink,withRouter,Link} from 'react-router-dom';
 
 class User extends React.Component{
-  constructor(props){console.log("construc user");
+  constructor(props){
     super(props);
     this.state={
       isLogin: false,
@@ -21,10 +21,8 @@ class User extends React.Component{
   checkLogin(){
     let {dispatch} = this.props;
     if(localStorage.email){
-      console.log("localStorage", localStorage.email);
-    }else{ console.log("khong ton tai email in local")}
+    }else{
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
-      console.log("getUser: ", resData);
       if(resData.error){
         dispatch(login_error());
       }
@@ -97,11 +95,10 @@ class User extends React.Component{
     }
   }
   checkFollow(){
-    console.log("check follow")
     let userId = this.props.user.id;
     let followed = this.props.person.id;
     io.socket.post('/follow/checkFollow',{userId, followed}, (resData, jwres)=>{
-      console.log(resData);
+
         if(resData.follow==="exist"){
           this.setState({following: true});
         }else{
@@ -113,7 +110,6 @@ class User extends React.Component{
     let {email} = this.props.match.params;
     this.checkLogin();
     this.getPerson(email);
-    console.log("check follow đimount ")
     this.checkFollow();
   }
   getPerson(email){

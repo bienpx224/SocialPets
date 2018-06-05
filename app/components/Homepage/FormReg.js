@@ -46,7 +46,7 @@ class FormReg extends React.Component{
         enableSound: true,
         enableNotification: true
     };
-    io.socket.post('/user/register',Obj, function(resData, jwres){ console.log(resData);
+    io.socket.post('/user/register',Obj, function(resData, jwres){
       if(resData.exist){
         that.msg.show('SUCCESS: This account (Email) has exist', {
               type: 'error',

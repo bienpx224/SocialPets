@@ -24,10 +24,8 @@ class Notification extends React.Component{
     let {dispatch} = this.props;
     io.socket.post('/notification/getListNotify',{userId},(resData, jwres)=>{
       if(resData.listNotify){
-        console.log("LIST NOTIFY: ", resData.listNotify);
         dispatch(get_notify(resData.listNotify));
       }else{
-        console.log("ERROR GET LIST NOTIFY: ",resData.err);
         this.state.listNotify = [];
         this.setState(this.state);
       }
@@ -37,7 +35,6 @@ class Notification extends React.Component{
       if(resData.listNotify){
         dispatch(get_notify(resData.listNotify));
       }else{
-        console.log("ERROR SET READ NOTIFY: ",resData.err);
       }
     })
 

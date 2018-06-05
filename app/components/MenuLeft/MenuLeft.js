@@ -21,7 +21,7 @@ class MenuLeft extends React.Component{
     let weekAgo = +new Date()-604800016;
     weekAgo = ""+weekAgo;
     io.socket.post('/post/topImageOfWeek',{weekAgo},(resData, jwres)=>{
-      console.log("ListTopImage: ", resData);
+
       if(resData.topP){
         dispatch(get_top_image(resData.topP));
       }else console.log(" co loi get ListTopImage");

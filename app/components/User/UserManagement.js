@@ -19,10 +19,9 @@ class UserManagement extends React.Component{
     let userId = this.props.user.id;
     let {dispatch} = this.props;
     io.socket.post('/user/getAllUser',{},(resData, jwres)=>{
-      if(resData.listAllUser){ console.log(resData.listAllUser);
         dispatch(get_listalluser(resData.listAllUser));
       }else{
-        console.log("ERROR GET LIST listAllUser: ",resData.err);
+        
       }
     })
 

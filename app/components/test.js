@@ -21,8 +21,7 @@ class Test extends React.Component{
             if(position>0) nameImg = nameImg.substring(0,position);
             reader.onload = (e) => {
                 io.socket.post('/user/handleImg',{result:e.target.result,name:nameImg}, function(resData, jwres){
-                  console.log(resData);
-                  console.log(nameImg);
+
                   that.setState({image: e.target.result});
                 });
             };

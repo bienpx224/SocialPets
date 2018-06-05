@@ -25,7 +25,6 @@ class NewsfeedContent extends React.Component{
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.data){
-      console.log("PROPS MOI: ", nextProps.data);
       let postId = nextProps.data.id;
       this.getListComment(postId);
       let userId = this.props.user.id;
@@ -104,7 +103,6 @@ class NewsfeedContent extends React.Component{
     let userId = this.props.user.id;
     let postId = this.props.data.id;
     let related_userId = this.props.data.userId.id;
-    console.log("user: "+userId+", postId:"+postId+", relate: "+related_userId)
     if(!!!userId || !!!postId|| !!!related_userId){
           this.msg.show('ERROR: Không có đủ id ', {
                             type: 'error',

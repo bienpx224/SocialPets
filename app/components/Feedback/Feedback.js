@@ -17,7 +17,7 @@ class Feedback extends React.Component{
     let userId = this.props.user.id;
     let {dispatch} = this.props;
     io.socket.post('/feedback/getListFeedback',{},(resData, jwres)=>{
-      if(resData.listFeedback){ console.log(resData.listFeedback);
+      if(resData.listFeedback){ 
         this.state.listFeedback = resData.listFeedback;
         this.setState(this.state);
       }else{

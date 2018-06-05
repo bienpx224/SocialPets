@@ -44,7 +44,7 @@ class FindUser extends React.Component{
   getListRecommendCommon(user, skip, limit){
     if(!user) return this.setState({...this.state,loading: false});
     io.socket.post('/follow/recommend_common',{userId: user.id, skip, limit}, (resData, jwres)=>{
-        if(resData.ok){ console.log("resData Common: ", resData.ok);
+        if(resData.ok){
           let newListSearch = [];
           if(this.state.isSearch===true){
               newListSearch = resData.ok;
@@ -58,7 +58,7 @@ class FindUser extends React.Component{
   getListRecommendRank(user, skip, limit){
     if(!user) return this.setState({...this.state,loading: false});
      io.socket.post('/follow/recommend_rank',{userId: user.id,skip, limit}, (resData, jwres)=>{
-        if(resData.ok){ console.log("resData Rank: ", resData.ok);
+        if(resData.ok){
           let newListSearch = [];
           if(this.state.isSearch===true){
               newListSearch = resData.ok;
@@ -73,7 +73,7 @@ class FindUser extends React.Component{
     let key = this.refs.key.value;
     if(!user) return this.setState({...this.state,loading: false});
      io.socket.post('/user/searchUser',{userId: user.id,skip, limit, key}, (resData, jwres)=>{
-        if(resData.listUser && resData.listPost){ console.log("resData Search: ", resData);
+        if(resData.listUser && resData.listPost){
           let newListSearch = [];
           if(this.state.isSearch===true){
               newListSearch = resData.listUser;

@@ -43,7 +43,7 @@ class FormLogin extends React.Component{
             if(resData.user){
               localStorage.email = resData.user.email;
               dispatch(login_success(resData.user));
-              console.log("login success");
+            
               that.setState({isLogin:true});
             }
           }

@@ -20,10 +20,9 @@ class PostInfo extends React.Component{
   checkLogin(){
     let {dispatch} = this.props;
     if(localStorage.email){
-      console.log("localStorage", localStorage.email);
-    }else{ console.log("khong ton tai email in local")}
+    }else{
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
-      console.log("getUser: ", resData);
+
       if(resData.error){
         // this.setState({isLogin:false})
         dispatch(login_error());

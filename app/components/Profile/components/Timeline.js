@@ -16,7 +16,7 @@ class Timeline extends React.Component{
     }
     this.getMorePost = this.getMorePost.bind(this);
   }
-  componentWillReceiveProps(nextProps){ console.log("next: ", nextProps);
+  componentWillReceiveProps(nextProps){
     if(this.props.person !== nextProps.person ){
       this.getListMyPost(nextProps.person.id);
     }
@@ -31,7 +31,6 @@ class Timeline extends React.Component{
     }else{
       id = this.props.user?this.props.user.id:"";
     }
-    console.log(id);
     this.getListMyPost(id);
   }
   getListMyPost(id){
