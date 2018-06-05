@@ -165,7 +165,7 @@ module.exports = {
   },
   login: function(req,res){
     Obj = req.body;
-     sails.log.info("Có user Đăng nhập : ", Obj);
+     sails.log.info("Có user Đăng nhập : ", Obj.email);
     User.findOne({email: Obj.email}, function(err, user){
       if(err){ return res.send("Error")}
       if(!user){

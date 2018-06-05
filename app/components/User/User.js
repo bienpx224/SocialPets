@@ -20,8 +20,8 @@ class User extends React.Component{
   }
   checkLogin(){
     let {dispatch} = this.props;
-    if(localStorage.email){
-
+    if(!localStorage.email){
+      console.log('ko co usser')
     }else{
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
       if(resData.error){

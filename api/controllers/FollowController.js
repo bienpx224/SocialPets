@@ -307,6 +307,7 @@ module.exports = {
 										{"gender": new RegExp(user.gender)},
 										{"address":new RegExp(user.address)},
 										{"year_date": new RegExp(user.year_date)}
+										
 									]
 								})
 			.limit(limit)

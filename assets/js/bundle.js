@@ -870,7 +870,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 14 */
@@ -1013,50 +1013,6 @@ module.exports = { get_listalluser: get_listalluser, change_loading: change_load
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-
-/**
- * WARNING: DO NOT manually require this module.
- * This is a replacement for `invariant(...)` used by the error code system
- * and will _only_ be required by the corresponding babel pass.
- * It always throws.
- */
-
-function reactProdInvariant(code) {
-  var argCount = arguments.length - 1;
-
-  var message = 'Minified React error #' + code + '; visit ' + 'http://facebook.github.io/react/docs/error-decoder.html?invariant=' + code;
-
-  for (var argIdx = 0; argIdx < argCount; argIdx++) {
-    message += '&args[]=' + encodeURIComponent(arguments[argIdx + 1]);
-  }
-
-  message += ' for the full message or use the non-minified dev environment' + ' for full errors and additional helpful warnings.';
-
-  var error = new Error(message);
-  error.name = 'Invariant Violation';
-  error.framesToPop = 1; // we don't care about reactProdInvariant's own frame
-
-  throw error;
-}
-
-module.exports = reactProdInvariant;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /* WEBPACK VAR INJECTION */(function(global) {/*global window, global*/
 var util = __webpack_require__(171)
 var assert = __webpack_require__(296)
@@ -1145,6 +1101,50 @@ function consoleAssert(expression) {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67)))
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+
+/**
+ * WARNING: DO NOT manually require this module.
+ * This is a replacement for `invariant(...)` used by the error code system
+ * and will _only_ be required by the corresponding babel pass.
+ * It always throws.
+ */
+
+function reactProdInvariant(code) {
+  var argCount = arguments.length - 1;
+
+  var message = 'Minified React error #' + code + '; visit ' + 'http://facebook.github.io/react/docs/error-decoder.html?invariant=' + code;
+
+  for (var argIdx = 0; argIdx < argCount; argIdx++) {
+    message += '&args[]=' + encodeURIComponent(arguments[argIdx + 1]);
+  }
+
+  message += ' for the full message or use the non-minified dev environment' + ' for full errors and additional helpful warnings.';
+
+  var error = new Error(message);
+  error.name = 'Invariant Violation';
+  error.framesToPop = 1; // we don't care about reactProdInvariant's own frame
+
+  throw error;
+}
+
+module.exports = reactProdInvariant;
 
 /***/ }),
 /* 18 */
@@ -1301,7 +1301,7 @@ module.exports = exports['default'];
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var DOMProperty = __webpack_require__(40);
 var ReactDOMComponentFlags = __webpack_require__(177);
@@ -1551,7 +1551,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 22 */
@@ -2264,7 +2264,7 @@ var ReactComponentTreeHook = {
 };
 
 module.exports = ReactComponentTreeHook;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 28 */
@@ -2453,7 +2453,7 @@ module.exports = ReactCurrentOwner;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var CallbackQueue = __webpack_require__(181);
@@ -2691,7 +2691,7 @@ var ReactUpdates = {
 };
 
 module.exports = ReactUpdates;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 34 */
@@ -3201,7 +3201,7 @@ module.exports = exports['default'];
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -3855,7 +3855,7 @@ module.exports = ReactElement;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -5123,7 +5123,7 @@ var NewsfeedContent = function (_React$Component) {
             ),
             _react2.default.createElement('div', { className: 'line-divider' }),
             this.state.listComment.map(function (value, key) {
-              if (_this7.props.type === "all") return _react2.default.createElement(_Comment2.default, { key: key, data: value });else if (key === _this7.state.listComment.length - 1) return _react2.default.createElement(_Comment2.default, { key: key, data: value });
+              if (_this7.props.type === "all") return _react2.default.createElement(_Comment2.default, { key: key, data: value });else if (key >= _this7.state.listComment.length - 2) return _react2.default.createElement(_Comment2.default, { key: key, data: value });
             }),
             _react2.default.createElement(
               'div',
@@ -5363,7 +5363,7 @@ module.exports = EventPropagators;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var EventPluginRegistry = __webpack_require__(86);
 var EventPluginUtils = __webpack_require__(107);
@@ -6598,7 +6598,7 @@ var glamorous = createGlamorous$1(splitProps);
 
 module.exports = glamorous;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 82 */
@@ -6783,7 +6783,7 @@ module.exports = emptyObject;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -7042,7 +7042,7 @@ module.exports = EventPluginRegistry;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -9375,7 +9375,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = lowPriorityWarning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 106 */
@@ -9415,7 +9415,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactErrorUtils = __webpack_require__(108);
 
@@ -10176,7 +10176,7 @@ module.exports = createMicrosoftUnsafeLocalFunction;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactPropTypesSecret = __webpack_require__(193);
 var propTypesFactory = __webpack_require__(175);
@@ -10321,7 +10321,7 @@ module.exports = LinkedValueUtils;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -10554,7 +10554,7 @@ module.exports = KeyEscapeUtils;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(32);
 var ReactInstanceMap = __webpack_require__(71);
@@ -11605,7 +11605,7 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(16)))
 
 /***/ }),
 /* 128 */
@@ -13730,7 +13730,7 @@ var Post = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user };
 })(Post);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 162 */
@@ -15490,7 +15490,7 @@ function hasOwnProperty(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67), __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67), __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 172 */
@@ -16370,7 +16370,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 177 */
@@ -16413,7 +16413,7 @@ module.exports = ReactDOMComponentFlags;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -16551,7 +16551,7 @@ module.exports = getTextContentAccessor;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -17757,7 +17757,7 @@ module.exports = ReactDOMSelect;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var ReactCompositeComponent = __webpack_require__(350);
@@ -17893,7 +17893,7 @@ module.exports = instantiateReactComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var React = __webpack_require__(52);
 
@@ -17973,7 +17973,7 @@ module.exports = ReactEmptyComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -18047,7 +18047,7 @@ module.exports = ReactHostComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(32);
 var REACT_ELEMENT_TYPE = __webpack_require__(354);
@@ -18293,7 +18293,7 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 201 */
@@ -18484,7 +18484,7 @@ module.exports = getActiveElement;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var DOMLazyTree = __webpack_require__(55);
 var DOMProperty = __webpack_require__(40);
@@ -19009,7 +19009,7 @@ var ReactMount = {
 };
 
 module.exports = ReactMount;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(1)))
 
 /***/ }),
 /* 204 */
@@ -20040,7 +20040,7 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(16)))
 
 /***/ }),
 /* 214 */
@@ -20748,7 +20748,7 @@ var PopupFeedback = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { showPopupFeedback: state.userReducer.showPopupFeedback, user: state.userReducer.user };
 })(PopupFeedback);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 219 */
@@ -25868,7 +25868,7 @@ module.exports = { checkLoginLocalStorage: checkLoginLocalStorage, setUserLocalS
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -25958,23 +25958,36 @@ var Home = function (_React$Component) {
   }
 
   _createClass(Home, [{
+    key: 'checkLogin',
+    value: function checkLogin() {
+      var dispatch = this.props.dispatch;
+
+      if (!localStorage.email) {
+        console.log('ko co user local');
+      } else {
+        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
+          console.log('co user local: ', resData.user.email);
+          if (resData.error) {
+            // this.setState({isLogin:false})
+            dispatch((0, _userAction.login_error)());
+          }
+          if (resData.notFound) {
+            // this.setState({isLogin:false})
+            dispatch((0, _userAction.login_error)());
+          } else {
+            // this.setState({isLogin:true})
+            dispatch((0, _userAction.login_success)(resData.user));
+          }
+        });
+      }
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var dispatch = this.props.dispatch;
 
       var that = this;
-      if (localStorage.email) {} else {
-        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
-          if (resData.error) {
-            dispatch((0, _userAction.login_error)());
-          }
-          if (resData.notFound) {
-            dispatch((0, _userAction.login_error)());
-          } else {
-            dispatch((0, _userAction.login_success)(resData.user));
-          }
-        });
-      }
+      this.checkLogin();
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -26012,6 +26025,7 @@ var Home = function (_React$Component) {
 module.exports = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user, isLogin: state.userReducer.isLogin, loading: state.userReducer.loading };
 })(Home));
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 278 */
@@ -26103,7 +26117,7 @@ var MenuLeft = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user };
 })(MenuLeft);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 279 */
@@ -26452,7 +26466,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 282 */
@@ -30380,7 +30394,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = ReactDOM;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 313 */
@@ -31553,7 +31567,7 @@ module.exports = ReactRef;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -32575,7 +32589,7 @@ module.exports = ReactComponentBrowserEnvironment;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var DOMLazyTree = __webpack_require__(55);
 var ExecutionEnvironment = __webpack_require__(23);
@@ -32991,7 +33005,7 @@ module.exports = ReactDOMIDOperations;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var AutoFocusUtils = __webpack_require__(337);
@@ -34589,7 +34603,7 @@ module.exports = getVendorPrefixedEventName;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var DOMPropertyOperations = __webpack_require__(192);
@@ -35010,7 +35024,7 @@ module.exports = ReactDOMOption;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var LinkedValueUtils = __webpack_require__(115);
@@ -35176,7 +35190,7 @@ module.exports = ReactDOMTextarea;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactComponentEnvironment = __webpack_require__(116);
 var ReactInstanceMap = __webpack_require__(71);
@@ -35787,7 +35801,7 @@ module.exports = ReactChildReconciler;
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var React = __webpack_require__(52);
@@ -36693,7 +36707,7 @@ module.exports = ReactCompositeComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactPropTypeLocationNames = __webpack_require__(352);
 var ReactPropTypesSecret = __webpack_require__(193);
@@ -37302,7 +37316,7 @@ module.exports = ReactDOMEmptyComponent;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var invariant = __webpack_require__(12);
 
@@ -37444,7 +37458,7 @@ module.exports = {
 
 
 
-var _prodInvariant = __webpack_require__(16),
+var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(18);
 
 var DOMChildrenOperations = __webpack_require__(112);
@@ -39014,7 +39028,7 @@ module.exports = SelectEventPlugin;
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var EventListener = __webpack_require__(200);
 var EventPropagators = __webpack_require__(68);
@@ -39956,7 +39970,7 @@ module.exports = '15.6.1';
 
 
 
-var _prodInvariant = __webpack_require__(16);
+var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(32);
 var ReactDOMComponentTree = __webpack_require__(20);
@@ -57166,7 +57180,7 @@ function attribsFor() {
 
   return htmlAttributes;
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 599 */
@@ -57405,7 +57419,7 @@ function StyleSheet() {
     return arr;
   }
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 600 */
@@ -57835,7 +57849,7 @@ function contentWrap(node) {
 function prefixes(node) {
   return (0, _objectAssign2.default)({}, node, { style: (0, _prefixer2.default)(_extends({}, node.style)) });
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 604 */
@@ -61368,7 +61382,7 @@ var styled = _styled(StyledComponent, constructWithOptions);
 
 /* harmony default export */ __webpack_exports__["default"] = (styled);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(17), __webpack_require__(633)(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(16), __webpack_require__(633)(module)))
 
 /***/ }),
 /* 633 */
@@ -65432,7 +65446,7 @@ module.exports = (0, _reactRedux.connect)(function (state) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -65479,24 +65493,36 @@ var Homepage = function (_React$Component) {
   }
 
   _createClass(Homepage, [{
+    key: 'checkLogin',
+    value: function checkLogin() {
+      var dispatch = this.props.dispatch;
+
+      if (!localStorage.email) {
+        console.log('ko co user local');
+      } else {
+        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
+          console.log('co user local: ', resData.user.email);
+          if (resData.error) {
+            // this.setState({isLogin:false})
+            dispatch((0, _userAction.login_error)());
+          }
+          if (resData.notFound) {
+            // this.setState({isLogin:false})
+            dispatch((0, _userAction.login_error)());
+          } else {
+            // this.setState({isLogin:true})
+            dispatch((0, _userAction.login_success)(resData.user));
+          }
+        });
+      }
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var dispatch = this.props.dispatch;
 
       var that = this;
-      if (localStorage.email) {} else {
-        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
-
-          if (resData.error) {
-            dispatch((0, _userAction.login_error)());
-          }
-          if (resData.notFound) {
-            dispatch((0, _userAction.login_error)());
-          } else {
-            dispatch((0, _userAction.login_success)(resData.user));
-          }
-        });
-      }
+      this.checkLogin();
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -65527,6 +65553,7 @@ var Homepage = function (_React$Component) {
 module.exports = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
   return { isLogin: state.userReducer.isLogin };
 })(Homepage));
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 643 */
@@ -66782,7 +66809,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)))
 
 /***/ }),
 /* 648 */
@@ -67774,14 +67801,14 @@ var Message = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user };
 })(Message);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -67856,15 +67883,27 @@ var IndexHome = function (_React$Component) {
       var dispatch = this.props.dispatch;
 
       var that = this;
-      if (localStorage.email) {} else {
-        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
+      this.checkLogin();
+    }
+  }, {
+    key: 'checkLogin',
+    value: function checkLogin() {
+      var dispatch = this.props.dispatch;
 
+      if (!localStorage.email) {
+        console.log('ko co user local');
+      } else {
+        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
+          console.log('co user local: ', resData.user.email);
           if (resData.error) {
+            // this.setState({isLogin:false})
             dispatch((0, _userAction.login_error)());
           }
           if (resData.notFound) {
+            // this.setState({isLogin:false})
             dispatch((0, _userAction.login_error)());
           } else {
+            // this.setState({isLogin:true})
             dispatch((0, _userAction.login_success)(resData.user));
           }
         });
@@ -67909,6 +67948,7 @@ var IndexHome = function (_React$Component) {
 module.exports = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user, isLogin: state.userReducer.isLogin };
 })(IndexHome));
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 657 */
@@ -68070,7 +68110,7 @@ var Feedback = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user, listNotify: state.userReducer.listNotify };
 })(Feedback);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 658 */
@@ -68447,7 +68487,7 @@ var UserManagementItem = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return {};
 })(UserManagementItem);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 661 */
@@ -69399,7 +69439,7 @@ module.exports = (0, _reactRedux.connect)(function (state) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -69463,15 +69503,27 @@ var Profile = function (_React$Component) {
       var dispatch = this.props.dispatch;
 
       var that = this;
-      if (localStorage.email) {} else {
-        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
+      this.checkLogin();
+    }
+  }, {
+    key: 'checkLogin',
+    value: function checkLogin() {
+      var dispatch = this.props.dispatch;
 
+      if (!localStorage.email) {
+        console.log('ko co user local');
+      } else {
+        io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
+          console.log('co user local: ', resData.user.email);
           if (resData.error) {
+            // this.setState({isLogin:false})
             dispatch((0, _userAction.login_error)());
           }
           if (resData.notFound) {
+            // this.setState({isLogin:false})
             dispatch((0, _userAction.login_error)());
           } else {
+            // this.setState({isLogin:true})
             dispatch((0, _userAction.login_success)(resData.user));
           }
         });
@@ -69695,6 +69747,7 @@ var Profile = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user, isLogin: state.userReducer.isLogin };
 })(Profile);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 669 */
@@ -72474,7 +72527,7 @@ var PopupAddPet = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { showPopupAddPet: state.userReducer.showPopupAddPet, user: state.userReducer.user, type: state.userReducer.popupPet };
 })(PopupAddPet);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 674 */
@@ -73270,7 +73323,7 @@ module.exports = (0, _reactRedux.connect)(function (state) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -73345,7 +73398,9 @@ var User = function (_React$Component) {
     value: function checkLogin() {
       var dispatch = this.props.dispatch;
 
-      if (localStorage.email) {} else {
+      if (!localStorage.email) {
+        console.log('ko co usser');
+      } else {
         io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
           if (resData.error) {
             dispatch((0, _userAction.login_error)());
@@ -73687,6 +73742,7 @@ var User = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { person: state.userReducer.person, isLogin: state.userReducer.isLogin, user: state.userReducer.user };
 })(User);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 680 */
@@ -73797,7 +73853,7 @@ module.exports = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(functi
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -73859,9 +73915,11 @@ var PostInfo = function (_React$Component) {
     value: function checkLogin() {
       var dispatch = this.props.dispatch;
 
-      if (localStorage.email) {} else {
+      if (!localStorage.email) {
+        console.log('ko co user local');
+      } else {
         io.socket.post('/user/getUser', { email: localStorage.email }, function (resData, jwres) {
-
+          console.log('co user local: ', resData.user.email);
           if (resData.error) {
             // this.setState({isLogin:false})
             dispatch((0, _userAction.login_error)());
@@ -73938,6 +73996,7 @@ var PostInfo = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { isLogin: state.userReducer.isLogin, user: state.userReducer.user };
 })(PostInfo);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 682 */
@@ -73963,7 +74022,7 @@ store.subscribe(function () {
   console.log("store: ");
 });
 module.exports = store;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 683 */

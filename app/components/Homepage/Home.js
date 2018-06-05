@@ -30,22 +30,31 @@ class Home extends React.Component{
     time: 3000,
     transition: 'scale'
   }
-  componentDidMount(){
-    var {dispatch} = this.props;
-    let that = this;
-    if(localStorage.email){
+  checkLogin(){
+    let {dispatch} = this.props;
+    if(!localStorage.email){
+      console.log('ko co user local')
     }else{
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
+        console.log('co user local: ',resData.user.email)
       if(resData.error){
+        // this.setState({isLogin:false})
         dispatch(login_error());
       }
       if(resData.notFound){
+        // this.setState({isLogin:false})
         dispatch(login_error());
       }else{
+        // this.setState({isLogin:true})
         dispatch(login_success(resData.user));
       }
     });
   }
+}
+  componentDidMount(){
+    var {dispatch} = this.props;
+    let that = this;
+    this.checkLogin();
   }
 
   componentWillReceiveProps(nextProps){

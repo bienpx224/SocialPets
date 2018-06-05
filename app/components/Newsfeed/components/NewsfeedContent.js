@@ -162,7 +162,7 @@ class NewsfeedContent extends React.Component{
                       return (
                         <Comment key={key} data={value} />
                       )
-                    else if(key===this.state.listComment.length-1)
+                    else if(key>=this.state.listComment.length-2)
                       return (
                         <Comment key={key} data={value} />
                       )

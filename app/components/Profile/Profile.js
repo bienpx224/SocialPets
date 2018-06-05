@@ -20,21 +20,29 @@ class Profile extends React.Component{
   componentDidMount(){
     var {dispatch} = this.props;
     let that = this;
-    if(localStorage.email){
-    }else{
-      io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
-
-        if(resData.error){
-          dispatch(login_error());
-        }
-        if(resData.notFound){
-          dispatch(login_error());
-        }else{
-          dispatch(login_success(resData.user));
-        }
-      });
-    }
+    this.checkLogin();
   }
+  checkLogin(){
+    let {dispatch} = this.props;
+    if(!localStorage.email){
+      console.log('ko co user local')
+    }else{
+    io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
+        console.log('co user local: ',resData.user.email)
+      if(resData.error){
+        // this.setState({isLogin:false})
+        dispatch(login_error());
+      }
+      if(resData.notFound){
+        // this.setState({isLogin:false})
+        dispatch(login_error());
+      }else{
+        // this.setState({isLogin:true})
+        dispatch(login_success(resData.user));
+      }
+    });
+  }
+}
   changePicture(){
     var {dispatch} = this.props;
     this.setState({type:"picture"})
