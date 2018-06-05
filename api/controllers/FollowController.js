@@ -306,12 +306,16 @@ module.exports = {
 									$or: [
 										{"gender": new RegExp(user.gender)},
 										{"address":new RegExp(user.address)},
-										{"year_date": new RegExp(user.year_date)}
-										
+										{"year_date": new RegExp(user.year_date)},
+										{"petlove": new RegExp(user.petlove)},
+										{"description": new RegExp(user.description)},
+										{"job": new RegExp(user.job)},
+										{"university": new RegExp(user.university)}
 									]
 								})
 			.limit(limit)
 			.skip(skip)
+			.sort({createdAt:-1})
 			.then( (users)=>{
 				if(!users) res.send({err: "Không tìm thấy list user recommend!"});
 				// sails.log.info("Danh sach recommend_common: ", users.length);

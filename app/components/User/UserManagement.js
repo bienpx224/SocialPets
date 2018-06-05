@@ -19,9 +19,24 @@ class UserManagement extends React.Component{
     let userId = this.props.user.id;
     let {dispatch} = this.props;
     io.socket.post('/user/getAllUser',{},(resData, jwres)=>{
-        dispatch(get_listalluser(resData.listAllUser));
+        this.setState({listAllUser: resData.listAllUser});
     })
-
+  }
+  search(event){
+    if(event.keyCode === 13){
+      let key = this.refs.search.value;
+      let userId = this.props.user.id;
+      if(key === ""){
+        io.socket.post('/user/getAllUser',{},(resData, jwres)=>{
+            this.setState({listAllUser: resData.listAllUser});
+        })
+      }else{
+        io.socket.post('/user/searchUser',{userId,key, skip:0, limit:100 },(resData, jwres)=>{
+            if(resData.listUser)
+            this.setState({listAllUser: resData.listUser});
+        })
+      }
+    }
   }
   render(){
     return (
@@ -34,6 +49,7 @@ class UserManagement extends React.Component{
         <div className="chat-room">
           <div className="row">
           <h4> Total: {this.state.listAllUser.length}</h4>
+          <input onKeyUp={this.search.bind(this)} type="text" className="form-control" ref="search" />
           <table className="table table-hover">
             <thead>
               <tr>
@@ -61,5 +77,5 @@ class UserManagement extends React.Component{
 }
 
 module.exports = connect(function(state){
-return {user: state.userReducer.user, listAllUser: state.userReducer.listAllUser};
+return {user: state.userReducer.user};
 })(UserManagement);

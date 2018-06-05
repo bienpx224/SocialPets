@@ -4838,7 +4838,7 @@ module.exports = { get_followers: get_followers, get_followings: get_followings,
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -4893,8 +4893,8 @@ var NewsfeedContent = function (_React$Component) {
     _this.state = {
       react: _this.props.data.count || _this.props.data.react.length,
       isReact: false,
-      listComment: []
-
+      listComment: [],
+      isActive: _this.props.data.isActive
     };
     return _this;
   }
@@ -5033,20 +5033,62 @@ var NewsfeedContent = function (_React$Component) {
       });
     }
   }, {
+    key: 'activePost',
+    value: function activePost() {
+      var _this7 = this;
+
+      io.socket.post('/post/activePost', { id: this.props.data.id }, function (resData, jwres) {
+        if (resData.ok) {
+          _this7.setState({ isActive: true });
+        } else if (resData.err) {
+          console.log("ERR: activePost");
+        }
+      });
+    }
+  }, {
+    key: 'blockPost',
+    value: function blockPost() {
+      var _this8 = this;
+
+      io.socket.post('/post/blockPost', { id: this.props.data.id }, function (resData, jwres) {
+        if (resData.ok) {
+          _this8.setState({ isActive: false });
+        } else if (resData.err) {
+          console.log("ERR: blockPost");
+        }
+      });
+    }
+  }, {
+    key: 'renderOption',
+    value: function renderOption() {
+      var userId = this.props.user.id;
+      var userIdP = this.props.owner.id;
+      if (userId === userIdP || this.props.user.isAdmin === true) {
+        if (this.state.isActive === true) {
+          return _react2.default.createElement('i', { style: { cursor: "pointer" }, title: 'hidden post', onClick: this.blockPost.bind(this), className: 'icon ion-ios-close text-red' });
+        } else {
+          return _react2.default.createElement('i', { style: { cursor: "pointer" }, title: 'show post', onClick: this.activePost.bind(this), className: 'icon ion-ios-checkmark' });
+        }
+      } else {
+        return null;
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this7 = this;
+      var _this9 = this;
 
       var date = new Date(this.props.data.createdAt);
       var timeMsg = date.getTime();
       var renderTime = _timeAgo2.default.ago(new Date() - (new Date() - timeMsg));
       var renderBtnReact = this.renderBtnReact();
+      var renderOption = this.renderOption();
 
       return _react2.default.createElement(
         'div',
         { className: 'post-content' },
         _react2.default.createElement(_reactAlert2.default, _extends({ ref: function ref(a) {
-            return _this7.msg = a;
+            return _this9.msg = a;
           } }, this.alertOptions)),
         _react2.default.createElement(
           'div',
@@ -5070,11 +5112,15 @@ var NewsfeedContent = function (_React$Component) {
                   { to: "/user/" + this.props.owner.email, className: 'profile-link' },
                   this.props.owner.name
                 ),
-                ' ',
                 _react2.default.createElement(
                   'span',
                   { className: 'following' },
                   renderTime
+                ),
+                _react2.default.createElement(
+                  'span',
+                  { className: 'following pull-right' },
+                  renderOption
                 )
               )
             ),
@@ -5123,7 +5169,7 @@ var NewsfeedContent = function (_React$Component) {
             ),
             _react2.default.createElement('div', { className: 'line-divider' }),
             this.state.listComment.map(function (value, key) {
-              if (_this7.props.type === "all") return _react2.default.createElement(_Comment2.default, { key: key, data: value });else if (key >= _this7.state.listComment.length - 2) return _react2.default.createElement(_Comment2.default, { key: key, data: value });
+              if (_this9.props.type === "all") return _react2.default.createElement(_Comment2.default, { key: key, data: value });else if (key >= _this9.state.listComment.length - 2) return _react2.default.createElement(_Comment2.default, { key: key, data: value });
             }),
             _react2.default.createElement(
               'div',
@@ -5143,6 +5189,7 @@ var NewsfeedContent = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(function (state) {
   return { user: state.userReducer.user };
 })(NewsfeedContent);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 66 */
@@ -14541,18 +14588,31 @@ var Timeline = function (_React$Component) {
   }, {
     key: 'getListMyPost',
     value: function getListMyPost(id) {
+      var _this2 = this;
+
       var dispatch = this.props.dispatch;
 
-      var that = this;
-      io.socket.post('/post/getListMyPost', { userId: id, skip: this.state.total }, function (resData, jwres) {
-        if (resData.posts) {
-          dispatch((0, _postAction.list_my_post)(resData.posts));
-          return that.setState(_extends({}, that.state, { loading: false, total: resData.posts.length }));
-        } else {
-          dispatch((0, _postAction.list_my_post)([]));
-          return that.setState(_extends({}, that.state, { loading: false, total: 0 }));
-        }
-      });
+      if (this.props.type === "person") {
+        io.socket.post('/post/getListMyPostToPerson', { userId: id, skip: this.state.total }, function (resData, jwres) {
+          if (resData.posts) {
+            dispatch((0, _postAction.list_my_post)(resData.posts));
+            return _this2.setState(_extends({}, _this2.state, { loading: false, total: resData.posts.length }));
+          } else {
+            dispatch((0, _postAction.list_my_post)([]));
+            return _this2.setState(_extends({}, _this2.state, { loading: false, total: 0 }));
+          }
+        });
+      } else {
+        io.socket.post('/post/getListMyPost', { userId: id, skip: this.state.total }, function (resData, jwres) {
+          if (resData.posts) {
+            dispatch((0, _postAction.list_my_post)(resData.posts));
+            return _this2.setState(_extends({}, _this2.state, { loading: false, total: resData.posts.length }));
+          } else {
+            dispatch((0, _postAction.list_my_post)([]));
+            return _this2.setState(_extends({}, _this2.state, { loading: false, total: 0 }));
+          }
+        });
+      }
     }
   }, {
     key: 'getMorePost',
@@ -68261,12 +68321,33 @@ var UserManagement = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       var userId = this.props.user.id;
       var dispatch = this.props.dispatch;
 
       io.socket.post('/user/getAllUser', {}, function (resData, jwres) {
-        dispatch((0, _userAction.get_listalluser)(resData.listAllUser));
+        _this2.setState({ listAllUser: resData.listAllUser });
       });
+    }
+  }, {
+    key: 'search',
+    value: function search(event) {
+      var _this3 = this;
+
+      if (event.keyCode === 13) {
+        var key = this.refs.search.value;
+        var userId = this.props.user.id;
+        if (key === "") {
+          io.socket.post('/user/getAllUser', {}, function (resData, jwres) {
+            _this3.setState({ listAllUser: resData.listAllUser });
+          });
+        } else {
+          io.socket.post('/user/searchUser', { userId: userId, key: key, skip: 0, limit: 100 }, function (resData, jwres) {
+            if (resData.listUser) _this3.setState({ listAllUser: resData.listUser });
+          });
+        }
+      }
     }
   }, {
     key: 'render',
@@ -68299,6 +68380,7 @@ var UserManagement = function (_React$Component) {
               ' Total: ',
               this.state.listAllUser.length
             ),
+            _react2.default.createElement('input', { onKeyUp: this.search.bind(this), type: 'text', className: 'form-control', ref: 'search' }),
             _react2.default.createElement(
               'table',
               { className: 'table table-hover' },
@@ -68349,7 +68431,7 @@ var UserManagement = function (_React$Component) {
 }(_react2.default.Component);
 
 module.exports = (0, _reactRedux.connect)(function (state) {
-  return { user: state.userReducer.user, listAllUser: state.userReducer.listAllUser };
+  return { user: state.userReducer.user };
 })(UserManagement);
 
 /***/ }),

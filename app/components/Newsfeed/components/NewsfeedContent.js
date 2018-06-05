@@ -13,7 +13,7 @@ class NewsfeedContent extends React.Component{
       react : this.props.data.count||this.props.data.react.length,
       isReact : false,
       listComment : [],
-
+      isActive : this.props.data.isActive
     }
   }
   alertOptions = {
@@ -124,11 +124,43 @@ class NewsfeedContent extends React.Component{
       }
     })
   }
+  activePost(){
+    io.socket.post('/post/activePost',{id:this.props.data.id},(resData, jwres)=>{
+      if(resData.ok){
+          this.setState({isActive: true});
+      }else if(resData.err){
+        console.log("ERR: activePost")
+      }
+    })
+  }
+  blockPost(){
+    io.socket.post('/post/blockPost',{id:this.props.data.id},(resData, jwres)=>{
+      if(resData.ok){
+          this.setState({isActive: false});
+      }else if(resData.err){
+        console.log("ERR: blockPost")
+      }
+    })
+  }
+  renderOption(){
+    let userId = this.props.user.id;
+    let userIdP = this.props.owner.id;
+    if( (userId === userIdP) || this.props.user.isAdmin === true ){
+      if(this.state.isActive === true){
+        return <i style={{cursor:"pointer"}} title="hidden post" onClick={this.blockPost.bind(this)} className="icon ion-ios-close text-red"></i>
+      }else{
+        return <i style={{cursor:"pointer"}} title="show post" onClick={this.activePost.bind(this)} className="icon ion-ios-checkmark"></i>
+      }
+    }else{
+      return null;
+    }
+  }
   render(){
     var date = new Date(this.props.data.createdAt);
     let timeMsg = date.getTime();
     let renderTime = time.ago(new Date()-(new Date()-timeMsg));
     let renderBtnReact = this.renderBtnReact();
+    let renderOption = this.renderOption();
 
     return(
       <div className="post-content">
@@ -138,8 +170,11 @@ class NewsfeedContent extends React.Component{
           <div className="post-detail">
 
                   <div className="user-info">
-                    <h5><Link to={"/user/"+this.props.owner.email} className="profile-link" >{this.props.owner.name}</Link> <span className="following">{renderTime}</span></h5>
-
+                    <h5>
+                      <Link to={"/user/"+this.props.owner.email} className="profile-link" >{this.props.owner.name}</Link>
+                      <span className="following">{renderTime}</span>
+                      <span className="following pull-right">{renderOption}</span>
+                    </h5>
                   </div>
                   <div className="post-text">
                     <p>{this.props.data.content}<i className="em em-anguished"></i> <i className="em em-anguished"></i> <i className="em em-anguished"></i></p>

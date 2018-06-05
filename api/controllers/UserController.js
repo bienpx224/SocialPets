@@ -149,6 +149,9 @@ module.exports = {
     })
   },
   getAllUser: function(req,res){
+    let {skip,limit} = req.body;
+    if(!skip) skip = 0;
+    if(!limit) limit = 50;
     User.find()
     .populateAll()
     .sort({createdAt: -1})

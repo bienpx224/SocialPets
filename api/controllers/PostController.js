@@ -173,20 +173,7 @@ module.exports = {
     Post.update({userId}, {isActive:false}, (err, listPost)=>{
 			if(err){ return res.send({err})}
 			else if(listPost){
-				let historyInfo = {
-					userId : listPost[0].userId,
-					action : "Đã từ bỏ 1 em listPost đáng yêu",
-					related_listPostId : listPost[0].id,
-					isActive : true,
-				}
-				History.create(historyInfo ,(err, history)=>{
-					if(err) sails.log.error("Có lỗi khi tạo lịch sử : ", err);
-					if(!history){
-						sails.log.error("không tạo được History");
-					}else{
-						sails.log.info("Đã tạo thành công lịch sử : ", history.action);
-					}
-				})
+
 				return res.send({listPost})
 			}
 			else { return res.send({err:"Không thấy listPost"}) }
@@ -202,8 +189,43 @@ module.exports = {
 			else { return res.send({err:"Không thấy listPost"}) }
 		})
   },
+  blockPost: function(req, res){
+    let {id} = req.body;
+    Post.update({id}, {isActive:false}, (err, listPost)=>{
+			if(err){ return res.send({err})}
+			else if(listPost){
 
+					return res.send({ok:"ok"})
+			}
+			else { return res.send({err:"Không thấy listPost"}) }
+		})
+  },
+  activePost: function(req,res){
+    let {id} = req.body;
+    Post.update({id}, {isActive:true}, (err, listPost)=>{
+			if(err){ return res.send({err})}
+			else if(listPost){
+
+					return res.send({ok:"ok"})
+			}
+			else { return res.send({err:"Không thấy listPost"}) }
+		})
+  },
   getListMyPost: function(req,res){
+    let {userId,skip} = req.body;
+    if(!userId) return res.send({err: "Không có userId"});
+    Post.find({userId})
+    .populateAll()
+    .sort({createdAt: -1, updatedAt: -1})
+    .limit(10)
+    .skip(skip)
+    .then( (posts)=>{
+        if(posts) return res.send({posts: posts})
+        else return res.send({posts:[]})
+    })
+    .catch( (err)=>{ res.send({err:"Có lỗi tìm user"})})
+  },
+  getListMyPostToPerson: function(req,res){
     let {userId,skip} = req.body;
     if(!userId) return res.send({err: "Không có userId"});
     Post.find({userId, isActive:true})

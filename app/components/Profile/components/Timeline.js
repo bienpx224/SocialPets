@@ -35,16 +35,27 @@ class Timeline extends React.Component{
   }
   getListMyPost(id){
     let {dispatch} = this.props;
-    let that = this;
-    io.socket.post('/post/getListMyPost',{userId:id, skip: this.state.total},function(resData, jwres){
-      if(resData.posts){
-        dispatch(list_my_post(resData.posts));
-        return that.setState({...that.state,loading: false, total: resData.posts.length});
-      }else{
-        dispatch(list_my_post([]));
-        return that.setState({...that.state,loading: false, total: 0});
-      }
-    });
+    if(this.props.type === "person"){
+      io.socket.post('/post/getListMyPostToPerson',{userId:id, skip: this.state.total},(resData, jwres)=>{
+        if(resData.posts){
+          dispatch(list_my_post(resData.posts));
+          return this.setState({...this.state,loading: false, total: resData.posts.length});
+        }else{
+          dispatch(list_my_post([]));
+          return this.setState({...this.state,loading: false, total: 0});
+        }
+      });
+    }else{
+      io.socket.post('/post/getListMyPost',{userId:id, skip: this.state.total},(resData, jwres)=>{
+        if(resData.posts){
+          dispatch(list_my_post(resData.posts));
+          return this.setState({...this.state,loading: false, total: resData.posts.length});
+        }else{
+          dispatch(list_my_post([]));
+          return this.setState({...this.state,loading: false, total: 0});
+        }
+      });
+    }
   }
   getMorePost(){
     let id = "";
