@@ -20,9 +20,6 @@ class UserManagement extends React.Component{
     let {dispatch} = this.props;
     io.socket.post('/user/getAllUser',{},(resData, jwres)=>{
         dispatch(get_listalluser(resData.listAllUser));
-      }else{
-        
-      }
     })
 
   }

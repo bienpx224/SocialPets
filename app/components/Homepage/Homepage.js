@@ -31,6 +31,7 @@ class Homepage extends React.Component{
       }
     });
   }
+}
 
   componentWillReceiveProps(nextProps){
     this.setState({...this.state,isLogin: nextProps.isLogin});

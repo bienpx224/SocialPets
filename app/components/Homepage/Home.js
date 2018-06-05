@@ -45,7 +45,7 @@ class Home extends React.Component{
         dispatch(login_success(resData.user));
       }
     });
-
+  }
   }
 
   componentWillReceiveProps(nextProps){

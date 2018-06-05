@@ -22,17 +22,18 @@ class Profile extends React.Component{
     let that = this;
     if(localStorage.email){
     }else{
-    io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
+      io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
 
-      if(resData.error){
-        dispatch(login_error());
-      }
-      if(resData.notFound){
-        dispatch(login_error());
-      }else{
-        dispatch(login_success(resData.user));
-      }
-    });
+        if(resData.error){
+          dispatch(login_error());
+        }
+        if(resData.notFound){
+          dispatch(login_error());
+        }else{
+          dispatch(login_success(resData.user));
+        }
+      });
+    }
   }
   changePicture(){
     var {dispatch} = this.props;

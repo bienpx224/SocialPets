@@ -21,6 +21,7 @@ class User extends React.Component{
   checkLogin(){
     let {dispatch} = this.props;
     if(localStorage.email){
+
     }else{
     io.socket.post('/user/getUser', {email:localStorage.email}, function(resData, jwres){
       if(resData.error){
@@ -33,6 +34,7 @@ class User extends React.Component{
       }
     });
   }
+}
 
   handleFollow(){
     let that = this;

@@ -36,6 +36,7 @@ class PostInfo extends React.Component{
       }
     });
   }
+}
   getPostById(){
     let {id} = this.props.match.params;
     io.socket.post('/post/getPostById',{id},(resData, jwres)=>{
