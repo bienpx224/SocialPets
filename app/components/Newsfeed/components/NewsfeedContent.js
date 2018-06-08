@@ -184,7 +184,7 @@ class NewsfeedContent extends React.Component{
 
                   <div className="">
                     {renderBtnReact}
-                    <a className="btn text-red"><i className="icon ion-chatbox"></i>{this.props.data.comments.length}</a>
+                    <a className="btn text-violet"><i className="icon ion-chatbox"></i>{this.props.data.comments.length}</a>
                     <Link to={"/post/"+this.props.data.id} >
                     <a className="btn"><i className="icon ion-navigate"></i>See post</a>
                     </Link>
