@@ -28,7 +28,7 @@ class ListRecommendRank extends React.Component{
     var that = this;
     let {dispatch} = this.props;
     if(!user) return that.setState({...that.state,loading: true});
-     io.socket.post('/follow/recommend_rank',{userId: user.id, skip:0, limit:3}, function(resData, jwres){
+     io.socket.post('/follow/recommend_rank',{userId: user.id, skip:0, limit:2}, function(resData, jwres){
         if(resData.ok){
           dispatch(get_recommend_rank(resData.ok));
           return that.setState({...that.state,loading: false});

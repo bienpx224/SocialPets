@@ -304,7 +304,6 @@ module.exports = {
 			list_id_following.push(userId);
 			User.find({ id: {$nin: list_id_following},
 									$or: [
-										{"gender": new RegExp(user.gender)},
 										{"address":new RegExp(user.address)},
 										{"year_date": new RegExp(user.year_date)},
 										{"petlove": new RegExp(user.petlove)},
